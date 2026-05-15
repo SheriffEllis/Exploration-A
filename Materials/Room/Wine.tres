@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://db15wxh2epvj7"]
+
+[resource]
+resource_name = "Wine"
+cull_mode = 2
+albedo_color = Color(0.34998927, 0.11458633, 0.09227425, 1)

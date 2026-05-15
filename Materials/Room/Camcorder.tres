@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bqe7tlxde3xcj"]
+
+[ext_resource type="Texture2D" uid="uid://chqtb3e6uwcgi" path="res://Room/Room_CamcorderDiffuseAO.png" id="1_1j210"]
+
+[resource]
+resource_name = "Camcorder"
+albedo_texture = ExtResource("1_1j210")
+metallic = 0.30833337
+roughness = 0.5916667
+texture_filter = 2

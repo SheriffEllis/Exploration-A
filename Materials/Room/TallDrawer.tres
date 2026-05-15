@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d3ina7thue0lo"]
+
+[ext_resource type="Texture2D" uid="uid://dhcuk8m117n5" path="res://Room/Room_TallDrawerDiffuse.png" id="1_jkskh"]
+
+[resource]
+resource_name = "TallDrawer"
+albedo_texture = ExtResource("1_jkskh")
+roughness = 0.4
+texture_filter = 2

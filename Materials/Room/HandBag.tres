@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://crod5au7uqjfa"]
+
+[ext_resource type="Texture2D" uid="uid://b01i8c4ub071t" path="res://Room/Room_HandbagDiffuse.png" id="1_bex11"]
+
+[resource]
+resource_name = "HandBag"
+cull_mode = 2
+albedo_texture = ExtResource("1_bex11")
+texture_filter = 2

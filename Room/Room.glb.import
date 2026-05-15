@@ -1,0 +1,335 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://boifvm6ld328s"
+path="res://.godot/imported/Room.glb-6fbe512eef49fc77427b5822d8a8a64f.scn"
+
+[deps]
+
+source_file="res://Room/Room.glb"
+dest_files=["res://.godot/imported/Room.glb-6fbe512eef49fc77427b5822d8a8a64f.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=2
+materials/extract_format=0
+materials/extract_path="res://Materials/Room"
+_subresources={
+"materials": {
+"Ash": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Ash.tres",
+"use_external/path": "uid://c5ubiuc1emuw1"
+},
+"Beer": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Beer.tres",
+"use_external/path": "uid://dmqbq3qaql8ss"
+},
+"Bin": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Bin.tres",
+"use_external/path": "uid://cliefitqq7qk4"
+},
+"BoobLamp": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/BoobLamp.tres",
+"use_external/path": "uid://qoa25xo8kaqs"
+},
+"Books": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Books.tres",
+"use_external/path": "uid://bik0ggpytkgqi"
+},
+"CableBox": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/CableBox.tres",
+"use_external/path": "uid://nsusa4pccyv"
+},
+"Camcorder": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Camcorder.tres",
+"use_external/path": "uid://bqe7tlxde3xcj"
+},
+"Candle": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Candle.tres",
+"use_external/path": "uid://c1hcg73ku3cxp"
+},
+"Ceiling": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Ceiling.tres",
+"use_external/path": "uid://df5wypwn6deqs"
+},
+"CeilingFan": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/CeilingFan.tres",
+"use_external/path": "uid://d4j5y8x6jx1vc"
+},
+"Cigarette": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Cigarette.tres",
+"use_external/path": "uid://dd1422g213dne"
+},
+"Clock": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Clock.tres",
+"use_external/path": "uid://d3jwiw5re5kns"
+},
+"Coat": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Coat.tres",
+"use_external/path": "uid://cljewm4u5ymqi"
+},
+"Coffee": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Coffee.tres",
+"use_external/path": "uid://c4fi8u1u71ufm"
+},
+"Curtains": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Curtains.tres",
+"use_external/path": "uid://omdw10c5j1eb"
+},
+"Cushion": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Cushion.tres",
+"use_external/path": "uid://cs8rxkxmyay11"
+},
+"Door": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Door.tres",
+"use_external/path": "uid://bl5qad3txfais"
+},
+"DoorEntrance": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/DoorEntrance.tres",
+"use_external/path": "uid://dyoaciy825qtf"
+},
+"Drawer": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Drawer.tres",
+"use_external/path": "uid://dnmgj2nte3lcu"
+},
+"Floor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Floor.tres",
+"use_external/path": "uid://d1fkl0toplccw"
+},
+"Flowers": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Flowers.tres",
+"use_external/path": "uid://5morypik5yr8"
+},
+"FruitBowl": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/FruitBowl.tres",
+"use_external/path": "uid://w3ochc1ata8u"
+},
+"Glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Glass.tres",
+"use_external/path": "uid://cfdh7d3jn77at"
+},
+"HandBag": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/HandBag.tres",
+"use_external/path": "uid://crod5au7uqjfa"
+},
+"Hat": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Hat.tres",
+"use_external/path": "uid://ce1e1ik8ydylu"
+},
+"Hi8": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Hi8.tres",
+"use_external/path": "uid://bbqpdqsnfxt6o"
+},
+"Lamp": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Lamp.tres",
+"use_external/path": "uid://bsfjk3hrmhq5h"
+},
+"MagLite": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/MagLite.tres",
+"use_external/path": "uid://lvnduhf8ktx3"
+},
+"Map": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Map.tres",
+"use_external/path": "uid://b76kxf3vyxjn6"
+},
+"PaintedWood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/PaintedWood.tres",
+"use_external/path": "uid://c3f82sbdndr2f"
+},
+"Paintings": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Paintings.tres",
+"use_external/path": "uid://dhi7oin3f06xp"
+},
+"PaperBall": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/PaperBall.tres",
+"use_external/path": "uid://b7r850prcag6d"
+},
+"Plant": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Plant.tres",
+"use_external/path": "uid://c7liowli80cpk"
+},
+"Porcelain": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Porcelain.tres",
+"use_external/path": "uid://bhmjxfca6m00x"
+},
+"Remote": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Remote.tres",
+"use_external/path": "uid://b5ow8ayobmvwh"
+},
+"Rug": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Rug.tres",
+"use_external/path": "uid://cu8lgfghj1elx"
+},
+"Shelf": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Shelf.tres",
+"use_external/path": "uid://cvydy4y3ghqpm"
+},
+"Shoes1": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Shoes1.tres",
+"use_external/path": "uid://cfko0vmhmf8uv"
+},
+"Shoes2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Shoes2.tres",
+"use_external/path": "uid://0l1r8hrk2ncn"
+},
+"Shoes3": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Shoes3.tres",
+"use_external/path": "uid://4y6eihcsyih4"
+},
+"Shoes4": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Shoes4.tres",
+"use_external/path": "uid://io1pakgppjbp"
+},
+"Sofa": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Sofa.tres",
+"use_external/path": "uid://b0op1u4flov1p"
+},
+"Sofa Chair": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Sofa Chair.tres",
+"use_external/path": "uid://c7hf7aaomldw8"
+},
+"TV": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/TV.tres",
+"use_external/path": "uid://dbvk2wrfq14uf"
+},
+"Table": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Table.tres",
+"use_external/path": "uid://27kyuolq4vk5"
+},
+"TallDrawer": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/TallDrawer.tres",
+"use_external/path": "uid://d3ina7thue0lo"
+},
+"TapePlayer": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/TapePlayer.tres",
+"use_external/path": "uid://c2bxd15i2k7cg"
+},
+"Vase": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Vase.tres",
+"use_external/path": "uid://d0iyrrcxerlkc"
+},
+"Walls": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Walls.tres",
+"use_external/path": "uid://i86d7yplno3n"
+},
+"Wick": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Wick.tres",
+"use_external/path": "uid://j4iy2oao6lvy"
+},
+"WindowGlass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/WindowGlass.tres",
+"use_external/path": "uid://b18dcd30c2dcm"
+},
+"Wine": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Wine.tres",
+"use_external/path": "uid://db15wxh2epvj7"
+},
+"WineBottle": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/WineBottle.tres",
+"use_external/path": "uid://dnb0p0fyfrk46"
+},
+"Wood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Room/Wood.tres",
+"use_external/path": "uid://b6j3sl0aunlcl"
+}
+},
+"meshes": {
+"Room_Cube": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"Room_Cube_020": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

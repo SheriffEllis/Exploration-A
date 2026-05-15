@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c1hcg73ku3cxp"]
+
+[resource]
+resource_name = "Candle"
+albedo_color = Color(0.7641746, 0.69920945, 0.55619085, 1)
+roughness = 0.34166667

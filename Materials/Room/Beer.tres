@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dmqbq3qaql8ss"]
+
+[ext_resource type="Texture2D" uid="uid://bw1ytiqqhrles" path="res://Room/Room_BeerDiffuse.png" id="1_877h6"]
+
+[resource]
+resource_name = "Beer"
+albedo_texture = ExtResource("1_877h6")
+roughness = 0.4
+texture_filter = 2

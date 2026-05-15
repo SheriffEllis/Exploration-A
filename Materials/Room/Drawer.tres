@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnmgj2nte3lcu"]
+
+[ext_resource type="Texture2D" uid="uid://b2q7hyoxhvl55" path="res://Room/Room_DrawerDiffuseAO.png" id="1_cao7c"]
+
+[resource]
+resource_name = "Drawer"
+transparency = 4
+albedo_texture = ExtResource("1_cao7c")
+roughness = 0.4
+texture_filter = 2

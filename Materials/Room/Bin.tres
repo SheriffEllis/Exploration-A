@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cliefitqq7qk4"]
+
+[ext_resource type="Texture2D" uid="uid://bddsthwqbxa86" path="res://Room/Room_BinDiffuse.png" id="1_3w4tb"]
+
+[resource]
+resource_name = "Bin"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_3w4tb")
+texture_filter = 2

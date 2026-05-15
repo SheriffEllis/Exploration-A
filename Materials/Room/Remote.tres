@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b5ow8ayobmvwh"]
+
+[ext_resource type="Texture2D" uid="uid://cc6guahuo3dta" path="res://Room/Room_RemoteDiffuse.png" id="1_d2a28"]
+
+[resource]
+resource_name = "Remote"
+albedo_texture = ExtResource("1_d2a28")
+texture_filter = 2

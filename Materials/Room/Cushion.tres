@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cs8rxkxmyay11"]
+
+[ext_resource type="Texture2D" uid="uid://bowao7ut2tmde" path="res://Room/Room_CushionDiffuse.png" id="1_jp1v0"]
+
+[resource]
+resource_name = "Cushion"
+albedo_texture = ExtResource("1_jp1v0")
+texture_filter = 2

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://5morypik5yr8"]
+
+[ext_resource type="Texture2D" uid="uid://bbibk4u7gdiqq" path="res://Room/Room_FlowersDiffuse.png" id="1_r3pfl"]
+
+[resource]
+resource_name = "Flowers"
+cull_mode = 2
+albedo_texture = ExtResource("1_r3pfl")
+texture_filter = 2

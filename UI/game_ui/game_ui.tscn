@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://70xt2qqamxtv"]
+
+[ext_resource type="Script" uid="uid://brs3t66vjxqat" path="res://UI/game_ui/game_ui.gd" id="1_kfjql"]
+[ext_resource type="PackedScene" uid="uid://cusg143xqi1aw" path="res://UI/game_ui/pause_menu.tscn" id="4_j42il"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j42il"]
+bg_color = Color(0.262745, 0.0862745, 0.0627451, 0.870588)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.901961, 0.505882, 0.443137, 0.709804)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="GameUI" type="Control" unique_id=1731473341 node_paths=PackedStringArray("crosshair", "fps_counter", "pause_menu")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kfjql")
+crosshair = NodePath("HUD/CrossHair/CrosshairSprite")
+fps_counter = NodePath("HUD/FPS Counter")
+pause_menu = NodePath("PauseMenu")
+
+[node name="Debug" type="Node" parent="." unique_id=1811304471]
+
+[node name="HUD" type="Control" parent="." unique_id=861649319]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrossHair" type="Control" parent="HUD" unique_id=397212019]
+process_mode = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrosshairSprite" type="Sprite2D" parent="HUD/CrossHair" unique_id=1169330264]
+modulate = Color(1, 1, 1, 0.705882)
+texture_filter = 3
+scale = Vector2(2, 2)
+offset = Vector2(10, 10)
+hframes = 2
+
+[node name="FPS Counter" type="Label" parent="HUD" unique_id=372332167]
+process_mode = 4
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -102.935
+offset_top = 11.0
+offset_right = -43.9351
+offset_bottom = 34.0
+grow_horizontal = 0
+scale = Vector2(1.245, 1.245)
+text = "FPS: NA"
+
+[node name="Panel" type="Panel" parent="." unique_id=480126058]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 327.0
+offset_top = 170.0
+offset_right = -327.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j42il")
+
+[node name="PauseMenu" parent="." unique_id=1693858818 instance=ExtResource("4_j42il")]
+visible = false
+layout_mode = 1

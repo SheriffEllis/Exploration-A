@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c7liowli80cpk"]
+
+[ext_resource type="Texture2D" uid="uid://dnkhc4gmxbg8v" path="res://Room/Room_PlantDiffuse.png" id="1_70onn"]
+
+[resource]
+resource_name = "Plant"
+albedo_texture = ExtResource("1_70onn")
+texture_filter = 2

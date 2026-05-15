@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dhi7oin3f06xp"]
+
+[ext_resource type="Texture2D" uid="uid://o0r1eg3gnqxc" path="res://Room/Room_Paintings.png" id="1_fjsrh"]
+
+[resource]
+resource_name = "Paintings"
+albedo_texture = ExtResource("1_fjsrh")
+texture_filter = 2

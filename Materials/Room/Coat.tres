@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cljewm4u5ymqi"]
+
+[ext_resource type="Texture2D" uid="uid://da32n07autg5" path="res://Room/Room_CoatDiffuse.png" id="1_omt1x"]
+
+[resource]
+resource_name = "Coat"
+cull_mode = 2
+albedo_texture = ExtResource("1_omt1x")
+texture_filter = 2

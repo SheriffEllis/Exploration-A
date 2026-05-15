@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c4fi8u1u71ufm"]
+
+[resource]
+resource_name = "Coffee"
+albedo_color = Color(0.18823534, 0.082352966, 0.003921569, 1)
+roughness = 0.1

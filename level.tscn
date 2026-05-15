@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://botkc1uivwekw"]
+
+[ext_resource type="Script" uid="uid://btuxhlfcqbm5a" path="res://level.gd" id="1_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://c0vdwy2tea1g2" path="res://room.tscn" id="1_u52ul"]
+[ext_resource type="Texture2D" uid="uid://d220tauv8d1rs" path="res://Outside/NightSkyHDRI001_2K_TONEMAPPED.jpg" id="2_1ainy"]
+[ext_resource type="PackedScene" uid="uid://6w8l8imv3uwx" path="res://Player/player.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://70xt2qqamxtv" path="res://UI/game_ui/game_ui.tscn" id="4_f2txt"]
+[ext_resource type="PackedScene" uid="uid://c2kbweneknqnu" path="res://outside.tscn" id="5_f2txt"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f2txt"]
+panorama = ExtResource("2_1ainy")
+filter = false
+
+[sub_resource type="Sky" id="Sky_1ainy"]
+sky_material = SubResource("PanoramaSkyMaterial_f2txt")
+
+[sub_resource type="Environment" id="Environment_vonw3"]
+background_mode = 2
+background_energy_multiplier = 0.4
+sky = SubResource("Sky_1ainy")
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.79607844, 0.49019608, 1)
+reflected_light_source = 1
+
+[node name="Level" type="Node3D" unique_id=851319929]
+script = ExtResource("1_0b4ue")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=534093435]
+environment = SubResource("Environment_vonw3")
+
+[node name="Room" parent="." unique_id=993139573 instance=ExtResource("1_u52ul")]
+
+[node name="Player" parent="." unique_id=11157363 instance=ExtResource("2_vonw3")]
+transform = Transform3D(-0.2861232, 0, 0.95819294, 0, 1, 0, -0.95819294, 0, -0.2861232, 1.2470603, 1.1462198, 1.671375)
+
+[node name="GameUI" parent="." unique_id=1624677183 instance=ExtResource("4_f2txt")]
+
+[node name="Outside" parent="." unique_id=1757814444 instance=ExtResource("5_f2txt")]

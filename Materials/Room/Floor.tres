@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d1fkl0toplccw"]
+
+[ext_resource type="Texture2D" uid="uid://cdlnrcw3q2ebh" path="res://Room/Room_Carpet001_256x256_Color.png" id="1_0scl6"]
+
+[resource]
+resource_name = "Floor"
+albedo_texture = ExtResource("1_0scl6")
+texture_filter = 2

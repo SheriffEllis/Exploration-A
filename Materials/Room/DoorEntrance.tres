@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dyoaciy825qtf"]
+
+[ext_resource type="Texture2D" uid="uid://b81w68wlwx1rt" path="res://Room/Room_EntranceDoorDiffuse.png" id="1_pfl3q"]
+
+[resource]
+resource_name = "DoorEntrance"
+albedo_texture = ExtResource("1_pfl3q")
+texture_filter = 2

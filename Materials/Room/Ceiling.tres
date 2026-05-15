@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://df5wypwn6deqs"]
+
+[ext_resource type="Texture2D" uid="uid://x7we8b2yoeq3" path="res://Room/Room_Wallpaper001B_256x256_Ceiling.png" id="1_h482n"]
+
+[resource]
+resource_name = "Ceiling"
+albedo_texture = ExtResource("1_h482n")
+texture_filter = 2

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dd1422g213dne"]
+
+[ext_resource type="Texture2D" uid="uid://dhgkcw610uja8" path="res://Room/Room_Cigarette.png" id="1_5s3se"]
+
+[resource]
+resource_name = "Cigarette"
+albedo_texture = ExtResource("1_5s3se")
+texture_filter = 2

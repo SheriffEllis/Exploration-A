@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dbvk2wrfq14uf"]
+
+[ext_resource type="Texture2D" uid="uid://cx8pqogblgdq7" path="res://Room/Room_TVTextureSharp.png" id="1_1qc7m"]
+
+[resource]
+resource_name = "TV"
+albedo_texture = ExtResource("1_1qc7m")
+texture_filter = 2

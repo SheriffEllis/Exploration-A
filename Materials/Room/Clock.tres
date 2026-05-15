@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d3jwiw5re5kns"]
+
+[ext_resource type="Texture2D" uid="uid://cdx8soyfmhb2g" path="res://Room/Room_ClockDiffuse.png" id="1_r1erj"]
+
+[resource]
+resource_name = "Clock"
+transparency = 4
+albedo_texture = ExtResource("1_r1erj")
+texture_filter = 2

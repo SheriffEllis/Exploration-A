@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ce1e1ik8ydylu"]
+
+[ext_resource type="Texture2D" uid="uid://oncm8ncpwhq3" path="res://Room/Room_HatDiffuse.png" id="1_mb6n8"]
+
+[resource]
+resource_name = "Hat"
+cull_mode = 2
+albedo_texture = ExtResource("1_mb6n8")
+texture_filter = 2

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dpr330dy6a4cn"]
+
+[resource]
+resource_name = "StreetLight"
+albedo_color = Color(0.20326127, 0.17200114, 0.15016027, 1)
+metallic = 0.5
+roughness = 0.5

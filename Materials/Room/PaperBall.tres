@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b7r850prcag6d"]
+
+[ext_resource type="Texture2D" uid="uid://da34pa8wkt7rq" path="res://Room/Room_PaperBallDiffuse.png" id="1_kkrwh"]
+
+[resource]
+resource_name = "PaperBall"
+albedo_texture = ExtResource("1_kkrwh")
+texture_filter = 2

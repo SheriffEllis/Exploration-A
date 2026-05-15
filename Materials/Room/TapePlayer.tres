@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c2bxd15i2k7cg"]
+
+[ext_resource type="Texture2D" uid="uid://br7udxi0s3wvt" path="res://Room/Room_TapePlayerDiffuse.png" id="1_2cha8"]
+
+[resource]
+resource_name = "TapePlayer"
+albedo_texture = ExtResource("1_2cha8")
+texture_filter = 2

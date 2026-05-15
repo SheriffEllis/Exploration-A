@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b0op1u4flov1p"]
+
+[ext_resource type="Texture2D" uid="uid://3kv80ei5fyh4" path="res://Room/Room_SofaDiffuseAO(Green).png" id="1_emwci"]
+
+[resource]
+resource_name = "Sofa"
+transparency = 4
+albedo_texture = ExtResource("1_emwci")
+texture_filter = 2

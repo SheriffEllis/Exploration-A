@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnb0p0fyfrk46"]
+
+[ext_resource type="Texture2D" uid="uid://dvxy4ja8x7bm4" path="res://Room/Room_Wine Bottle.png" id="1_or1ek"]
+
+[resource]
+resource_name = "WineBottle"
+albedo_texture = ExtResource("1_or1ek")
+texture_filter = 2

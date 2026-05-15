@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c2kbweneknqnu"]
+
+[ext_resource type="PackedScene" uid="uid://b1n3gaxw5bcsb" path="res://Outside/Outside.glb" id="1_skvht"]
+[ext_resource type="LightmapGIData" uid="uid://cih32h30hi4ly" path="res://outside.lmbake" id="2_hne82"]
+
+[node name="Outside" unique_id=695420841 instance=ExtResource("1_skvht")]
+
+[node name="LightmapGI" type="LightmapGI" parent="." index="0" unique_id=1214047600]
+layers = 2
+supersampling = true
+bounce_indirect_energy = 2.0
+light_data = ExtResource("2_hne82")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1" unique_id=1777652241]
+transform = Transform3D(-0.7818587, -0.6204461, -0.061187863, -0.5056517, 0.57365066, 0.64439213, -0.3647101, 0.5347632, -0.7622431, 0, 6.50737, 0)
+layers = 2
+light_color = Color(0.15686275, 0.16862746, 0.1882353, 1)
+light_bake_mode = 1
+light_cull_mask = 4293918722
+
+[node name="Grass" parent="." index="2" unique_id=820321085]
+layers = 2
+
+[node name="Hedge" parent="." index="3" unique_id=1927079763]
+layers = 2
+
+[node name="StreetLight" parent="." index="4" unique_id=981730507]
+layers = 2

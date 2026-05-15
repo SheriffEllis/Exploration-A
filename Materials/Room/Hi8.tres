@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbqpdqsnfxt6o"]
+
+[ext_resource type="Texture2D" uid="uid://cwigpqve755qm" path="res://Room/Room_Hi8.png" id="1_ccn0w"]
+
+[resource]
+resource_name = "Hi8"
+albedo_texture = ExtResource("1_ccn0w")
+texture_filter = 2

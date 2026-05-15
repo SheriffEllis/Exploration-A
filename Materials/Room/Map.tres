@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b76kxf3vyxjn6"]
+
+[ext_resource type="Texture2D" uid="uid://brcwvutei6e88" path="res://Room/Room_Sketch.png" id="1_csal4"]
+
+[resource]
+resource_name = "Map"
+albedo_texture = ExtResource("1_csal4")
+texture_filter = 2

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d0iyrrcxerlkc"]
+
+[ext_resource type="Texture2D" uid="uid://dtcwhj3jh0ahg" path="res://Room/Room_Vase2.png" id="1_ovcic"]
+
+[resource]
+resource_name = "Vase"
+albedo_texture = ExtResource("1_ovcic")
+roughness = 0.41666666
+texture_filter = 2

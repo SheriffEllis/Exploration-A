@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://0l1r8hrk2ncn"]
+
+[ext_resource type="Texture2D" uid="uid://0rn2jeysa5o1" path="res://Room/Room_Shoes2Diffuse.png" id="1_toq4k"]
+
+[resource]
+resource_name = "Shoes2"
+albedo_texture = ExtResource("1_toq4k")
+texture_filter = 2

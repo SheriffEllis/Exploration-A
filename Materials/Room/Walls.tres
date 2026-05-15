@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://i86d7yplno3n"]
+
+[ext_resource type="Texture2D" uid="uid://b1mx5q826p8lr" path="res://Room/Room_Wallpaper001B_1K-PNG_Color.png" id="1_ntf4f"]
+
+[resource]
+resource_name = "Walls"
+albedo_texture = ExtResource("1_ntf4f")
+texture_filter = 2

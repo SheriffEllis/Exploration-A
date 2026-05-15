@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://j4iy2oao6lvy"]
+
+[resource]
+resource_name = "Wick"
+cull_mode = 2
+albedo_color = Color(0.31110138, 0.2752208, 0.235705, 1)
+roughness = 0.5

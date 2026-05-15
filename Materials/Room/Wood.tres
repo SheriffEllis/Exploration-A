@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b6j3sl0aunlcl"]
+
+[ext_resource type="Texture2D" uid="uid://bo7olj3j2e87r" path="res://Room/Room_GeneralWoodenTexture.png" id="1_t6enb"]
+
+[resource]
+resource_name = "Wood"
+albedo_texture = ExtResource("1_t6enb")
+texture_filter = 2

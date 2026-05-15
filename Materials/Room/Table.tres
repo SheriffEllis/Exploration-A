@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://27kyuolq4vk5"]
+
+[ext_resource type="Texture2D" uid="uid://carh3tg8vyamq" path="res://Room/Room_TableTextureSharp.png" id="1_holy2"]
+
+[resource]
+resource_name = "Table"
+transparency = 4
+albedo_texture = ExtResource("1_holy2")
+texture_filter = 2

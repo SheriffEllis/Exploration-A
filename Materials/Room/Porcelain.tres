@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bhmjxfca6m00x"]
+
+[resource]
+resource_name = "Porcelain"
+albedo_color = Color(0.39058003, 0.55117375, 0.60556525, 1)
+roughness = 0.5

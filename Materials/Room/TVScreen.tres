@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3abl4h7rsny7"]
+
+[ext_resource type="Texture2D" uid="uid://cx8pqogblgdq7" path="res://Room/Room_TVTextureSharp.png" id="1_tuicj"]
+
+[resource]
+resource_name = "TVScreen"
+albedo_texture = ExtResource("1_tuicj")
+roughness = 0.35
+texture_filter = 2

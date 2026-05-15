@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d4j5y8x6jx1vc"]
+
+[ext_resource type="Texture2D" uid="uid://eaocsf6etq35" path="res://Room/Room_CeilingFanDiffuse.png" id="1_5loql"]
+[ext_resource type="Texture2D" uid="uid://b42h1s6e5s7fj" path="res://Room/Room_CeilingFanEmmisive.png" id="2_rgbwy"]
+
+[resource]
+resource_name = "CeilingFan"
+albedo_texture = ExtResource("1_5loql")
+metallic = 0.5
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.7977378, 0.7977378, 0.7977378, 1)
+emission_operator = 1
+emission_texture = ExtResource("2_rgbwy")
+texture_filter = 2

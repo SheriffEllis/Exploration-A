@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bik0ggpytkgqi"]
+
+[ext_resource type="Texture2D" uid="uid://btktbfarm1ise" path="res://Room/Room_BooksDiffuse.png" id="1_rel34"]
+
+[resource]
+resource_name = "Books"
+albedo_texture = ExtResource("1_rel34")
+texture_filter = 2

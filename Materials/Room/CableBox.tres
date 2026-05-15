@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://nsusa4pccyv"]
+
+[ext_resource type="Texture2D" uid="uid://ceexta8vrq4d7" path="res://Room/Room_CableBoxDiffuse.png" id="1_o5gr5"]
+
+[resource]
+resource_name = "CableBox"
+albedo_texture = ExtResource("1_o5gr5")
+texture_filter = 2

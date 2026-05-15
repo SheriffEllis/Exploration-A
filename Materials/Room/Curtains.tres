@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://omdw10c5j1eb"]
+
+[ext_resource type="Texture2D" uid="uid://b8l3844lgu05y" path="res://Room/Room_CurtainsDiffuse.png" id="1_us63k"]
+
+[resource]
+resource_name = "Curtains"
+albedo_texture = ExtResource("1_us63k")
+texture_filter = 2

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvifjm7pq0ldt"]
+
+[ext_resource type="Texture2D" uid="uid://duyf2r356w87o" path="res://Room/Room_BoobLampDiffuse.png" id="1_5xtle"]
+[ext_resource type="Texture2D" uid="uid://g802fpsrftpt" path="res://Room/Room_BoobLampEmmission.png" id="2_naguk"]
+
+[resource]
+resource_name = "BoobLampOn"
+albedo_texture = ExtResource("1_5xtle")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("2_naguk")
+texture_filter = 2

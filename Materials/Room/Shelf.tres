@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvydy4y3ghqpm"]
+
+[ext_resource type="Texture2D" uid="uid://bjfdqwg56ds53" path="res://Room/Room_ShelfDiffuseAO.png" id="1_27sqa"]
+
+[resource]
+resource_name = "Shelf"
+transparency = 4
+albedo_texture = ExtResource("1_27sqa")
+roughness = 0.4
+texture_filter = 2

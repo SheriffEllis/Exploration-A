@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c3f82sbdndr2f"]
+
+[ext_resource type="Texture2D" uid="uid://bkx75fvljm8ky" path="res://Room/Room_PaintedWood_256x256.png" id="1_kaf2m"]
+
+[resource]
+resource_name = "PaintedWood"
+albedo_texture = ExtResource("1_kaf2m")
+roughness = 0.6
+texture_filter = 2

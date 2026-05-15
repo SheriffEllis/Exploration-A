@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://w3ochc1ata8u"]
+
+[ext_resource type="Texture2D" uid="uid://dgh58h3c4idui" path="res://Room/Room_FruitBowl.png" id="1_j2o5v"]
+
+[resource]
+resource_name = "FruitBowl"
+albedo_texture = ExtResource("1_j2o5v")
+texture_filter = 2
