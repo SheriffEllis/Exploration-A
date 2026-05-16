@@ -11,7 +11,10 @@ size = Vector3(1.228, 4.875, 0.928918)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ka7wq"]
 size = Vector3(1.228, 2.8549972, 1.056)
 
-[node name="LightmapGI" unique_id=993139573 instance=ExtResource("1_88gup")]
+[sub_resource type="QuadMesh" id="QuadMesh_v5vuv"]
+size = Vector2(1.5, 1.5)
+
+[node name="Room" unique_id=993139573 instance=ExtResource("1_88gup")]
 
 [node name="LightmapGI" type="LightmapGI" parent="." index="0" unique_id=122950889 groups=["ShadowedLights"]]
 supersampling = true
@@ -38,6 +41,12 @@ script = ExtResource("3_4o3f6")
 
 [node name="Timer" type="Timer" parent="Clock" index="3" unique_id=1233662645]
 autostart = true
+
+[node name="DrawerSmall" parent="." index="40" unique_id=1873232583]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -1.2595634, 0.576304, 2.4556773)
+
+[node name="DoorHallway" parent="DoorframeHallway" parent_id_path=PackedInt32Array(1247939797) index="0" unique_id=1219448233]
+transform = Transform3D(0.121869326, 0, 0.99254614, 0, 1, 0, -0.99254614, 0, 0.121869326, 0.46299988, -0.021060944, 0.024285078)
 
 [node name="BoobLamp" parent="." index="47" unique_id=1356534616]
 cast_shadow = 0
@@ -79,3 +88,11 @@ shape = SubResource("BoxShape3D_v5vuv")
 [node name="CollisionShape3DStaircaseBlocked" type="CollisionShape3D" parent="Staircase/StaticBody3DStaircase" index="1" unique_id=1112759171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31336272, -1.9967952)
 shape = SubResource("BoxShape3D_ka7wq")
+
+[node name="WindowCover1" type="MeshInstance3D" parent="." index="75" unique_id=1521743255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5446243, 1.4633282, 2.9528697)
+mesh = SubResource("QuadMesh_v5vuv")
+
+[node name="WindowCover2" type="MeshInstance3D" parent="." index="76" unique_id=1974552130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.545, 1.463, 2.953)
+mesh = SubResource("QuadMesh_v5vuv")
