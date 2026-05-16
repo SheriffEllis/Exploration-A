@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b1n3gaxw5bcsb" path="res://Outside/Outside.glb" id="1_skvht"]
 [ext_resource type="LightmapGIData" uid="uid://cih32h30hi4ly" path="res://outside.lmbake" id="2_hne82"]
 
-[node name="Outside" unique_id=695420841 instance=ExtResource("1_skvht")]
+[node name="Outside" unique_id=457503263 instance=ExtResource("1_skvht")]
 
 [node name="LightmapGI" type="LightmapGI" parent="." index="0" unique_id=1214047600]
 layers = 2
@@ -18,11 +18,26 @@ light_color = Color(0.15686275, 0.16862746, 0.1882353, 1)
 light_bake_mode = 1
 light_cull_mask = 4293918722
 
-[node name="Grass" parent="." index="2" unique_id=1694295751]
+[node name="Grass" parent="." index="2" unique_id=612276281]
 layers = 2
 
-[node name="Hedge" parent="." index="3" unique_id=2032504281]
+[node name="Hedge" parent="." index="3" unique_id=86358436]
 layers = 2
 
-[node name="StreetLight" parent="." index="4" unique_id=1669944835]
+[node name="StreetLight" parent="." index="4" unique_id=1298644445]
+layers = 2
+
+[node name="Tree" parent="." index="5" unique_id=1461571519]
+layers = 2
+
+[node name="Tree_001" parent="." index="6" unique_id=1968201866]
+layers = 2
+
+[node name="Tree_002" parent="." index="7" unique_id=528572943]
+layers = 2
+
+[node name="Tree_003" parent="." index="8" unique_id=775796669]
+layers = 2
+
+[node name="Tree_004" parent="." index="9" unique_id=1820756223]
 layers = 2

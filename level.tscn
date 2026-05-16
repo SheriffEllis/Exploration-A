@@ -16,7 +16,7 @@ sky_material = SubResource("PanoramaSkyMaterial_f2txt")
 
 [sub_resource type="Environment" id="Environment_vonw3"]
 background_mode = 2
-background_energy_multiplier = 0.4
+background_energy_multiplier = 0.3
 sky = SubResource("Sky_1ainy")
 ambient_light_source = 2
 ambient_light_color = Color(1, 0.79607844, 0.49019608, 1)
@@ -28,11 +28,11 @@ script = ExtResource("1_0b4ue")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=534093435]
 environment = SubResource("Environment_vonw3")
 
-[node name="Room" parent="." unique_id=993139573 instance=ExtResource("1_u52ul")]
+[node name="Room" parent="." unique_id=723854376 instance=ExtResource("1_u52ul")]
 
 [node name="Player" parent="." unique_id=11157363 instance=ExtResource("2_vonw3")]
 transform = Transform3D(-0.2861232, 0, 0.95819294, 0, 1, 0, -0.95819294, 0, -0.2861232, 1.2470603, 1.1462198, 1.671375)
 
 [node name="GameUI" parent="." unique_id=1624677183 instance=ExtResource("4_f2txt")]
 
-[node name="Outside" parent="." unique_id=1757814444 instance=ExtResource("5_f2txt")]
+[node name="Outside" parent="." unique_id=530888543 instance=ExtResource("5_f2txt")]

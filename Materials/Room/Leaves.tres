@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xmb6r0tsww4x"]
+
+[ext_resource type="Texture2D" uid="uid://ci5rs1ql6uqga" path="res://Outside/Outside_Leaves.png" id="1_pbqi3"]
+
+[resource]
+resource_name = "Leaves"
+render_priority = 3
+transparency = 1
+albedo_texture = ExtResource("1_pbqi3")
+texture_filter = 2
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2

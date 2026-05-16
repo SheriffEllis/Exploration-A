@@ -4,6 +4,7 @@
 
 [resource]
 resource_name = "PaintedWood"
+cull_mode = 2
 albedo_texture = ExtResource("1_kaf2m")
 roughness = 0.6
 texture_filter = 2

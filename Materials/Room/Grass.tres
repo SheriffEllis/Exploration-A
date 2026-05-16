@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://4f0rmri2dxof"]
+
+[ext_resource type="Texture2D" uid="uid://dffvlah2yp7bm" path="res://Outside/Outside_Grass.png" id="1_4dkg8"]
+
+[resource]
+resource_name = "Grass"
+render_priority = 5
+transparency = 1
+albedo_texture = ExtResource("1_4dkg8")
+texture_filter = 2
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2

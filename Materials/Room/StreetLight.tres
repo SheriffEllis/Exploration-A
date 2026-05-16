@@ -1,8 +1,8 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://dpr330dy6a4cn"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6um8xgy61dic"]
 
 [resource]
 resource_name = "StreetLight"
-render_priority = 1
+render_priority = 3
 transparency = 1
 albedo_color = Color(0.20326127, 0.17200114, 0.15016027, 1)
 metallic = 0.5
