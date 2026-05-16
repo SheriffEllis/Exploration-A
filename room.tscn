@@ -22,10 +22,6 @@ light_data = ExtResource("2_bisa2")
 [node name="Flowers" parent="Vase" parent_id_path=PackedInt32Array(362300583) index="0" unique_id=345677945]
 cast_shadow = 0
 
-[node name="Hallway" parent="Room" parent_id_path=PackedInt32Array(141120440) index="0" unique_id=1946719677]
-visible = false
-layers = 4
-
 [node name="Replacable Wall" parent="Room" parent_id_path=PackedInt32Array(141120440) index="1" unique_id=860001751]
 visible = false
 

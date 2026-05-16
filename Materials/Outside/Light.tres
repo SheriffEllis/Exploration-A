@@ -4,9 +4,13 @@
 
 [resource]
 resource_name = "Light"
+render_priority = 2
 transparency = 4
 albedo_color = Color(0, 0, 0, 1)
 albedo_texture = ExtResource("1_nr03d")
 emission_enabled = true
 emission = Color(1, 0.989464, 0.60687536, 1)
 texture_filter = 2
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2

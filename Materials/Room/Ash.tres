@@ -4,5 +4,10 @@
 
 [resource]
 resource_name = "Ash"
+render_priority = 4
+transparency = 1
 albedo_texture = ExtResource("1_6wrjt")
 texture_filter = 2
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5

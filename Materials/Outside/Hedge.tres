@@ -4,5 +4,10 @@
 
 [resource]
 resource_name = "Hedge"
+render_priority = 3
+transparency = 1
 albedo_texture = ExtResource("1_8qxm4")
 texture_filter = 2
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2

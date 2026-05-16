@@ -5,3 +5,5 @@ resource_name = "WindowGlass"
 transparency = 4
 albedo_color = Color(0.3528, 0.58842003, 0.63, 0.11372549)
 roughness = 0.2
+stencil_mode = 3
+stencil_flags = 2

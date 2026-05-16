@@ -4,5 +4,10 @@
 
 [resource]
 resource_name = "Grass"
+render_priority = 3
+transparency = 1
 albedo_texture = ExtResource("1_g0uv0")
 texture_filter = 2
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
