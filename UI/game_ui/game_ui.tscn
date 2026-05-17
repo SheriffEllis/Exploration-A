@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://70xt2qqamxtv"]
 
 [ext_resource type="Script" uid="uid://brs3t66vjxqat" path="res://UI/game_ui/game_ui.gd" id="1_kfjql"]
+[ext_resource type="Texture2D" uid="uid://bhud2wuapwage" path="res://Materials/Textures/crosshair-spritesheet.png" id="2_1cbb3"]
 [ext_resource type="PackedScene" uid="uid://cusg143xqi1aw" path="res://UI/game_ui/pause_menu.tscn" id="4_j42il"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j42il"]
@@ -58,6 +59,7 @@ grow_vertical = 2
 modulate = Color(1, 1, 1, 0.705882)
 texture_filter = 3
 scale = Vector2(2, 2)
+texture = ExtResource("2_1cbb3")
 offset = Vector2(10, 10)
 hframes = 2
 

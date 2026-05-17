@@ -60,8 +60,9 @@ var is_concentrating: bool = false ## is the player currently concentrating on a
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Events.level_ready.connect(_on_level_ready)
 
-func _on_meta_level_ready() -> void:
+func _on_level_ready() -> void:
 	interaction_cursor_toggled.connect(GameGlobals.GAME_UI._on_interaction_cursor_toggled)
 
 func _unhandled_input(event) -> void:
