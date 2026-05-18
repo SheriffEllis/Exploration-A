@@ -3,5 +3,6 @@ extends Node
 
 signal level_ready
 signal paused
+signal floor_changed(new_sound: AudioStream)
 
 @warning_ignore_restore("unused_signal")

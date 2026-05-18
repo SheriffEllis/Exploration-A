@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://btuxhlfcqbm5a" path="res://level.gd" id="1_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://d220tauv8d1rs" path="res://Outside/NightSkyHDRI001_2K_TONEMAPPED.jpg" id="2_1ainy"]
+[ext_resource type="Script" uid="uid://dhaeiov164njk" path="res://debug.gd" id="2_2orkt"]
+[ext_resource type="Script" uid="uid://6rodbddn250y" path="res://Audio/ambience_manager.gd" id="2_km5ld"]
 [ext_resource type="PackedScene" uid="uid://6w8l8imv3uwx" path="res://Player/player.tscn" id="2_vonw3"]
+[ext_resource type="AudioStream" uid="uid://b5v3bdnq0ohdh" path="res://Audio/wind.ogg" id="4_8cye3"]
 [ext_resource type="PackedScene" uid="uid://70xt2qqamxtv" path="res://UI/game_ui/game_ui.tscn" id="4_f2txt"]
 [ext_resource type="PackedScene" uid="uid://c2kbweneknqnu" path="res://Outside/outside.tscn" id="5_f2txt"]
 [ext_resource type="PackedScene" uid="uid://c28hmcs10hs0h" path="res://Room/room.scn" id="5_n6hdu"]
@@ -20,12 +23,28 @@ background_mode = 2
 background_energy_multiplier = 0.3
 sky = SubResource("Sky_1ainy")
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.75, 0.75, 0.75, 1)
 ambient_light_energy = 0.01
 reflected_light_source = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6hdu"]
+size = Vector3(9.814652, 5.6108384, 10.553602)
+
 [node name="Level" type="Node3D" unique_id=851319929]
 script = ExtResource("1_0b4ue")
+
+[node name="Debug" type="Node" parent="." unique_id=233403933]
+script = ExtResource("2_2orkt")
+
+[node name="AmbienceManager" type="Node" parent="." unique_id=1265661839]
+script = ExtResource("2_km5ld")
+
+[node name="Wind" type="AudioStreamPlayer" parent="AmbienceManager" unique_id=1101511114]
+stream = ExtResource("4_8cye3")
+volume_db = -15.0
+pitch_scale = 0.5
+bus = &"Ambience"
+playback_type = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=534093435]
 environment = SubResource("Environment_vonw3")
@@ -33,10 +52,21 @@ environment = SubResource("Environment_vonw3")
 [node name="GameUI" parent="." unique_id=1624677183 instance=ExtResource("4_f2txt")]
 
 [node name="Player" parent="." unique_id=11157363 instance=ExtResource("2_vonw3")]
-transform = Transform3D(-0.2861232, 0, 0.95819294, 0, 1, 0, -0.95819294, 0, -0.2861232, 1.2470603, 1.1462198, 1.671375)
+transform = Transform3D(-0.2861232, 0, 0.95819294, 0, 1, 0, -0.95819294, 0, -0.2861232, 0.8683212, 0.808, -1.2581503)
 
 [node name="Room" parent="." unique_id=272891893 instance=ExtResource("5_n6hdu")]
+
+[node name="Area3DRoom" type="Area3D" parent="Room" unique_id=1956021218]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Area3DRoom" unique_id=642477307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6573262, 2.8054192, -2.4829335)
+shape = SubResource("BoxShape3D_n6hdu")
+debug_color = Color(0.7917866, 0.4261897, 0.10511079, 0.41960785)
 
 [node name="Outside" parent="." unique_id=530888543 instance=ExtResource("5_f2txt")]
 
 [node name="Hallway" parent="." unique_id=84698099 instance=ExtResource("7_n6hdu")]
+
+[connection signal="body_entered" from="Room/Area3DRoom" to="AmbienceManager" method="_on_area_3d_room_body_entered"]
+[connection signal="body_exited" from="Room/Area3DRoom" to="AmbienceManager" method="_on_area_3d_room_body_exited"]

@@ -5,7 +5,7 @@ signal interaction_cursor_toggled(is_in_range: bool) ## signal to indicate that 
 
 # Movement constants
 const JUMP_VELOCITY: float = 3.5
-const BASE_MOVE_SPEED: float = 3.0
+const BASE_MOVE_SPEED: float = 2.0
 const MIDAIR_ADJUST_SPEED: float = 0.2
 const FLOOR_FRICTION: float = 0.5
 const AIR_FRICTION: float = 0.05
@@ -27,7 +27,9 @@ const MAX_LOOK_ANGLE: float = deg_to_rad(85.0)
 
 @export_group("Misc")
 @export var flashlight: SpotLight3D
+@export var flashlight_sfx: AudioStreamPlayer3D
 @export var coyote_timer: Timer
+@export var footsteps: AudioStreamPlayer3D
 
 @export_category("Crouching")
 @export var normal_mesh: MeshInstance3D
@@ -87,6 +89,8 @@ func _physics_process(delta: float):
 	# Toggle flashlight
 	if Input.is_action_just_pressed(&"flashlight"):
 		flashlight.visible = not flashlight.visible
+		flashlight_sfx.pitch_scale = 1.0 - float(not flashlight.visible)*0.1
+		flashlight_sfx.play()
 
 	# If controlling a console/seat/touchscreen, can't pause
 	GameGlobals.GAME_UI.pause_menu.can_pause = not (is_movement_locked or is_view_locked)
@@ -109,6 +113,8 @@ func _physics_process(delta: float):
 		grabber.handle_rotation(yaw_pivot.basis * pitch_pivot.basis)
 
 	move_and_slide()
+	
+	footsteps.handle_footstep(self, delta)
 
 
 func handle_coyote_timing(delta: float) -> void:
@@ -124,7 +130,7 @@ func handle_coyote_timing(delta: float) -> void:
 
 func handle_translation() -> void:
 	if Input.is_action_pressed(&"sprint"):
-		move_speed = BASE_MOVE_SPEED * 1.5
+		move_speed = BASE_MOVE_SPEED * 2
 	else:
 		move_speed = BASE_MOVE_SPEED
 

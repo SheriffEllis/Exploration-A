@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://bxgbqlkmffktx" path="res://Player/grabber.gd" id="2_86ift"]
 [ext_resource type="Script" uid="uid://e2wdle7kyakt" path="res://Player/player_POV.gd" id="3_u7612"]
 [ext_resource type="Script" uid="uid://cytxc03k8qk4y" path="res://Player/interact_ray.gd" id="4_bpp7x"]
+[ext_resource type="Script" uid="uid://bka7p1bviskva" path="res://Player/footstep_audio.gd" id="5_k53q1"]
+[ext_resource type="AudioStream" uid="uid://8encg06urbqp" path="res://Audio/flashlight-click.ogg" id="5_x3vf3"]
+[ext_resource type="AudioStream" uid="uid://wmcs6hng7q6l" path="res://Audio/footsteps/randomised-footstep-carpet.tres" id="6_vtle1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jllbl"]
 albedo_color = Color(0, 0, 0, 1)
@@ -51,7 +54,7 @@ material = SubResource("StandardMaterial3D_48lla")
 radius = 0.1
 height = 0.2
 
-[node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "prop_excluder", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "coyote_timer", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
+[node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "prop_excluder", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "flashlight_sfx", "coyote_timer", "footsteps", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
 collision_mask = 5
 script = ExtResource("1_ubx0o")
 grabber = NodePath("YawPivot/PitchPivot/Grabber")
@@ -63,7 +66,9 @@ yaw_pivot = NodePath("YawPivot")
 pitch_pivot = NodePath("YawPivot/PitchPivot")
 camera = NodePath("YawPivot/PitchPivot/PlayerPOV")
 flashlight = NodePath("YawPivot/PitchPivot/Flashlight")
+flashlight_sfx = NodePath("YawPivot/PitchPivot/Flashlight/FlashlightAudio")
 coyote_timer = NodePath("CoyoteTimer")
+footsteps = NodePath("FootstepAudio")
 normal_mesh = NodePath("MeshInstanceNormal")
 crouching_mesh = NodePath("MeshInstanceCrouched")
 normal_collider = NodePath("CollisionNormal")
@@ -135,12 +140,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 visible = false
 light_color = Color(1, 0.79607844, 0.49019608, 1)
 light_cull_mask = 4293918723
-spot_range = 20.0
+spot_range = 45.0
 spot_angle = 49.148743
 spot_angle_attenuation = 0.07966018
+
+[node name="FlashlightAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/Flashlight" unique_id=751712184]
+stream = ExtResource("5_x3vf3")
+bus = &"Sounds"
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1875471952]
 wait_time = 0.2
 one_shot = true
+
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=461586857]
+stream = ExtResource("6_vtle1")
+max_polyphony = 2
+bus = &"Sounds"
+script = ExtResource("5_k53q1")
+footstep_frequency = 3.5
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

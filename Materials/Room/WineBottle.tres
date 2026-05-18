@@ -5,4 +5,5 @@
 [resource]
 resource_name = "WineBottle"
 albedo_texture = ExtResource("1_or1ek")
+roughness = 0.31
 texture_filter = 2

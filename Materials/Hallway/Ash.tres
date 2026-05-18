@@ -5,6 +5,7 @@
 [resource]
 resource_name = "Ash"
 albedo_texture = ExtResource("1_oqgmw")
+metallic_specular = 0.0
 uv1_scale = Vector3(0.145, 0.145, 0.145)
 uv1_triplanar = true
 texture_filter = 2
