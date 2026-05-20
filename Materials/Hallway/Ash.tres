@@ -1,11 +1,11 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://b6akvpo2j3p0o"]
 
-[ext_resource type="Texture2D" uid="uid://bkco4xd04bwr1" path="res://Room/Room_Ash.png" id="1_oqgmw"]
+[ext_resource type="Texture2D" uid="uid://ciqikbkt6eh1u" path="res://Materials/Textures/Ash.png" id="1_oqgmw"]
 
 [resource]
 resource_name = "Ash"
 albedo_texture = ExtResource("1_oqgmw")
-metallic_specular = 0.0
+metallic_specular = 0.2
 uv1_scale = Vector3(0.145, 0.145, 0.145)
 uv1_triplanar = true
 texture_filter = 2

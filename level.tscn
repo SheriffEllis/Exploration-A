@@ -24,7 +24,7 @@ background_energy_multiplier = 0.3
 sky = SubResource("Sky_1ainy")
 ambient_light_source = 2
 ambient_light_color = Color(0.75, 0.75, 0.75, 1)
-ambient_light_energy = 0.01
+ambient_light_energy = 0.0
 reflected_light_source = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6hdu"]

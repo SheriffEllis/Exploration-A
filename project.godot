@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Exploration A"
+config/tags=PackedStringArray("project")
 run/main_scene="uid://botkc1uivwekw"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://djh88c8yfb4uw"
@@ -24,11 +25,19 @@ buses/default_bus_layout="uid://jhi2lq5mpiaf"
 GameGlobals="*uid://cpodncikqmxag"
 Events="*uid://iixwlyyfrqi"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/sheri/Documents/Godot/exploration-a/test.avi"
+
 [file_customization]
 
 folder_colors={
+"res://Audio/": "yellow",
+"res://Hallway/": "green",
 "res://Materials/": "red",
-"res://Materials/Textures/": "orange"
+"res://Materials/Textures/": "orange",
+"res://Outside/": "green",
+"res://Room/": "green"
 }
 
 [input]
@@ -93,12 +102,24 @@ free_mouse={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
+hide_camera={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(117, 25),"global_position":Vector2(128, 79),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+capture_image={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(367, 26),"global_position":Vector2(378, 80),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [layer_names]
 
 3d_render/layer_1="Room"
 3d_render/layer_2="Outside"
 3d_render/layer_3="Hallway"
+3d_render/layer_4="HeldObjects"
+3d_render/layer_5="EntryHallway"
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Interactables"
 3d_physics/layer_3="Walls"

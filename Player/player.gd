@@ -26,6 +26,7 @@ const MAX_LOOK_ANGLE: float = deg_to_rad(85.0)
 @export var camera: Camera3D
 
 @export_group("Misc")
+var flashlight_enabled := false
 @export var flashlight: SpotLight3D
 @export var flashlight_sfx: AudioStreamPlayer3D
 @export var coyote_timer: Timer
@@ -63,9 +64,13 @@ var is_concentrating: bool = false ## is the player currently concentrating on a
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Events.level_ready.connect(_on_level_ready)
+	Events.flashlight_collected.connect(_on_flashlight_collected)
 
 func _on_level_ready() -> void:
 	interaction_cursor_toggled.connect(GameGlobals.GAME_UI._on_interaction_cursor_toggled)
+
+func _on_flashlight_collected() -> void:
+	flashlight_enabled = true
 
 func _unhandled_input(event) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED or event is not InputEventMouseMotion: return
@@ -87,10 +92,14 @@ func _physics_process(delta: float):
 		position = Vector3(0.0, 1.5, 1.0)
 
 	# Toggle flashlight
-	if Input.is_action_just_pressed(&"flashlight"):
+	if Input.is_action_just_pressed(&"flashlight") and flashlight_enabled:
 		flashlight.visible = not flashlight.visible
 		flashlight_sfx.pitch_scale = 1.0 - float(not flashlight.visible)*0.1
 		flashlight_sfx.play()
+		if flashlight.visible:
+			Events.flashlight_turned_on.emit()
+		else:
+			Events.flashlight_turned_off.emit()
 
 	# If controlling a console/seat/touchscreen, can't pause
 	GameGlobals.GAME_UI.pause_menu.can_pause = not (is_movement_locked or is_view_locked)
@@ -101,7 +110,7 @@ func _physics_process(delta: float):
 			handle_coyote_timing(delta)
 			handle_translation()
 			handle_jump()
-			handle_crouch()
+			#handle_crouch()
 	if not is_view_locked:
 		handle_camera_rotation()
 		handle_interaction()
@@ -157,25 +166,25 @@ func handle_jump() -> void:
 		can_jump = false
 
 
-func handle_crouch() -> void:
-	if Input.is_action_pressed(&"crouch"): # only trigger when crouch state changes
-		if not is_crouching:
-			is_crouching = true
-			crouch(is_crouching)
-	else:
-		if is_crouching:
-			is_crouching = false
-			crouch(is_crouching)
+#func handle_crouch() -> void:
+	#if Input.is_action_pressed(&"crouch"): # only trigger when crouch state changes
+		#if not is_crouching:
+			#is_crouching = true
+			#crouch(is_crouching)
+	#else:
+		#if is_crouching:
+			#is_crouching = false
+			#crouch(is_crouching)
 
 
-func crouch(_is_crouching: bool) -> void:
-	normal_mesh.visible = not is_crouching
-	normal_collider.disabled = is_crouching
-	crouching_mesh.visible = is_crouching
-	crouching_collider.disabled = not is_crouching
-
-	if is_on_floor(): # account for crouch jumping and snap to floor when on floor
-		position.y += 1.0 - (2.0 * float(is_crouching))
+#func crouch(_is_crouching: bool) -> void:
+	#normal_mesh.visible = not is_crouching
+	#normal_collider.disabled = is_crouching
+	#crouching_mesh.visible = is_crouching
+	#crouching_collider.disabled = not is_crouching
+#
+	#if is_on_floor(): # account for crouch jumping and snap to floor when on floor
+		#position.y += 1.0 - (2.0 * float(is_crouching))
 
 
 func handle_flying() -> void:

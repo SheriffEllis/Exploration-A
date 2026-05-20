@@ -4,7 +4,7 @@
 
 [resource]
 resource_name = "Leaves"
-render_priority = 3
+render_priority = 4
 transparency = 1
 albedo_texture = ExtResource("1_pbqi3")
 texture_filter = 2

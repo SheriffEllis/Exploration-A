@@ -3,6 +3,12 @@ extends Camera3D
 
 @onready var default_fov := fov # TODO read from player settings at startup
 
+func _ready() -> void:
+	Events.cam_cull_mask_changed.connect(_on_cam_cull_mask_changed)
+
+func _on_cam_cull_mask_changed(layer_num: int, new_value: bool) -> void:
+	set_cull_mask_value(layer_num, new_value)
+
 func _process(delta: float) -> void:
 	handle_zoom(delta)
 

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c0pt4jhh1ksgx"]
+
+[ext_resource type="Texture2D" uid="uid://chqtb3e6uwcgi" path="res://Room/Room_CamcorderDiffuseAO.png" id="1_pnjk3"]
+
+[resource]
+resource_name = "Camcorder"
+render_priority = 101
+no_depth_test = true
+albedo_texture = ExtResource("1_pnjk3")
+metallic = 0.30833337
+roughness = 0.5916667
+emission_energy_multiplier = 0.2
+emission_texture = ExtResource("1_pnjk3")
+texture_filter = 2

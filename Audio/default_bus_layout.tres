@@ -3,6 +3,17 @@
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
 resource_name = "Compressor"
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_ai37j"]
+resource_name = "Reverb"
+room_size = 0.1
+damping = 0.22
+hipass = 0.15
+dry = 0.38
+wet = 0.2
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_ddrg4"]
+resource_name = "Reverb"
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
 bus/0/effect/0/enabled = true
@@ -18,3 +29,19 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/3/name = &"Hallways"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Sounds"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_ai37j")
+bus/3/effect/0/enabled = true
+bus/4/name = &"LargeRooms"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -5.5276914
+bus/4/send = &"Sounds"
+bus/4/effect/0/effect = SubResource("AudioEffectReverb_ddrg4")
+bus/4/effect/0/enabled = true

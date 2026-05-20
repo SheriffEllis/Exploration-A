@@ -6,7 +6,10 @@
 [ext_resource type="Script" uid="uid://cytxc03k8qk4y" path="res://Player/interact_ray.gd" id="4_bpp7x"]
 [ext_resource type="Script" uid="uid://bka7p1bviskva" path="res://Player/footstep_audio.gd" id="5_k53q1"]
 [ext_resource type="AudioStream" uid="uid://8encg06urbqp" path="res://Audio/flashlight-click.ogg" id="5_x3vf3"]
+[ext_resource type="AudioStream" uid="uid://dy5c4jjtcviyf" path="res://Audio/lamp-buzz.ogg" id="6_00tjw"]
 [ext_resource type="AudioStream" uid="uid://wmcs6hng7q6l" path="res://Audio/footsteps/randomised-footstep-carpet.tres" id="6_vtle1"]
+[ext_resource type="Script" uid="uid://busnqbr1bx08w" path="res://Player/flicker_audio.gd" id="7_x3vf3"]
+[ext_resource type="PackedScene" uid="uid://bc0ywkwcyvhfe" path="res://Props/camcorder.tscn" id="10_x3vf3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jllbl"]
 albedo_color = Color(0, 0, 0, 1)
@@ -54,6 +57,10 @@ material = SubResource("StandardMaterial3D_48lla")
 radius = 0.1
 height = 0.2
 
+[sub_resource type="Curve" id="Curve_00tjw"]
+_data = [Vector2(0.10647115, 1), 0.0, 0.0, 0, 0, Vector2(0.13707365, 0.005649328), 0.0, 0.0, 0, 0, Vector2(0.14854957, 0.7018417), 0.0, 0.0, 0, 0, Vector2(0.22123049, 0.7018417), 0.0, 0.0, 0, 0, Vector2(0.23270641, 0), 0.0, 0.0, 0, 0, Vector2(0.25948358, 0.64015377), 0.0, 0.0, 0, 0, Vector2(0.28626078, 0.120212674), 0.0, 0.0, 0, 0, Vector2(0.30921263, 0.79877985), 0.0, 0.0, 0, 0, Vector2(0.35129106, 0.11140001), 0.0, 0.0, 0, 0, Vector2(0.40484542, 1), 0.0, 0.0, 0, 0, Vector2(0.45457447, 0), 0.0, 0.0, 0, 0, Vector2(0.6649666, 0), 0.0, 0.0, 0, 0, Vector2(0.72617155, 1), 0.0, 0.0, 0, 0, Vector2(0.7644246, 0), 0.0, 0.0, 0, 0, Vector2(0.79885244, 1), 0.0, 0.0, 0, 0, Vector2(0.867708, 1), 0.0, 0.0, 0, 0, Vector2(0.89065987, 0), 0.0, 0.0, 0, 0, Vector2(0.9174371, 1), 0.0, 0.0, 0, 0]
+point_count = 18
+
 [node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "prop_excluder", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "flashlight_sfx", "coyote_timer", "footsteps", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
 collision_mask = 5
 script = ExtResource("1_ubx0o")
@@ -78,6 +85,7 @@ metadata/_edit_group_ = true
 [node name="Debug" type="Node" parent="." unique_id=1121043851]
 
 [node name="MeshInstanceNormal" type="MeshInstance3D" parent="." unique_id=238670927]
+layers = 8
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_xpjq0")
 
@@ -88,6 +96,7 @@ shape = SubResource("CapsuleShape3D_dkied")
 [node name="MeshInstanceCrouched" type="MeshInstance3D" parent="." unique_id=1244240897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 visible = false
+layers = 8
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_kdlcl")
 
@@ -109,10 +118,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6270027, 0)
 
 [node name="PitchPivot" type="Node3D" parent="YawPivot" unique_id=685691280]
 
+[node name="CamUpLocation" type="Marker3D" parent="YawPivot/PitchPivot" unique_id=1451644006]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.30859947, -0.060841143, -0.16974097)
+gizmo_extents = 0.1
+
+[node name="CamDownLocation" type="Marker3D" parent="YawPivot/PitchPivot" unique_id=1353415629]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.30507082, -0.26509237, -0.16974097)
+gizmo_extents = 0.1
+
+[node name="Camcorder" parent="YawPivot/PitchPivot" unique_id=109831619 node_paths=PackedStringArray("cam_up", "cam_down") instance=ExtResource("10_x3vf3")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.30859947, -0.060841143, -0.16974097)
+visible = false
+cam_up = NodePath("../CamUpLocation")
+cam_down = NodePath("../CamDownLocation")
+
 [node name="PlayerPOV" type="Camera3D" parent="YawPivot/PitchPivot" unique_id=902998266]
-cull_mask = 3
+cull_mask = 27
 current = true
-far = 100.0
 script = ExtResource("3_u7612")
 
 [node name="InteractRay" type="RayCast3D" parent="YawPivot/PitchPivot" unique_id=407385695 node_paths=PackedStringArray("interact_orb")]
@@ -136,27 +158,34 @@ visible = false
 mesh = SubResource("SphereMesh_0qg0g")
 
 [node name="Flashlight" type="SpotLight3D" parent="YawPivot/PitchPivot" unique_id=2009563521]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.11612405)
 visible = false
 light_color = Color(1, 0.79607844, 0.49019608, 1)
-light_cull_mask = 4293918723
-spot_range = 45.0
-spot_angle = 49.148743
+light_cull_mask = 4293918751
+spot_range = 30.0
+spot_angle = 42.892235
 spot_angle_attenuation = 0.07966018
 
 [node name="FlashlightAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/Flashlight" unique_id=751712184]
 stream = ExtResource("5_x3vf3")
 bus = &"Sounds"
 
+[node name="FlickerAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/Flashlight" unique_id=1646677309]
+stream = ExtResource("6_00tjw")
+script = ExtResource("7_x3vf3")
+volume_curve = SubResource("Curve_00tjw")
+
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1875471952]
 wait_time = 0.2
 one_shot = true
 
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=461586857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.262033, 0)
 stream = ExtResource("6_vtle1")
 max_polyphony = 2
 bus = &"Sounds"
 script = ExtResource("5_k53q1")
 footstep_frequency = 3.5
 
+[connection signal="finished" from="YawPivot/PitchPivot/Flashlight/FlickerAudio" to="YawPivot/PitchPivot/Flashlight/FlickerAudio" method="_on_finished"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
