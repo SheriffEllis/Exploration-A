@@ -43,4 +43,4 @@ func _on_static_interactable_interacted(_player: CharacterBody3D) -> void:
 		sound_open.play()
 	is_open = not is_open
 	
-	door_interactable.set_collision_layer_value(3, not is_open) # walls layer (does player collide or not)
+	#door_interactable.set_collision_layer_value(3, not is_open) # walls layer (does player collide or not)

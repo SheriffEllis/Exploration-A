@@ -3,12 +3,30 @@
 [ext_resource type="Material" uid="uid://c34qfq87orp02" path="res://Materials/Hallway/DoorDesat.tres" id="1_cgplc"]
 [ext_resource type="Material" uid="uid://b5b2nnubf36tj" path="res://Materials/Hallway/AshStencil.tres" id="2_yo710"]
 [ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="3_mmbvc"]
-[ext_resource type="Script" uid="uid://c4tfa2l86vbyt" path="res://Hallway/R1_flicker_trigger.gd" id="4_k46di"]
+[ext_resource type="Script" uid="uid://c4tfa2l86vbyt" path="res://Hallway/flicker_trigger.gd" id="4_k46di"]
 [ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="4_thvx0"]
-[ext_resource type="Script" uid="uid://dx4vuyym2be58" path="res://Hallway/L1_visible_on_screen_notifier_3d.gd" id="6_pnkva"]
+[ext_resource type="Script" uid="uid://ot5samsednhu" path="res://Hallway/reveal_doorway.gd" id="5_yvby3"]
+[ext_resource type="Script" uid="uid://dx4vuyym2be58" path="res://Hallway/door_visibility_trigger.gd" id="6_pnkva"]
 [ext_resource type="Script" uid="uid://bhljyfdcv7r0o" path="res://Hallway/door_sight_toggle.gd" id="7_yhgwi"]
 [ext_resource type="Material" uid="uid://b76kxf3vyxjn6" path="res://Materials/Room/Map.tres" id="8_pn2v6"]
+[ext_resource type="Script" uid="uid://bisimrq06joy2" path="res://Hallway/requisite.gd" id="8_tqbed"]
 [ext_resource type="Script" uid="uid://ovvty0sedwg6" path="res://Hallway/prank.gd" id="8_vio6c"]
+[ext_resource type="Script" uid="uid://co16jyicclb2m" path="res://Hallway/blocked_exit.gd" id="10_cx0dv"]
+[ext_resource type="Script" uid="uid://cyju0b5rixugp" path="res://Hallway/collapse_nudger.gd" id="10_ixdd0"]
+[ext_resource type="AudioStream" uid="uid://b37k8hncv6pm7" path="res://Audio/stone-scrape.ogg" id="11_bqvc6"]
+[ext_resource type="AudioStream" uid="uid://bj0k15hdynxxt" path="res://Audio/joke/YAY.mp3" id="11_ixdd0"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_kewxs"]
+size = Vector3(1, 5.401626, 9.793558)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_2n3w6"]
+size = Vector3(10, 5.402, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_h8nyl"]
+size = Vector3(13.182997, 5.402, 0.125)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_5rp76"]
+size = Vector3(7.49, 6.077, 24.6)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rxwxc"]
 resource_name = "Room_Cube_008"
@@ -48,18 +66,47 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnkva"]
-size = Vector3(74.72363, 9.747877, 34.92693)
+size = Vector3(88.96875, 9.747877, 42.050255)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_thvx0"]
-size = Vector3(1.9, 2.985, 4.210723)
+size = Vector3(1.9, 2.985, 14.83881)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pn2v6"]
+size = Vector3(60, 35.638733, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqbed"]
+size = Vector3(8.935, 3.615, 11.666099)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kewxs"]
+size = Vector3(6.476, 6.2273164, 2.785)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhgwi"]
 size = Vector3(115.7, 27.67, 56)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vio6c"]
-size = Vector3(24.48, 6.338, 19.910152)
+size = Vector3(10, 6.338, 16.73)
 
 [node name="Hallway" type="Node3D" unique_id=84698099]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." unique_id=1071741719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62145, 1.3738505, 16.230137)
+layers = 4
+occluder = SubResource("BoxOccluder3D_kewxs")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="." unique_id=353149882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.015447, 1.461819, 21.468838)
+layers = 4
+occluder = SubResource("BoxOccluder3D_2n3w6")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="." unique_id=250417814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.392172, 1.461819, 21.963036)
+layers = 4
+occluder = SubResource("BoxOccluder3D_h8nyl")
+
+[node name="OccluderInstance3D4" type="OccluderInstance3D" parent="." unique_id=364199821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.903635, 2.9336967, 36.06279)
+layers = 4
+occluder = SubResource("BoxOccluder3D_5rp76")
 
 [node name="DoorframeHallway" type="MeshInstance3D" parent="." unique_id=1792749144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0410608, 2.745715)
@@ -76,8 +123,8 @@ material_override = ExtResource("2_yo710")
 collision_layer = 4
 
 [node name="EntryHallwayShell" type="CSGBox3D" parent="FakeEntryCSGCombiner3D" unique_id=314388374]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1502239, 13.512772)
-size = Vector3(1.855, 2.960144, 21.43351)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1502239, 14.992224)
+size = Vector3(1.855, 2.960144, 24.392414)
 
 [node name="EntryDoorway" type="CSGBox3D" parent="FakeEntryCSGCombiner3D" unique_id=1636931552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03, 2.8238955)
@@ -91,10 +138,10 @@ calculate_tangents = false
 size = Vector3(0.955, 0.33162355, 0.34911728)
 
 [node name="EntryHallway" type="CSGBox3D" parent="FakeEntryCSGCombiner3D" unique_id=728110079]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 13.377617)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 14.918648)
 operation = 2
 calculate_tangents = false
-size = Vector3(1.5, 2.5, 21.156433)
+size = Vector3(1.5, 2.5, 24.238495)
 
 [node name="MainCSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=399722429]
 layers = 4
@@ -103,8 +150,8 @@ use_collision = true
 collision_layer = 4
 
 [node name="EntryHallwayShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=374609881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1502239, 8.741014)
-size = Vector3(1.855, 2.960144, 11.889994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1502239, 14.992224)
+size = Vector3(1.855, 2.960144, 24.392414)
 
 [node name="EntryDoorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1481245145]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03, 2.8238955)
@@ -118,8 +165,8 @@ calculate_tangents = false
 size = Vector3(0.955, 0.33162355, 0.34911728)
 
 [node name="MainShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1609997856]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.34433, 2.3410501, 27.404081)
-size = Vector3(74.72363, 9.747877, 34.92693)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6455994, 2.3410501, 30.965744)
+size = Vector3(88.96875, 9.747877, 42.050255)
 
 [node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D/MainShell" unique_id=419903326]
 reverb_bus_enabled = true
@@ -131,20 +178,19 @@ reverb_bus_uniformity = 1.0
 shape = SubResource("BoxShape3D_pnkva")
 
 [node name="EntryHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2080629]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 13.377617)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 14.918648)
 operation = 2
 calculate_tangents = false
-size = Vector3(1.5, 2.5, 21.156433)
+size = Vector3(1.5, 2.5, 24.238495)
 
-[node name="R1FlickerTrigger" type="Area3D" parent="MainCSGCombiner3D" unique_id=422898963 node_paths=PackedStringArray("hidden_doorway", "hidden_doorframe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 21.727974)
+[node name="R1FlickerTrigger" type="Area3D" parent="MainCSGCombiner3D" unique_id=422898963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 19.490404)
 collision_layer = 0
 monitorable = false
 script = ExtResource("4_k46di")
-hidden_doorway = NodePath("../R1Doorway")
-hidden_doorframe = NodePath("../R1Doorway/Doorframe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/R1FlickerTrigger" unique_id=1702783505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.46328545)
 shape = SubResource("BoxShape3D_thvx0")
 
 [node name="R1Doorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=391799506]
@@ -153,11 +199,26 @@ visible = false
 operation = 2
 calculate_tangents = false
 size = Vector3(0.955, 2.055, 0.55856323)
+script = ExtResource("5_yvby3")
 
 [node name="Doorframe" parent="MainCSGCombiner3D/R1Doorway" unique_id=1108006220 instance=ExtResource("4_thvx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 5
 is_interactable = false
+
+[node name="MazeShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1426728215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.64374, 6.147599, 22.81998)
+calculate_tangents = false
+size = Vector3(60, 35.638733, 60)
+
+[node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D/MazeShell" unique_id=252995238]
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/MazeShell/RegularReverb" unique_id=1185374501]
+shape = SubResource("BoxShape3D_pn2v6")
 
 [node name="R1Hallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=991847419]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.947794, 1.252, 22.81998)
@@ -165,7 +226,43 @@ operation = 2
 calculate_tangents = false
 size = Vector3(1.5, 2.5, 50.065887)
 
-[node name="L1VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=925711241 node_paths=PackedStringArray("prerequisite", "hidden_doorway", "hidden_doorframe")]
+[node name="Maze1" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=912892779]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -51.094482, 1.252, 20.31998)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.5, 2.5, 19)
+
+[node name="Maze2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2119393700]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -60.03352, 1.252, 29.067715)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.5, 2.5, 19)
+
+[node name="Maze3" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1164092345]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -58.745735, 1.252, 15.493528)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.5, 2.5, 16.070313)
+
+[node name="Maze4" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=632104020]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -56.731236, 1.251999, 34.394806)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.5, 2.5, 19)
+
+[node name="Maze6" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1679778163]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -58.938583, 1.252, 25.651)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.5, 2.5, 5.665161)
+
+[node name="Maze5" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=617624324]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -66.548584, 1.251999, 15.358238)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.5, 2.5, 19)
+
+[node name="L1VisibilityTrigger" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=743734229 node_paths=PackedStringArray("prerequisite", "hidden_doorway", "hidden_doorframe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.84757686, 1.03, 22.82109)
 layers = 4
 aabb = AABB(-0.234, -1.155, -0.546, 0.468, 2.309, 1.092)
@@ -187,50 +284,128 @@ layers = 5
 is_interactable = false
 
 [node name="L1L1Doorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=189083609]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 6.24833, 1.03, 21.946465)
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 5.412344, 1.03, 21.235764)
+operation = 2
+calculate_tangents = false
+size = Vector3(0.955, 2.055, 1.9799652)
+
+[node name="L1L2RoomFlickerTrigger" type="Area3D" parent="MainCSGCombiner3D" unique_id=1924185386]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 16.306341, 1.5706944, 16.381126)
+collision_layer = 0
+monitorable = false
+script = ExtResource("4_k46di")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/L1L2RoomFlickerTrigger" unique_id=1007106943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25248337)
+shape = SubResource("BoxShape3D_tqbed")
+
+[node name="Requisite" type="Node3D" parent="MainCSGCombiner3D/L1L2RoomFlickerTrigger" unique_id=182564252]
+visible = false
+script = ExtResource("8_tqbed")
+
+[node name="L1L1DoorSightToggle2" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=591349002 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 16.230553, 1.03, 18.618948)
+layers = 4
+aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
+script = ExtResource("7_yhgwi")
+prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
+entangled_toggles = [NodePath("../L1L1DoorSightToggle3")]
+inverted_entanglement = true
+hidden_doorway = NodePath("../L1L1Doorway2")
+hidden_doorframe = NodePath("../L1L1Doorway2/Doorframe")
+
+[node name="L1L1Doorway2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1927113683]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 16.230553, 1.03, 18.618948)
 operation = 2
 calculate_tangents = false
 size = Vector3(0.955, 2.055, 0.55856323)
+script = ExtResource("5_yvby3")
+inverted = true
 
-[node name="Doorframe" parent="MainCSGCombiner3D/L1L1Doorway" unique_id=290250228 instance=ExtResource("4_thvx0")]
+[node name="Doorframe" parent="MainCSGCombiner3D/L1L1Doorway2" unique_id=1885079623 instance=ExtResource("4_thvx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 4
+is_interactable = false
 
-[node name="L1L1Room" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1364842877]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 6.248, 2.1964257, 17.980148)
+[node name="L1L1DoorSightToggle3" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1183918192 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 16.230553, 1.03, 14.030334)
+layers = 4
+aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
+script = ExtResource("7_yhgwi")
+prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
+entangled_toggles = [NodePath("../L1L1DoorSightToggle2")]
+inverted_entanglement = true
+hidden_doorway = NodePath("../L1L1Doorway3")
+hidden_doorframe = NodePath("../L1L1Doorway3/Doorframe")
+appear_probability = 0.0
+hide_probability = 0.0
+
+[node name="L1L1Doorway3" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1102425905]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 16.230553, 1.03, 14.030334)
+visible = false
 operation = 2
 calculate_tangents = false
-size = Vector3(8.06, 4.3878517, 7.804715)
+size = Vector3(0.955, 2.055, 0.55856323)
+script = ExtResource("5_yvby3")
 
-[node name="L1R1VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=909744955 node_paths=PackedStringArray("prerequisite", "hidden_doorway", "hidden_doorframe")]
+[node name="Doorframe" parent="MainCSGCombiner3D/L1L1Doorway3" unique_id=1267933829 instance=ExtResource("4_thvx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+layers = 4
+is_interactable = false
+
+[node name="L1L1Room" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1364842877]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 9.168615, 1.7420409, 15.9730625)
+operation = 2
+calculate_tangents = false
+size = Vector3(13.901231, 3.479082, 8.785653)
+
+[node name="L1R1DoorSightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=909744955 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
 transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, 10.991981, 1.03, 23.694221)
 layers = 4
-aabb = AABB(-0.234, -1.155, -0.546, 0.468, 2.309, 1.092)
+aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
 script = ExtResource("7_yhgwi")
-prerequisite = NodePath("../L1Doorway")
+prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
+entangled_toggles = [NodePath("../L1F1DoorSightToggle")]
 hidden_doorway = NodePath("../L1R1Doorway")
 hidden_doorframe = NodePath("../L1R1Doorway/Doorframe")
-appear_probability = 0.5
-hide_probability = 0.5
 
 [node name="L1R1Doorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2059704100]
 transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 10.991981, 1.03, 23.694221)
+visible = false
 operation = 2
 calculate_tangents = false
 size = Vector3(0.955, 2.055, 0.55856323)
+script = ExtResource("5_yvby3")
 
 [node name="Doorframe" parent="MainCSGCombiner3D/L1R1Doorway" unique_id=184486376 instance=ExtResource("4_thvx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 4
+is_interactable = false
+
+[node name="CollapseNudger" type="Area3D" parent="MainCSGCombiner3D" unique_id=978559502 node_paths=PackedStringArray("sight_toggle")]
+transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, 10.991981, 1.03, 43.32206)
+collision_layer = 0
+monitorable = false
+script = ExtResource("10_ixdd0")
+sight_toggle = NodePath("../L1R1DoorSightToggle")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/CollapseNudger" unique_id=1485423039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09313965, 1.9197545, 0)
+shape = SubResource("BoxShape3D_kewxs")
 
 [node name="L1R1Room" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2057627500]
-transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 13.30645, 2.9310668, 27.660538)
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 14.748539, 2.9310668, 37.415512)
 operation = 2
 calculate_tangents = false
-size = Vector3(12.688279, 5.857134, 7.804715)
+size = Vector3(9.8041, 5.857134, 27.31467)
+
+[node name="L1R1RoomDivet" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2031234498]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 15.903635, 2.9336967, 36.06279)
+calculate_tangents = false
+size = Vector3(7.493908, 6.076527, 24.68856)
 
 [node name="L1L2Doorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=716570770]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 15.818876, 1.03, 21.946465)
+transform = Transform3D(-4.371138e-08, 0, -1, 0, 1, 0, 1, 0, -4.371138e-08, 28.97335, 1.03, 16.192696)
 operation = 2
 calculate_tangents = false
 size = Vector3(0.955, 2.055, 0.55856323)
@@ -240,40 +415,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 4
 
 [node name="L1L2Room" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=423269340]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 15.818544, 2.1964257, 17.980148)
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 22.579554, 1.7625487, 16.200373)
 operation = 2
 calculate_tangents = false
-size = Vector3(8.06, 4.3878517, 7.804715)
-
-[node name="MegaRoomShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=520585615]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 80.825, 16.084, 43)
-size = Vector3(120.24048, 35.402, 60)
+size = Vector3(12.467571, 3.5200977, 11.3642645)
 
 [node name="L1Hallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2082878378]
-transform = Transform3D(-4.371138e-08, 0, -1, 0, 1, 0, 1, 0, -4.371138e-08, 11.117178, 1.2524267, 22.822441)
+transform = Transform3D(-4.371138e-08, 0, -1, 0, 1, 0, 1, 0, -4.371138e-08, 15.54327, 1.2524267, 22.822441)
 operation = 2
 calculate_tangents = false
-size = Vector3(1.5, 2.5, 20.405136)
+size = Vector3(1.5, 2.5, 29.25732)
+
+[node name="BlockedExit" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=940615585]
+transform = Transform3D(-4.371138e-08, 0, -1, 0, 1, 0, 1, 0, -4.371138e-08, 3.544781, 1.1511999, 22.822441)
+visible = false
+calculate_tangents = false
+size = Vector3(1.5, 3.7085571, 1.1473079)
+script = ExtResource("10_cx0dv")
+
+[node name="StoneAudio" type="AudioStreamPlayer3D" parent="MainCSGCombiner3D/BlockedExit" unique_id=1878903335]
+stream = ExtResource("11_bqvc6")
+volume_db = 20.0
+max_db = 0.5
+pitch_scale = 0.3
+bus = &"Stone"
+
+[node name="L1Hallway4" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1325629937]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 29.78851, 1.252, 19.268177)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.5, 2.5, 8.608222)
 
 [node name="L1Hallway2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=440867689]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 20.57, 1.252, 33.576)
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 20.57, 1.252, 42.288616)
 operation = 2
 calculate_tangents = false
-size = Vector3(1.5, 2.5, 20.405136)
+size = Vector3(1.5, 2.5, 16.995388)
 
-[node name="L1F1VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1504851752 node_paths=PackedStringArray("prerequisite", "hidden_doorway", "hidden_doorframe")]
-transform = Transform3D(1, 0, -6.3573026e-08, 0, 1, 0, 6.3573026e-08, 0, 1, 19.716, 1.03, 27.688)
+[node name="MegaRoomShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=520585615]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 104.19354, 16.084, 43)
+size = Vector3(125.71057, 35.402, 60)
+
+[node name="L1F1DoorSightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1504851752 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
+transform = Transform3D(1, 0, -6.3573026e-08, 0, 1, 0, 6.3573026e-08, 0, 1, 19.716, 1.03, 49.688675)
 layers = 4
-aabb = AABB(-0.234, -1.155, -0.546, 0.468, 2.309, 1.092)
+aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
 script = ExtResource("7_yhgwi")
-prerequisite = NodePath("../L1Doorway")
+prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
+entangled_toggles = [NodePath("../L1R1DoorSightToggle")]
 hidden_doorway = NodePath("../L1F1Doorway2")
 hidden_doorframe = NodePath("../L1F1Doorway2/Doorframe")
-appear_probability = 0.2
-hide_probability = 0.8
+appear_probability = 0.0
+hide_probability = 0.0
 
 [node name="L1F1Doorway2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=269137387]
-transform = Transform3D(-1.07284414e-07, 0, -1, 0, 1, 0, 1, 0, -1.07284414e-07, 19.716, 1.03, 27.688)
+transform = Transform3D(-1.07284414e-07, 0, -1, 0, 1, 0, 1, 0, -1.07284414e-07, 19.716, 1.03, 49.688675)
+visible = false
 operation = 2
 calculate_tangents = false
 size = Vector3(0.955, 2.055, 0.55856323)
@@ -281,19 +478,16 @@ size = Vector3(0.955, 2.055, 0.55856323)
 [node name="Doorframe" parent="MainCSGCombiner3D/L1F1Doorway2" unique_id=1661374072 instance=ExtResource("4_thvx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 4
+is_interactable = false
 
-[node name="L1F1Doorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1164293971]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 21.422, 1.03, 43)
+[node name="L1Hallway3" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=482332881]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 31.764023, 1.252, 43.029)
 operation = 2
 calculate_tangents = false
-size = Vector3(0.955, 2.055, 0.55856323)
-
-[node name="Doorframe" parent="MainCSGCombiner3D/L1F1Doorway" unique_id=123211532 instance=ExtResource("4_thvx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
-layers = 4
+size = Vector3(1.5, 2.5, 21.898207)
 
 [node name="L1F1MegaRoom" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=974546983]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 79.312, 13.837, 43)
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 99.945496, 13.837, 43)
 operation = 2
 calculate_tangents = false
 size = Vector3(115.7, 27.67, 56)
@@ -309,12 +503,18 @@ shape = SubResource("BoxShape3D_yhgwi")
 debug_color = Color(0.38525268, 0.20530301, 0.4974879, 0.41960785)
 
 [node name="L1F1Ceiling" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1611845336]
-transform = Transform3D(-0.9659258, -0.25881904, 8.444391e-08, -0.25881904, 0.9659258, 2.2626677e-08, -8.742277e-08, 0, -1, 64.446, 30.769, 43)
+transform = Transform3D(-0.9659258, -0.25881904, 8.444391e-08, -0.25881904, 0.9659258, 2.2626677e-08, -8.742277e-08, 0, -1, 85.0795, 30.769, 43)
 calculate_tangents = false
 size = Vector3(97.581, 29.862, 60)
 
+[node name="L1Hallway5" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1653830332]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 161.16014, 1.252, 43.029)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.5, 2.5, 10.498112)
+
 [node name="Prison" type="CSGCombiner3D" parent="." unique_id=863099658]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 163.79736, 1.3355013, 43)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 184.43086, 1.3355013, 43)
 use_collision = true
 collision_mask = 0
 
@@ -328,26 +528,54 @@ material = ExtResource("8_pn2v6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7562834, 2.9128113)
 
 [node name="Label3D" type="Label3D" parent="Prison" unique_id=1520038009]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0131625, -3.5622559)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2050704, -4.4965363)
+pixel_size = 0.015
 shaded = true
+double_sided = false
 text = "Congrat! you da weiner :)"
+
+[node name="Label3D2" type="Label3D" parent="Prison" unique_id=1104046565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1502124, -4.4965363)
+shaded = true
+double_sided = false
+text = "This is where I think I'll put level 2 soon :v"
+
+[node name="Winsound" type="AudioStreamPlayer3D" parent="Prison" unique_id=767192954]
+stream = ExtResource("11_ixdd0")
+volume_db = -30.0
+max_db = -10.0
+bus = &"Sounds"
 
 [node name="Label3D" type="Label3D" parent="." unique_id=2101698752]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 136.64868, 1.3355013, 43)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 165.8184, 1.3355013, 43)
 shaded = true
-text = "Congrat! you da weiner :)"
+double_sided = false
+text = "Congrat! 
+you da weiner :)"
 
-[node name="Prank" type="Area3D" parent="Label3D" unique_id=504217535 node_paths=PackedStringArray("prison_location")]
+[node name="Prank" type="Area3D" parent="Label3D" unique_id=504217535 node_paths=PackedStringArray("prison_location", "sound_win")]
 collision_layer = 0
 script = ExtResource("8_vio6c")
 prison_location = NodePath("../../Prison/Marker3D")
+sound_win = NodePath("../../Prison/Winsound")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Label3D/Prank" unique_id=1872735324]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5258789e-05, 0.2939453, 9.308853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5258789e-05, 0.2939453, 7.718811)
 shape = SubResource("BoxShape3D_vio6c")
 
 [connection signal="body_entered" from="MainCSGCombiner3D/R1FlickerTrigger" to="MainCSGCombiner3D/R1FlickerTrigger" method="_on_body_entered"]
-[connection signal="screen_exited" from="MainCSGCombiner3D/L1VisibleOnScreenNotifier3D" to="MainCSGCombiner3D/L1VisibleOnScreenNotifier3D" method="_on_screen_exited"]
-[connection signal="screen_exited" from="MainCSGCombiner3D/L1R1VisibleOnScreenNotifier3D" to="MainCSGCombiner3D/L1R1VisibleOnScreenNotifier3D" method="_on_screen_exited"]
-[connection signal="screen_exited" from="MainCSGCombiner3D/L1F1VisibleOnScreenNotifier3D" to="MainCSGCombiner3D/L1F1VisibleOnScreenNotifier3D" method="_on_screen_exited"]
+[connection signal="body_exited" from="MainCSGCombiner3D/R1FlickerTrigger" to="MainCSGCombiner3D/R1FlickerTrigger" method="_on_body_exited"]
+[connection signal="triggered" from="MainCSGCombiner3D/R1FlickerTrigger" to="MainCSGCombiner3D/R1Doorway" method="_on_flicker_trigger_triggered"]
+[connection signal="screen_exited" from="MainCSGCombiner3D/L1VisibilityTrigger" to="MainCSGCombiner3D/L1VisibilityTrigger" method="_on_screen_exited"]
+[connection signal="body_entered" from="MainCSGCombiner3D/L1L2RoomFlickerTrigger" to="MainCSGCombiner3D/L1L2RoomFlickerTrigger" method="_on_body_entered"]
+[connection signal="triggered" from="MainCSGCombiner3D/L1L2RoomFlickerTrigger" to="MainCSGCombiner3D/L1L2RoomFlickerTrigger/Requisite" method="_on_flicker_trigger_triggered"]
+[connection signal="triggered" from="MainCSGCombiner3D/L1L2RoomFlickerTrigger" to="MainCSGCombiner3D/L1L1Doorway2" method="_on_flicker_trigger_triggered"]
+[connection signal="triggered" from="MainCSGCombiner3D/L1L2RoomFlickerTrigger" to="MainCSGCombiner3D/L1L1Doorway3" method="_on_flicker_trigger_triggered"]
+[connection signal="triggered" from="MainCSGCombiner3D/L1L2RoomFlickerTrigger" to="MainCSGCombiner3D/L1R1Doorway" method="_on_flicker_trigger_triggered"]
+[connection signal="triggered" from="MainCSGCombiner3D/L1L2RoomFlickerTrigger" to="MainCSGCombiner3D/BlockedExit" method="_on_flicker_trigger_triggered"]
+[connection signal="screen_exited" from="MainCSGCombiner3D/L1L1DoorSightToggle2" to="MainCSGCombiner3D/L1L1DoorSightToggle2" method="_on_screen_exited"]
+[connection signal="screen_exited" from="MainCSGCombiner3D/L1L1DoorSightToggle3" to="MainCSGCombiner3D/L1L1DoorSightToggle3" method="_on_screen_exited"]
+[connection signal="screen_exited" from="MainCSGCombiner3D/L1R1DoorSightToggle" to="MainCSGCombiner3D/L1R1DoorSightToggle" method="_on_screen_exited"]
+[connection signal="body_entered" from="MainCSGCombiner3D/CollapseNudger" to="MainCSGCombiner3D/CollapseNudger" method="_on_body_entered"]
+[connection signal="screen_exited" from="MainCSGCombiner3D/L1F1DoorSightToggle" to="MainCSGCombiner3D/L1F1DoorSightToggle" method="_on_screen_exited"]
 [connection signal="body_entered" from="Label3D/Prank" to="Label3D/Prank" method="_on_body_entered"]

@@ -4,7 +4,6 @@
 
 [resource]
 resource_name = "Shelf"
-transparency = 4
 albedo_texture = ExtResource("1_27sqa")
 roughness = 0.4
 texture_filter = 2

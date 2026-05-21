@@ -20,8 +20,16 @@ func _on_cull_mask_changed(layer_num: int, new_value: bool) -> void:
 	cam.set_cull_mask_value(layer_num, new_value)
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("hide_camera") and visible:
+	if not visible: return
+	if event.is_action_pressed("hide_camera"):
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 		var new_pos := cam_down.position if is_up else cam_up.position
 		tween.tween_property(self, "position", new_pos, 1.0)
 		is_up = not is_up
+	if event.is_action_pressed("capture_image"):
+		if viewport.render_target_update_mode == SubViewport.UPDATE_WHEN_VISIBLE:
+			viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+			Events.image_captured.emit()
+		else:
+			viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
+			Events.image_deleted.emit()

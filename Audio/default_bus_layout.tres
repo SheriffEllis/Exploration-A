@@ -14,6 +14,17 @@ wet = 0.2
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_ddrg4"]
 resource_name = "Reverb"
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_girky"]
+resource_name = "Reverb"
+room_size = 1.0
+damping = 1.0
+wet = 1.0
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_ai37j"]
+resource_name = "LowPassFilter"
+cutoff_hz = 100.0
+db = 3
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
 bus/0/effect/0/enabled = true
@@ -45,3 +56,13 @@ bus/4/volume_db = -5.5276914
 bus/4/send = &"Sounds"
 bus/4/effect/0/effect = SubResource("AudioEffectReverb_ddrg4")
 bus/4/effect/0/enabled = true
+bus/5/name = &"Stone"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Sounds"
+bus/5/effect/0/effect = SubResource("AudioEffectReverb_girky")
+bus/5/effect/0/enabled = true
+bus/5/effect/1/effect = SubResource("AudioEffectLowPassFilter_ai37j")
+bus/5/effect/1/enabled = true

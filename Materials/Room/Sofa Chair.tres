@@ -4,6 +4,5 @@
 
 [resource]
 resource_name = "Sofa Chair"
-transparency = 4
 albedo_texture = ExtResource("1_7i4y3")
 texture_filter = 2

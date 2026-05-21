@@ -18,10 +18,13 @@ func _process(_delta: float) -> void:
 		set_process(false)
 		return
 	var playback_percentage := get_playback_position()/stream.get_length()
+	var amplitude := volume_curve.sample(playback_percentage)
 	if playback_percentage > 0.5 and not dark_period_passed:
+		flashlight.visible = false
 		Events.flashlight_turned_off.emit()
 		dark_period_passed = true
-	var amplitude := volume_curve.sample(playback_percentage)
+	if amplitude > 0.1 and dark_period_passed: # visibility is used for polling checks
+		flashlight.visible = true
 	flashlight.light_energy = amplitude
 	volume_linear = amplitude
 

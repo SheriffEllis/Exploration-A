@@ -5,10 +5,11 @@
 [resource]
 resource_name = "Camcorder"
 render_priority = 101
-no_depth_test = true
 albedo_texture = ExtResource("1_pnjk3")
 metallic = 0.30833337
 roughness = 0.5916667
 emission_energy_multiplier = 0.2
 emission_texture = ExtResource("1_pnjk3")
 texture_filter = 2
+use_z_clip_scale = true
+z_clip_scale = 0.5

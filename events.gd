@@ -8,6 +8,8 @@ signal floor_changed(new_sound: AudioStream)
 signal cam_cull_mask_changed(layer_num: int, new_value: bool)
 signal flashlight_turned_on
 signal flashlight_turned_off
+signal image_captured
+signal image_deleted
 
 #region
 signal camcorder_collected

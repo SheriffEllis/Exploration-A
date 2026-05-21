@@ -4,6 +4,8 @@
 
 [resource]
 resource_name = "Clock"
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_r1erj")
 texture_filter = 2
