@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cpml2d4frlthn"]
+
+[ext_resource type="Script" uid="uid://bvh8hl2y81572" path="res://Testing/occlusion_test.gd" id="1_2xc0y"]
+[ext_resource type="PackedScene" uid="uid://70xt2qqamxtv" path="res://UI/game_ui/game_ui.tscn" id="2_83c5f"]
+[ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="3_eud5r"]
+[ext_resource type="PackedScene" uid="uid://6w8l8imv3uwx" path="res://Player/player.tscn" id="4_hv03c"]
+[ext_resource type="Script" uid="uid://ce324142fvilf" path="res://Hallway/teleporter.gd" id="5_2xc0y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_042m1"]
+sky_top_color = Color(0.48896486, 0.72238576, 0.73134184, 1)
+sky_horizon_color = Color(0.87750274, 0.928108, 0.921347, 1)
+ground_horizon_color = Color(0.87750274, 0.928108, 0.921347, 1)
+
+[sub_resource type="Sky" id="Sky_e0ky0"]
+sky_material = SubResource("ProceduralSkyMaterial_042m1")
+
+[sub_resource type="Environment" id="Environment_2ge7m"]
+background_mode = 2
+sky = SubResource("Sky_e0ky0")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wgebv"]
+material = ExtResource("3_eud5r")
+size = Vector2(30, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e0ky0"]
+data = PackedVector3Array(15, 0, 15, -15, 0, 15, 15, 0, -15, -15, 0, 15, -15, 0, -15, 15, 0, -15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qibb"]
+size = Vector3(2, 1.982, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2xc0y"]
+size = Vector3(2, 1.982, 1)
+
+[node name="Occlusion_test" type="Node3D" unique_id=224012649]
+script = ExtResource("1_2xc0y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=53314028]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=45685552]
+environment = SubResource("Environment_2ge7m")
+
+[node name="GameUI" parent="." unique_id=1731473341 instance=ExtResource("2_83c5f")]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=606009353]
+mesh = SubResource("PlaneMesh_wgebv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1836315953]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=229608765]
+shape = SubResource("ConcavePolygonShape3D_e0ky0")
+
+[node name="Player" parent="." unique_id=11157363 instance=ExtResource("4_hv03c")]
+transform = Transform3D(0.82093996, 0, 0.5710145, 0, 1, 0, -0.5710145, 0, 0.82093996, 0, 0.808, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1841856196 node_paths=PackedStringArray("teleport_location")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808, -2.4793305)
+collision_layer = 0
+monitorable = false
+script = ExtResource("5_2xc0y")
+teleport_location = NodePath("../Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=693559298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0018004775, 0)
+shape = SubResource("BoxShape3D_3qibb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1942939386]
+mesh = SubResource("BoxMesh_2xc0y")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1081698454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0783012, -7.40348)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

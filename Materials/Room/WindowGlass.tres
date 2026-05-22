@@ -4,7 +4,7 @@
 resource_name = "WindowGlass"
 render_priority = 10
 transparency = 1
-albedo_color = Color(0.5865, 0.8060833, 0.85, 0.24705882)
-metallic_specular = 1.0
-roughness = 0.0
+albedo_color = Color(0.5865, 0.8060833, 0.85, 0.07450981)
+metallic = 0.76
+roughness = 0.5
 stencil_flags = 2

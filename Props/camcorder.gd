@@ -15,6 +15,10 @@ func _ready() -> void:
 
 func _on_camcorder_collected() -> void:
 	visible = true
+	await get_tree().create_timer(1.5).timeout
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "position", cam_down.position, 1.0)
+	is_up = false
 
 func _on_cull_mask_changed(layer_num: int, new_value: bool) -> void:
 	cam.set_cull_mask_value(layer_num, new_value)

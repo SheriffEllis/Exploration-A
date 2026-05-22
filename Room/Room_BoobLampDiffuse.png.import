@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://duyf2r356w87o"
 path.s3tc="res://.godot/imported/Room_BoobLampDiffuse.png-1947cbfc933a5e34aaaedf7c71914803.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_BoobLampDiffuse.png-1947cbfc933a5e34aaaedf7c71914803.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_BoobLampDiffuse.png"
-dest_files=["res://.godot/imported/Room_BoobLampDiffuse.png-1947cbfc933a5e34aaaedf7c71914803.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_BoobLampDiffuse.png-1947cbfc933a5e34aaaedf7c71914803.s3tc.ctex", "res://.godot/imported/Room_BoobLampDiffuse.png-1947cbfc933a5e34aaaedf7c71914803.etc2.ctex"]
 
 [params]
 

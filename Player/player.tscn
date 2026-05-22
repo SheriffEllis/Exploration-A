@@ -61,7 +61,7 @@ height = 0.2
 _data = [Vector2(0.10647115, 1), 0.0, 0.0, 0, 0, Vector2(0.13707365, 0.005649328), 0.0, 0.0, 0, 0, Vector2(0.14854957, 0.7018417), 0.0, 0.0, 0, 0, Vector2(0.22123049, 0.7018417), 0.0, 0.0, 0, 0, Vector2(0.23270641, 0), 0.0, 0.0, 0, 0, Vector2(0.25948358, 0.64015377), 0.0, 0.0, 0, 0, Vector2(0.28626078, 0.120212674), 0.0, 0.0, 0, 0, Vector2(0.30921263, 0.79877985), 0.0, 0.0, 0, 0, Vector2(0.35129106, 0.11140001), 0.0, 0.0, 0, 0, Vector2(0.40484542, 1), 0.0, 0.0, 0, 0, Vector2(0.45457447, 0), 0.0, 0.0, 0, 0, Vector2(0.6649666, 0), 0.0, 0.0, 0, 0, Vector2(0.72617155, 1), 0.0, 0.0, 0, 0, Vector2(0.7644246, 0), 0.0, 0.0, 0, 0, Vector2(0.79885244, 1), 0.0, 0.0, 0, 0, Vector2(0.867708, 1), 0.0, 0.0, 0, 0, Vector2(0.89065987, 0), 0.0, 0.0, 0, 0, Vector2(0.9174371, 1), 0.0, 0.0, 0, 0]
 point_count = 18
 
-[node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "prop_excluder", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "flashlight_sfx", "coyote_timer", "footsteps", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
+[node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "prop_excluder", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "flashlight_sfx", "flashlight_flicker", "coyote_timer", "footsteps", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
 collision_mask = 5
 script = ExtResource("1_ubx0o")
 grabber = NodePath("YawPivot/PitchPivot/Grabber")
@@ -69,11 +69,12 @@ interact_ray = NodePath("YawPivot/PitchPivot/InteractRay")
 prop_excluder = NodePath("PropExclusionArea")
 interact_orb = NodePath("YawPivot/PitchPivot/InteractRay/InteractRayDebugOrb")
 debug_orb = NodePath("YawPivot/PitchPivot/Grabber/GrabberDebugOrb")
-yaw_pivot = NodePath("YawPivot")
+yaw_pivot = NodePath(".")
 pitch_pivot = NodePath("YawPivot/PitchPivot")
 camera = NodePath("YawPivot/PitchPivot/PlayerPOV")
 flashlight = NodePath("YawPivot/PitchPivot/Flashlight")
 flashlight_sfx = NodePath("YawPivot/PitchPivot/Flashlight/FlashlightAudio")
+flashlight_flicker = NodePath("YawPivot/PitchPivot/Flashlight/FlickerAudio")
 coyote_timer = NodePath("CoyoteTimer")
 footsteps = NodePath("FootstepAudio")
 normal_mesh = NodePath("MeshInstanceNormal")
@@ -117,6 +118,7 @@ shape = SubResource("CapsuleShape3D_t3kc1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6270027, 0)
 
 [node name="PitchPivot" type="Node3D" parent="YawPivot" unique_id=685691280]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="CamUpLocation" type="Marker3D" parent="YawPivot/PitchPivot" unique_id=1451644006]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.264, -0.056479335, -0.17)
@@ -133,7 +135,7 @@ cam_up = NodePath("../CamUpLocation")
 cam_down = NodePath("../CamDownLocation")
 
 [node name="PlayerPOV" type="Camera3D" parent="YawPivot/PitchPivot" unique_id=902998266]
-cull_mask = 27
+cull_mask = 59
 current = true
 script = ExtResource("3_u7612")
 

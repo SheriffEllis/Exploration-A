@@ -29,6 +29,7 @@ const MAX_LOOK_ANGLE: float = deg_to_rad(85.0)
 var flashlight_enabled := false
 @export var flashlight: SpotLight3D
 @export var flashlight_sfx: AudioStreamPlayer3D
+@export var flashlight_flicker: AudioStreamPlayer3D
 @export var coyote_timer: Timer
 @export var footsteps: AudioStreamPlayer3D
 
@@ -73,7 +74,7 @@ func _on_flashlight_collected() -> void:
 	flashlight_enabled = true
 
 func _unhandled_input(event) -> void:
-	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED or event is not InputEventMouseMotion: return
+	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED or event is not InputEventMouseMotion: return	
 	# Don't move the view if rotating an object or view locked
 	if not (grabber.is_rotating or is_view_locked):
 		#var drag_factors := Vector2.ONE
@@ -85,14 +86,9 @@ func _unhandled_input(event) -> void:
 		twist_input = -event.relative.x * mouse_sensitivity #* drag_factors.x
 		pitch_input = -event.relative.y * mouse_sensitivity #* drag_factors.y
 
-
-func _physics_process(delta: float):
-	# NOTE DEBUG: resets player position to origin
-	if (position.y < -1000.0 and not is_flying) or Input.is_action_just_pressed(&"reset"):
-		position = Vector3(0.0, 1.5, 1.0)
-
+func _input(event: InputEvent) -> void:
 	# Toggle flashlight
-	if Input.is_action_just_pressed(&"flashlight") and flashlight_enabled:
+	if event.is_action_pressed(&"flashlight") and flashlight_enabled and not flashlight_flicker.playing:
 		flashlight.visible = not flashlight.visible
 		flashlight_sfx.pitch_scale = 1.0 - float(not flashlight.visible)*0.1
 		flashlight_sfx.play()
@@ -100,6 +96,11 @@ func _physics_process(delta: float):
 			Events.flashlight_turned_on.emit()
 		else:
 			Events.flashlight_turned_off.emit()
+
+func _physics_process(delta: float):
+	# NOTE DEBUG: resets player position to origin
+	if (position.y < -1000.0 and not is_flying) or Input.is_action_just_pressed(&"reset"):
+		position = Vector3(0.0, 1.5, 1.0)
 
 	# If controlling a console/seat/touchscreen, can't pause
 	GameGlobals.GAME_UI.pause_menu.can_pause = not (is_movement_locked or is_view_locked)

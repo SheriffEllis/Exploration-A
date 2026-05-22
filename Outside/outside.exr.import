@@ -4,15 +4,16 @@ importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://bjtgm7j2xy7ai"
 path.bptc="res://.godot/imported/outside.exr-0a5d87dc9011275872519a709f90de53.bptc.ctexarray"
+path.astc="res://.godot/imported/outside.exr-0a5d87dc9011275872519a709f90de53.astc.ctexarray"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Outside/outside.exr"
-dest_files=["res://.godot/imported/outside.exr-0a5d87dc9011275872519a709f90de53.bptc.ctexarray"]
+dest_files=["res://.godot/imported/outside.exr-0a5d87dc9011275872519a709f90de53.bptc.ctexarray", "res://.godot/imported/outside.exr-0a5d87dc9011275872519a709f90de53.astc.ctexarray"]
 
 [params]
 

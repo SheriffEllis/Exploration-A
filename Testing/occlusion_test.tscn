@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://crxnjftbau65y"]
+
+[ext_resource type="PackedScene" uid="uid://6w8l8imv3uwx" path="res://Player/player.tscn" id="1_e0ky0"]
+[ext_resource type="Script" uid="uid://bvh8hl2y81572" path="res://Testing/occlusion_test.gd" id="1_wgebv"]
+[ext_resource type="PackedScene" uid="uid://70xt2qqamxtv" path="res://UI/game_ui/game_ui.tscn" id="2_2ge7m"]
+[ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="3_6qu5v"]
+[ext_resource type="Script" uid="uid://bxlq8ir64xs8y" path="res://Testing/sight_toggle_test.gd" id="5_6qu5v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_042m1"]
+sky_top_color = Color(0.48896486, 0.72238576, 0.73134184, 1)
+sky_horizon_color = Color(0.87750274, 0.928108, 0.921347, 1)
+ground_horizon_color = Color(0.87750274, 0.928108, 0.921347, 1)
+
+[sub_resource type="Sky" id="Sky_e0ky0"]
+sky_material = SubResource("ProceduralSkyMaterial_042m1")
+
+[sub_resource type="Environment" id="Environment_2ge7m"]
+background_mode = 2
+sky = SubResource("Sky_e0ky0")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wgebv"]
+material = ExtResource("3_6qu5v")
+size = Vector2(30, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e0ky0"]
+data = PackedVector3Array(15, 0, 15, -15, 0, 15, 15, 0, -15, -15, 0, 15, -15, 0, -15, 15, 0, -15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6qu5v"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_6qu5v"]
+size = Vector3(1, 9, 9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yqke2"]
+material = ExtResource("3_6qu5v")
+size = Vector3(1, 9, 9)
+
+[node name="Occlusion_test" type="Node3D" unique_id=224012649]
+script = ExtResource("1_wgebv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=53314028]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=45685552]
+environment = SubResource("Environment_2ge7m")
+
+[node name="GameUI" parent="." unique_id=1731473341 instance=ExtResource("2_2ge7m")]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=606009353]
+mesh = SubResource("PlaneMesh_wgebv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1836315953]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=229608765]
+shape = SubResource("ConcavePolygonShape3D_e0ky0")
+
+[node name="Player" parent="." unique_id=11157363 instance=ExtResource("1_e0ky0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=726722381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6405525, 0.9972036, -5.409855)
+mesh = SubResource("BoxMesh_6qu5v")
+
+[node name="SightToggle" type="VisibleOnScreenNotifier3D" parent="MeshInstance3D" unique_id=1965210402]
+layers = 32
+script = ExtResource("5_6qu5v")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." unique_id=816269211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0202742, -5.7710257)
+layers = 32
+occluder = SubResource("BoxOccluder3D_6qu5v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OccluderInstance3D" unique_id=779580389]
+mesh = SubResource("BoxMesh_yqke2")

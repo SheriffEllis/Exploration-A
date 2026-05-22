@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://be6dwruhxsg8h"
 path.s3tc="res://.godot/imported/Outside_TreeWood.png-4d56ec3d862452ce75c9b421a7d45473.s3tc.ctex"
+path.etc2="res://.godot/imported/Outside_TreeWood.png-4d56ec3d862452ce75c9b421a7d45473.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Outside/Outside_TreeWood.png"
-dest_files=["res://.godot/imported/Outside_TreeWood.png-4d56ec3d862452ce75c9b421a7d45473.s3tc.ctex"]
+dest_files=["res://.godot/imported/Outside_TreeWood.png-4d56ec3d862452ce75c9b421a7d45473.s3tc.ctex", "res://.godot/imported/Outside_TreeWood.png-4d56ec3d862452ce75c9b421a7d45473.etc2.ctex"]
 
 [params]
 

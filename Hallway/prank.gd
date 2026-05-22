@@ -19,5 +19,5 @@ func wait_for_teleport() -> void:
 	GameGlobals.player.global_position = prison_location.global_position
 	await get_tree().create_timer(0.5).timeout
 	sound_win.play()
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(20).timeout
 	get_tree().quit()

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://btktbfarm1ise"
 path.s3tc="res://.godot/imported/Room_BooksDiffuse.png-de219d7e122a598396a6890141f28175.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_BooksDiffuse.png-de219d7e122a598396a6890141f28175.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_BooksDiffuse.png"
-dest_files=["res://.godot/imported/Room_BooksDiffuse.png-de219d7e122a598396a6890141f28175.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_BooksDiffuse.png-de219d7e122a598396a6890141f28175.s3tc.ctex", "res://.godot/imported/Room_BooksDiffuse.png-de219d7e122a598396a6890141f28175.etc2.ctex"]
 
 [params]
 

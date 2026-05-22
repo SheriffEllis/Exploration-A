@@ -1,0 +1,3 @@
+More visual indication that two doors are Linked and not just Unstable
+Some indication of the camcorder capturing vs deleting an image (sfx, pause/rec icon)
+Put proper islands in the righthand maze (or at least make the solution not the first leftmost option)

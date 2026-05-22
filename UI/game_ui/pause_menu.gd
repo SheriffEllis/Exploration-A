@@ -41,6 +41,7 @@ func resume() -> void:
 	set_paused(false)
 	hide()
 	resumed.emit()
+	Events.resumed.emit()
 
 
 func pause() -> void:

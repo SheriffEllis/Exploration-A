@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chqtb3e6uwcgi"
 path.s3tc="res://.godot/imported/Room_CamcorderDiffuseAO.png-b0dd0cf9807eb74ee2109a3d0c5ce73e.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_CamcorderDiffuseAO.png-b0dd0cf9807eb74ee2109a3d0c5ce73e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_CamcorderDiffuseAO.png"
-dest_files=["res://.godot/imported/Room_CamcorderDiffuseAO.png-b0dd0cf9807eb74ee2109a3d0c5ce73e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_CamcorderDiffuseAO.png-b0dd0cf9807eb74ee2109a3d0c5ce73e.s3tc.ctex", "res://.godot/imported/Room_CamcorderDiffuseAO.png-b0dd0cf9807eb74ee2109a3d0c5ce73e.etc2.ctex"]
 
 [params]
 

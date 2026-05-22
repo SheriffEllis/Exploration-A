@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bo7olj3j2e87r"
 path.s3tc="res://.godot/imported/Room_GeneralWoodenTexture.png-4e132dffcb7721819a80cb32e5617a20.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_GeneralWoodenTexture.png-4e132dffcb7721819a80cb32e5617a20.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_GeneralWoodenTexture.png"
-dest_files=["res://.godot/imported/Room_GeneralWoodenTexture.png-4e132dffcb7721819a80cb32e5617a20.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_GeneralWoodenTexture.png-4e132dffcb7721819a80cb32e5617a20.s3tc.ctex", "res://.godot/imported/Room_GeneralWoodenTexture.png-4e132dffcb7721819a80cb32e5617a20.etc2.ctex"]
 
 [params]
 

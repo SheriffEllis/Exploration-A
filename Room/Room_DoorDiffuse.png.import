@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c67caplag5elm"
 path.s3tc="res://.godot/imported/Room_DoorDiffuse.png-0c51a189f081df14174d9245b1e5a210.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_DoorDiffuse.png-0c51a189f081df14174d9245b1e5a210.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_DoorDiffuse.png"
-dest_files=["res://.godot/imported/Room_DoorDiffuse.png-0c51a189f081df14174d9245b1e5a210.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_DoorDiffuse.png-0c51a189f081df14174d9245b1e5a210.s3tc.ctex", "res://.godot/imported/Room_DoorDiffuse.png-0c51a189f081df14174d9245b1e5a210.etc2.ctex"]
 
 [params]
 

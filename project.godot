@@ -120,6 +120,7 @@ capture_image={
 3d_render/layer_3="Hallway"
 3d_render/layer_4="HeldObjects"
 3d_render/layer_5="EntryHallway"
+3d_render/layer_6="QuantumObjects"
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Interactables"
 3d_physics/layer_3="Walls"
@@ -131,6 +132,6 @@ capture_image={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 occlusion_culling/use_occlusion_culling=true
 lights_and_shadows/positional_shadow/atlas_size=8192

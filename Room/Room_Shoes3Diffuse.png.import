@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://mvchky2dgf2q"
 path.s3tc="res://.godot/imported/Room_Shoes3Diffuse.png-bea9db4d17d12013b01e3e4a40a99153.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_Shoes3Diffuse.png-bea9db4d17d12013b01e3e4a40a99153.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_Shoes3Diffuse.png"
-dest_files=["res://.godot/imported/Room_Shoes3Diffuse.png-bea9db4d17d12013b01e3e4a40a99153.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_Shoes3Diffuse.png-bea9db4d17d12013b01e3e4a40a99153.s3tc.ctex", "res://.godot/imported/Room_Shoes3Diffuse.png-bea9db4d17d12013b01e3e4a40a99153.etc2.ctex"]
 
 [params]
 

@@ -6,7 +6,7 @@
 resource_name = "Light"
 render_priority = 5
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.25882354)
+albedo_color = Color(0, 0, 0, 0.050980393)
 albedo_texture = ExtResource("1_6motq")
 emission_enabled = true
 emission = Color(1, 0.989464, 0.60687536, 1)

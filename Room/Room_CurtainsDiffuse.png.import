@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8l3844lgu05y"
 path.s3tc="res://.godot/imported/Room_CurtainsDiffuse.png-e6aace3b9555e17ceff5f1a55f935a85.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_CurtainsDiffuse.png-e6aace3b9555e17ceff5f1a55f935a85.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_CurtainsDiffuse.png"
-dest_files=["res://.godot/imported/Room_CurtainsDiffuse.png-e6aace3b9555e17ceff5f1a55f935a85.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_CurtainsDiffuse.png-e6aace3b9555e17ceff5f1a55f935a85.s3tc.ctex", "res://.godot/imported/Room_CurtainsDiffuse.png-e6aace3b9555e17ceff5f1a55f935a85.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbibk4u7gdiqq"
 path.s3tc="res://.godot/imported/Room_FlowersDiffuse.png-1dcd663b019d0f4ef2b6b892895ed693.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_FlowersDiffuse.png-1dcd663b019d0f4ef2b6b892895ed693.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_FlowersDiffuse.png"
-dest_files=["res://.godot/imported/Room_FlowersDiffuse.png-1dcd663b019d0f4ef2b6b892895ed693.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_FlowersDiffuse.png-1dcd663b019d0f4ef2b6b892895ed693.s3tc.ctex", "res://.godot/imported/Room_FlowersDiffuse.png-1dcd663b019d0f4ef2b6b892895ed693.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqdgg0xalhnge"
 path.s3tc="res://.godot/imported/Outside_PlantDiffuse.png-613b66b08d986b359d4f7f4275ff67c7.s3tc.ctex"
+path.etc2="res://.godot/imported/Outside_PlantDiffuse.png-613b66b08d986b359d4f7f4275ff67c7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Outside/Outside_PlantDiffuse.png"
-dest_files=["res://.godot/imported/Outside_PlantDiffuse.png-613b66b08d986b359d4f7f4275ff67c7.s3tc.ctex"]
+dest_files=["res://.godot/imported/Outside_PlantDiffuse.png-613b66b08d986b359d4f7f4275ff67c7.s3tc.ctex", "res://.godot/imported/Outside_PlantDiffuse.png-613b66b08d986b359d4f7f4275ff67c7.etc2.ctex"]
 
 [params]
 

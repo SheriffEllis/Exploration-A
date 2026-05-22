@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://p5giuao5mhx"
 path.s3tc="res://.godot/imported/Room_LampEmission.png-c1f5316e8f2aafb00c0870c4b7dcf493.s3tc.ctex"
+path.etc2="res://.godot/imported/Room_LampEmission.png-c1f5316e8f2aafb00c0870c4b7dcf493.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Room/Room_LampEmission.png"
-dest_files=["res://.godot/imported/Room_LampEmission.png-c1f5316e8f2aafb00c0870c4b7dcf493.s3tc.ctex"]
+dest_files=["res://.godot/imported/Room_LampEmission.png-c1f5316e8f2aafb00c0870c4b7dcf493.s3tc.ctex", "res://.godot/imported/Room_LampEmission.png-c1f5316e8f2aafb00c0870c4b7dcf493.etc2.ctex"]
 
 [params]
 

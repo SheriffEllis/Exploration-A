@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cusg143xqi1aw"]
+[gd_scene format=3 uid="uid://cusg143xqi1aw"]
 
 [ext_resource type="Theme" uid="uid://cu6h7qlm3sh8y" path="res://UI/pause_theme.tres" id="1_o1rul"]
 [ext_resource type="Script" uid="uid://bqb6yqhhahabe" path="res://UI/game_ui/pause_menu.gd" id="2_3koc6"]
@@ -19,7 +19,7 @@ corner_radius_bottom_left = 20
 [sub_resource type="LabelSettings" id="LabelSettings_2oifk"]
 font_size = 76
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=1406971771]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,7 @@ grow_vertical = 2
 script = ExtResource("2_3koc6")
 metadata/_custom_type_script = "uid://bqb6yqhhahabe"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=8362834]
 process_mode = 2
 z_index = 1
 layout_mode = 1
@@ -47,7 +47,7 @@ grow_vertical = 2
 theme = ExtResource("1_o1rul")
 theme_override_styles/panel = SubResource("StyleBoxFlat_h0rig")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=1287271343]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -60,7 +60,7 @@ grow_horizontal = 2
 text = "Paused"
 label_settings = SubResource("LabelSettings_2oifk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2128406554]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,21 +68,22 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -163.0
-offset_top = -67.0
+offset_top = -50.539993
 offset_right = 163.0
-offset_bottom = 91.0
+offset_bottom = 107.460144
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Resume" type="Button" parent="Panel/VBoxContainer"]
+[node name="Resume" type="Button" parent="Panel/VBoxContainer" unique_id=1597676640]
 layout_mode = 2
 text = "Resume"
 
-[node name="Save" type="Button" parent="Panel/VBoxContainer"]
+[node name="Save" type="Button" parent="Panel/VBoxContainer" unique_id=186936465]
+visible = false
 layout_mode = 2
 text = "Save"
 
-[node name="Quit" type="Button" parent="Panel/VBoxContainer"]
+[node name="Quit" type="Button" parent="Panel/VBoxContainer" unique_id=1942428366]
 layout_mode = 2
 text = "Quit"
 

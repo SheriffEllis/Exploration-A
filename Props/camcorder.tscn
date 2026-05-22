@@ -135,4 +135,4 @@ size = Vector2i(200, 200)
 
 [node name="Camera3D" type="Camera3D" parent="Viewscreen/SubViewport" unique_id=497882985]
 transform = Transform3D(-0.7999999, 0, -6.993822e-08, 0, 0.7999999, 0, 6.993822e-08, 0, -0.7999999, 0.10650823, 0.019514395, -0.092740335)
-cull_mask = 1048563
+cull_mask = 1048531

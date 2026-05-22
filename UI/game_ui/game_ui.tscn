@@ -2,7 +2,36 @@
 
 [ext_resource type="Script" uid="uid://brs3t66vjxqat" path="res://UI/game_ui/game_ui.gd" id="1_kfjql"]
 [ext_resource type="Texture2D" uid="uid://bhud2wuapwage" path="res://Materials/Textures/crosshair-spritesheet.png" id="2_1cbb3"]
+[ext_resource type="Script" uid="uid://d0hbpoos6gwpw" path="res://UI/game_ui/hint_label.gd" id="3_j42il"]
 [ext_resource type="PackedScene" uid="uid://cusg143xqi1aw" path="res://UI/game_ui/pause_menu.tscn" id="4_j42il"]
+[ext_resource type="AudioStream" uid="uid://cgo6wsmpsnx0h" path="res://Audio/typewriter1.ogg" id="4_qs256"]
+[ext_resource type="AudioStream" uid="uid://3ypun46kpdgd" path="res://Audio/typewriter2.ogg" id="5_oibdq"]
+[ext_resource type="AudioStream" uid="uid://ckt4jyiacv7k7" path="res://Audio/typewriter3.ogg" id="6_3n8fu"]
+[ext_resource type="AudioStream" uid="uid://mf47888n4w2g" path="res://Audio/typewriter4.ogg" id="7_ib26x"]
+
+[sub_resource type="SystemFont" id="SystemFont_1cbb3"]
+font_names = PackedStringArray("Courier New")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j42il"]
+font = SubResource("SystemFont_1cbb3")
+font_size = 47
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6866g"]
+random_pitch = 1.0594631
+streams_count = 4
+stream_0/stream = ExtResource("4_qs256")
+stream_1/stream = ExtResource("5_oibdq")
+stream_2/stream = ExtResource("6_3n8fu")
+stream_3/stream = ExtResource("7_ib26x")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1cbb3"]
+font = SubResource("SystemFont_1cbb3")
+font_size = 47
+font_color = Color(0.9999998, 0.9349215, 0.34664702, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j42il"]
 bg_color = Color(0.262745, 0.0862745, 0.0627451, 0.870588)
@@ -77,6 +106,49 @@ offset_bottom = 34.0
 grow_horizontal = 0
 scale = Vector2(1.245, 1.245)
 text = "FPS: NA"
+
+[node name="HintLabel" type="Label" parent="HUD" unique_id=1058601845]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -93.0
+offset_right = 22.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_j42il")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_j42il")
+
+[node name="TypewriterAudio" type="AudioStreamPlayer" parent="HUD/HintLabel" unique_id=184300923]
+stream = SubResource("AudioStreamRandomizer_6866g")
+volume_db = -15.0
+max_polyphony = 2
+bus = &"Sounds"
+
+[node name="DialogueLabel" type="Label" parent="HUD" unique_id=900199012]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -93.0
+offset_right = 22.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "A brief look can't hurt."
+label_settings = SubResource("LabelSettings_1cbb3")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="." unique_id=480126058]
 visible = false

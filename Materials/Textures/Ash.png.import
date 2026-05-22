@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ciqikbkt6eh1u"
 path.s3tc="res://.godot/imported/Ash.png-6f931d53698bc7f52aab8cf2486b388d.s3tc.ctex"
+path.etc2="res://.godot/imported/Ash.png-6f931d53698bc7f52aab8cf2486b388d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/Textures/Ash.png"
-dest_files=["res://.godot/imported/Ash.png-6f931d53698bc7f52aab8cf2486b388d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ash.png-6f931d53698bc7f52aab8cf2486b388d.s3tc.ctex", "res://.godot/imported/Ash.png-6f931d53698bc7f52aab8cf2486b388d.etc2.ctex"]
 
 [params]
 
