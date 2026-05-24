@@ -3,8 +3,7 @@ class_name SightToggle extends VisibleOnScreenNotifier3D
 @export var entangled_toggles : Array[SightToggle]
 @export var inverted_entanglement := false
 
-@export var hidden_doorway : CSGBox3D
-@export var hidden_doorframe : MeshInstance3D
+@export var hidden_doorframe : Door
 
 @export_range(0.0, 1.0, 0.01) var appear_probability : float = 1.0
 @export_range(0.0, 1.0, 0.01) var hide_probability := 1.0
@@ -53,12 +52,12 @@ func collapse_state() -> void:
 	
 	for entagled_toggle : SightToggle in entangled_toggles:
 		if entagled_toggle.is_observed():
-			var is_on := entagled_toggle.is_door_toggled()
+			var is_on := entagled_toggle.is_door_visible()
 			if inverted_entanglement: is_on = not is_on
 			toggle_door(is_on)
 			return
 	
-	if not is_door_toggled():
+	if not is_door_visible():
 		if is_zero_approx(appear_probability): return
 		if randf() <= appear_probability:
 			toggle_door(true)
@@ -68,9 +67,8 @@ func collapse_state() -> void:
 			toggle_door(false)
 
 func toggle_door(visibility: bool, do_emit_signal := true) -> void:
-	hidden_doorway.visible = visibility
-	hidden_doorframe.is_interactable = visibility
+	hidden_doorframe.toggle_door(visibility)
 	if do_emit_signal: toggled_door.emit(visibility)
 
-func is_door_toggled() -> bool:
-	return hidden_doorway.visible
+func is_door_visible() -> bool:
+	return hidden_doorframe.is_door_visible()

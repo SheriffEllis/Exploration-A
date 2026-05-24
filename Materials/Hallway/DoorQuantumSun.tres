@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bj3roxcitp2xo"]
+
+[ext_resource type="Texture2D" uid="uid://chqq3rjb7h6r6" path="res://Materials/Textures/DoorSunDiffuse.png" id="1_jy2ub"]
+
+[resource]
+resource_name = "Door"
+albedo_texture = ExtResource("1_jy2ub")
+metallic_specular = 0.0
+texture_filter = 2

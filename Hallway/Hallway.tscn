@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://b76kxf3vyxjn6" path="res://Materials/Room/Map.tres" id="8_pn2v6"]
 [ext_resource type="Script" uid="uid://bisimrq06joy2" path="res://Hallway/requisite.gd" id="8_tqbed"]
 [ext_resource type="Script" uid="uid://ovvty0sedwg6" path="res://Hallway/prank.gd" id="8_vio6c"]
+[ext_resource type="PackedScene" uid="uid://b11op6xqadmyv" path="res://Props/Interactables/doorQuantum.tscn" id="9_h8nyl"]
 [ext_resource type="Script" uid="uid://co16jyicclb2m" path="res://Hallway/blocked_exit.gd" id="10_cx0dv"]
 [ext_resource type="Script" uid="uid://b4y7xjthpmsm5" path="res://Hallway/control_reminder.gd" id="10_kewxs"]
 [ext_resource type="AudioStream" uid="uid://b37k8hncv6pm7" path="res://Audio/stone-scrape.ogg" id="11_bqvc6"]
@@ -76,7 +77,7 @@ size = Vector3(2.972375, 6.2273164, 2.785)
 size = Vector3(2.972375, 6.2273164, 2.785)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h8nyl"]
-size = Vector3(2.972375, 4.2550993, 14.766155)
+size = Vector3(2.972375, 4.2550993, 11.561789)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_kewxs"]
 size = Vector3(7.493908, 6.076527, 8.123082)
@@ -308,13 +309,12 @@ operation = 2
 calculate_tangents = false
 size = Vector3(1.5, 2.5, 19)
 
-[node name="L1VisibilityTrigger" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=743734229 node_paths=PackedStringArray("prerequisite", "hidden_doorway", "hidden_doorframe")]
+[node name="L1VisibilityTrigger" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=743734229 node_paths=PackedStringArray("prerequisite", "hidden_doorframe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.84757686, 1.03, 22.82109)
 layers = 32
 aabb = AABB(-0.234, -1.155, -0.546, 0.468, 2.309, 1.092)
 script = ExtResource("6_pnkva")
 prerequisite = NodePath("../R1Doorway")
-hidden_doorway = NodePath("../L1Doorway")
 hidden_doorframe = NodePath("../L1Doorway/Doorframe")
 
 [node name="L1Doorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1951524561]
@@ -324,10 +324,9 @@ operation = 2
 calculate_tangents = false
 size = Vector3(0.955, 2.055, 0.55856323)
 
-[node name="Doorframe" parent="MainCSGCombiner3D/L1Doorway" unique_id=324732082 instance=ExtResource("4_thvx0")]
+[node name="Doorframe" parent="MainCSGCombiner3D/L1Doorway" unique_id=77211836 instance=ExtResource("9_h8nyl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 5
-is_interactable = false
 
 [node name="L1L1Doorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=189083609]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 5.412344, 1.03, 21.235764)
@@ -349,7 +348,7 @@ shape = SubResource("BoxShape3D_tqbed")
 visible = false
 script = ExtResource("8_tqbed")
 
-[node name="L1L1DoorSightToggle2" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=591349002 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
+[node name="L1L1DoorSightToggle2" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=591349002 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 16.230553, 1.03, 18.618948)
 layers = 32
 aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
@@ -357,7 +356,6 @@ script = ExtResource("7_yhgwi")
 prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
 entangled_toggles = [NodePath("../L1L1DoorSightToggle3")]
 inverted_entanglement = true
-hidden_doorway = NodePath("../L1L1Doorway2")
 hidden_doorframe = NodePath("../L1L1Doorway2/Doorframe")
 
 [node name="L1L1Doorway2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1927113683]
@@ -373,7 +371,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 4
 is_interactable = false
 
-[node name="L1L1DoorSightToggle3" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1183918192 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
+[node name="L1L1DoorSightToggle3" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1183918192 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 16.230553, 1.03, 14.030334)
 layers = 32
 aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
@@ -381,7 +379,6 @@ script = ExtResource("7_yhgwi")
 prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
 entangled_toggles = [NodePath("../L1L1DoorSightToggle2")]
 inverted_entanglement = true
-hidden_doorway = NodePath("../L1L1Doorway3")
 hidden_doorframe = NodePath("../L1L1Doorway3/Doorframe")
 appear_probability = 0.0
 hide_probability = 0.0
@@ -405,14 +402,13 @@ operation = 2
 calculate_tangents = false
 size = Vector3(13.901231, 3.479082, 8.785653)
 
-[node name="L1R1DoorSightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=909744955 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
+[node name="L1R1DoorSightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=909744955 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
 transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, 10.991981, 1.03, 23.694221)
 layers = 32
 aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
 script = ExtResource("7_yhgwi")
 prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
 entangled_toggles = [NodePath("../L1F1DoorSightToggle")]
-hidden_doorway = NodePath("../L1R1Doorway")
 hidden_doorframe = NodePath("../L1R1Doorway/Doorframe")
 
 [node name="L1R1Doorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2059704100]
@@ -449,14 +445,13 @@ hint_text = "[Flashlight can be toggled with F]"
 shape = SubResource("BoxShape3D_2n3w6")
 
 [node name="ControlReminderRun" type="Area3D" parent="MainCSGCombiner3D" unique_id=621584391]
-transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, -0.76187515, 3.054715, 22.992228)
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0, 1.5177677, 13.347465)
 collision_layer = 0
 monitorable = false
 script = ExtResource("10_kewxs")
 hint_text = "[Hold Shift to Run]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/ControlReminderRun" unique_id=1407672743]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6311839, -3.2804565)
 shape = SubResource("BoxShape3D_h8nyl")
 
 [node name="L1R1Room" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2057627500]
@@ -563,14 +558,13 @@ size = Vector3(1.5, 2.5, 8.823378)
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 110.99739, 16.084, 32.78447)
 size = Vector3(139.31827, 35.402, 60)
 
-[node name="L1F1DoorSightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1504851752 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
+[node name="L1F1DoorSightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1504851752 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
 transform = Transform3D(-1, 0, -2.384975e-08, 0, 1, 0, 2.384975e-08, 0, -1, 19.770237, 1.03, 32.953457)
 layers = 32
 aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
 script = ExtResource("7_yhgwi")
 prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
 entangled_toggles = [NodePath("../L1R1DoorSightToggle")]
-hidden_doorway = NodePath("../L1F1Doorway2")
 hidden_doorframe = NodePath("../L1F1Doorway2/Doorframe")
 appear_probability = 0.0
 hide_probability = 0.0
@@ -587,15 +581,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 4
 is_interactable = false
 
-[node name="L1F1DoorSightToggle3" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1189872399 node_paths=PackedStringArray("prerequisite", "hidden_doorway", "hidden_doorframe")]
+[node name="L1F1DoorSightToggle3" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1189872399 node_paths=PackedStringArray("prerequisite", "hidden_doorframe")]
 transform = Transform3D(-1, 0, -2.384975e-08, 0, 1, 0, 2.384975e-08, 0, -1, 21.440443, 1.0299995, 40.026695)
 layers = 32
 aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
 script = ExtResource("7_yhgwi")
 prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
-hidden_doorway = NodePath("../L1F1Doorway3")
 hidden_doorframe = NodePath("../L1F1Doorway3/Doorframe")
-appear_probability = 0.33
 
 [node name="L1F1Doorway3" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=371851647]
 transform = Transform3D(1.9861638e-08, 0, 1, 0, 1, 0, -1, 0, 1.9861638e-08, 21.440443, 1.0299995, 40.026695)
@@ -612,14 +604,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.652, 0.979, -9.497)
 layers = 32
 occluder = SubResource("BoxOccluder3D_2n3w6")
 
-[node name="L1F1DoorSightToggle4" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1371070516 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorway", "hidden_doorframe")]
+[node name="L1F1DoorSightToggle4" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D" unique_id=1371070516 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
 transform = Transform3D(-1, 0, -2.384975e-08, 0, 1, 0, 2.384975e-08, 0, -1, 38.70331, 1.0299995, 32.725986)
 layers = 32
 aabb = AABB(-0.7119891, -1.155, -0.546, 0.99819696, 2.309, 1.092)
 script = ExtResource("7_yhgwi")
 prerequisite = NodePath("../L1L2RoomFlickerTrigger/Requisite")
 entangled_toggles = [NodePath("../L1F1DoorSightToggle3")]
-hidden_doorway = NodePath("../L1F1Doorway4")
 hidden_doorframe = NodePath("../L1F1Doorway4/Doorframe")
 appear_probability = 0.0
 hide_probability = 0.0

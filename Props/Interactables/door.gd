@@ -1,4 +1,4 @@
-extends MeshInstance3D
+class_name Door extends MeshInstance3D
 
 @export_range(-180, 180, 0.001, "degrees") var open_angle = -100.0
 @export var is_interactable := true :
@@ -44,3 +44,10 @@ func _on_static_interactable_interacted(_player: CharacterBody3D) -> void:
 	is_open = not is_open
 	
 	#door_interactable.set_collision_layer_value(3, not is_open) # walls layer (does player collide or not)
+
+func toggle_door(is_on: bool) -> void:
+	get_parent().visible = is_on
+	is_interactable = is_on
+
+func is_door_visible() -> bool:
+	return visible and is_interactable
