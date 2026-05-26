@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://bnjyoo7g6xaa"]
+
+[ext_resource type="Script" uid="uid://bvh8hl2y81572" path="res://Testing/occlusion_test.gd" id="1_mok3y"]
+[ext_resource type="PackedScene" uid="uid://70xt2qqamxtv" path="res://UI/game_ui/game_ui.tscn" id="2_cs8a3"]
+[ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="3_8h8xv"]
+[ext_resource type="PackedScene" uid="uid://6w8l8imv3uwx" path="res://Player/player.tscn" id="4_yvrc7"]
+[ext_resource type="Script" uid="uid://c5eoextovhcih" path="res://Hallway/quantum_object_manager.gd" id="5_cs8a3"]
+[ext_resource type="Script" uid="uid://neaii8ets618" path="res://Hallway/quantum_object_manager_conserved.gd" id="6_dcsfg"]
+[ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="6_yvrc7"]
+[ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="7_yvrc7"]
+[ext_resource type="Script" uid="uid://bhljyfdcv7r0o" path="res://Hallway/sight_toggle_independent.gd" id="8_yvrc7"]
+
+[sub_resource type="Environment" id="Environment_2ge7m"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wgebv"]
+material = ExtResource("3_8h8xv")
+size = Vector2(30, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e0ky0"]
+data = PackedVector3Array(15, 0, 15, -15, 0, 15, 15, 0, -15, -15, 0, 15, -15, 0, -15, 15, 0, -15)
+
+[node name="Occlusion_test" type="Node3D" unique_id=224012649]
+script = ExtResource("1_mok3y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=53314028]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.1
+light_indirect_energy = 0.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=45685552]
+environment = SubResource("Environment_2ge7m")
+
+[node name="GameUI" parent="." unique_id=1731473341 instance=ExtResource("2_cs8a3")]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=606009353]
+mesh = SubResource("PlaneMesh_wgebv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1836315953]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=229608765]
+shape = SubResource("ConcavePolygonShape3D_e0ky0")
+
+[node name="Player" parent="." unique_id=11157363 instance=ExtResource("4_yvrc7")]
+
+[node name="QOM" type="Node3D" parent="." unique_id=17153342]
+
+[node name="QuantumObjectManager" type="Node" parent="." unique_id=677059685 node_paths=PackedStringArray("prerequisite", "entangled_toggles")]
+script = ExtResource("5_cs8a3")
+prerequisite = NodePath("../QOM")
+entangled_toggles = [NodePath("../SightToggle"), NodePath("../SightToggle2"), NodePath("../SightToggle3")]
+
+[node name="QOMC" type="Node3D" parent="." unique_id=59000191]
+
+[node name="QuantumObjectManagerConserved" type="Node" parent="." unique_id=739462765 node_paths=PackedStringArray("prerequisite", "entangled_toggles")]
+script = ExtResource("6_dcsfg")
+prerequisite = NodePath("../QOMC")
+entangled_toggles = [NodePath("../SightToggle4"), NodePath("../SightToggle5"), NodePath("../SightToggle6")]
+
+[node name="SightToggle" type="VisibleOnScreenNotifier3D" parent="." unique_id=250426171 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0377252, -7.6477904)
+layers = 32
+aabb = AABB(-0.5621704, -1.0785701, -0.667405, 1.1243408, 2.1571403, 0.83383346)
+script = ExtResource("6_yvrc7")
+hidden_doorframe = NodePath("../Node3D/Doorframe")
+is_inverted = true
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1073579222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0377252, -7.6477904)
+visible = false
+
+[node name="Doorframe" parent="Node3D" unique_id=1108006220 instance=ExtResource("7_yvrc7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+is_interactable = false
+eye_type = 2
+entanglement_type = 3
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D" unique_id=1694550422]
+remote_path = NodePath("../../SightToggle")
+
+[node name="SightToggle2" type="VisibleOnScreenNotifier3D" parent="." unique_id=1447113431 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.441255, 1.0377252, -7.6477904)
+layers = 32
+aabb = AABB(-0.5621704, -1.0785701, -0.667405, 1.1243408, 2.1571403, 0.83383346)
+script = ExtResource("6_yvrc7")
+hidden_doorframe = NodePath("../Node3D2/Doorframe")
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=1887434932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.441255, 1.0377252, -7.6477904)
+
+[node name="Doorframe" parent="Node3D2" unique_id=1323348579 instance=ExtResource("7_yvrc7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+eye_type = 1
+entanglement_type = 4
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D2" unique_id=1805449601]
+remote_path = NodePath("../../SightToggle2")
+
+[node name="SightToggle3" type="VisibleOnScreenNotifier3D" parent="." unique_id=1688304918 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3796062, 1.0377252, -7.6477904)
+layers = 32
+aabb = AABB(-0.5621704, -1.0785701, -0.667405, 1.1243408, 2.1571403, 0.83383346)
+script = ExtResource("6_yvrc7")
+hidden_doorframe = NodePath("../Node3D3/Doorframe")
+
+[node name="Node3D3" type="Node3D" parent="." unique_id=1233510993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3796062, 1.0377252, -7.6477904)
+
+[node name="Doorframe" parent="Node3D3" unique_id=429270280 instance=ExtResource("7_yvrc7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+eye_type = 1
+entanglement_type = 4
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D3" unique_id=1439460247]
+remote_path = NodePath("../../SightToggle3")
+
+[node name="SightToggle4" type="VisibleOnScreenNotifier3D" parent="." unique_id=312221260 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.04109923, 1.0377252, 5.3379283)
+layers = 32
+aabb = AABB(-0.5621704, -1.0785701, -0.667405, 1.1243408, 2.1571403, 0.83383346)
+script = ExtResource("6_yvrc7")
+hidden_doorframe = NodePath("../Node3D5/Doorframe")
+
+[node name="Node3D5" type="Node3D" parent="." unique_id=1179784976]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.04109923, 1.0377252, 5.3379283)
+
+[node name="Doorframe" parent="Node3D5" unique_id=1369707783 instance=ExtResource("7_yvrc7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+eye_type = 1
+entanglement_type = 1
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D5" unique_id=693552423]
+remote_path = NodePath("../../SightToggle4")
+
+[node name="SightToggle5" type="VisibleOnScreenNotifier3D" parent="." unique_id=1739510468 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.400156, 1.0377252, 5.3379283)
+layers = 32
+aabb = AABB(-0.5621704, -1.0785701, -0.667405, 1.1243408, 2.1571403, 0.83383346)
+script = ExtResource("6_yvrc7")
+hidden_doorframe = NodePath("../Node3D6/Doorframe")
+
+[node name="Node3D6" type="Node3D" parent="." unique_id=988833403]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.400156, 1.0377252, 5.3379283)
+
+[node name="Doorframe" parent="Node3D6" unique_id=591078944 instance=ExtResource("7_yvrc7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+eye_type = 1
+entanglement_type = 1
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D6" unique_id=2018358080]
+remote_path = NodePath("../../SightToggle5")
+
+[node name="SightToggle6" type="VisibleOnScreenNotifier3D" parent="." unique_id=293570511 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.4207053, 1.0377252, 5.3379283)
+layers = 32
+aabb = AABB(-0.5621704, -1.0785701, -0.667405, 1.1243408, 2.1571403, 0.83383346)
+script = ExtResource("6_yvrc7")
+hidden_doorframe = NodePath("../Node3D7/Doorframe")
+
+[node name="Node3D7" type="Node3D" parent="." unique_id=339444388]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.4207053, 1.0377252, 5.3379283)
+
+[node name="Doorframe" parent="Node3D7" unique_id=1413953065 instance=ExtResource("7_yvrc7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+eye_type = 1
+entanglement_type = 1
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D7" unique_id=364321455]
+remote_path = NodePath("../../SightToggle6")
+
+[node name="SightToggleIndependent" type="VisibleOnScreenNotifier3D" parent="." unique_id=1740514615 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.506, 1.038, -0.0741415)
+aabb = AABB(-0.5621704, -1.0785701, -0.667405, 1.1243408, 2.1571403, 0.83383346)
+script = ExtResource("8_yvrc7")
+hidden_doorframe = NodePath("../Node3D4/Doorframe")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="Node3D4" type="Node3D" parent="." unique_id=277639665]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.506, 1.038, -0.0741415)
+
+[node name="Doorframe" parent="Node3D4" unique_id=1650459190 instance=ExtResource("7_yvrc7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+eye_type = 1
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D4" unique_id=1413169452]
+remote_path = NodePath("../../SightToggleIndependent")

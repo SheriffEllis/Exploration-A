@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://bwn7vidwf8ohl" path="res://Props/Interactables/static_interactable.gd" id="3_6pewh"]
 [ext_resource type="AudioStream" uid="uid://c2c2cvlv6purr" path="res://Audio/door-open.ogg" id="3_kk4io"]
 [ext_resource type="AudioStream" uid="uid://dvff4ghdyrper" path="res://Audio/door-close.ogg" id="4_6pewh"]
+[ext_resource type="Texture2D" uid="uid://dl5m3t3fspjpf" path="res://Materials/Textures/EyeDecal.png" id="4_n80wk"]
+[ext_resource type="Texture2D" uid="uid://dv6r1euk1txh5" path="res://Materials/Textures/EntanglementDecal.png" id="5_bj7tk"]
 [ext_resource type="AudioStream" uid="uid://cbb0efmtd52ou" path="res://Audio/door-locked1.ogg" id="6_dp7k7"]
 [ext_resource type="AudioStream" uid="uid://pkrpowts12y7" path="res://Audio/door-locked2.ogg" id="7_n80wk"]
 [ext_resource type="AudioStream" uid="uid://diudixbegb2sr" path="res://Audio/door-locked3.ogg" id="8_bj7tk"]
@@ -27,6 +29,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("xkv3vpdsgj+APzu9Vw7tPna6fz8AqNK8yEv3Ppdsgj+APzu9VQ7tvna6fz8AqNK8yEv3Ppdsgj+APzu9TQ7tPntBhb8AqNK8vkv3PntBhb+APzu9Vw7tPna6fz8AqNK8xkv3vntBhb+APzu9VQ7tvna6fz8AqNK8xkv3vpdsgj+APzu9VQ7tvntBhb8AqNK8VQ7tvna6fz8AWl49VQ7tvntBhb8AqNK8VQ7tvntBhb8AWl49VQ7tvna6fz8AqNK8Vw7tPna6fz8AWl49VQ7tvna6fz8AqNK8VQ7tvna6fz8AWl49Vw7tPna6fz8AqNK8TQ7tPntBhb8AWl49Vw7tPna6fz8AqNK8Vw7tPna6fz8AWl49TQ7tPntBhb8AqNK8McIIv7/6iD+AxCa9hXoHP+dWiD+APzu9M8IIP7/6iD+AxCa9g3oHv+dWiD+APzu9M8IIP7/6iD+AxCa9hXoHP3tBhb+APzu9M8IIP3tBhb+AxCa9hXoHP+dWiD+APzu9McIIv3tBhb+AxCa9g3oHv+dWiD+APzu9McIIv7/6iD+AxCa9g3oHv3tBhb+APzu9xkv3vpdsgj+APzu9hXoHP+dWiD+APzu9g3oHv+dWiD+APzu9xkv3vntBhb+APzu9g3oHv3tBhb+APzu9yEv3Ppdsgj+APzu9hXoHP3tBhb+APzu9vkv3PntBhb+APzu9g3oHv+dWiD8AWl49M8IIP7/6iD8A30k9hXoHP+dWiD8AWl49McIIv7/6iD8A30k9hXoHP+dWiD8AWl49M8IIP3tBhb8A30k9hXoHP3tBhb8AWl49M8IIP7/6iD8A30k9g3oHv3tBhb8AWl49McIIv7/6iD8A30k9g3oHv+dWiD8AWl49McIIv3tBhb8A30k9McIIv7/6iD8A30k9M8IIP7/6iD+AxCa9M8IIP7/6iD8A30k9McIIv7/6iD+AxCa9VQ7tvntBhb8AWl49g3oHv+dWiD8AWl49VQ7tvna6fz8AWl49g3oHv3tBhb8AWl49hXoHP+dWiD8AWl49Vw7tPna6fz8AWl49hXoHP3tBhb8AWl49TQ7tPntBhb8AWl49McIIv3tBhb8A30k9McIIv7/6iD+AxCa9McIIv7/6iD8A30k9McIIv3tBhb+AxCa9M8IIP7/6iD8A30k9M8IIP3tBhb+AxCa9M8IIP3tBhb8A30k9M8IIP7/6iD+AxCa9/78AAAAA/7//vwAAAAD/v/+/AAAAAP+//78AAAAA/78AAP+//z//vwAA/7//P/+/AAD/v/8//78AAP+//z//v////78AAP/f////vwAA/9////+/AAD/3////78AAP/f////f/////////9//////////3//////////f///////fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//7////9//9//v////3//3/+/////f//f/7////9//9////+//r8AQP///7//v/8/////v/+//z////+//r8AQAAA/7//P/+/AAD/vwBA/r8AAP+/AED+vwAA/7//P/+//////wAA/7//////AAD/v/////8AAP+//////wAA/7//////AAD/v/////8AAP+//////wAA/7//////AAD/v/9//7////+//3//v////7//f/+/////v/9//7////+//7//f/7//5//v/9/////n/+//3/////f/7//f/7//5//P/9//7//v/8//3/+v/+//z//f/6//7//P/9//7//v/9/////f/+//3////9//7//f////3//v/9/////f/+//3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//f/9/////vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/////f/////////9//////////3//////////f/////8=")
 }]
 blend_shape_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bj7tk"]
+size = Vector3(1.068, 2.111, 0.12)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pnd6q"]
 resource_name = "Room_Cube_027"
@@ -65,11 +70,21 @@ stream_2/stream = ExtResource("8_bj7tk")
 stream_3/stream = ExtResource("9_hck2s")
 
 [node name="Doorframe" type="MeshInstance3D" unique_id=1108006220]
+layers = 4
 mesh = SubResource("ArrayMesh_ne6fa")
 script = ExtResource("2_6pewh")
 
+[node name="ExclusionArea" type="Area3D" parent="." unique_id=305392140]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExclusionArea" unique_id=1456827576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.014545679, 0.004285097)
+shape = SubResource("BoxShape3D_bj7tk")
+
 [node name="Door" type="MeshInstance3D" parent="." unique_id=2137886148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44299987, -0.021060944, 0.024285078)
+layers = 4
 mesh = SubResource("ArrayMesh_pnd6q")
 
 [node name="StaticInteractable" type="AnimatableBody3D" parent="Door" unique_id=1227336916]
@@ -82,13 +97,29 @@ metadata/_custom_type_script = "uid://bwn7vidwf8ohl"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44299987, 0, 0)
 shape = SubResource("BoxShape3D_uu23l")
 
+[node name="EyeDecal" type="Decal" parent="Door" unique_id=1464253522]
+transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.44299987, 0.5207693, -0.017436681)
+layers = 4
+sorting_offset = 1.0
+size = Vector3(0.5, 0.1, 0.5)
+texture_albedo = ExtResource("4_n80wk")
+upper_fade = 0.0
+lower_fade = 0.0
+
+[node name="EntangleDecal" type="Decal" parent="Door" unique_id=758204963]
+transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.44299987, 0.20398888, -0.01743668)
+layers = 4
+sorting_offset = 1.0
+size = Vector3(0.35, 0.1, 0.7074585)
+texture_albedo = ExtResource("5_bj7tk")
+upper_fade = 0.0
+lower_fade = 0.0
+
 [node name="DoorOpenAudio" type="AudioStreamPlayer3D" parent="." unique_id=1398851298]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44299987, -0.021060944, 0.024285078)
 stream = SubResource("AudioStreamRandomizer_6pewh")
 bus = &"Sounds"
 
 [node name="DoorCloseAudio" type="AudioStreamPlayer3D" parent="." unique_id=267079062]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44299987, -0.021060944, 0.024285078)
 stream = ExtResource("4_6pewh")
 bus = &"Sounds"
 
@@ -97,4 +128,6 @@ stream = SubResource("AudioStreamRandomizer_bpapd")
 max_polyphony = 2
 bus = &"Sounds"
 
+[connection signal="body_entered" from="ExclusionArea" to="." method="_on_exclusion_area_body_entered"]
+[connection signal="body_exited" from="ExclusionArea" to="." method="_on_exclusion_area_body_exited"]
 [connection signal="interacted" from="Door/StaticInteractable" to="." method="_on_static_interactable_interacted"]

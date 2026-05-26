@@ -45,7 +45,6 @@ viewport_path = NodePath("Viewscreen/SubViewport")
 resource_local_to_scene = true
 resource_name = "Viewscreen"
 render_priority = 102
-cull_mode = 2
 no_depth_test = true
 albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0

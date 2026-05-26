@@ -37,7 +37,10 @@ folder_colors={
 "res://Materials/": "red",
 "res://Materials/Textures/": "orange",
 "res://Outside/": "green",
-"res://Room/": "green"
+"res://Player/": "pink",
+"res://Props/": "teal",
+"res://Room/": "green",
+"res://Testing/": "green"
 }
 
 [input]
@@ -133,5 +136,7 @@ capture_image={
 
 rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true
+textures/decals/filter=2
+textures/light_projectors/filter=2
 occlusion_culling/use_occlusion_culling=true
 lights_and_shadows/positional_shadow/atlas_size=8192

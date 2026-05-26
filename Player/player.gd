@@ -100,6 +100,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float):
 	# NOTE DEBUG: resets player position to origin
 	if (position.y < -1000.0 and not is_flying) or Input.is_action_just_pressed(&"reset"):
+		velocity = Vector3.ZERO
 		position = Vector3(0.0, 1.5, 1.0)
 
 	# If controlling a console/seat/touchscreen, can't pause

@@ -86,27 +86,29 @@ metadata/_edit_group_ = true
 [node name="Debug" type="Node" parent="." unique_id=1121043851]
 
 [node name="MeshInstanceNormal" type="MeshInstance3D" parent="." unique_id=238670927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 layers = 8
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_xpjq0")
 
 [node name="CollisionNormal" type="CollisionShape3D" parent="." unique_id=337415241]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000610352, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80061036, 0)
 shape = SubResource("CapsuleShape3D_dkied")
 
 [node name="MeshInstanceCrouched" type="MeshInstance3D" parent="." unique_id=1244240897]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 visible = false
 layers = 8
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_kdlcl")
 
 [node name="CollisionCrouched" type="CollisionShape3D" parent="." unique_id=712402923]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("CapsuleShape3D_3apam")
 disabled = true
 
 [node name="PropExclusionArea" type="Area3D" parent="." unique_id=1211398590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 collision_layer = 0
 collision_mask = 8
 
@@ -115,7 +117,7 @@ transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_t3kc1")
 
 [node name="YawPivot" type="Node3D" parent="." unique_id=1504610688]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6270027, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4270027, 0)
 
 [node name="PitchPivot" type="Node3D" parent="YawPivot" unique_id=685691280]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
@@ -182,7 +184,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=461586857]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.262033, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537967, 0)
 stream = ExtResource("6_vtle1")
 max_polyphony = 2
 bus = &"Sounds"
