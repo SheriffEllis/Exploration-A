@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv6r1euk1txh5"
-path="res://.godot/imported/EntanglementDecal.png-99d12e32302218eaa06d1c2ca2b5af53.ctex"
+uid="uid://cnoxo75bl054v"
+path="res://.godot/imported/EyeInvDecal.png-00b526a4a90c0084a4051fdf15e5a4e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/EntanglementDecal.png"
-dest_files=["res://.godot/imported/EntanglementDecal.png-99d12e32302218eaa06d1c2ca2b5af53.ctex"]
+source_file="res://Materials/Textures/Decals/EyeInvDecal.png"
+dest_files=["res://.godot/imported/EyeInvDecal.png-00b526a4a90c0084a4051fdf15e5a4e5.ctex"]
 
 [params]
 

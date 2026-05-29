@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://bwn7vidwf8ohl" path="res://Props/Interactables/static_interactable.gd" id="3_6pewh"]
 [ext_resource type="AudioStream" uid="uid://c2c2cvlv6purr" path="res://Audio/door-open.ogg" id="3_kk4io"]
 [ext_resource type="AudioStream" uid="uid://dvff4ghdyrper" path="res://Audio/door-close.ogg" id="4_6pewh"]
-[ext_resource type="Texture2D" uid="uid://dl5m3t3fspjpf" path="res://Materials/Textures/EyeDecal.png" id="4_n80wk"]
-[ext_resource type="Texture2D" uid="uid://dv6r1euk1txh5" path="res://Materials/Textures/EntanglementDecal.png" id="5_bj7tk"]
+[ext_resource type="Texture2D" uid="uid://dl5m3t3fspjpf" path="res://Materials/Textures/Decals/EyeDecal.png" id="4_bj7tk"]
+[ext_resource type="Texture2D" uid="uid://dv6r1euk1txh5" path="res://Materials/Textures/Decals/EntanglementDecal.png" id="5_bj7tk"]
 [ext_resource type="AudioStream" uid="uid://cbb0efmtd52ou" path="res://Audio/door-locked1.ogg" id="6_dp7k7"]
 [ext_resource type="AudioStream" uid="uid://pkrpowts12y7" path="res://Audio/door-locked2.ogg" id="7_n80wk"]
 [ext_resource type="AudioStream" uid="uid://diudixbegb2sr" path="res://Audio/door-locked3.ogg" id="8_bj7tk"]
@@ -100,20 +100,18 @@ shape = SubResource("BoxShape3D_uu23l")
 [node name="EyeDecal" type="Decal" parent="Door" unique_id=1464253522]
 transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.44299987, 0.5207693, -0.017436681)
 layers = 4
-sorting_offset = 1.0
 size = Vector3(0.5, 0.1, 0.5)
-texture_albedo = ExtResource("4_n80wk")
-upper_fade = 0.0
-lower_fade = 0.0
+texture_albedo = ExtResource("4_bj7tk")
+upper_fade = 4.564215
+lower_fade = 0.2
 
 [node name="EntangleDecal" type="Decal" parent="Door" unique_id=758204963]
-transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.44299987, 0.20398888, -0.01743668)
+transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.44299987, 0.15795818, -0.01743668)
 layers = 4
-sorting_offset = 1.0
-size = Vector3(0.35, 0.1, 0.7074585)
+size = Vector3(0.25, 0.1, 0.5)
 texture_albedo = ExtResource("5_bj7tk")
-upper_fade = 0.0
-lower_fade = 0.0
+upper_fade = 4.564215
+lower_fade = 0.2
 
 [node name="DoorOpenAudio" type="AudioStreamPlayer3D" parent="." unique_id=1398851298]
 stream = SubResource("AudioStreamRandomizer_6pewh")

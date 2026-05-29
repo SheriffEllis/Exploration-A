@@ -6,6 +6,8 @@ const ACTION_PAUSE: StringName = &"ui_cancel"
 @export var crosshair: Sprite2D
 @export var fps_counter: Label
 @export var pause_menu: PauseMenu
+@export var hint_label: HintLabel
+@export var dialogue_label: DialogueLabel
 
 func _ready() -> void:
 	pause_menu.paused.connect(Input.set_mouse_mode.bind(Input.MOUSE_MODE_VISIBLE), CONNECT_DEFERRED)

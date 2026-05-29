@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bia8jwn62bhx4"
-path="res://.godot/imported/EyeRecessiveDecal.png-1bf2b8c521205339d72e3ee14aa6ac4e.ctex"
+uid="uid://c8fquywbj3qlc"
+path="res://.godot/imported/CameraWallDecal.png-5cc4fbeae44d96cf8beb9e8499fcbd1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/EyeRecessiveDecal.png"
-dest_files=["res://.godot/imported/EyeRecessiveDecal.png-1bf2b8c521205339d72e3ee14aa6ac4e.ctex"]
+source_file="res://Materials/Textures/Decals/CameraWallDecal.png"
+dest_files=["res://.godot/imported/CameraWallDecal.png-5cc4fbeae44d96cf8beb9e8499fcbd1e.ctex"]
 
 [params]
 

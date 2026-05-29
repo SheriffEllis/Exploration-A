@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnoxo75bl054v"
-path="res://.godot/imported/EyeInvDecal.png-01d7d324cac2246e054ec4b898a332d8.ctex"
+uid="uid://u65p3ksimody"
+path="res://.godot/imported/ArbitrarySymbol2Decal.png-a2f94f83e9db54c0e137a0701ec3b1ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/EyeInvDecal.png"
-dest_files=["res://.godot/imported/EyeInvDecal.png-01d7d324cac2246e054ec4b898a332d8.ctex"]
+source_file="res://Materials/Textures/Decals/ArbitrarySymbol2Decal.png"
+dest_files=["res://.godot/imported/ArbitrarySymbol2Decal.png-a2f94f83e9db54c0e137a0701ec3b1ba.ctex"]
 
 [params]
 

@@ -1,5 +1,5 @@
 class_name SightToggleIndependent extends SightToggle
-@export var prerequisite : Node3D
+@export var prerequisite : Requisite
 @export var entangled_toggles : Array[SightToggle]
 
 
@@ -24,7 +24,7 @@ func _on_flashlight_turned_off() -> void:
 	if is_on_screen(): # don't cycle doors that aren't being observed: could cause doors the player isn't aware of to toggle
 		collapse_state()
 
-func _on_screen_exited() -> void: #FIXME OnScreenNotifier doesn't acknowledge walls
+func _on_screen_exited() -> void: # NOTE: must use occlusion to acknowledge walls
 	collapse_state()
 
 

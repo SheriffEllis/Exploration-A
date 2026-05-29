@@ -1,6 +1,6 @@
 class_name QuantumObjectManager extends Node
 
-@export var prerequisite : Node3D
+@export var prerequisite : Requisite
 @export var entangled_toggles : Array[SightToggle]
 @export var requires_consensus := true ## Do all toggles in the collection need to be unobserved for any to toggle?
 

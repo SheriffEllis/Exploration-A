@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csl1obkxgemp2"
-path="res://.godot/imported/EntanglementDecal1to1n1inv.png-89f74bdd8a4a8efb9f2cf4be7cfe57ea.ctex"
+uid="uid://coqy63e7nt1f2"
+path="res://.godot/imported/TravellingDecal.png-2512a5c42dfbe763e51d560c3076e1a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/EntanglementDecal1to1n1inv.png"
-dest_files=["res://.godot/imported/EntanglementDecal1to1n1inv.png-89f74bdd8a4a8efb9f2cf4be7cfe57ea.ctex"]
+source_file="res://Materials/Textures/Decals/TravellingDecal.png"
+dest_files=["res://.godot/imported/TravellingDecal.png-2512a5c42dfbe763e51d560c3076e1a1.ctex"]
 
 [params]
 

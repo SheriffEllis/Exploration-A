@@ -78,7 +78,7 @@ visible = false
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 is_interactable = false
 eye_type = 2
-entanglement_type = 3
+entangle_type = 7
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D" unique_id=1694550422]
 remote_path = NodePath("../../SightToggle")
@@ -96,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.441255, 1.0377252, -7.64779
 [node name="Doorframe" parent="Node3D2" unique_id=1323348579 instance=ExtResource("7_yvrc7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 eye_type = 1
-entanglement_type = 4
+entangle_type = 6
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D2" unique_id=1805449601]
 remote_path = NodePath("../../SightToggle2")
@@ -114,7 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3796062, 1.0377252, -7.647
 [node name="Doorframe" parent="Node3D3" unique_id=429270280 instance=ExtResource("7_yvrc7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 eye_type = 1
-entanglement_type = 4
+entangle_type = 5
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D3" unique_id=1439460247]
 remote_path = NodePath("../../SightToggle3")
@@ -132,7 +132,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.04
 [node name="Doorframe" parent="Node3D5" unique_id=1369707783 instance=ExtResource("7_yvrc7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 eye_type = 1
-entanglement_type = 1
+entangle_type = 2
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D5" unique_id=693552423]
 remote_path = NodePath("../../SightToggle4")
@@ -150,7 +150,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.4
 [node name="Doorframe" parent="Node3D6" unique_id=591078944 instance=ExtResource("7_yvrc7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 eye_type = 1
-entanglement_type = 1
+entangle_type = 4
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D6" unique_id=2018358080]
 remote_path = NodePath("../../SightToggle5")
@@ -168,7 +168,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.42
 [node name="Doorframe" parent="Node3D7" unique_id=1413953065 instance=ExtResource("7_yvrc7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 eye_type = 1
-entanglement_type = 1
+entangle_type = 3
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Node3D7" unique_id=364321455]
 remote_path = NodePath("../../SightToggle6")
