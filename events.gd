@@ -24,6 +24,7 @@ signal hint_triggered(text: String)
 signal dialogue_triggered(text: String)
 signal hint_queue_finished()
 signal dialogue_queue_finished()
+signal all_text_queues_finished()
 signal hint_queue_cancelled()
 signal dialogue_queue_cancelled()
 #endregion

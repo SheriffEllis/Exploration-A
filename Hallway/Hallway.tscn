@@ -81,6 +81,9 @@ size = Vector3(2.3, 9.29, 1.76)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cx0dv"]
 size = Vector3(7.90181, 3.855, 3.82)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_30mew"]
+size = Vector3(7.161463, 3.855, 3.82)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_3iu3o"]
 size = Vector3(6.361183, 3.855, 3.82)
 
@@ -465,6 +468,19 @@ metadata/_custom_type_script = "uid://c4tfa2l86vbyt"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" unique_id=1110109534]
 shape = SubResource("BoxShape3D_cx0dv")
 
+[node name="MovementComment" type="Area3D" parent="MainCSGCombiner3D/Tutorial2Room" unique_id=1443103646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8306026, -1.4519042, -2.3694534)
+collision_layer = 0
+monitorable = false
+script = ExtResource("10_kewxs")
+text_queue = Array[String](["Huh.. It moved."])
+is_hint = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Tutorial2Room/MovementComment" unique_id=1186582566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37017345, 0, 0)
+shape = SubResource("BoxShape3D_30mew")
+debug_color = Color(0.85, 0.64345, 0.1615, 0.41960785)
+
 [node name="FlashlightReminder" type="Area3D" parent="MainCSGCombiner3D/Tutorial2Room" unique_id=791586034]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8306036, -1.4519042, -2.3694534)
 collision_layer = 0
@@ -803,6 +819,7 @@ bus = &"Sounds"
 [connection signal="body_exited" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" method="_on_body_exited"]
 [connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/RequisiteTutorial2" method="_on_flicker_trigger_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2QOMConserved" method="_on_flashlight_turned_off"]
+[connection signal="body_entered" from="MainCSGCombiner3D/Tutorial2Room/MovementComment" to="MainCSGCombiner3D/Tutorial2Room/MovementComment" method="_on_body_entered"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Tutorial2Room/FlashlightReminder" to="MainCSGCombiner3D/Tutorial2Room/FlashlightReminder" method="_on_body_entered"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial2DoorywaySightToggle" to="MainCSGCombiner3D/Tutorial2DoorywaySightToggle" method="_on_screen_exited"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial2Dooryway2SightToggle" to="MainCSGCombiner3D/Tutorial2Dooryway2SightToggle" method="_on_screen_exited"]

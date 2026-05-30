@@ -16,7 +16,7 @@ func _on_item_collected() -> void:
 		if GameGlobals.LEVEL.skip_intro: return
 		interactable.set_collision_layer_value(2, true) # Make interactable
 		
-		await Events.hint_queue_finished
+		await Events.all_text_queues_finished
 		await get_tree().create_timer(3).timeout
 		if not visible: return
 		light.visible = true

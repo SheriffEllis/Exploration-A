@@ -4,7 +4,7 @@ class_name Level extends Node3D
 @export var starting_location : Vector3
 @export var starting_level : int
 
-var interact_not_pressed := true
+var interact_pressed := false
 var last_safe_location := Vector3.ZERO
 
 func _ready() -> void:
@@ -28,20 +28,25 @@ func _ready() -> void:
 		Events.hint_triggered.emit("[Intro Skipped]")
 		return
 	
-	Events.hint_triggered.connect(_on_hint_triggered)
+	Events.camcorder_collected.connect(_on_interact_pressed)
+	Events.flashlight_collected.connect(_on_interact_pressed)
+	
+	# TODO: title screen
+	# TODO: intro argument cutscene
 	
 	await get_tree().create_timer(1).timeout
+	Events.dialogue_triggered.emit("D")
 	Events.dialogue_triggered.emit("Dialogue test 1")
-	Events.dialogue_triggered.emit("Dialogue test 2")
+	Events.dialogue_triggered.emit("Dialogue test Dialogue test Dialogue test Dialogue test Dialogue test 2")
 	
+	
+	await Events.all_text_queues_finished
 	await get_tree().create_timer(10).timeout
-	if interact_not_pressed:
+	if not interact_pressed:
 		Events.hint_triggered.emit("[Press E to Interact]")
-	await Events.hint_queue_finished
 	Events.hint_triggered.emit("[Press X to Squint]")
 	
 
 
-func _on_hint_triggered(_input_text: String) -> void:
-	interact_not_pressed = false
-	Events.hint_triggered.disconnect(_on_hint_triggered)
+func _on_interact_pressed() -> void:
+	interact_pressed = true

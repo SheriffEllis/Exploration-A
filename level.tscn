@@ -32,8 +32,6 @@ size = Vector3(9.814652, 5.6108384, 10.553602)
 
 [node name="Level" type="Node3D" unique_id=851319929]
 script = ExtResource("1_0b4ue")
-skip_intro = true
-starting_location = Vector3(-27, 0, 50)
 
 [node name="Debug" type="Node" parent="." unique_id=233403933]
 script = ExtResource("2_2orkt")
