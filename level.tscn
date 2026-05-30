@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://70xt2qqamxtv" path="res://UI/game_ui/game_ui.tscn" id="4_f2txt"]
 [ext_resource type="PackedScene" uid="uid://c2kbweneknqnu" path="res://Outside/outside.tscn" id="5_f2txt"]
 [ext_resource type="PackedScene" uid="uid://c28hmcs10hs0h" path="res://Room/room.scn" id="5_n6hdu"]
-[ext_resource type="PackedScene" uid="uid://c2lj6pldaxfqg" path="res://Hallway/Hallway.tscn" id="7_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://c2lj6pldaxfqg" path="res://Hallway/Hallway0.tscn" id="7_n6hdu"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f2txt"]
 panorama = ExtResource("2_1ainy")
@@ -66,7 +66,7 @@ debug_color = Color(0.7917866, 0.4261897, 0.10511079, 0.41960785)
 
 [node name="Outside" parent="." unique_id=530888543 instance=ExtResource("5_f2txt")]
 
-[node name="Hallway" parent="." unique_id=84698099 instance=ExtResource("7_n6hdu")]
+[node name="Hallway0" parent="." unique_id=84698099 instance=ExtResource("7_n6hdu")]
 
 [connection signal="body_entered" from="Room/Area3DRoom" to="AmbienceManager" method="_on_area_3d_room_body_entered"]
 [connection signal="body_exited" from="Room/Area3DRoom" to="AmbienceManager" method="_on_area_3d_room_body_exited"]

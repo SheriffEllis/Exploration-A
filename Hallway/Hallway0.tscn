@@ -9,14 +9,12 @@
 [ext_resource type="Script" uid="uid://c60yy55vhib6r" path="res://Hallway/conditional_cancel_text.gd" id="6_x7opp"]
 [ext_resource type="Script" uid="uid://ce324142fvilf" path="res://Hallway/teleporter.gd" id="7_2n3w6"]
 [ext_resource type="Script" uid="uid://bhljyfdcv7r0o" path="res://Hallway/sight_toggle_independent.gd" id="7_yhgwi"]
-[ext_resource type="Material" uid="uid://b76kxf3vyxjn6" path="res://Materials/Room/Map.tres" id="8_pn2v6"]
 [ext_resource type="Script" uid="uid://bisimrq06joy2" path="res://Hallway/requisite.gd" id="8_tqbed"]
-[ext_resource type="Script" uid="uid://ovvty0sedwg6" path="res://Hallway/prank.gd" id="8_vio6c"]
 [ext_resource type="Script" uid="uid://co16jyicclb2m" path="res://Hallway/blocked_exit.gd" id="10_bqvc6"]
 [ext_resource type="Script" uid="uid://b4y7xjthpmsm5" path="res://Hallway/text_trigger.gd" id="10_kewxs"]
 [ext_resource type="Script" uid="uid://neaii8ets618" path="res://Hallway/quantum_object_manager_conserved.gd" id="11_2n3w6"]
-[ext_resource type="AudioStream" uid="uid://bj0k15hdynxxt" path="res://Audio/joke/YAY.mp3" id="11_ixdd0"]
 [ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="11_kewxs"]
+[ext_resource type="Script" uid="uid://ddyeatlvbd4bp" path="res://Hallway/remove_house.gd" id="13_j1cvd"]
 [ext_resource type="Script" uid="uid://7w2y4qnnvvao" path="res://Hallway/cancel_text.gd" id="14_30mew"]
 [ext_resource type="Texture2D" uid="uid://c8fquywbj3qlc" path="res://Materials/Textures/Decals/CameraWallDecal.png" id="14_h8nyl"]
 [ext_resource type="Texture2D" uid="uid://c8bp0llmq1xyn" path="res://Materials/Textures/Decals/ArbitrarySymbol2WallDecal.png" id="15_1nncp"]
@@ -24,6 +22,7 @@
 [ext_resource type="Script" uid="uid://shuv4g7yiess" path="res://Hallway/Tutorial3Part2.gd" id="16_ttb6f"]
 [ext_resource type="Script" uid="uid://mgctuhvrl4y3" path="res://Hallway/manual_door_setter.gd" id="18_3iu3o"]
 [ext_resource type="Script" uid="uid://b5nc7oadm448w" path="res://Hallway/seamless_teleport.gd" id="21_ustya"]
+[ext_resource type="Script" uid="uid://blngdvklqxsov" path="res://Hallway/load_new_level.gd" id="23_x7opp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rxwxc"]
 resource_name = "Room_Cube_008"
@@ -74,6 +73,9 @@ size = Vector3(2.39, 3.435, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pn2v6"]
 size = Vector3(97.94409, 35.638733, 60)
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ustya"]
+size = Vector3(11.616423, 8, 46.432903)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvby3"]
 size = Vector3(2, 4.315, 22)
 
@@ -111,12 +113,15 @@ size = Vector3(115.7, 27.67, 160)
 size = Vector3(119.199, 33, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h8nyl"]
-size = Vector3(2.972, 10.615904, 59)
+size = Vector3(2.972, 10.616, 90)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3tqic"]
+size = Vector3(84.32007, 5, 23.574913)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vio6c"]
-size = Vector3(7.1126223, 6.338, 20.817326)
+size = Vector3(1.858, 3.5507474, 45.238)
 
-[node name="Hallway" type="Node3D" unique_id=84698099]
+[node name="Hallway0" type="Node3D" unique_id=84698099]
 
 [node name="DoorframeHallway" type="MeshInstance3D" parent="." unique_id=1792749144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0410608, 2.745715)
@@ -265,6 +270,11 @@ shape = SubResource("BoxShape3D_pn2v6")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.460619, 1.252, 25.60984)
 operation = 2
 size = Vector3(1.5, 2.5, 55.091537)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="MainCSGCombiner3D/RHallway" unique_id=1817256069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9044437, 0, 3.935772)
+layers = 32
+occluder = SubResource("BoxOccluder3D_ustya")
 
 [node name="Maze1" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=912892779]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -56.282974, 1.252, 20.047215)
@@ -417,6 +427,9 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/LHallway2/EnableTutorial1" unique_id=2141985459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8416214, 0, 0)
 shape = SubResource("BoxShape3D_2n3w6")
+
+[node name="RemoveHouse" type="Node" parent="MainCSGCombiner3D/LHallway2/EnableTutorial1" unique_id=394610597]
+script = ExtResource("13_j1cvd")
 
 [node name="TutorialDoorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=888671542]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.785, 1.03, 49.893)
@@ -783,71 +796,44 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 167.
 operation = 2
 size = Vector3(1.5, 2.5, 21.751986)
 
-[node name="MegaRoomExitHallway2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=629990893]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 177.564, 1.252, 52.918045)
-operation = 2
-size = Vector3(1.5, 2.5, 21.597672)
-
-[node name="Label3D" type="Label3D" parent="MainCSGCombiner3D/MegaRoomExitHallway2" unique_id=1601303034]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -0.038764954, 0.08350134, 9.00444)
-shaded = true
-double_sided = false
-text = "Congrat! 
-you da weiner :)"
-
-[node name="Prank" type="Area3D" parent="MainCSGCombiner3D/MegaRoomExitHallway2/Label3D" unique_id=102256860 node_paths=PackedStringArray("prison_location", "sound_win")]
-collision_layer = 0
-script = ExtResource("8_vio6c")
-prison_location = NodePath("../../../../Prison/PrisonMarker3D")
-sound_win = NodePath("../../../../Prison/Winsound")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/MegaRoomExitHallway2/Label3D/Prank" unique_id=1794035389]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4438324, 0.2939453, 9.762474)
-shape = SubResource("BoxShape3D_vio6c")
-
-[node name="Prison" type="CSGCombiner3D" parent="." unique_id=863099658]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 221.04408, 1.3355013, 43)
-use_collision = true
+[node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D/MegaRoomExitHallway" unique_id=369083242]
 collision_mask = 0
+monitoring = false
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Prison" unique_id=788883050]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.21553, 2.4438329, 0)
-flip_faces = true
-size = Vector3(10, 5.8874207, 10)
-material = ExtResource("8_pn2v6")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/MegaRoomExitHallway/RegularReverb" unique_id=2012904327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.660034, 0, 2.0977173)
+shape = SubResource("BoxShape3D_3tqic")
 
-[node name="PrisonMarker3D" type="Marker3D" parent="Prison" unique_id=1180979008]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.215527, 0.7562834, 2.9128113)
+[node name="MegaRoomExitHallway2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=629990893]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 177.564, 1.252, 82.17575)
+operation = 2
+size = Vector3(1.5, 2.5, 80.11307)
 
-[node name="Label3D" type="Label3D" parent="Prison" unique_id=1520038009]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.21553, 1.2050704, -4.4965363)
-pixel_size = 0.015
-shaded = true
-double_sided = false
-text = "Congrat! you da weiner :)"
+[node name="LoadLevel2" type="Area3D" parent="MainCSGCombiner3D/MegaRoomExitHallway2" unique_id=102256860]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -0.038772583, 0.08350134, -14.874168)
+collision_layer = 0
+monitorable = false
+script = ExtResource("23_x7opp")
+new_level = "uid://bnsblodj1ihor"
 
-[node name="Label3D2" type="Label3D" parent="Prison" unique_id=1104046565]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.21553, 0.1502124, -4.4965363)
-shaded = true
-double_sided = false
-text = "This is where I think I'll put level 2 soon :v"
-
-[node name="Winsound" type="AudioStreamPlayer3D" parent="Prison" unique_id=767192954]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.21553, 0, 0)
-stream = ExtResource("11_ixdd0")
-volume_db = -20.0
-max_db = -10.0
-bus = &"Sounds"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/MegaRoomExitHallway2/LoadLevel2" unique_id=1794035389]
+shape = SubResource("BoxShape3D_vio6c")
+debug_color = Color(0.9750543, 0.15987626, 0, 0.41960785)
 
 [connection signal="body_entered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" method="_on_body_entered"]
 [connection signal="body_exited" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" method="_on_body_exited"]
+[connection signal="triggered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger/TextTrigger" method="_on_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/RDoorway" method="_on_flicker_trigger_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/RRequisite" method="_on_flicker_trigger_triggered"]
-[connection signal="triggered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger/TextTrigger" method="_on_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/EntryHallway/CancelText" to="MainCSGCombiner3D/EntryHallway/CancelText/TextTrigger" method="_on_triggered"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Maze12/MazeExitTeleporter" to="MainCSGCombiner3D/Maze12/MazeExitTeleporter" method="_on_body_entered"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/LSightToggleIndepedent" to="MainCSGCombiner3D/LSightToggleIndepedent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/LHallway2/EnableTutorial1" to="MainCSGCombiner3D/BlockedExit" method="_on_body_entered"]
+[connection signal="body_entered" from="MainCSGCombiner3D/LHallway2/EnableTutorial1" to="MainCSGCombiner3D/LHallway2/EnableTutorial1/RemoveHouse" method="_on_enable_tutorial_1_body_entered"]
 [connection signal="body_entered" from="MainCSGCombiner3D/LHallway2/EnableTutorial1" to="MainCSGCombiner3D/RequisiteTutorial" method="_on_body_entered"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/TutorialDooryway2SightToggleIndependent" to="MainCSGCombiner3D/TutorialDooryway2SightToggleIndependent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" method="_on_body_entered"]
@@ -868,4 +854,4 @@ bus = &"Sounds"
 [connection signal="body_exited" from="MainCSGCombiner3D/Tutorial3Room/PictureReminder" to="MainCSGCombiner3D/Tutorial3Room/PictureReminder" method="_on_body_exited"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial3Dooryway2SightToggleIndependent" to="MainCSGCombiner3D/Tutorial3Dooryway2SightToggleIndependent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/RunReminder" to="MainCSGCombiner3D/RunReminder" method="_on_body_entered"]
-[connection signal="body_entered" from="MainCSGCombiner3D/MegaRoomExitHallway2/Label3D/Prank" to="MainCSGCombiner3D/MegaRoomExitHallway2/Label3D/Prank" method="_on_body_entered"]
+[connection signal="body_entered" from="MainCSGCombiner3D/MegaRoomExitHallway2/LoadLevel2" to="MainCSGCombiner3D/MegaRoomExitHallway2/LoadLevel2" method="_on_body_entered"]

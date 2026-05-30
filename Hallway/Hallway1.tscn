@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://bnsblodj1ihor"]
+
+[ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_vtref"]
+[ext_resource type="Script" uid="uid://7w2y4qnnvvao" path="res://Hallway/cancel_text.gd" id="2_4w0u4"]
+[ext_resource type="Script" uid="uid://b4y7xjthpmsm5" path="res://Hallway/text_trigger.gd" id="2_gkpeu"]
+[ext_resource type="Script" uid="uid://ce324142fvilf" path="res://Hallway/teleporter.gd" id="4_uk3ex"]
+[ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="5_2cof6"]
+[ext_resource type="AudioStream" uid="uid://bj0k15hdynxxt" path="res://Audio/joke/YAY.mp3" id="6_umqls"]
+[ext_resource type="Script" uid="uid://crle76yjsibdm" path="res://Hallway/yay.gd" id="6_y56pv"]
+[ext_resource type="Texture2D" uid="uid://gkfibjsa4dys" path="res://Materials/Textures/Decals/TreeDecal.png" id="8_f63gx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
+size = Vector3(5, 5, 29.831879)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gkpeu"]
+size = Vector3(20, 1, 45.487)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iatft"]
+size = Vector3(120, 97.07069, 45.486675)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4w0u4"]
+size = Vector3(3.685, 4.68, 6.0682225)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y56pv"]
+size = Vector3(3.685, 4.68, 6.0682225)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kllh2"]
+size = Vector3(50, 50, 43.158)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2cof6"]
+size = Vector3(11, 7.859, 11.38)
+
+[node name="Hallway" type="Node3D" unique_id=84698099]
+
+[node name="MainCSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=399722429]
+layers = 4
+material_override = ExtResource("1_vtref")
+use_collision = true
+collision_layer = 4
+
+[node name="MainShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1166061555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26288223, 73.94933)
+size = Vector3(100, 126.85501, 159.02553)
+
+[node name="EntryHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2080629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 10.355156)
+operation = 2
+size = Vector3(1.5, 2.5, 29.289688)
+
+[node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D/EntryHallway" unique_id=267813069]
+collision_mask = 0
+monitoring = false
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/EntryHallway/RegularReverb" unique_id=431179048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.030838)
+shape = SubResource("BoxShape3D_f63gx")
+
+[node name="RidgeCutout" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1909282719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39.768475, 46.956566)
+operation = 2
+size = Vector3(120, 97.07069, 45.486675)
+
+[node name="CancelText" type="Area3D" parent="MainCSGCombiner3D/RidgeCutout" unique_id=1451180905]
+script = ExtResource("2_4w0u4")
+oneshot = false
+metadata/_custom_type_script = "uid://7w2y4qnnvvao"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RidgeCutout/CancelText" unique_id=1707315603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35.741653, 0)
+shape = SubResource("BoxShape3D_gkpeu")
+debug_color = Color(0.9468996, 0.21825242, 0.22759676, 0.41960785)
+
+[node name="FUCK" type="Area3D" parent="MainCSGCombiner3D/RidgeCutout/CancelText" unique_id=1945324823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35.741653, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("2_gkpeu")
+dialogue_text_queue = Array[String](["FUCK"])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/RidgeCutout/CancelText" unique_id=767582490 node_paths=PackedStringArray("teleport_location")]
+monitoring = false
+monitorable = false
+script = ExtResource("4_uk3ex")
+teleport_location = NodePath("../../../Respawn")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="NotYet" type="Area3D" parent="MainCSGCombiner3D/RidgeCutout/CancelText/Teleporter" unique_id=870889388]
+monitoring = false
+monitorable = false
+script = ExtResource("2_gkpeu")
+hint_text_queue = Array[String](["[Not like that.]"])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="ExtraReverb" type="Area3D" parent="MainCSGCombiner3D/RidgeCutout" unique_id=462882832]
+collision_mask = 0
+monitoring = false
+reverb_bus_enabled = true
+reverb_bus_name = &"LargeRooms"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RidgeCutout/ExtraReverb" unique_id=1590795051]
+shape = SubResource("BoxShape3D_iatft")
+debug_color = Color(0.38525268, 0.20530301, 0.4974879, 0.41960785)
+
+[node name="Respawn" type="Marker3D" parent="MainCSGCombiner3D" unique_id=1191912669]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4.83366, 26.24157)
+
+[node name="Bridge" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=724815617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46797073, 33.893394)
+size = Vector3(2.98, 0.94, 22.50624)
+
+[node name="RunningJumpComment" type="Area3D" parent="MainCSGCombiner3D/Bridge" unique_id=275218313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2238212, 9.384167)
+script = ExtResource("2_gkpeu")
+dialogue_text_queue = Array[String](["...", "I'll need a running start."])
+hint_text_queue = Array[String](["[Press Space while Running to Leap]"])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Bridge/RunningJumpComment" unique_id=1539397808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1441116)
+shape = SubResource("BoxShape3D_4w0u4")
+debug_color = Color(0.729224, 0.47361052, 0.054086044, 0.41960785)
+
+[node name="CancelText" type="Area3D" parent="MainCSGCombiner3D/Bridge" unique_id=1045766364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2238212, 18.123013)
+collision_layer = 0
+monitorable = false
+script = ExtResource("2_4w0u4")
+metadata/_custom_type_script = "uid://7w2y4qnnvvao"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Bridge/CancelText" unique_id=798233512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1441116)
+shape = SubResource("BoxShape3D_y56pv")
+debug_color = Color(0.38681036, 0.6090791, 0.1996116, 0.41960785)
+
+[node name="Bridge2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=321427041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46797073, 59.154606)
+size = Vector3(2.98, 0.94, 22.671577)
+
+[node name="RidgeExitHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1529798032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 83.3309)
+operation = 2
+size = Vector3(1.5, 2.5, 28.47248)
+
+[node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D/RidgeExitHallway" unique_id=2013338905]
+collision_mask = 0
+monitoring = false
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RidgeExitHallway/RegularReverb" unique_id=1727768071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8650055)
+shape = SubResource("BoxShape3D_kllh2")
+
+[node name="RidgeExitDoor" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1309369034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03, 97.65459)
+layers = 4
+operation = 2
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/RidgeExitDoor" unique_id=1108006220 instance=ExtResource("5_2cof6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+
+[node name="Room" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1482194906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9313211, 103.52523)
+operation = 2
+size = Vector3(11, 7.859, 11.38)
+
+[node name="YAY" type="Area3D" parent="MainCSGCombiner3D/Room" unique_id=1861865673]
+collision_layer = 0
+monitorable = false
+script = ExtResource("6_y56pv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Room/YAY" unique_id=323449532]
+shape = SubResource("BoxShape3D_2cof6")
+
+[node name="YAYAudio" type="AudioStreamPlayer3D" parent="MainCSGCombiner3D/Room/YAY" unique_id=1725821852]
+stream = ExtResource("6_umqls")
+volume_db = -15.0
+max_db = -5.0
+bus = &"Sounds"
+
+[node name="Label3D" type="Label3D" parent="MainCSGCombiner3D/Room" unique_id=20250012]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -2.4121375, 3.3582153)
+pixel_size = 0.02
+shaded = true
+double_sided = false
+texture_filter = 2
+text = "Congrat
+You da weiner :D"
+
+[node name="Label3D2" type="Label3D" parent="MainCSGCombiner3D/Room" unique_id=1230105107]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -3.4020119, 3.3582153)
+shaded = true
+double_sided = false
+texture_filter = 2
+text = "More Soon"
+
+[node name="Sprite3D" type="Sprite3D" parent="MainCSGCombiner3D/Room" unique_id=98548761]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.1103563, 4.37574)
+layers = 4
+pixel_size = 0.05
+shaded = true
+double_sided = false
+texture_filter = 2
+texture = ExtResource("8_f63gx")
+
+[connection signal="triggered" from="MainCSGCombiner3D/RidgeCutout/CancelText" to="MainCSGCombiner3D/RidgeCutout/CancelText/FUCK" method="_on_triggered"]
+[connection signal="triggered" from="MainCSGCombiner3D/RidgeCutout/CancelText" to="MainCSGCombiner3D/RidgeCutout/CancelText/Teleporter" method="_on_trigger"]
+[connection signal="teleported" from="MainCSGCombiner3D/RidgeCutout/CancelText/Teleporter" to="MainCSGCombiner3D/RidgeCutout/CancelText/Teleporter/NotYet" method="_on_triggered"]
+[connection signal="body_entered" from="MainCSGCombiner3D/Room/YAY" to="MainCSGCombiner3D/Room/YAY" method="_on_body_entered"]

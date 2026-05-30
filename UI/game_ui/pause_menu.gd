@@ -12,7 +12,7 @@ var is_paused: bool = false: set = set_paused
 
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_APPLICATION_FOCUS_OUT and not is_paused:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT and (not is_paused) and GameGlobals.player.camera.current:
 		pause()
 
 

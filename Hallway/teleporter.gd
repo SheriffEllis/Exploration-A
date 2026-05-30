@@ -1,4 +1,4 @@
-extends Area3D
+class_name Teleporter extends Area3D
 
 @export var teleport_location : Marker3D
 signal teleported
@@ -8,6 +8,8 @@ func _ready() -> void:
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
 
+func _on_trigger() -> void:
+	_on_body_entered(null)
 
 func _on_body_entered(_body: Node3D) -> void:
 	Events.flicker_triggered.emit()

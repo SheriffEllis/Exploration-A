@@ -2,6 +2,7 @@ extends Node
 @warning_ignore_start("unused_signal")
 
 signal level_ready
+signal level_loaded
 signal paused
 signal resumed
 
