@@ -34,18 +34,16 @@ func _ready() -> void:
 	# TODO: title screen
 	# TODO: intro argument cutscene
 	
-	await get_tree().create_timer(1).timeout
-	Events.dialogue_triggered.emit("D")
-	Events.dialogue_triggered.emit("Dialogue test 1")
-	Events.dialogue_triggered.emit("Dialogue test Dialogue test Dialogue test Dialogue test Dialogue test 2")
-	
-	
+	await get_tree().create_timer(2).timeout
+	Events.dialogue_triggered.emit("Call me impetuous or just curious,")
+	Events.dialogue_triggered.emit("But a little look around isn't going to hurt.")
+
 	await Events.all_text_queues_finished
+	Events.hint_triggered.emit("[Press X to Squint]")
 	await get_tree().create_timer(10).timeout
 	if not interact_pressed:
+		Events.dialogue_triggered.emit("I should gather my equipment from the table first.")
 		Events.hint_triggered.emit("[Press E to Interact]")
-	Events.hint_triggered.emit("[Press X to Squint]")
-	
 
 
 func _on_interact_pressed() -> void:

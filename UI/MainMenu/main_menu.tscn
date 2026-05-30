@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://h264xme84kii"]
+
+[ext_resource type="Texture2D" uid="uid://ciqikbkt6eh1u" path="res://Materials/Textures/Ash.png" id="1_jld46"]
+[ext_resource type="Script" uid="uid://dn3d3ri3c7nti" path="res://UI/MainMenu/main_menu.gd" id="1_t17p2"]
+
+[sub_resource type="SystemFont" id="SystemFont_t17p2"]
+font_names = PackedStringArray("Courier New")
+
+[sub_resource type="Theme" id="Theme_3jj5y"]
+Button/font_sizes/font_size = 50
+Button/fonts/font = SubResource("SystemFont_t17p2")
+
+[sub_resource type="SystemFont" id="SystemFont_3jj5y"]
+font_names = PackedStringArray("Courier New")
+
+[sub_resource type="LabelSettings" id="LabelSettings_h8rmy"]
+font = SubResource("SystemFont_3jj5y")
+font_size = 80
+font_color = Color(0.89, 0.84846663, 0.39159998, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control" unique_id=1346871569]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t17p2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1751823053]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("1_jld46")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1212658006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.01, 0.01, 0.01, 0.6862745)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=969486771]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 61.0
+offset_right = 150.0
+offset_bottom = 209.00012
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Begin" type="Button" parent="ColorRect/VBoxContainer" unique_id=643733004]
+layout_mode = 2
+theme = SubResource("Theme_3jj5y")
+text = "Begin"
+
+[node name="Exit" type="Button" parent="ColorRect/VBoxContainer" unique_id=1744459622]
+layout_mode = 2
+theme = SubResource("Theme_3jj5y")
+text = "Exit"
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1584391833]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -408.0
+offset_top = 183.0
+offset_right = 408.0
+offset_bottom = 275.0
+grow_horizontal = 2
+text = "[Exploration - A]"
+label_settings = SubResource("LabelSettings_h8rmy")
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

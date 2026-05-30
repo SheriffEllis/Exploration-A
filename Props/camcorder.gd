@@ -6,6 +6,12 @@ extends MeshInstance3D
 
 @export var cam_up : Marker3D
 @export var cam_down : Marker3D
+
+@export var texture_rect_pause_play : TextureRect 
+@export var sound_pause : AudioStreamPlayer3D
+@export var sound_play : AudioStreamPlayer3D
+var pause_texture := preload("uid://drqhmsg2svrmo")
+var play_texture := preload("uid://oy6jvw6xba2p")
 var is_up := true
 
 func _ready() -> void:
@@ -33,7 +39,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("capture_image"):
 		if viewport.render_target_update_mode == SubViewport.UPDATE_WHEN_VISIBLE:
 			viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+			sound_pause.play()
+			texture_rect_pause_play.texture = pause_texture
 			Events.image_captured.emit()
 		else:
 			viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
+			sound_play.play()
+			texture_rect_pause_play.texture = play_texture
 			Events.image_deleted.emit()

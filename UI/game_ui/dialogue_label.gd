@@ -16,12 +16,13 @@ func _on_dialogue_triggered(input_text: String) -> void:
 	if is_outputting: return
 	is_outputting = true
 	GameGlobals.GAME_UI.hint_label.visible = false
-	GameGlobals.GAME_UI.hint_label.process_mode = Node.PROCESS_MODE_DISABLED
+	#GameGlobals.GAME_UI.hint_label.process_mode = Node.PROCESS_MODE_DISABLED
 	while not text_queue.is_empty():
 		await display_text(text_queue.pop_front())
 	is_outputting = false
+	queue_cancel = false
 	GameGlobals.GAME_UI.hint_label.visible = true
-	GameGlobals.GAME_UI.hint_label.process_mode = Node.PROCESS_MODE_PAUSABLE
+	#GameGlobals.GAME_UI.hint_label.process_mode = Node.PROCESS_MODE_PAUSABLE
 	Events.dialogue_queue_finished.emit()
 
 func _on_dialogue_queue_cancelled() -> void:
@@ -45,10 +46,11 @@ func display_text(input_text: String) -> void:
 		text = ""
 		queue_cancel = false
 		return
-	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_pause_mode(Tween.TWEEN_PAUSE_STOP)
 	tween.tween_property(self, "modulate", Color(1,1,1,0), 1.0 * get_mouthfull_factor())
 	await tween.finished
 	text = ""
+	queue_cancel = false
 	modulate = Color(1,1,1,1)
 
 func get_mouthfull_factor() -> float:

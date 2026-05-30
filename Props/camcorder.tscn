@@ -3,6 +3,8 @@
 [ext_resource type="Material" uid="uid://o437jwkrpvs1" path="res://Player/held_camcorder.tres" id="1_7ghm1"]
 [ext_resource type="Script" uid="uid://dh6bbhxsfifwf" path="res://Props/camcorder.gd" id="2_7ghm1"]
 [ext_resource type="Material" uid="uid://c0pt4jhh1ksgx" path="res://Player/held_camcorder_viewscreen.tres" id="3_4stmc"]
+[ext_resource type="Texture2D" uid="uid://oy6jvw6xba2p" path="res://Materials/Textures/Play.png" id="4_qgo5d"]
+[ext_resource type="AudioStream" uid="uid://cswhxvsngt3uk" path="res://Audio/clock-tick.ogg" id="5_qxps1"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1krkl"]
 _surfaces = [{
@@ -109,7 +111,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3rlcq")
 
-[node name="Camcorder" type="MeshInstance3D" unique_id=851829497 node_paths=PackedStringArray("cam", "screen", "viewport")]
+[node name="Camcorder" type="MeshInstance3D" unique_id=851829497 node_paths=PackedStringArray("cam", "screen", "viewport", "texture_rect_pause_play", "sound_pause", "sound_play")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 layers = 8
 cast_shadow = 0
@@ -118,6 +120,9 @@ script = ExtResource("2_7ghm1")
 cam = NodePath("Viewscreen/SubViewport/Camera3D")
 screen = NodePath("Viewscreen")
 viewport = NodePath("Viewscreen/SubViewport")
+texture_rect_pause_play = NodePath("Viewscreen/SubViewport/PausePlay")
+sound_pause = NodePath("PauseAudio")
+sound_play = NodePath("PlayAudio")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=1567045438]
 transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 0.9999999, 0, 8.742277e-08, 0, -0.9999999, 0.13313529, 0.024392994, -0.11592542)
@@ -135,3 +140,27 @@ size = Vector2i(200, 200)
 [node name="Camera3D" type="Camera3D" parent="Viewscreen/SubViewport" unique_id=497882985]
 transform = Transform3D(-0.7999999, 0, -6.993822e-08, 0, 0.7999999, 0, 6.993822e-08, 0, -0.7999999, 0.10650823, 0.019514395, -0.092740335)
 cull_mask = 1048531
+
+[node name="PausePlay" type="TextureRect" parent="Viewscreen/SubViewport" unique_id=499714344]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.595
+offset_top = -78.03
+offset_right = 44.404953
+offset_bottom = 49.969955
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_qgo5d")
+
+[node name="PauseAudio" type="AudioStreamPlayer3D" parent="." unique_id=2012735125]
+stream = ExtResource("5_qxps1")
+pitch_scale = 2.0
+
+[node name="PlayAudio" type="AudioStreamPlayer3D" parent="." unique_id=333945612]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+stream = ExtResource("5_qxps1")
+pitch_scale = 4.0

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Exploration A"
 config/tags=PackedStringArray("project")
-run/main_scene="uid://botkc1uivwekw"
+run/main_scene="uid://h264xme84kii"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://djh88c8yfb4uw"
 

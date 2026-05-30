@@ -34,7 +34,7 @@ func _on_picture_reminder_requirement_screen_exited() -> void:
 
 func validate() -> void:
 	if is_player_inside and is_player_looking and is_flashlight_on:
-		Events.dialogue_triggered.emit("Looks like I need to keep watch of this one.")
+		Events.dialogue_triggered.emit("I need to keep this door visible somehow.")
 		Events.hint_triggered.emit("[Camera can be raised/lowered with RMB]")
 		Events.hint_triggered.emit("[Images of objects can be captured with LMB]")
 		queue_free()
