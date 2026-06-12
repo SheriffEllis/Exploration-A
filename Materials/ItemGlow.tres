@@ -1,5 +1,22 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://1oujwkm3smcs"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://1oujwkm3smcs"]
+
+[sub_resource type="Shader" id="Shader_03heq"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
+
+uniform vec4 albedo : source_color;
+uniform float flash_frequency = 1.0;
+uniform float flash_intensity = 0.5;
+
+void fragment() {
+	ALBEDO = albedo.rgb;
+	ALPHA = sin(TIME*flash_frequency)*sin(TIME*flash_frequency)*flash_intensity;
+}
+"
 
 [resource]
-shading_mode = 0
-albedo_color = Color(0.957524, 0.910938, 0.49576247, 1)
+render_priority = 0
+shader = SubResource("Shader_03heq")
+shader_parameter/albedo = Color(1, 0.9166666, 0, 1)
+shader_parameter/flash_frequency = 1.0
+shader_parameter/flash_intensity = 0.01

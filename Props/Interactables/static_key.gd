@@ -21,6 +21,7 @@ func _on_item_collected() -> void:
 		if not visible: return
 		light.visible = true
 		Events.hint_triggered.emit("[Collect the Key from the Foyer]")
+		$GlowHandler.start_glowing()
 
 func _on_static_interactable_interacted(_player: CharacterBody3D) -> void:
 	Events.key_collected.emit(key_id)
@@ -28,3 +29,4 @@ func _on_static_interactable_interacted(_player: CharacterBody3D) -> void:
 	visible = false
 	$StaticInteractable.toggle(false)
 	$PickupAudio.play()
+	$GlowHandler.stop_glowing()

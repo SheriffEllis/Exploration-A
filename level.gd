@@ -48,21 +48,22 @@ func _ready() -> void:
 	Events.camcorder_collected.connect(_on_interact_pressed)
 	Events.flashlight_collected.connect(_on_interact_pressed)
 	
-	# TODO: title screen
 	# TODO: intro argument cutscene
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2, false).timeout
 	Events.dialogue_triggered.emit("Call me impetuous or just curious,")
 	Events.dialogue_triggered.emit("But a little look around that hallway isn't going to hurt.")
-
-	await Events.all_text_queues_finished
 	Events.hint_triggered.emit("[Press X to Squint]")
-	await get_tree().create_timer(10).timeout
+	Events.hint_triggered.emit("[Press ESC to Pause and reread hints]")
+	await Events.all_text_queues_finished
+	
+	await get_tree().create_timer(10, false).timeout
 	if not interact_pressed:
 		Events.dialogue_triggered.emit("I should gather my equipment from the table first.")
-	await get_tree().create_timer(4).timeout
-	if not interact_pressed:
-		Events.hint_triggered.emit("[Press E to Interact]")
+		await get_tree().create_timer(4, false).timeout
+		if not interact_pressed:
+			Events.hint_triggered.emit("[Press E to Interact]")
+			Events.interaction_prompted.emit()
 
 
 func _on_interact_pressed() -> void:

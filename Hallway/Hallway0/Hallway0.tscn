@@ -14,12 +14,12 @@
 [ext_resource type="Script" uid="uid://b4y7xjthpmsm5" path="res://Hallway/text_trigger.gd" id="10_kewxs"]
 [ext_resource type="Script" uid="uid://neaii8ets618" path="res://Hallway/quantum_object_manager_conserved.gd" id="11_2n3w6"]
 [ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="11_kewxs"]
-[ext_resource type="Script" uid="uid://ddyeatlvbd4bp" path="res://Hallway/remove_house.gd" id="13_j1cvd"]
+[ext_resource type="Script" uid="uid://ddyeatlvbd4bp" path="res://Hallway/Hallway0/remove_house.gd" id="13_j1cvd"]
 [ext_resource type="Script" uid="uid://7w2y4qnnvvao" path="res://Hallway/cancel_text.gd" id="14_30mew"]
 [ext_resource type="Texture2D" uid="uid://c8fquywbj3qlc" path="res://Materials/Textures/Decals/CameraWallDecal.png" id="14_h8nyl"]
 [ext_resource type="Texture2D" uid="uid://c8bp0llmq1xyn" path="res://Materials/Textures/Decals/ArbitrarySymbol2WallDecal.png" id="15_1nncp"]
-[ext_resource type="Script" uid="uid://x2whk0b5i1hv" path="res://Hallway/Tutorial3.gd" id="15_5rp76"]
-[ext_resource type="Script" uid="uid://shuv4g7yiess" path="res://Hallway/Tutorial3Part2.gd" id="16_ttb6f"]
+[ext_resource type="Script" uid="uid://x2whk0b5i1hv" path="res://Hallway/Hallway0/Tutorial3.gd" id="15_5rp76"]
+[ext_resource type="Script" uid="uid://shuv4g7yiess" path="res://Hallway/Hallway0/Tutorial3Part2.gd" id="16_ttb6f"]
 [ext_resource type="Script" uid="uid://mgctuhvrl4y3" path="res://Hallway/manual_door_setter.gd" id="18_3iu3o"]
 [ext_resource type="Script" uid="uid://b5nc7oadm448w" path="res://Hallway/seamless_teleport.gd" id="21_ustya"]
 [ext_resource type="Script" uid="uid://blngdvklqxsov" path="res://Hallway/load_new_level.gd" id="23_x7opp"]
@@ -75,6 +75,9 @@ size = Vector3(97.94409, 35.638733, 60)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ustya"]
 size = Vector3(11.616423, 8, 46.432903)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_3tqic"]
+size = Vector3(11.616, 8, 64.313)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvby3"]
 size = Vector3(2, 4.315, 22)
@@ -276,6 +279,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9044437, 0, 3.935772)
 layers = 32
 occluder = SubResource("BoxOccluder3D_ustya")
 
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="MainCSGCombiner3D/RHallway" unique_id=667133340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.311571, 0, 21.605604)
+layers = 32
+occluder = SubResource("BoxOccluder3D_3tqic")
+
 [node name="Maze1" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=912892779]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -56.282974, 1.252, 20.047215)
 operation = 2
@@ -423,13 +431,11 @@ size = Vector3(5.7615967, 2.5, 1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5788841, 0, 0)
 collision_layer = 0
 monitorable = false
+script = ExtResource("13_j1cvd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/LHallway2/EnableTutorial1" unique_id=2141985459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8416214, 0, 0)
 shape = SubResource("BoxShape3D_2n3w6")
-
-[node name="RemoveHouse" type="Node" parent="MainCSGCombiner3D/LHallway2/EnableTutorial1" unique_id=394610597]
-script = ExtResource("13_j1cvd")
 
 [node name="TutorialDoorway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=888671542]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.785, 1.03, 49.893)
@@ -833,7 +839,7 @@ debug_color = Color(0.9750543, 0.15987626, 0, 0.41960785)
 [connection signal="body_entered" from="MainCSGCombiner3D/Maze12/MazeExitTeleporter" to="MainCSGCombiner3D/Maze12/MazeExitTeleporter" method="_on_body_entered"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/LSightToggleIndepedent" to="MainCSGCombiner3D/LSightToggleIndepedent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/LHallway2/EnableTutorial1" to="MainCSGCombiner3D/BlockedExit" method="_on_body_entered"]
-[connection signal="body_entered" from="MainCSGCombiner3D/LHallway2/EnableTutorial1" to="MainCSGCombiner3D/LHallway2/EnableTutorial1/RemoveHouse" method="_on_enable_tutorial_1_body_entered"]
+[connection signal="body_entered" from="MainCSGCombiner3D/LHallway2/EnableTutorial1" to="MainCSGCombiner3D/LHallway2/EnableTutorial1" method="_on_body_entered"]
 [connection signal="body_entered" from="MainCSGCombiner3D/LHallway2/EnableTutorial1" to="MainCSGCombiner3D/RequisiteTutorial" method="_on_body_entered"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/TutorialDooryway2SightToggleIndependent" to="MainCSGCombiner3D/TutorialDooryway2SightToggleIndependent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" method="_on_body_entered"]

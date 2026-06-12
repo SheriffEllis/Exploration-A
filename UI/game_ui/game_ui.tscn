@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brs3t66vjxqat" path="res://UI/game_ui/game_ui.gd" id="1_kfjql"]
 [ext_resource type="Texture2D" uid="uid://bhud2wuapwage" path="res://Materials/Textures/crosshair-spritesheet.png" id="2_1cbb3"]
+[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new_white.tres" id="3_ib26x"]
 [ext_resource type="Script" uid="uid://d0hbpoos6gwpw" path="res://UI/game_ui/hint_label.gd" id="3_j42il"]
 [ext_resource type="PackedScene" uid="uid://cusg143xqi1aw" path="res://UI/game_ui/pause_menu.tscn" id="4_j42il"]
 [ext_resource type="AudioStream" uid="uid://cgo6wsmpsnx0h" path="res://Audio/typewriter1.ogg" id="4_qs256"]
@@ -11,12 +12,8 @@
 [ext_resource type="Script" uid="uid://c8vv1btmxxlcx" path="res://UI/game_ui/dialogue_label.gd" id="8_oibdq"]
 [ext_resource type="AudioStream" uid="uid://l4f4qltl1afh" path="res://Audio/cam_roll.ogg" id="9_3n8fu"]
 
-[sub_resource type="SystemFont" id="SystemFont_1cbb3"]
-font_names = PackedStringArray("Courier New")
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_j42il"]
-font = SubResource("SystemFont_1cbb3")
+font = ExtResource("3_ib26x")
 font_size = 47
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
@@ -30,7 +27,7 @@ stream_2/stream = ExtResource("6_3n8fu")
 stream_3/stream = ExtResource("7_ib26x")
 
 [sub_resource type="LabelSettings" id="LabelSettings_1cbb3"]
-font = SubResource("SystemFont_1cbb3")
+font = ExtResource("3_ib26x")
 font_size = 47
 font_color = Color(0.9999998, 0.9349215, 0.34664702, 1)
 outline_size = 8
@@ -125,9 +122,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -500.0
+offset_left = -554.1225
 offset_top = -150.0
-offset_right = 500.0
+offset_right = 554.1225
 grow_horizontal = 2
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_j42il")
@@ -150,9 +147,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -500.0
+offset_left = -554.1225
 offset_top = -150.0
-offset_right = 500.0
+offset_right = 554.12256
 grow_horizontal = 2
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_1cbb3")

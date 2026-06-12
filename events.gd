@@ -15,6 +15,7 @@ signal image_captured
 signal image_deleted
 
 #region
+signal interaction_prompted
 signal camcorder_collected
 signal flashlight_collected
 signal key_collected(key_id: int)

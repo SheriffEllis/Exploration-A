@@ -1,5 +1,7 @@
 extends MeshInstance3D
 
+func _ready() -> void:
+	Events.interaction_prompted.connect($GlowHandler.start_glowing)
 
 func _on_static_interactable_interacted(_player: CharacterBody3D) -> void:
 	Events.flashlight_collected.emit()
@@ -7,3 +9,4 @@ func _on_static_interactable_interacted(_player: CharacterBody3D) -> void:
 	visible = false
 	$StaticInteractable.toggle(false)
 	$PickupAudio.play()
+	$GlowHandler.stop_glowing()
