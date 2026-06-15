@@ -641,7 +641,7 @@ transform = Transform3D(1.9106855e-15, 1, -4.371139e-08, 4.371139e-08, -4.371139
 size = Vector3(1, 0.08, 1)
 texture_albedo = ExtResource("17_txlmj")
 modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
-albedo_mix = 0.8
+albedo_mix = 0.15
 
 [node name="PictureReminderRequirement" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/Tutorial3Room/CamDecal" unique_id=1016541400]
 layers = 32
@@ -652,7 +652,7 @@ transform = Transform3D(-8.742278e-08, -1, 4.3711385e-08, 4.371139e-08, -4.37113
 size = Vector3(1, 0.08, 1)
 texture_albedo = ExtResource("18_vm0im")
 modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
-albedo_mix = 0.8
+albedo_mix = 0.15
 
 [node name="EntangleReminderRequirement" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/Tutorial3Room/Arb2Decal" unique_id=33963132 node_paths=PackedStringArray("prerequisite", "entangled_door")]
 layers = 32
