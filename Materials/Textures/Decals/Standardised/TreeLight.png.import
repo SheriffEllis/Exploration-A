@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2bjtjuoaon02"
-path="res://.godot/imported/EyeTravellingDecal2.png-9d30e7f0eb06cf6f7f9444beb082492c.ctex"
+uid="uid://2qobt5rce1hq"
+path="res://.godot/imported/TreeLight.png-9924b61e7511423163900875ea8697a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/Decals/EyeTravellingDecal2.png"
-dest_files=["res://.godot/imported/EyeTravellingDecal2.png-9d30e7f0eb06cf6f7f9444beb082492c.ctex"]
+source_file="res://Materials/Textures/Decals/Standardised/TreeLight.png"
+dest_files=["res://.godot/imported/TreeLight.png-9924b61e7511423163900875ea8697a6.ctex"]
 
 [params]
 

@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c2c2cvlv6purr" path="res://Audio/door-open.ogg" id="3_kk4io"]
 [ext_resource type="AudioStream" uid="uid://dvff4ghdyrper" path="res://Audio/door-close.ogg" id="4_6pewh"]
 [ext_resource type="Texture2D" uid="uid://dl5m3t3fspjpf" path="res://Materials/Textures/Decals/EyeDecal.png" id="4_bj7tk"]
-[ext_resource type="Texture2D" uid="uid://dv6r1euk1txh5" path="res://Materials/Textures/Decals/EntanglementDecal.png" id="5_bj7tk"]
+[ext_resource type="Texture2D" uid="uid://dv6r1euk1txh5" path="res://Materials/Textures/Decals/Unused/EntanglementDecal.png" id="5_bj7tk"]
 [ext_resource type="AudioStream" uid="uid://cbb0efmtd52ou" path="res://Audio/door-locked1.ogg" id="6_dp7k7"]
 [ext_resource type="AudioStream" uid="uid://pkrpowts12y7" path="res://Audio/door-locked2.ogg" id="7_n80wk"]
 [ext_resource type="AudioStream" uid="uid://diudixbegb2sr" path="res://Audio/door-locked3.ogg" id="8_bj7tk"]

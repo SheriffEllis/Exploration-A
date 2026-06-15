@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csl1obkxgemp2"
-path="res://.godot/imported/EntanglementDecal1to1n1inv.png-288f20204d7a4ab25f4f487404ad84fd.ctex"
+uid="uid://cdpb5gl87ofyk"
+path="res://.godot/imported/EyeRecessiveLight.png-53ac68c34eeabc71d9ebb7423a94a240.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/Decals/EntanglementDecal1to1n1inv.png"
-dest_files=["res://.godot/imported/EntanglementDecal1to1n1inv.png-288f20204d7a4ab25f4f487404ad84fd.ctex"]
+source_file="res://Materials/Textures/Decals/Standardised/EyeRecessiveLight.png"
+dest_files=["res://.godot/imported/EyeRecessiveLight.png-53ac68c34eeabc71d9ebb7423a94a240.ctex"]
 
 [params]
 

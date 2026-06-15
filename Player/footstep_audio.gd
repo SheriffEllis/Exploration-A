@@ -6,6 +6,8 @@ var footstep_time := 0.0
 var footstep_can_play := false
 var footstep_landed := true
 
+var prev_velocity := Vector3.ZERO
+
 func _ready() -> void:
 	Events.floor_changed.connect(change_sfx)
 
@@ -27,7 +29,12 @@ func handle_footstep(player: PlayerCharacter, delta: float, headbob_amplitude: f
 		play()
 	
 	if not footstep_landed and player.is_on_floor():
-		play()
+		if abs(prev_velocity.y) > 5.0:
+			$StumbleAudio.volume_db = abs(prev_velocity.y)
+			$StumbleAudio.play()
+		else:
+			play()
 	elif footstep_landed and not player.is_on_floor():
 		play()
 	footstep_landed = player.is_on_floor()
+	set_deferred("prev_velocity", player.velocity)

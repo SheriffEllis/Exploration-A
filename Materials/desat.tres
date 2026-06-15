@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bnewoll3oi7cy"]
+
+[sub_resource type="Shader" id="Shader_ne6fa"]
+code = "// Takes an albedo texture and reduces its saturation to 0
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley;
+
+/** Copy from the existing mesh instance. */
+uniform sampler2D original_texture : source_color, filter_nearest_mipmap;
+
+void fragment() {
+	vec3 alb = texture(original_texture, UV).rgb;
+	float val = max(alb.r, max(alb.g, alb.b));
+	ALBEDO = vec3(val, val, val);
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_ne6fa")

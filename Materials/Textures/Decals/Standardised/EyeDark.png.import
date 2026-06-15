@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coqy63e7nt1f2"
-path="res://.godot/imported/TravellingDecal.png-2512a5c42dfbe763e51d560c3076e1a1.ctex"
+uid="uid://dwj30s8gkau4l"
+path="res://.godot/imported/EyeDark.png-979c1617d8e7d9f2e8418b85c4b8f0ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/Decals/TravellingDecal.png"
-dest_files=["res://.godot/imported/TravellingDecal.png-2512a5c42dfbe763e51d560c3076e1a1.ctex"]
+source_file="res://Materials/Textures/Decals/Standardised/EyeDark.png"
+dest_files=["res://.godot/imported/EyeDark.png-979c1617d8e7d9f2e8418b85c4b8f0ff.ctex"]
 
 [params]
 

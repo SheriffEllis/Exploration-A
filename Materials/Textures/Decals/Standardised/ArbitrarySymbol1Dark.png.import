@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddmttfl3vxjmb"
-path="res://.godot/imported/EntanglementInvDecal.png-774f6a838d7de199235eb47bcb809d2f.ctex"
+uid="uid://d03mhqe0alfr"
+path="res://.godot/imported/ArbitrarySymbol1Dark.png-388fe8a0a1363258726f90700ab894c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/Decals/EntanglementInvDecal.png"
-dest_files=["res://.godot/imported/EntanglementInvDecal.png-774f6a838d7de199235eb47bcb809d2f.ctex"]
+source_file="res://Materials/Textures/Decals/Standardised/ArbitrarySymbol1Dark.png"
+dest_files=["res://.godot/imported/ArbitrarySymbol1Dark.png-388fe8a0a1363258726f90700ab894c1.ctex"]
 
 [params]
 

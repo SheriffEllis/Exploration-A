@@ -74,9 +74,11 @@ func remove_house() -> void:
 	$Room.queue_free()
 	$Outside.queue_free()
 
+
 func restore_house() -> void:
 	add_child(load("uid://c28hmcs10hs0h").instantiate()) # Room
 	add_child(load("uid://c2kbweneknqnu").instantiate()) # Outside
+
 
 func load_new_level(sceneDir : String, old_level_node_name: String, new_location:= Vector3.ZERO) -> void:
 	ResourceLoader.load_threaded_request(sceneDir)

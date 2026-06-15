@@ -91,6 +91,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "[Exploration - A]"
 label_settings = SubResource("LabelSettings_h8rmy")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Begin" to="." method="_on_begin_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmhfrmxdxnc4h"
-path="res://.godot/imported/EyeTravellingDecal.png-fce8c839f508ba1152a0230d71802635.ctex"
+uid="uid://4ygh5qf6w80a"
+path="res://.godot/imported/MinotaurSilhouetteDark.png-aaf98ca64669a5a0a93654abb868103c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/Decals/EyeTravellingDecal.png"
-dest_files=["res://.godot/imported/EyeTravellingDecal.png-fce8c839f508ba1152a0230d71802635.ctex"]
+source_file="res://Materials/Textures/Decals/Standardised/MinotaurSilhouetteDark.png"
+dest_files=["res://.godot/imported/MinotaurSilhouetteDark.png-aaf98ca64669a5a0a93654abb868103c.ctex"]
 
 [params]
 

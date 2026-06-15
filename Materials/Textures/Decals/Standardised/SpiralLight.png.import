@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5vv73q5qd0ub"
-path="res://.godot/imported/MinotaurDecal.png-9766d308305349de85a532771ec2d8c6.ctex"
+uid="uid://bcykwyn8l4n1d"
+path="res://.godot/imported/SpiralLight.png-6eb9772fe3b3b9dd7b15efb49613828f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Textures/Decals/MinotaurDecal.png"
-dest_files=["res://.godot/imported/MinotaurDecal.png-9766d308305349de85a532771ec2d8c6.ctex"]
+source_file="res://Materials/Textures/Decals/Standardised/SpiralLight.png"
+dest_files=["res://.godot/imported/SpiralLight.png-6eb9772fe3b3b9dd7b15efb49613828f.ctex"]
 
 [params]
 

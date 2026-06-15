@@ -26,6 +26,7 @@ cutoff_hz = 100.0
 db = 3
 
 [resource]
+bus/0/bypass_fx = true
 bus/0/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
 bus/0/effect/0/enabled = true
 bus/1/name = &"Sounds"
@@ -52,7 +53,7 @@ bus/4/name = &"LargeRooms"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -5.5276914
+bus/4/volume_db = -6.6276727
 bus/4/send = &"Sounds"
 bus/4/effect/0/effect = SubResource("AudioEffectReverb_ddrg4")
 bus/4/effect/0/enabled = true
@@ -60,7 +61,7 @@ bus/5/name = &"Stone"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = 0.0
+bus/5/volume_db = -17.477005
 bus/5/send = &"Sounds"
 bus/5/effect/0/effect = SubResource("AudioEffectReverb_girky")
 bus/5/effect/0/enabled = true
