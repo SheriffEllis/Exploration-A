@@ -11,10 +11,11 @@
 [ext_resource type="Script" uid="uid://bisimrq06joy2" path="res://Hallway/requisite.gd" id="8_vgql4"]
 [ext_resource type="Texture2D" uid="uid://b0105of3h57ir" path="res://Room/Room_SofaDiffuseWithAO(Green).png" id="9_1pc41"]
 [ext_resource type="ArrayMesh" uid="uid://nd62bi6kocev" path="res://Hallway/Models/cushion.res" id="10_gvv8l"]
-[ext_resource type="Texture2D" uid="uid://c8bp0llmq1xyn" path="res://Materials/Textures/Decals/ArbitrarySymbol2WallDecal.png" id="16_12hlo"]
 [ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="17_7uyqf"]
 [ext_resource type="Script" uid="uid://neaii8ets618" path="res://Hallway/quantum_object_manager_conserved.gd" id="17_bc7dg"]
+[ext_resource type="Texture2D" uid="uid://cxu7w48n3uypx" path="res://Materials/Textures/Decals/ArbitrarySymbol1.png" id="17_vgql4"]
 [ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="18_iy1nj"]
+[ext_resource type="Texture2D" uid="uid://b7pp2lxk7pqpt" path="res://Materials/Textures/Decals/ArbitrarySymbol3.png" id="21_lgwlv"]
 [ext_resource type="Texture2D" uid="uid://bowao7ut2tmde" path="res://Room/Room_CushionDiffuse.png" id="23_i4kfi"]
 [ext_resource type="ArrayMesh" uid="uid://ocbn5a4jy07i" path="res://Hallway/Models/Shelf.res" id="24_srcjm"]
 [ext_resource type="Texture2D" uid="uid://bjfdqwg56ds53" path="res://Room/Room_ShelfDiffuseAO.png" id="25_wy5o2"]
@@ -516,8 +517,9 @@ surface_material_override/0 = SubResource("ShaderMaterial_428kt")
 [node name="Decal" type="Decal" parent="MainCSGCombiner3D/PuzzleRoom1/Rug" unique_id=1667016119]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 size = Vector3(1, 1, 1)
-texture_albedo = ExtResource("16_12hlo")
-albedo_mix = 0.3
+texture_albedo = ExtResource("17_vgql4")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.35
 
 [node name="QuantumObjectManagerConserved" type="Node" parent="MainCSGCombiner3D/PuzzleRoom1" unique_id=1569225974 node_paths=PackedStringArray("prerequisite", "entangled_toggles")]
 script = ExtResource("17_bc7dg")
@@ -539,7 +541,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 is_interactable = false
 eye_type = 1
-entangle_type = 5
+entangle_type = 4
 
 [node name="D1SightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom1/Exit1" unique_id=523304414 node_paths=PackedStringArray("hidden_doorframe")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.22200012, 15.196735)
@@ -561,7 +563,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 [node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom1/Exit2/Doorway2" unique_id=1108006220 instance=ExtResource("17_7uyqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 eye_type = 1
-entangle_type = 6
+entangle_type = 5
 
 [node name="D2SightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom1/Exit2" unique_id=1449677800 node_paths=PackedStringArray("hidden_doorframe")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.22200012, 15.196735)
@@ -596,7 +598,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 is_interactable = false
 eye_type = 1
-entangle_type = 7
+entangle_type = 6
 
 [node name="D3SightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom1/Exit3" unique_id=918504345 node_paths=PackedStringArray("hidden_doorframe")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.22200012, 15.196735)
@@ -732,8 +734,9 @@ surface_material_override/0 = SubResource("ShaderMaterial_428kt")
 [node name="Decal" type="Decal" parent="MainCSGCombiner3D/PuzzleRoom2/Rug" unique_id=1691730665]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 size = Vector3(1, 1, 1)
-texture_albedo = ExtResource("16_12hlo")
-albedo_mix = 0.3
+texture_albedo = ExtResource("21_lgwlv")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.35
 
 [node name="QuantumObjectManagerConserved" type="Node" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1378307546 node_paths=PackedStringArray("prerequisite", "entangled_toggles")]
 script = ExtResource("17_bc7dg")
@@ -755,7 +758,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 is_interactable = false
 eye_type = 1
-entangle_type = 5
+entangle_type = 4
 
 [node name="D1SightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2/Exit1" unique_id=1701597212 node_paths=PackedStringArray("hidden_doorframe")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.22200012, 14.841579)
@@ -788,7 +791,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 [node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/Exit2/Doorway2" unique_id=2117509461 instance=ExtResource("17_7uyqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 eye_type = 1
-entangle_type = 6
+entangle_type = 5
 
 [node name="D2SightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2/Exit2" unique_id=639749538 node_paths=PackedStringArray("hidden_doorframe")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.22200012, 14.841579)
@@ -823,7 +826,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 is_interactable = false
 eye_type = 1
-entangle_type = 7
+entangle_type = 6
 
 [node name="D3SightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2/Exit3" unique_id=409268752 node_paths=PackedStringArray("hidden_doorframe")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.22200012, 14.841579)
@@ -842,8 +845,8 @@ metadata/_custom_type_script = "uid://d17j1ym27qmk2"
 [connection signal="body_entered" from="MainCSGCombiner3D/CurvedHallway/RevealPart2" to="MainCSGCombiner3D/CurvedHallway/StoneScrapeAudio" method="play" unbinds=1]
 [connection signal="triggered" from="MainCSGCombiner3D/KillPlane2" to="MainCSGCombiner3D/KillPlane2/FUCK" method="_on_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/KillPlane2" to="MainCSGCombiner3D/KillPlane2/Teleporter" method="_on_trigger"]
-[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1/EnablePuzzle" to="MainCSGCombiner3D/PuzzleRoom1/Requisite" method="trigger" unbinds=1]
 [connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1/EnablePuzzle" to="MainCSGCombiner3D/PuzzleRoom1/EnablePuzzle" method="queue_free" unbinds=1]
+[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1/EnablePuzzle" to="MainCSGCombiner3D/PuzzleRoom1/Requisite" method="trigger" unbinds=1]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1/Exit1/D1SightToggle" to="MainCSGCombiner3D/PuzzleRoom1/Exit1/D1SightToggle" method="_on_screen_exited"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1/Exit2/D2SightToggle" to="MainCSGCombiner3D/PuzzleRoom1/Exit2/D2SightToggle" method="_on_screen_exited"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1/Exit3/D3SightToggle" to="MainCSGCombiner3D/PuzzleRoom1/Exit3/D3SightToggle" method="_on_screen_exited"]

@@ -16,11 +16,11 @@
 [ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="11_kewxs"]
 [ext_resource type="Script" uid="uid://ddyeatlvbd4bp" path="res://Hallway/Hallway0/remove_house.gd" id="13_j1cvd"]
 [ext_resource type="Script" uid="uid://7w2y4qnnvvao" path="res://Hallway/cancel_text.gd" id="14_30mew"]
-[ext_resource type="Texture2D" uid="uid://c8fquywbj3qlc" path="res://Materials/Textures/Decals/CameraWallDecal.png" id="14_h8nyl"]
-[ext_resource type="Texture2D" uid="uid://c8bp0llmq1xyn" path="res://Materials/Textures/Decals/ArbitrarySymbol2WallDecal.png" id="15_1nncp"]
 [ext_resource type="Script" uid="uid://x2whk0b5i1hv" path="res://Hallway/Hallway0/Tutorial3.gd" id="15_5rp76"]
 [ext_resource type="Script" uid="uid://shuv4g7yiess" path="res://Hallway/Hallway0/Tutorial3Part2.gd" id="16_ttb6f"]
+[ext_resource type="Texture2D" uid="uid://d1rqfyq0k0tn4" path="res://Materials/Textures/Decals/Camera.png" id="17_txlmj"]
 [ext_resource type="Script" uid="uid://mgctuhvrl4y3" path="res://Hallway/manual_door_setter.gd" id="18_3iu3o"]
+[ext_resource type="Texture2D" uid="uid://bc4l3un4tshf1" path="res://Materials/Textures/Decals/ArbitrarySymbol2.png" id="18_vm0im"]
 [ext_resource type="Script" uid="uid://b5nc7oadm448w" path="res://Hallway/seamless_teleport.gd" id="21_ustya"]
 [ext_resource type="AudioStream" uid="uid://b37k8hncv6pm7" path="res://Audio/stone-scrape.ogg" id="23_vm0im"]
 [ext_resource type="Script" uid="uid://blngdvklqxsov" path="res://Hallway/load_new_level.gd" id="23_x7opp"]
@@ -537,7 +537,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 is_interactable = false
 eye_type = 1
-entangle_type = 5
+entangle_type = 4
 
 [node name="Tutorial2Dooryway2SightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/Tutorial2Room" unique_id=2107278642 node_paths=PackedStringArray("hidden_doorframe")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.7596865, -1.6739042, 2.501934)
@@ -557,7 +557,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 is_interactable = false
 eye_type = 1
-entangle_type = 5
+entangle_type = 4
 
 [node name="Tutorial3Room" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=239719003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.808158, 4.356425, 46.1821)
@@ -625,7 +625,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 [node name="Doorframe" parent="MainCSGCombiner3D/Tutorial3Room/Tutorial3Doorway" unique_id=1417913342 instance=ExtResource("4_thvx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 eye_type = 1
-entangle_type = 6
+entangle_type = 5
 
 [node name="EnableTutorial3" type="Area3D" parent="MainCSGCombiner3D/Tutorial3Room/Tutorial3Doorway" unique_id=1697995176]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8388591)
@@ -639,9 +639,9 @@ shape = SubResource("BoxShape3D_5rp76")
 [node name="CamDecal" type="Decal" parent="MainCSGCombiner3D/Tutorial3Room" unique_id=1000724209]
 transform = Transform3D(1.9106855e-15, 1, -4.371139e-08, 4.371139e-08, -4.371139e-08, -1, -1, 0, -4.371139e-08, -10.650111, -1.9394941, 3.7109032)
 size = Vector3(1, 0.08, 1)
-texture_albedo = ExtResource("14_h8nyl")
-upper_fade = 2.792519
-lower_fade = 0.0
+texture_albedo = ExtResource("17_txlmj")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.8
 
 [node name="PictureReminderRequirement" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/Tutorial3Room/CamDecal" unique_id=1016541400]
 layers = 32
@@ -650,9 +650,9 @@ aabb = AABB(-0.19215941, -0.06870848, -0.17867552, 0.38431883, 0.13741696, 0.334
 [node name="Arb2Decal" type="Decal" parent="MainCSGCombiner3D/Tutorial3Room" unique_id=12753525]
 transform = Transform3D(-8.742278e-08, -1, 4.3711385e-08, 4.371139e-08, -4.371139e-08, -1, 1, -8.742278e-08, 4.3711392e-08, 10.617305, -1.8447397, -3.4531784)
 size = Vector3(1, 0.08, 1)
-texture_albedo = ExtResource("15_1nncp")
-upper_fade = 0.0
-lower_fade = 4.891789
+texture_albedo = ExtResource("18_vm0im")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.8
 
 [node name="EntangleReminderRequirement" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/Tutorial3Room/Arb2Decal" unique_id=33963132 node_paths=PackedStringArray("prerequisite", "entangled_door")]
 layers = 32
@@ -704,7 +704,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 is_interactable = false
 eye_type = 3
-entangle_type = 6
+entangle_type = 5
 
 [node name="MegaRoomShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=520585615]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 110.99739, 16.084, 42.752357)

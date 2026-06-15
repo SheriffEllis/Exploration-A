@@ -11,6 +11,8 @@ class_name Door extends MeshInstance3D
 @export var is_locked := false
 @export var key_id : int = 0
 
+const DECAL_FOLDER := "res://Materials/Textures/Decals/"
+
 enum EyeType {
 	NONE,
 	NORMAL,
@@ -18,26 +20,19 @@ enum EyeType {
 	RECESSIVE,
 }
 @export var eye_type := EyeType.NONE
-#@export_enum("None", "Normal", "Inverted", "Recessive", "Travelling") var eye_type: int = 0
 @onready var eye_decal : Decal = $Door/EyeDecal
 
 enum EntangleType {
 	NONE,
-	TRAVELLING,
 	TREE,
 	SPIRAL,
 	MINOTAUR,
 	ARBITRARY_1,
 	ARBITRARY_2,
 	ARBITRARY_3,
-	ONE_TO_ONE,
-	ONE_TO_ONE_INV,
-	ONE_TO_TWO,
-	ONE_TO_ONE_AND_INV,
-	ONE_TO_TWO_INV,
+	ARBITRARY_4,
 }
 @export var entangle_type := EntangleType.NONE
-#@export_enum("None", "1 to 1", "1 to 1 (inverted)", "1 to 2", "1 to 1 and 1 (inverted)", "1 to 2 (inverted)") var entanglement_type: int = 0
 @onready var entangle_decal : Decal = $Door/EntangleDecal
 
 @onready var door_interactable : StaticInteractable = $Door/StaticInteractable
@@ -59,23 +54,18 @@ func _ready() -> void:
 	match(eye_type):
 		EyeType.NONE: eye_decal.visible = false # None
 		EyeType.NORMAL: pass # texture is already set # Normal
-		EyeType.INVERTED: eye_decal.texture_albedo = preload("uid://cnoxo75bl054v") # Inverted
-		EyeType.RECESSIVE: eye_decal.texture_albedo = preload("uid://bia8jwn62bhx4") # Recessive
+		EyeType.INVERTED: pass # TODO
+		EyeType.RECESSIVE: eye_decal.texture_albedo = preload(DECAL_FOLDER+"EyeRecessive.png") # Recessive
 		_: push_error("Invalid Eye Type")
 	match(entangle_type):
 		EntangleType.NONE: entangle_decal.visible = false # None
-		EntangleType.TRAVELLING: entangle_decal.texture_albedo = preload("uid://coqy63e7nt1f2") # travelling
-		EntangleType.TREE: entangle_decal.texture_albedo = preload("uid://gkfibjsa4dys")
-		EntangleType.SPIRAL: entangle_decal.texture_albedo = preload("uid://btqr18kwhmehl")
-		EntangleType.MINOTAUR: entangle_decal.texture_albedo = preload("uid://dx5nxdnxsd3uk")
-		EntangleType.ARBITRARY_1: entangle_decal.texture_albedo = preload("uid://ct0m0pamdu655")
-		EntangleType.ARBITRARY_2: entangle_decal.texture_albedo = preload("uid://u65p3ksimody")
-		EntangleType.ARBITRARY_3: entangle_decal.texture_albedo = preload("uid://bu11e5j8adu1f")
-		EntangleType.ONE_TO_ONE: pass # texture is already set # 1 to 1
-		EntangleType.ONE_TO_ONE_INV: entangle_decal.texture_albedo = preload("uid://ddmttfl3vxjmb") # 1 to 1 (inverted)
-		EntangleType.ONE_TO_TWO: entangle_decal.texture_albedo = preload("uid://cjhmhpjh3oxud") # 1 to 2
-		EntangleType.ONE_TO_ONE_AND_INV: entangle_decal.texture_albedo = preload("uid://csl1obkxgemp2") # 1 to 1 and 1 (inverted)
-		EntangleType.ONE_TO_TWO_INV: entangle_decal.texture_albedo = preload("uid://bi5futkq33k16") # 1 to 2 (inverted)
+		EntangleType.TREE: entangle_decal.texture_albedo = preload(DECAL_FOLDER+"Tree.png")
+		EntangleType.SPIRAL: entangle_decal.texture_albedo = preload(DECAL_FOLDER+"Spiral.png")
+		EntangleType.MINOTAUR: entangle_decal.texture_albedo = preload(DECAL_FOLDER+"MinotaurSilhouette.png")
+		EntangleType.ARBITRARY_1: entangle_decal.texture_albedo = preload(DECAL_FOLDER+"ArbitrarySymbol1.png")
+		EntangleType.ARBITRARY_2: entangle_decal.texture_albedo = preload(DECAL_FOLDER+"ArbitrarySymbol2.png")
+		EntangleType.ARBITRARY_3: entangle_decal.texture_albedo = preload(DECAL_FOLDER+"ArbitrarySymbol3.png")
+		EntangleType.ARBITRARY_4: entangle_decal.texture_albedo = preload(DECAL_FOLDER+"ArbitrarySymbol4.png")
 		_: push_error("Invalid Entanglement Type")
 
 
