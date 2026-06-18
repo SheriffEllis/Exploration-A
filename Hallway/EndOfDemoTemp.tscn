@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dnjtcvaxr54dt"]
+
+[ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_8i0ue"]
+[ext_resource type="AudioStream" uid="uid://bj0k15hdynxxt" path="res://Audio/joke/YAY.mp3" id="2_lqij4"]
+[ext_resource type="Texture2D" uid="uid://u3fu7fx13qrr" path="res://Materials/Textures/Decals/Tree.png" id="3_0ntow"]
+[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="4_4t5lm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
+size = Vector3(133, 165.009, 102)
+
+[node name="Hallway3" type="Node3D" unique_id=84698099]
+
+[node name="MainCSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=399722429]
+layers = 4
+material_override = ExtResource("1_8i0ue")
+use_collision = true
+collision_layer = 4
+
+[node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D" unique_id=267813069]
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RegularReverb" unique_id=431179048]
+shape = SubResource("BoxShape3D_f63gx")
+
+[node name="YAY" type="AudioStreamPlayer3D" parent="MainCSGCombiner3D/RegularReverb" unique_id=301491776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7304583, 2.9651327, 0)
+stream = ExtResource("2_lqij4")
+max_db = 0.0
+bus = &"LargeRooms"
+
+[node name="MainShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1166061555]
+size = Vector3(285.9, 160.083, 200)
+
+[node name="EntryHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2080629]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5.575486, 0)
+operation = 2
+size = Vector3(20, 11.146973, 20)
+
+[node name="Decal" type="Decal" parent="MainCSGCombiner3D/EntryHallway" unique_id=200151626]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -9.666744)
+size = Vector3(10, 2, 10)
+texture_albedo = ExtResource("3_0ntow")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.15
+upper_fade = 0.0
+lower_fade = 0.0
+
+[node name="Label3D" type="Label3D" parent="MainCSGCombiner3D/EntryHallway" unique_id=1261546534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.998106, -8.505564)
+shaded = true
+double_sided = false
+texture_filter = 4
+text = "You da weiner :)
+End of the game so far."
+font = ExtResource("4_4t5lm")
+font_size = 64
+
+[connection signal="body_entered" from="MainCSGCombiner3D/RegularReverb" to="MainCSGCombiner3D/RegularReverb/YAY" method="play" flags=6 unbinds=1]

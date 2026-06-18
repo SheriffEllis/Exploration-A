@@ -20,7 +20,11 @@ func _ready() -> void:
 	
 	if starting_level > 0:
 		match(starting_level):
-			1: load_new_level("uid://bnsblodj1ihor", "Hallway0", starting_location)
+			1:
+				load_new_level("uid://bnsblodj1ihor", "Hallway0", starting_location)
+			2: 
+				load_new_level("uid://d0jdxlkx5i67m", "Hallway0", starting_location)
+				GameGlobals.player.flashlight.light_color = Color("#FFFFFF")
 		Events.hint_triggered.emit("[Loaded Level " + str(starting_level) + "]")
 	
 	if starting_location:
@@ -53,13 +57,13 @@ func _ready() -> void:
 	await get_tree().create_timer(2, false).timeout
 	Events.dialogue_triggered.emit("Call me impetuous or just curious,")
 	Events.dialogue_triggered.emit("But a little look around that hallway isn't going to hurt.")
-	Events.hint_triggered.emit("[Press X to Squint]")
+	Events.hint_triggered.emit("[Press X to Look Closer]")
 	Events.hint_triggered.emit("[Press ESC to Pause and reread hints]")
 	await Events.all_text_queues_finished
 	
 	await get_tree().create_timer(10, false).timeout
 	if not interact_pressed:
-		Events.dialogue_triggered.emit("I should gather my equipment from the table first.")
+		Events.dialogue_triggered.emit("I should gather my equipment from the table before I go in.")
 		await get_tree().create_timer(4, false).timeout
 		if not interact_pressed:
 			Events.hint_triggered.emit("[Press E to Interact]")

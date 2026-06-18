@@ -98,20 +98,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44299987, 0, 0)
 shape = SubResource("BoxShape3D_uu23l")
 
 [node name="EyeDecal" type="Decal" parent="Door" unique_id=1464253522]
-transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.44299987, 0.5207693, -0.017436681)
+transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.443, 0.521, 0)
 layers = 4
-size = Vector3(0.5, 0.1, 0.5)
+size = Vector3(0.5, 0.05, 0.5)
 texture_albedo = ExtResource("4_bj7tk")
 modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
 albedo_mix = 0.8
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
 
 [node name="EntangleDecal" type="Decal" parent="Door" unique_id=758204963]
-transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.44299987, 0.15795818, -0.01743668)
+transform = Transform3D(-1, -3.821371e-15, 8.742278e-08, -8.742278e-08, 4.371139e-08, -1, 0, -1, -4.371139e-08, -0.443, 0.158, 0)
 layers = 4
-size = Vector3(0.5, 0.1, 0.5)
+size = Vector3(0.5, 0.05, 0.5)
 texture_albedo = ExtResource("5_bj7tk")
 modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
 albedo_mix = 0.8
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
 
 [node name="DoorOpenAudio" type="AudioStreamPlayer3D" parent="." unique_id=1398851298]
 stream = SubResource("AudioStreamRandomizer_6pewh")

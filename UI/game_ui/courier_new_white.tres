@@ -1,5 +1,0 @@
-[gd_resource type="SystemFont" format=3 uid="uid://bop7pre4dda1a"]
-
-[resource]
-font_names = PackedStringArray("Courier New")
-subpixel_positioning = 0

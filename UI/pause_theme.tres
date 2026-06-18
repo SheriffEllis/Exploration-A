@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://cu6h7qlm3sh8y"]
 
-[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new_white.tres" id="1_qpjrc"]
+[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="1_qpjrc"]
 
 [resource]
 Button/colors/font_color = Color(1, 0.949, 0.49, 1)

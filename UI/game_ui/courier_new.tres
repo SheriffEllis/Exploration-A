@@ -1,0 +1,8 @@
+[gd_resource type="SystemFont" format=3 uid="uid://bop7pre4dda1a"]
+
+[ext_resource type="FontFile" uid="uid://b13v8j1courh2" path="res://UI/game_ui/CourierPrime-Regular.ttf" id="1_wd76l"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("1_wd76l")])
+font_names = PackedStringArray("Courier New")
+subpixel_positioning = 0

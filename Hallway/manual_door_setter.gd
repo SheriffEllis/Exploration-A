@@ -17,4 +17,4 @@ func _on_body_entered(_body: Node3D):
 	
 	for idx in range(sight_toggles.size()):
 		if sight_toggles[idx].is_observed(): continue
-		sight_toggles[idx].toggle_door(states[idx], false)
+		sight_toggles[idx].toggle_door(states[idx], true)

@@ -1,0 +1,36 @@
+[gd_resource type="ArrayMesh" format=4 uid="uid://uhc7b1qulsug"]
+
+[ext_resource type="Material" uid="uid://b76kxf3vyxjn6" path="res://Materials/Room/Map.tres" id="1_ia4fl"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_11pax"]
+_surfaces = [{
+"aabb": AABB(-0.3164434, 0, -0.42457542, 0.6328868, 1e-05, 0.84915084),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "Map",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("3wSivgAAAADzYdk+3wSiPgAAAADzYdm+3wSiPgAAAADzYdk+3wSivgAAAADzYdm+")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "Room_Plane"
+lightmap_size_hint = Vector2i(6, 6)
+_surfaces = [{
+"aabb": AABB(-0.3164434, 0, -0.42457542, 0.6328868, 1e-05, 0.84915084),
+"attribute_data": PackedByteArray("AAAAAAAAgD+rqmo/q6pqPwAAgD8AAAAAq6qqPauqqj0AAIA/AACAP6uqaj+rqqo9AAAAAAAAAACrqqo9q6pqPw=="),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("1_ia4fl"),
+"name": "Map",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("3wSivgAAAADzYdk+3wSiPgAAAADzYdm+3wSiPgAAAADzYdk+3wSivgAAAADzYdm+/3///////7//f///////v/9///////+//3///////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_11pax")

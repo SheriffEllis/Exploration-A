@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://7w2y4qnnvvao" path="res://Hallway/cancel_text.gd" id="14_30mew"]
 [ext_resource type="Script" uid="uid://x2whk0b5i1hv" path="res://Hallway/Hallway0/Tutorial3.gd" id="15_5rp76"]
 [ext_resource type="Script" uid="uid://shuv4g7yiess" path="res://Hallway/Hallway0/Tutorial3Part2.gd" id="16_ttb6f"]
+[ext_resource type="Script" uid="uid://k7gp3nudnpi7" path="res://Hallway/Hallway0/Force_Image_Deletion.gd" id="17_4eyrf"]
 [ext_resource type="Texture2D" uid="uid://d1rqfyq0k0tn4" path="res://Materials/Textures/Decals/Camera.png" id="17_txlmj"]
 [ext_resource type="Script" uid="uid://mgctuhvrl4y3" path="res://Hallway/manual_door_setter.gd" id="18_3iu3o"]
 [ext_resource type="Texture2D" uid="uid://bc4l3un4tshf1" path="res://Materials/Textures/Decals/ArbitrarySymbol2.png" id="18_vm0im"]
@@ -79,6 +80,9 @@ size = Vector3(11.616423, 8, 46.432903)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_3tqic"]
 size = Vector3(11.616, 8, 64.313)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vm0im"]
+size = Vector3(3, 3.64, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvby3"]
 size = Vector3(2, 4.315, 22)
@@ -204,6 +208,7 @@ collision_layer = 0
 monitorable = false
 script = ExtResource("4_k46di")
 required_sight = NodePath("../../RVisible")
+force_image_deletion = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" unique_id=1702783505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9920006)
@@ -247,7 +252,6 @@ script = ExtResource("5_yvby3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 layers = 5
 is_interactable = false
-eye_type = 1
 
 [node name="RRequisite" type="Node3D" parent="MainCSGCombiner3D" unique_id=1170513126]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.85204095, 1.0295732, 25.611187)
@@ -284,6 +288,18 @@ occluder = SubResource("BoxOccluder3D_ustya")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.311571, 0, 21.605604)
 layers = 32
 occluder = SubResource("BoxOccluder3D_3tqic")
+
+[node name="EnableL" type="Area3D" parent="MainCSGCombiner3D/RHallway" unique_id=1097303481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9073486e-06, 0, -27.75304)
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RHallway/EnableL" unique_id=756463095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7504768, 0, 0)
+shape = SubResource("BoxShape3D_vm0im")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MainCSGCombiner3D/RHallway/EnableL" unique_id=1785469303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0, 0)
+shape = SubResource("BoxShape3D_vm0im")
 
 [node name="Maze" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=912892779]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -56.282974, 1.252, 20.047215)
@@ -380,15 +396,6 @@ size = Vector3(5.7615967, 2.5, 1.5)
 [node name="MazeEscape" type="Marker3D" parent="MainCSGCombiner3D/LHallway" unique_id=1696628762]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1662451, 7.6771393)
 
-[node name="LSightToggleIndepedent" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/LHallway" unique_id=2055742455 node_paths=PackedStringArray("prerequisite", "hidden_doorframe")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.222, 12.175138)
-layers = 32
-aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
-script = ExtResource("7_yhgwi")
-prerequisite = NodePath("../../RRequisite")
-hidden_doorframe = NodePath("../LDoorway/Doorframe")
-metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
-
 [node name="LDoorway" type="CSGBox3D" parent="MainCSGCombiner3D/LHallway" unique_id=96847354]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.222, 12.175138)
 visible = false
@@ -398,7 +405,6 @@ size = Vector3(0.955, 2.055, 0.55856323)
 [node name="Doorframe" parent="MainCSGCombiner3D/LHallway/LDoorway" unique_id=207762887 instance=ExtResource("4_thvx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 is_interactable = false
-eye_type = 1
 
 [node name="BlockedExit" type="CSGBox3D" parent="MainCSGCombiner3D/LHallway" unique_id=536023013 node_paths=PackedStringArray("new_safe_location")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.0038795)
@@ -487,6 +493,7 @@ collision_layer = 0
 monitorable = false
 priority = 3
 script = ExtResource("4_k46di")
+force_image_deletion = true
 metadata/_custom_type_script = "uid://c4tfa2l86vbyt"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" unique_id=1110109534]
@@ -497,7 +504,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8306026, -1.4519042, -2.36
 collision_layer = 0
 monitorable = false
 script = ExtResource("10_kewxs")
-dialogue_text_queue = Array[String](["Huh.. It moved."])
+dialogue_text_queue = Array[String](["It moved."])
 hint_text_queue = Array[String](["[Flashlight can be Toggled with F]"])
 
 [node name="RequisiteTutorial2" type="Node3D" parent="MainCSGCombiner3D/Tutorial2Room" unique_id=2137805425]
@@ -636,6 +643,9 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5894141)
 shape = SubResource("BoxShape3D_5rp76")
 
+[node name="ForceImageDeletion" type="Node" parent="MainCSGCombiner3D/Tutorial3Room/Tutorial3Doorway/EnableTutorial3" unique_id=1389530247]
+script = ExtResource("17_4eyrf")
+
 [node name="CamDecal" type="Decal" parent="MainCSGCombiner3D/Tutorial3Room" unique_id=1000724209]
 transform = Transform3D(1.9106855e-15, 1, -4.371139e-08, 4.371139e-08, -4.371139e-08, -1, -1, 0, -4.371139e-08, -10.650111, -1.9394941, 3.7109032)
 size = Vector3(1, 0.08, 1)
@@ -661,11 +671,12 @@ script = ExtResource("16_ttb6f")
 prerequisite = NodePath("../../RequisiteTutorial3")
 entangled_door = NodePath("../../Tutorial3DoorywaySightToggleIndependent")
 
-[node name="PictureReminder" type="Area3D" parent="MainCSGCombiner3D/Tutorial3Room" unique_id=529476236]
+[node name="PictureReminder" type="Area3D" parent="MainCSGCombiner3D/Tutorial3Room" unique_id=529476236 node_paths=PackedStringArray("part_2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.526756, -2.817841, 2.403633)
 collision_layer = 0
 monitorable = false
 script = ExtResource("15_5rp76")
+part_2 = NodePath("../Arb2Decal/EntangleReminderRequirement")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Tutorial3Room/PictureReminder" unique_id=1276669971]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0649719, 0, 0)
@@ -805,15 +816,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.660034, 0, 2.0977173)
 shape = SubResource("BoxShape3D_3tqic")
 
 [node name="LoadLevel2" type="Area3D" parent="MainCSGCombiner3D/MegaRoomExitHallway" unique_id=102256860]
-transform = Transform3D(-4.3711374e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711374e-08, -24.58799, 0.08350134, 10.087967)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.58799, 0.08350134, 10.087967)
 collision_layer = 0
 monitorable = false
-script = ExtResource("23_x7opp")
-new_level = "uid://bnsblodj1ihor"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2" unique_id=1794035389]
 shape = SubResource("BoxShape3D_vio6c")
 debug_color = Color(0.9750543, 0.15987626, 0, 0.41960785)
+
+[node name="LevelLoader" type="Node" parent="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2" unique_id=222151600]
+script = ExtResource("23_x7opp")
+new_level = "uid://bnsblodj1ihor"
 
 [connection signal="body_entered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" method="_on_body_entered"]
 [connection signal="body_exited" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" method="_on_body_exited"]
@@ -821,8 +834,8 @@ debug_color = Color(0.9750543, 0.15987626, 0, 0.41960785)
 [connection signal="triggered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/RDoorway" method="_on_flicker_trigger_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/RRequisite" method="_on_flicker_trigger_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/EntryHallway/CancelText" to="MainCSGCombiner3D/EntryHallway/CancelText/TextTrigger" method="_on_triggered"]
+[connection signal="body_entered" from="MainCSGCombiner3D/RHallway/EnableL" to="MainCSGCombiner3D/LHallway/LDoorway/Doorframe" method="toggle_door" flags=6 unbinds=1 binds= [true]]
 [connection signal="body_entered" from="MainCSGCombiner3D/Maze/Maze12/MazeExitTeleporter" to="MainCSGCombiner3D/Maze/Maze12/MazeExitTeleporter" method="_on_body_entered"]
-[connection signal="screen_exited" from="MainCSGCombiner3D/LHallway/LSightToggleIndepedent" to="MainCSGCombiner3D/LHallway/LSightToggleIndepedent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/LHallway/EnableTutorial1" to="MainCSGCombiner3D/LHallway/BlockedExit" method="_on_body_entered"]
 [connection signal="body_entered" from="MainCSGCombiner3D/LHallway/EnableTutorial1" to="MainCSGCombiner3D/LHallway/EnableTutorial1" method="_on_body_entered"]
 [connection signal="body_entered" from="MainCSGCombiner3D/LHallway/EnableTutorial1" to="MainCSGCombiner3D/TutorialRoom/RequisiteTutorial" method="_on_body_entered"]
@@ -837,6 +850,7 @@ debug_color = Color(0.9750543, 0.15987626, 0, 0.41960785)
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial2Room/Tutorial2Dooryway2SightToggle" to="MainCSGCombiner3D/Tutorial2Room/Tutorial2Dooryway2SightToggle" method="_on_screen_exited"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial3Room/Tutorial3DoorywaySightToggleIndependent" to="MainCSGCombiner3D/Tutorial3Room/Tutorial3DoorywaySightToggleIndependent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Tutorial3Room/Tutorial3Doorway/EnableTutorial3" to="MainCSGCombiner3D/Tutorial3Room/RequisiteTutorial3" method="_on_body_entered"]
+[connection signal="body_entered" from="MainCSGCombiner3D/Tutorial3Room/Tutorial3Doorway/EnableTutorial3" to="MainCSGCombiner3D/Tutorial3Room/Tutorial3Doorway/EnableTutorial3/ForceImageDeletion" method="trigger" flags=6 unbinds=1]
 [connection signal="screen_entered" from="MainCSGCombiner3D/Tutorial3Room/CamDecal/PictureReminderRequirement" to="MainCSGCombiner3D/Tutorial3Room/PictureReminder" method="_on_picture_reminder_requirement_screen_entered"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial3Room/CamDecal/PictureReminderRequirement" to="MainCSGCombiner3D/Tutorial3Room/PictureReminder" method="_on_picture_reminder_requirement_screen_exited"]
 [connection signal="screen_entered" from="MainCSGCombiner3D/Tutorial3Room/Arb2Decal/EntangleReminderRequirement" to="MainCSGCombiner3D/Tutorial3Room/Arb2Decal/EntangleReminderRequirement" method="_on_screen_entered"]
@@ -846,4 +860,4 @@ debug_color = Color(0.9750543, 0.15987626, 0, 0.41960785)
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial3Room/Tutorial3Dooryway2SightToggleIndependent" to="MainCSGCombiner3D/Tutorial3Room/Tutorial3Dooryway2SightToggleIndependent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/MegaRoom/RunReminder" to="MainCSGCombiner3D/MegaRoom/RunReminder" method="_on_body_entered"]
 [connection signal="body_entered" from="MainCSGCombiner3D/MegaRoom/RunReminder" to="MainCSGCombiner3D/MegaRoom/StoneScrapeAudio" method="play" unbinds=1]
-[connection signal="body_entered" from="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2" to="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2" method="_on_body_entered"]
+[connection signal="body_entered" from="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2" to="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2/LevelLoader" method="trigger" flags=6 unbinds=1]

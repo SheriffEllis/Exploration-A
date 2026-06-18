@@ -18,6 +18,7 @@ func _ready() -> void:
 	screen.get_active_material(1).emission_texture = viewport.get_texture()
 	Events.camcorder_collected.connect(_on_camcorder_collected)
 	Events.cam_cull_mask_changed.connect(_on_cull_mask_changed)
+	Events.forced_image_deletion.connect(_on_forced_image_deletion)
 
 func _on_camcorder_collected() -> void:
 	visible = true
@@ -47,3 +48,10 @@ func _input(event: InputEvent) -> void:
 			sound_play.play()
 			texture_rect_pause_play.texture = play_texture
 			Events.image_deleted.emit()
+
+func _on_forced_image_deletion() -> void:
+	if viewport.render_target_update_mode == SubViewport.UPDATE_WHEN_VISIBLE: return
+	viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
+	sound_play.play()
+	texture_rect_pause_play.texture = play_texture
+	Events.image_deleted.emit()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brs3t66vjxqat" path="res://UI/game_ui/game_ui.gd" id="1_kfjql"]
 [ext_resource type="Texture2D" uid="uid://bhud2wuapwage" path="res://Materials/Textures/crosshair-spritesheet.png" id="2_1cbb3"]
-[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new_white.tres" id="3_ib26x"]
+[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="3_ib26x"]
 [ext_resource type="Script" uid="uid://d0hbpoos6gwpw" path="res://UI/game_ui/hint_label.gd" id="3_j42il"]
 [ext_resource type="PackedScene" uid="uid://cusg143xqi1aw" path="res://UI/game_ui/pause_menu.tscn" id="4_j42il"]
 [ext_resource type="AudioStream" uid="uid://cgo6wsmpsnx0h" path="res://Audio/typewriter1.ogg" id="4_qs256"]

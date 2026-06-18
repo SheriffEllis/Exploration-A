@@ -4,6 +4,8 @@ var is_player_inside := false
 var is_player_looking := false
 var is_flashlight_on := false
 
+@export var part_2 : Node3D
+
 func _ready() -> void:
 	Events.flashlight_turned_on.connect(_on_flashlight_turned_on)
 	Events.flashlight_turned_off.connect(_on_flashlight_turned_off)
@@ -37,4 +39,5 @@ func validate() -> void:
 		Events.dialogue_triggered.emit("I need to keep this door visible somehow.")
 		Events.hint_triggered.emit("[Camera can be raised/lowered with RMB]")
 		Events.hint_triggered.emit("[Images of objects can be captured with LMB]")
+		part_2.last_message_played = 3
 		queue_free()

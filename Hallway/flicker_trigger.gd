@@ -1,6 +1,7 @@
 class_name FlickerTrigger extends Area3D
 
 @export var required_sight : VisibleOnScreenNotifier3D ## What Notifier/SightToggle (if any) does the player need to be looking at to activate this flicker trigger.
+@export var force_image_deletion := false
 @export var oneshot := true
 var is_player_inside := false
 signal triggered
@@ -38,4 +39,5 @@ func wait_for_flicker() -> void:
 
 func wait_for_trigger() -> void:
 	await Events.flashlight_turned_off
+	if force_image_deletion: Events.forced_image_deletion.emit()
 	triggered.emit()

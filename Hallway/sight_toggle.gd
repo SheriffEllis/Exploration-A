@@ -2,7 +2,6 @@ class_name SightToggle extends VisibleOnScreenNotifier3D
 
 @export var hidden_doorframe : Door
 @export var is_inverted := false
-@export var is_recessive := false
 var is_on_camera := false
 
 signal unobserved(who: SightToggle)

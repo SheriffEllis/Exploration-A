@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bku8imjjwm262"]
+
+[ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_npesk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
+size = Vector3(133, 165.009, 102)
+
+[node name="Hallway3" type="Node3D" unique_id=84698099]
+
+[node name="MainCSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=399722429]
+layers = 4
+material_override = ExtResource("1_npesk")
+use_collision = true
+collision_layer = 4
+
+[node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D" unique_id=267813069]
+collision_mask = 0
+monitoring = false
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RegularReverb" unique_id=431179048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.816284, -57.504333, 0)
+shape = SubResource("BoxShape3D_f63gx")
+
+[node name="MainShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1166061555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.103485, -55.041626, 0)
+size = Vector3(285.9, 160.083, 200)
+
+[node name="EntryHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2080629]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.882204, 1.252, -4.7567625e-07)
+operation = 2
+size = Vector3(1.5, 2.5, 29.289688)

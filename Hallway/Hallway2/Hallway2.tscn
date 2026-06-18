@@ -1,0 +1,1024 @@
+[gd_scene format=3 uid="uid://d0jdxlkx5i67m"]
+
+[ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_mhruj"]
+[ext_resource type="Script" uid="uid://vlh7d3c48ace" path="res://Hallway/reveal_multiple.gd" id="2_hfnfu"]
+[ext_resource type="Script" uid="uid://7w2y4qnnvvao" path="res://Hallway/cancel_text.gd" id="2_ua0r3"]
+[ext_resource type="Script" uid="uid://b4y7xjthpmsm5" path="res://Hallway/text_trigger.gd" id="3_t1cju"]
+[ext_resource type="Script" uid="uid://ce324142fvilf" path="res://Hallway/teleporter.gd" id="4_yrtb3"]
+[ext_resource type="AudioStream" uid="uid://cn1l53xxievwn" path="res://Audio/footsteps/sliding.ogg" id="6_23jmj"]
+[ext_resource type="Texture2D" uid="uid://carh3tg8vyamq" path="res://Room/Room_TableTextureSharp.png" id="8_bhuwl"]
+[ext_resource type="ArrayMesh" uid="uid://df2ly5aun456a" path="res://Hallway/Models/Table.tres" id="9_23jmj"]
+[ext_resource type="ArrayMesh" uid="uid://uhc7b1qulsug" path="res://Hallway/Models/Map.tres" id="10_bhuwl"]
+[ext_resource type="Script" uid="uid://bisimrq06joy2" path="res://Hallway/requisite.gd" id="10_jbwf4"]
+[ext_resource type="Script" uid="uid://bhljyfdcv7r0o" path="res://Hallway/sight_toggle_independent.gd" id="11_j0o8i"]
+[ext_resource type="Script" uid="uid://hbeu3mw3fmdk" path="res://Hallway/extended_view_zone.gd" id="12_h4phx"]
+[ext_resource type="Script" uid="uid://neaii8ets618" path="res://Hallway/quantum_object_manager_conserved.gd" id="14_he3qp"]
+[ext_resource type="Texture2D" uid="uid://d1rqfyq0k0tn4" path="res://Materials/Textures/Decals/Camera.png" id="14_qk8do"]
+[ext_resource type="Texture2D" uid="uid://u3fu7fx13qrr" path="res://Materials/Textures/Decals/Tree.png" id="16_oxtvu"]
+[ext_resource type="AudioStream" uid="uid://b37k8hncv6pm7" path="res://Audio/stone-scrape.ogg" id="18_uhid3"]
+[ext_resource type="Script" uid="uid://blngdvklqxsov" path="res://Hallway/load_new_level.gd" id="19_23rmv"]
+[ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="20_s2x32"]
+[ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="21_fobae"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
+size = Vector3(133, 165.009, 102)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tjft0"]
+size = Vector3(4, 3, 5.20697)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q34nk"]
+size = Vector3(20.759277, 1, 45.487)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bhuwl"]
+radius = 2.0853
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_23jmj"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="Shader" id="Shader_ne6fa"]
+code = "// Takes an albedo texture and reduces its saturation to 0
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley;
+
+/** Copy from the existing mesh instance. */
+uniform sampler2D original_texture : source_color, filter_nearest_mipmap;
+
+void fragment() {
+	vec3 alb = texture(original_texture, UV).rgb;
+	float val = max(alb.r, max(alb.g, alb.b));
+	ALBEDO = vec3(val, val, val);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4phx"]
+render_priority = 0
+shader = SubResource("Shader_ne6fa")
+shader_parameter/original_texture = ExtResource("8_bhuwl")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bhuwl"]
+data = PackedVector3Array(-0.4531721, 0.4346491, -1.1034696, 0.17516023, 0.4346491, -1.2847707, -0.17516026, 0.4346491, -1.2847707, 0.17516023, 0.4346491, -1.2847707, 0.6815387, 0.4346491, -0.7870084, 0.4531721, 0.4346491, -1.1034696, 0.6815387, 0.4346491, -0.7870084, 0.79624015, 0.4346491, 0.35103738, 0.79624015, 0.4346491, -0.35103738, 0.79624015, 0.4346491, 0.35103738, 0.4531721, 0.4346491, 1.1034696, 0.6815387, 0.4346491, 0.7870084, 0.4531721, 0.4346491, 1.1034696, -0.17516023, 0.4346491, 1.2847707, 0.17516026, 0.4346491, 1.2847707, -0.17516023, 0.4346491, 1.2847707, -0.6815387, 0.4346491, 0.7870084, -0.4531721, 0.4346491, 1.1034696, -0.6815387, 0.4346491, 0.7870084, -0.79624015, 0.4346491, -0.35103738, -0.79624015, 0.4346491, 0.35103738, -0.79624015, 0.4346491, -0.35103738, -0.4531721, 0.4346491, -1.1034696, -0.6815387, 0.4346491, -0.7870084, -0.4531721, 0.4346491, -1.1034696, 0.6815387, 0.4346491, -0.7870084, 0.17516023, 0.4346491, -1.2847707, 0.6815387, 0.4346491, -0.7870084, 0.4531721, 0.4346491, 1.1034696, 0.79624015, 0.4346491, 0.35103738, 0.4531721, 0.4346491, 1.1034696, -0.6815387, 0.4346491, 0.7870084, -0.17516023, 0.4346491, 1.2847707, -0.6815387, 0.4346491, 0.7870084, -0.4531721, 0.4346491, -1.1034696, -0.79624015, 0.4346491, -0.35103738, -0.4531721, 0.4346491, -1.1034696, 0.4531721, 0.4346491, 1.1034696, 0.6815387, 0.4346491, -0.7870084, 0.4531721, 0.4346491, 1.1034696, -0.4531721, 0.4346491, -1.1034696, -0.6815387, 0.4346491, 0.7870084, 0.46811908, -1.1920929e-07, -0.91521186, 0.39327392, 0.43464914, -0.93045455, 0.39327392, 0.43464914, -0.8124098, 0.46811908, -1.1920929e-07, -0.91521186, 0.46811908, -1.1920929e-07, -0.9910928, 0.39327392, 0.43464914, -0.93045455, 0.46811908, -1.1920929e-07, -0.9910928, 0.5113187, 0.43464914, -0.93045455, 0.39327392, 0.43464914, -0.93045455, 0.46811908, -1.1920929e-07, -0.9910928, 0.544, -1.1920929e-07, -0.9910928, 0.5113187, 0.43464914, -0.93045455, 0.544, -1.1920929e-07, -0.9910928, 0.5113187, 0.43464914, -0.8124098, 0.5113187, 0.43464914, -0.93045455, 0.544, -1.1920929e-07, -0.9910928, 0.544, -1.1920929e-07, -0.91521186, 0.5113187, 0.43464914, -0.8124098, 0.544, -1.1920929e-07, -0.91521186, 0.39327392, 0.43464914, -0.8124098, 0.5113187, 0.43464914, -0.8124098, 0.544, -1.1920929e-07, -0.91521186, 0.46811908, -1.1920929e-07, -0.91521186, 0.39327392, 0.43464914, -0.8124098, 0.46811908, -1.1920929e-07, -0.9910928, 0.544, -1.1920929e-07, -0.91521186, 0.544, -1.1920929e-07, -0.9910928, 0.46811908, -1.1920929e-07, -0.9910928, 0.46811908, -1.1920929e-07, -0.91521186, 0.544, -1.1920929e-07, -0.91521186, -0.46811908, -8.940697e-08, -0.91521186, -0.39327395, 0.43464917, -0.93045455, -0.46811908, -8.940697e-08, -0.9910928, -0.46811908, -8.940697e-08, -0.91521186, -0.39327395, 0.43464917, -0.8124098, -0.39327395, 0.43464917, -0.93045455, -0.46811908, -8.940697e-08, -0.9910928, -0.5113187, 0.43464917, -0.93045455, -0.54399997, -8.940697e-08, -0.9910928, -0.46811908, -8.940697e-08, -0.9910928, -0.39327395, 0.43464917, -0.93045455, -0.5113187, 0.43464917, -0.93045455, -0.54399997, -8.940697e-08, -0.9910928, -0.5113187, 0.43464917, -0.8124098, -0.54399997, -8.940697e-08, -0.91521186, -0.54399997, -8.940697e-08, -0.9910928, -0.5113187, 0.43464917, -0.93045455, -0.5113187, 0.43464917, -0.8124098, -0.54399997, -8.940697e-08, -0.91521186, -0.39327395, 0.43464917, -0.8124098, -0.46811908, -8.940697e-08, -0.91521186, -0.54399997, -8.940697e-08, -0.91521186, -0.5113187, 0.43464917, -0.8124098, -0.39327395, 0.43464917, -0.8124098, -0.46811908, -8.940697e-08, -0.9910928, -0.54399997, -8.940697e-08, -0.91521186, -0.46811908, -8.940697e-08, -0.91521186, -0.46811908, -8.940697e-08, -0.9910928, -0.54399997, -8.940697e-08, -0.9910928, -0.54399997, -8.940697e-08, -0.91521186, 0.46811906, -8.940697e-08, 0.9152119, 0.3932739, 0.43464917, 0.9304546, 0.46811906, -8.940697e-08, 0.9910928, 0.46811906, -8.940697e-08, 0.9152119, 0.3932739, 0.43464917, 0.8124099, 0.3932739, 0.43464917, 0.9304546, 0.46811906, -8.940697e-08, 0.9910928, 0.5113186, 0.43464917, 0.9304546, 0.54399997, -8.940697e-08, 0.9910928, 0.46811906, -8.940697e-08, 0.9910928, 0.3932739, 0.43464917, 0.9304546, 0.5113186, 0.43464917, 0.9304546, 0.54399997, -8.940697e-08, 0.9910928, 0.5113186, 0.43464917, 0.8124099, 0.54399997, -8.940697e-08, 0.9152119, 0.54399997, -8.940697e-08, 0.9910928, 0.5113186, 0.43464917, 0.9304546, 0.5113186, 0.43464917, 0.8124099, 0.54399997, -8.940697e-08, 0.9152119, 0.3932739, 0.43464917, 0.8124099, 0.46811906, -8.940697e-08, 0.9152119, 0.54399997, -8.940697e-08, 0.9152119, 0.5113186, 0.43464917, 0.8124099, 0.3932739, 0.43464917, 0.8124099, 0.46811906, -8.940697e-08, 0.9910928, 0.54399997, -8.940697e-08, 0.9152119, 0.46811906, -8.940697e-08, 0.9152119, 0.46811906, -8.940697e-08, 0.9910928, 0.54399997, -8.940697e-08, 0.9910928, 0.54399997, -8.940697e-08, 0.9152119, -0.46811908, -5.9604645e-08, 0.9152119, -0.39327395, 0.4346492, 0.9304546, -0.39327395, 0.4346492, 0.8124099, -0.46811908, -5.9604645e-08, 0.9152119, -0.46811908, -5.9604645e-08, 0.9910928, -0.39327395, 0.4346492, 0.9304546, -0.46811908, -5.9604645e-08, 0.9910928, -0.5113187, 0.4346492, 0.9304546, -0.39327395, 0.4346492, 0.9304546, -0.46811908, -5.9604645e-08, 0.9910928, -0.54399997, -5.9604645e-08, 0.9910928, -0.5113187, 0.4346492, 0.9304546, -0.54399997, -5.9604645e-08, 0.9910928, -0.5113187, 0.4346492, 0.8124099, -0.5113187, 0.4346492, 0.9304546, -0.54399997, -5.9604645e-08, 0.9910928, -0.54399997, -5.9604645e-08, 0.9152119, -0.5113187, 0.4346492, 0.8124099, -0.54399997, -5.9604645e-08, 0.9152119, -0.39327395, 0.4346492, 0.8124099, -0.5113187, 0.4346492, 0.8124099, -0.54399997, -5.9604645e-08, 0.9152119, -0.46811908, -5.9604645e-08, 0.9152119, -0.39327395, 0.4346492, 0.8124099, -0.46811908, -5.9604645e-08, 0.9910928, -0.54399997, -5.9604645e-08, 0.9152119, -0.54399997, -5.9604645e-08, 0.9910928, -0.46811908, -5.9604645e-08, 0.9910928, -0.46811908, -5.9604645e-08, 0.9152119, -0.54399997, -5.9604645e-08, 0.9152119, -0.16679025, 0.4801981, -1.2566133, 0.17516024, 0.45204064, -1.2847707, 0.16679028, 0.4801981, -1.2566133, -0.16679025, 0.4801981, -1.2566133, -0.17516024, 0.45204064, -1.2847707, 0.17516024, 0.45204064, -1.2847707, 0.433404, 0.4801981, -1.0827452, 0.6815387, 0.45204064, -0.7870084, 0.65564054, 0.4801981, -0.7747788, 0.433404, 0.4801981, -1.0827452, 0.4531721, 0.45204064, -1.1034696, 0.6815387, 0.45204064, -0.7870084, 0.65564054, 0.4801981, 0.7747788, 0.4531721, 0.45204064, 1.1034696, 0.433404, 0.4801981, 1.0827452, 0.65564054, 0.4801981, 0.7747788, 0.6815387, 0.45204064, 0.7870084, 0.4531721, 0.45204064, 1.1034696, 0.16679025, 0.4801981, 1.2566133, -0.17516024, 0.45204064, 1.2847707, -0.16679028, 0.4801981, 1.2566133, 0.16679025, 0.4801981, 1.2566133, 0.17516024, 0.45204064, 1.2847707, -0.17516024, 0.45204064, 1.2847707, -0.433404, 0.4801981, 1.0827452, -0.6815387, 0.45204064, 0.7870084, -0.65564054, 0.4801981, 0.7747788, -0.433404, 0.4801981, 1.0827452, -0.4531721, 0.45204064, 1.1034696, -0.6815387, 0.45204064, 0.7870084, -0.65564054, 0.4801981, -0.7747788, -0.4531721, 0.45204064, -1.1034696, -0.433404, 0.4801981, -1.0827452, -0.65564054, 0.4801981, -0.7747788, -0.6815387, 0.45204064, -0.7870084, -0.4531721, 0.45204064, -1.1034696, 0.16679028, 0.4801981, -1.2566133, 0.4531721, 0.45204064, -1.1034696, 0.433404, 0.4801981, -1.0827452, 0.16679028, 0.4801981, -1.2566133, 0.17516024, 0.45204064, -1.2847707, 0.4531721, 0.45204064, -1.1034696, -0.433404, 0.4801981, -1.0827452, -0.17516024, 0.45204064, -1.2847707, -0.16679025, 0.4801981, -1.2566133, -0.433404, 0.4801981, -1.0827452, -0.4531721, 0.45204064, -1.1034696, -0.17516024, 0.45204064, -1.2847707, -0.4531721, 0.45204064, 1.1034696, -0.16679028, 0.4801981, 1.2566133, -0.17516024, 0.45204064, 1.2847707, -0.4531721, 0.45204064, 1.1034696, -0.433404, 0.4801981, 1.0827452, -0.16679028, 0.4801981, 1.2566133, 0.17516024, 0.45204064, 1.2847707, 0.433404, 0.4801981, 1.0827452, 0.4531721, 0.45204064, 1.1034696, 0.17516024, 0.45204064, 1.2847707, 0.16679025, 0.4801981, 1.2566133, 0.433404, 0.4801981, 1.0827452, 0.7680827, 0.4801981, -0.34739536, 0.79624015, 0.45204064, 0.35103738, 0.7680827, 0.4801981, 0.3473953, 0.7680827, 0.4801981, -0.34739536, 0.79624015, 0.45204064, -0.35103738, 0.79624015, 0.45204064, 0.35103738, -0.7680827, 0.4801981, 0.3473953, -0.79624015, 0.45204064, -0.35103738, -0.7680827, 0.4801981, -0.34739536, -0.7680827, 0.4801981, 0.3473953, -0.79624015, 0.45204064, 0.35103738, -0.79624015, 0.45204064, -0.35103738, 0.7680827, 0.4801981, 0.3473953, 0.6815387, 0.45204064, 0.7870084, 0.65564054, 0.4801981, 0.7747788, 0.7680827, 0.4801981, 0.3473953, 0.79624015, 0.45204064, 0.35103738, 0.6815387, 0.45204064, 0.7870084, 0.65564054, 0.4801981, -0.7747788, 0.79624015, 0.45204064, -0.35103738, 0.7680827, 0.4801981, -0.34739536, 0.65564054, 0.4801981, -0.7747788, 0.6815387, 0.45204064, -0.7870084, 0.79624015, 0.45204064, -0.35103738, -0.6815387, 0.45204064, -0.7870084, -0.7680827, 0.4801981, -0.34739536, -0.79624015, 0.45204064, -0.35103738, -0.6815387, 0.45204064, -0.7870084, -0.65564054, 0.4801981, -0.7747788, -0.7680827, 0.4801981, -0.34739536, -0.79624015, 0.45204064, 0.35103738, -0.65564054, 0.4801981, 0.7747788, -0.6815387, 0.45204064, 0.7870084, -0.79624015, 0.45204064, 0.35103738, -0.7680827, 0.4801981, 0.3473953, -0.65564054, 0.4801981, 0.7747788, 0.7680827, 0.4801981, -0.34739536, 0.433404, 0.4801981, -1.0827452, 0.65564054, 0.4801981, -0.7747788, 0.433404, 0.4801981, -1.0827452, -0.16679025, 0.4801981, -1.2566133, 0.16679028, 0.4801981, -1.2566133, -0.16679025, 0.4801981, -1.2566133, -0.65564054, 0.4801981, -0.7747788, -0.433404, 0.4801981, -1.0827452, -0.65564054, 0.4801981, -0.7747788, -0.7680827, 0.4801981, 0.3473953, -0.7680827, 0.4801981, -0.34739536, -0.7680827, 0.4801981, 0.3473953, -0.433404, 0.4801981, 1.0827452, -0.65564054, 0.4801981, 0.7747788, -0.433404, 0.4801981, 1.0827452, 0.16679025, 0.4801981, 1.2566133, -0.16679028, 0.4801981, 1.2566133, 0.16679025, 0.4801981, 1.2566133, 0.65564054, 0.4801981, 0.7747788, 0.433404, 0.4801981, 1.0827452, 0.65564054, 0.4801981, 0.7747788, 0.7680827, 0.4801981, -0.34739536, 0.7680827, 0.4801981, 0.3473953, 0.7680827, 0.4801981, -0.34739536, -0.16679025, 0.4801981, -1.2566133, 0.433404, 0.4801981, -1.0827452, -0.16679025, 0.4801981, -1.2566133, -0.7680827, 0.4801981, 0.3473953, -0.65564054, 0.4801981, -0.7747788, -0.7680827, 0.4801981, 0.3473953, 0.16679025, 0.4801981, 1.2566133, -0.433404, 0.4801981, 1.0827452, 0.16679025, 0.4801981, 1.2566133, 0.7680827, 0.4801981, -0.34739536, 0.65564054, 0.4801981, 0.7747788, 0.7680827, 0.4801981, -0.34739536, -0.7680827, 0.4801981, 0.3473953, -0.16679025, 0.4801981, -1.2566133, -0.7680827, 0.4801981, 0.3473953, 0.7680827, 0.4801981, -0.34739536, 0.16679025, 0.4801981, 1.2566133, -0.17516026, 0.4346491, -1.2847707, 0.17516024, 0.45204064, -1.2847707, -0.17516024, 0.45204064, -1.2847707, -0.17516026, 0.4346491, -1.2847707, 0.17516023, 0.4346491, -1.2847707, 0.17516024, 0.45204064, -1.2847707, 0.17516023, 0.4346491, -1.2847707, 0.4531721, 0.45204064, -1.1034696, 0.17516024, 0.45204064, -1.2847707, 0.17516023, 0.4346491, -1.2847707, 0.4531721, 0.4346491, -1.1034696, 0.4531721, 0.45204064, -1.1034696, -0.4531721, 0.4346491, -1.1034696, -0.17516024, 0.45204064, -1.2847707, -0.4531721, 0.45204064, -1.1034696, -0.4531721, 0.4346491, -1.1034696, -0.17516026, 0.4346491, -1.2847707, -0.17516024, 0.45204064, -1.2847707, 0.6815387, 0.45204064, -0.7870084, 0.4531721, 0.4346491, -1.1034696, 0.6815387, 0.4346491, -0.7870084, 0.6815387, 0.45204064, -0.7870084, 0.4531721, 0.45204064, -1.1034696, 0.4531721, 0.4346491, -1.1034696, 0.6815387, 0.4346491, -0.7870084, 0.79624015, 0.45204064, -0.35103738, 0.6815387, 0.45204064, -0.7870084, 0.6815387, 0.4346491, -0.7870084, 0.79624015, 0.4346491, -0.35103738, 0.79624015, 0.45204064, -0.35103738, 0.4531721, 0.45204064, 1.1034696, 0.6815387, 0.4346491, 0.7870084, 0.4531721, 0.4346491, 1.1034696, 0.4531721, 0.45204064, 1.1034696, 0.6815387, 0.45204064, 0.7870084, 0.6815387, 0.4346491, 0.7870084, 0.4531721, 0.4346491, 1.1034696, 0.17516024, 0.45204064, 1.2847707, 0.4531721, 0.45204064, 1.1034696, 0.4531721, 0.4346491, 1.1034696, 0.17516026, 0.4346491, 1.2847707, 0.17516024, 0.45204064, 1.2847707, 0.79624015, 0.4346491, 0.35103738, 0.6815387, 0.45204064, 0.7870084, 0.79624015, 0.45204064, 0.35103738, 0.79624015, 0.4346491, 0.35103738, 0.6815387, 0.4346491, 0.7870084, 0.6815387, 0.45204064, 0.7870084, -0.17516024, 0.45204064, 1.2847707, 0.17516026, 0.4346491, 1.2847707, -0.17516023, 0.4346491, 1.2847707, -0.17516024, 0.45204064, 1.2847707, 0.17516024, 0.45204064, 1.2847707, 0.17516026, 0.4346491, 1.2847707, -0.17516023, 0.4346491, 1.2847707, -0.4531721, 0.45204064, 1.1034696, -0.17516024, 0.45204064, 1.2847707, -0.17516023, 0.4346491, 1.2847707, -0.4531721, 0.4346491, 1.1034696, -0.4531721, 0.45204064, 1.1034696, -0.6815387, 0.45204064, 0.7870084, -0.4531721, 0.4346491, 1.1034696, -0.6815387, 0.4346491, 0.7870084, -0.6815387, 0.45204064, 0.7870084, -0.4531721, 0.45204064, 1.1034696, -0.4531721, 0.4346491, 1.1034696, -0.6815387, 0.4346491, 0.7870084, -0.79624015, 0.45204064, 0.35103738, -0.6815387, 0.45204064, 0.7870084, -0.6815387, 0.4346491, 0.7870084, -0.79624015, 0.4346491, 0.35103738, -0.79624015, 0.45204064, 0.35103738, -0.4531721, 0.45204064, -1.1034696, -0.6815387, 0.4346491, -0.7870084, -0.4531721, 0.4346491, -1.1034696, -0.4531721, 0.45204064, -1.1034696, -0.6815387, 0.45204064, -0.7870084, -0.6815387, 0.4346491, -0.7870084, -0.79624015, 0.4346491, -0.35103738, -0.6815387, 0.45204064, -0.7870084, -0.79624015, 0.45204064, -0.35103738, -0.79624015, 0.4346491, -0.35103738, -0.6815387, 0.4346491, -0.7870084, -0.6815387, 0.45204064, -0.7870084, 0.79624015, 0.45204064, 0.35103738, 0.79624015, 0.4346491, -0.35103738, 0.79624015, 0.4346491, 0.35103738, 0.79624015, 0.45204064, 0.35103738, 0.79624015, 0.45204064, -0.35103738, 0.79624015, 0.4346491, -0.35103738, -0.79624015, 0.45204064, -0.35103738, -0.79624015, 0.4346491, 0.35103738, -0.79624015, 0.4346491, -0.35103738, -0.79624015, 0.45204064, -0.35103738, -0.79624015, 0.45204064, 0.35103738, -0.79624015, 0.4346491, 0.35103738)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j0o8i"]
+size = Vector3(93.60547, 9.329, 50)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_jbwf4"]
+size = Vector2(24.228527, 14.160137)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbwf4"]
+size = Vector3(3, 4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_he3qp"]
+size = Vector3(1.32, 2.265, 46.79492)
+
+[sub_resource type="Animation" id="Animation_qk8do"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.265, -9.97)]
+}
+
+[sub_resource type="Animation" id="Animation_uhid3"]
+resource_name = "slide_away"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -2.265, -9.97), Vector3(-6, -2.265, -9.97)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23rmv"]
+_data = {
+&"RESET": SubResource("Animation_qk8do"),
+&"slide_away": SubResource("Animation_uhid3")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_qk8do"]
+material = ExtResource("1_mhruj")
+size = Vector3(20, 2.265, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qk8do"]
+size = Vector3(20, 2.265, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uhid3"]
+size = Vector3(7, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_23rmv"]
+size = Vector3(7, 3, 20)
+
+[node name="Hallway2" type="Node3D" unique_id=84698099]
+
+[node name="MainCSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=399722429]
+layers = 4
+material_override = ExtResource("1_mhruj")
+use_collision = true
+collision_layer = 4
+
+[node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D" unique_id=267813069]
+collision_mask = 0
+monitoring = false
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RegularReverb" unique_id=431179048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.816284, -57.504333, 0)
+shape = SubResource("BoxShape3D_f63gx")
+
+[node name="MainShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1166061555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.103485, -77.15223, 0)
+size = Vector3(285.9, 204.3042, 200)
+
+[node name="EntryHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2080629]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.882204, 1.252, -4.7567625e-07)
+operation = 2
+size = Vector3(1.5, 2.5, 29.289688)
+
+[node name="RevealDownwardExit" type="Area3D" parent="MainCSGCombiner3D/EntryHallway" unique_id=2042595373 node_paths=PackedStringArray("to_reveal", "new_safe_location")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.635607e-07, 0.028331876, 12.819113)
+script = ExtResource("2_hfnfu")
+to_reveal = [NodePath("../../DownwardExit"), NodePath("../../DownwardExitCeiling")]
+new_safe_location = NodePath("../SpawnPos")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/EntryHallway/RevealDownwardExit" unique_id=493875602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.88119507)
+shape = SubResource("BoxShape3D_tjft0")
+
+[node name="SpawnPos" type="Marker3D" parent="MainCSGCombiner3D/EntryHallway" unique_id=1455727947]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.4424587e-07, -1.252, 10.719624)
+
+[node name="KillPlane" type="Area3D" parent="MainCSGCombiner3D" unique_id=2005085001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.545424, -1.53617, 0)
+script = ExtResource("2_ua0r3")
+oneshot = false
+metadata/_custom_type_script = "uid://7w2y4qnnvvao"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/KillPlane" unique_id=1384453664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.050783, 0, 0)
+shape = SubResource("BoxShape3D_q34nk")
+debug_color = Color(0.9468996, 0.21825242, 0.22759676, 0.41960785)
+
+[node name="FUCK" type="Area3D" parent="MainCSGCombiner3D/KillPlane" unique_id=273554549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35.741653, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("3_t1cju")
+dialogue_text_queue = Array[String](["FUCK"])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/KillPlane" unique_id=1932501336 node_paths=PackedStringArray("teleport_location")]
+monitoring = false
+monitorable = false
+script = ExtResource("4_yrtb3")
+teleport_location = NodePath("../../EntryHallway/SpawnPos")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="EntryHallwayRidge" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2050499890]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 23.925491, -0.24214065, -5.724569e-07)
+size = Vector3(1.5, 0.48828125, 3.0971146)
+
+[node name="DownwardExit" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=811729167]
+transform = Transform3D(-4.371139e-08, -0.25881904, 0.9659258, 0, 0.9659258, 0.25881904, -1, 1.131334e-08, -4.222196e-08, -13.244986, -2.4907153, 5.7895676e-07)
+visible = false
+operation = 2
+size = Vector3(1.5, 2.5, 29.289688)
+
+[node name="DownwardExitCeiling" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=400456208]
+transform = Transform3D(-4.371139e-08, -0.25881904, 0.9659258, 0, 0.9659258, 0.25881904, -1, 1.131334e-08, -4.222196e-08, -13.892034, -0.07590079, 6.072401e-07)
+visible = false
+size = Vector3(2, 2.5, 29.29)
+
+[node name="DownwardExit2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1120327013]
+transform = Transform3D(-4.371139e-08, -0.50000006, 0.8660255, 0, 0.8660255, 0.50000006, -1, 2.1855694e-08, -3.7855173e-08, -39.218445, -13.334631, 1.8873e-06)
+operation = 2
+size = Vector3(1.5, 2.5, 29.289688)
+
+[node name="DownwardExitCeiling2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1443222299]
+transform = Transform3D(-4.371139e-08, -0.50000006, 0.8660255, 0, 0.8660255, 0.50000006, -1, 2.1855694e-08, -3.7855173e-08, -40.468445, -11.169567, 1.9419392e-06)
+size = Vector3(2, 2.5, 29.29)
+
+[node name="DownwardExit3" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=735602945]
+transform = Transform3D(-4.371139e-08, -0.7071068, 0.7071068, 0, 0.7071068, 0.7071068, -1, 3.090862e-08, -3.0908616e-08, -60.97528, -30.129023, 1.8873e-06)
+operation = 2
+size = Vector3(1.5, 2.5, 29.289688)
+
+[node name="Concern" type="Area3D" parent="MainCSGCombiner3D/DownwardExit3" unique_id=818847640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7763568e-14, 3.165511e-15, -3.3134825)
+monitorable = false
+script = ExtResource("3_t1cju")
+dialogue_text_queue = Array[String](["..."])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/DownwardExit3/Concern" unique_id=814412661]
+shape = SubResource("SphereShape3D_bhuwl")
+
+[node name="DownwardExitCeiling3" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1049034262]
+transform = Transform3D(-4.371139e-08, -0.7071068, 0.7071068, 0, 0.7071068, 0.7071068, -1, 3.090862e-08, -3.0908616e-08, -62.22528, -27.963959, 1.9419392e-06)
+size = Vector3(2, 2.5, 29.29)
+
+[node name="DownwardExit4" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=693368672]
+transform = Transform3D(-4.371139e-08, -0.86602545, 0.5, 0, 0.5, 0.86602545, -1, 3.7855173e-08, -2.185569e-08, -83.30913, -62.083107, 2.1490205e-06)
+operation = 2
+size = Vector3(1.5, 2.5, 53.23957)
+
+[node name="Shit" type="Area3D" parent="MainCSGCombiner3D/DownwardExit4" unique_id=1457666226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.110223e-14, -1.8863166e-14, 24.075706)
+monitorable = false
+script = ExtResource("3_t1cju")
+dialogue_text_queue = Array[String](["shitshitshit"])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/DownwardExit4/Shit" unique_id=579475274]
+shape = SubResource("SphereShape3D_bhuwl")
+
+[node name="SlidingAudio" type="AudioStreamPlayer3D" parent="MainCSGCombiner3D/DownwardExit4" unique_id=161910938]
+transform = Transform3D(1, 0, 1.7763568e-15, 0, 1, -8.273511e-16, 0, -8.273511e-16, 1, -2.2737368e-13, 0, 11.945709)
+stream = ExtResource("6_23jmj")
+attenuation_model = 3
+bus = &"Sounds"
+
+[node name="DownwardExitCeiling4" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1543333530]
+transform = Transform3D(-4.371139e-08, -0.86602545, 0.5, 0, 0.5, 0.86602545, -1, 3.7855173e-08, -2.185569e-08, -85.0051, -60.254597, 2.2231543e-06)
+size = Vector3(2, 2.5, 54.26879)
+
+[node name="Antechamber" type="CSGCylinder3D" parent="MainCSGCombiner3D" unique_id=1005740089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.829124, -86.22346, 1.8873e-06)
+operation = 2
+radius = 9.3
+height = 4.0
+sides = 9
+
+[node name="Ow" type="Area3D" parent="MainCSGCombiner3D/Antechamber" unique_id=935083845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0058059692, -1.1495972, 5.776542e-07)
+monitorable = false
+script = ExtResource("3_t1cju")
+dialogue_text_queue = Array[String](["Ow."])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Antechamber/Ow" unique_id=619743099]
+shape = SubResource("BoxShape3D_23jmj")
+
+[node name="Table" type="MeshInstance3D" parent="MainCSGCombiner3D/Antechamber" unique_id=1739403878]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0, -2, 0)
+material_override = SubResource("ShaderMaterial_h4phx")
+mesh = ExtResource("9_23jmj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MainCSGCombiner3D/Antechamber/Table" unique_id=1643775885]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Antechamber/Table/StaticBody3D" unique_id=514252976]
+shape = SubResource("ConcavePolygonShape3D_bhuwl")
+
+[node name="Map" type="MeshInstance3D" parent="MainCSGCombiner3D/Antechamber/Table" unique_id=668560060]
+transform = Transform3D(0.30331168, 0, -1.4230344, 0, 1.455, 0, 1.4230344, 0, 0.30331168, 0.0040932, 0.48338318, -0.025184631)
+mesh = ExtResource("10_bhuwl")
+
+[node name="Requisite" type="Node3D" parent="MainCSGCombiner3D/Antechamber" unique_id=2028962993]
+visible = false
+script = ExtResource("10_jbwf4")
+metadata/_custom_type_script = "uid://bisimrq06joy2"
+
+[node name="PuzzleRoom2" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=390417878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.7546, -83.559326, 1.8873e-06)
+operation = 2
+size = Vector3(66, 9.329, 50)
+
+[node name="ExtraReverb" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=309522347]
+reverb_bus_enabled = true
+reverb_bus_name = &"LargeRooms"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+script = ExtResource("12_h4phx")
+extended_range = 100.0
+transition_time = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" unique_id=1714824654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.802734, 0, 0)
+shape = SubResource("BoxShape3D_j0o8i")
+debug_color = Color(0.8552975, 0.2117607, 0.74454784, 0.41960785)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=817159944]
+transform = Transform3D(0.74282944, 0, -0.66948074, 0, 1, 0, 0.66948074, 0, 0.74282944, 14.471489, 0, 35.755466)
+operation = 2
+size = Vector3(54.350098, 12, 66.84711)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D" unique_id=610709785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9660225, 0, -33.315826)
+layers = 32
+occluder = SubResource("QuadOccluder3D_jbwf4")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=748412778]
+transform = Transform3D(0.74282944, 0, -0.66948074, 0, 1, 0, 0.66948074, 0, 0.74282944, -12.470993, 0, -35.755)
+operation = 2
+size = Vector3(54.350098, 12, 66.84711)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D3" unique_id=1221921164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.966, 0, 33.316)
+layers = 32
+occluder = SubResource("QuadOccluder3D_jbwf4")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1800119567]
+transform = Transform3D(0.74282944, 0, -0.66948074, 0, 1, 0, 0.66948074, 0, 0.74282944, 36.578354, 0, -49.066433)
+operation = 2
+size = Vector3(54.350098, 12, 66.84711)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=719837926]
+transform = Transform3D(0.74282944, 0, -0.66948074, 0, 1, 0, 0.66948074, 0, 0.74282944, -36.335236, 0, 47.482277)
+operation = 2
+size = Vector3(59.0813, 12, 66.84711)
+
+[node name="Pillar" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=759990543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.554916, 0, 4.654028)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar" unique_id=725887974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3501816, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar" unique_id=1354370191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar2" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1412982482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.55498, 0, -6.519722)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar2" unique_id=940144144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3501816, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar2" unique_id=1772972241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar3" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=2077292931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.54631, 0, 4.796483)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar3" unique_id=1094261965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3501816, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar3" unique_id=2007558728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar4" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=663554876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.546247, 0, -6.377267)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar4" unique_id=806029846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3501816, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar4" unique_id=1637017576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar5" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=727339709]
+transform = Transform3D(0.6847379, 0, 0.7287894, 0, 1, 0, -0.7287894, 0, 0.6847379, 16.485407, 0, -9.05604)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar5" unique_id=333619221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3501816, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar5" unique_id=807422342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar6" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1226939318]
+transform = Transform3D(0.6847379, 0, 0.7287894, 0, 1, 0, -0.7287894, 0, 0.6847379, 8.698476, 0, -16.380867)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar6" unique_id=1680727969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3501816, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar6" unique_id=681678427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar7" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=679799751]
+transform = Transform3D(0.6847379, 0, 0.7287894, 0, 1, 0, -0.7287894, 0, 0.6847379, -6.321556, 0, 16.06324)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar7" unique_id=1470212983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3501816, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar7" unique_id=1610318698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar8" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=966789849]
+transform = Transform3D(0.6847379, 0, 0.7287894, 0, 1, 0, -0.7287894, 0, 0.6847379, -14.108487, 0, 8.738414)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar8" unique_id=2058405161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3501816, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="MainCSGCombiner3D/PuzzleRoom2/Pillar8" unique_id=1005780236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=752661940]
+transform = Transform3D(0.7431448, 0, -0.6691306, 0, 1, 0, 0.6691306, 0, 0.7431448, 0, 0, 0)
+size = Vector3(200, 200, 6)
+
+[node name="KillPlane" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5" unique_id=1042608131]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -6.070717, 0)
+script = ExtResource("2_ua0r3")
+oneshot = false
+metadata/_custom_type_script = "uid://7w2y4qnnvvao"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane" unique_id=1900862983]
+shape = SubResource("BoxShape3D_q34nk")
+debug_color = Color(0.9468996, 0.21825242, 0.22759676, 0.41960785)
+
+[node name="FUCK" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane" unique_id=1362426592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35.741653, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("3_t1cju")
+dialogue_text_queue = Array[String](["FUCK"])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane" unique_id=1772374417 node_paths=PackedStringArray("teleport_location")]
+monitoring = false
+monitorable = false
+script = ExtResource("4_yrtb3")
+teleport_location = NodePath("../../../PuzzleRespawn")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="PuzzleRespawn" type="Marker3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1048327583]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, 4.526352, -4.595352, -3.8264365)
+
+[node name="EntrySightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1420052744 node_paths=PackedStringArray("prerequisite", "hidden_doorframe")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 33.061554, -3.6371307, 0)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("11_j0o8i")
+prerequisite = NodePath("../../Antechamber/Requisite")
+hidden_doorframe = NodePath("../EntryDoorway/Doorframe")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="TreeDecal2" type="Decal" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1849825085]
+transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 32.996033, -1.9397964, 5.441507e-09)
+size = Vector3(1, 0.08, 1)
+texture_albedo = ExtResource("14_qk8do")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.15
+upper_fade = 0.0
+lower_fade = 0.0
+
+[node name="EntryDoorway" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1765408440]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 33.061554, -3.6371307, 0)
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/EntryDoorway" unique_id=1108006220 instance=ExtResource("20_s2x32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+eye_type = 1
+entangle_type = 1
+
+[node name="QuantumObjectManagerConserved" type="Node" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=305219566 node_paths=PackedStringArray("prerequisite", "entangled_toggles")]
+script = ExtResource("14_he3qp")
+prerequisite = NodePath("../../Antechamber/Requisite")
+entangled_toggles = [NodePath("../PuzzleExitSightToggle1"), NodePath("../PuzzleExitSightToggle2"), NodePath("../PuzzleExitSightToggle3")]
+requires_consensus = false
+metadata/_custom_type_script = "uid://neaii8ets618"
+
+[node name="PuzzleExitSightToggle1" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=279277271 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(0.7431448, 0, -0.6691306, 0, 1, 0, 0.6691306, 0, 0.7431448, -16.831253, -3.6371307, 20.218016)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("21_fobae")
+hidden_doorframe = NodePath("../PuzzleExitDoorway1/Doorframe")
+metadata/_custom_type_script = "uid://d17j1ym27qmk2"
+
+[node name="PuzzleExitHallway1" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1939769040]
+transform = Transform3D(0.7431448, 0, -0.6691306, 0, 1, 0, 0.6691306, 0, 0.7431448, -32.53952, -3.5321655, 37.663734)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 46.79492)
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway1" unique_id=2027816097 node_paths=PackedStringArray("teleport_location")]
+monitorable = false
+script = ExtResource("4_yrtb3")
+teleport_location = NodePath("../../PuzzleEntryHallway1/Destination")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway1/Teleporter" unique_id=1112055378]
+shape = SubResource("BoxShape3D_jbwf4")
+debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
+
+[node name="Destination" type="Marker3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway1" unique_id=1622719388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, -1.079071, -0.38267756)
+
+[node name="Extension" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway1" unique_id=832899218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888184e-05, 0, 43.32213)
+visibility_parent = NodePath("../..")
+layers = 4
+size = Vector3(1.32, 2.265, 58.497498)
+
+[node name="Conceal" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway1" unique_id=493521406]
+priority = 1
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway1/Conceal" unique_id=814436974]
+shape = SubResource("BoxShape3D_he3qp")
+
+[node name="PuzzleExitDoorway1" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1120899516]
+transform = Transform3D(0.7431448, 0, -0.6691306, 0, 1, 0, 0.6691306, 0, 0.7431448, -16.831245, -3.6371307, 20.218016)
+visible = false
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitDoorway1" unique_id=853927877 instance=ExtResource("20_s2x32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+eye_type = 1
+entangle_type = 4
+
+[node name="PuzzleExitSightToggle2" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=170951273 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(-0.6691307, 0, -0.7431448, 0, 1, 0, 0.7431448, 0, -0.6691307, -10.702316, -0.59147644, 2.6997225)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("21_fobae")
+hidden_doorframe = NodePath("../PuzzleExitDoorway2/Doorframe")
+metadata/_custom_type_script = "uid://d17j1ym27qmk2"
+
+[node name="PuzzleExitHallway2" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1114378216]
+transform = Transform3D(-0.6691307, 0, -0.7431448, 0, 1, 0, 0.7431448, 0, -0.6691307, -28.14804, -0.48651123, -13.008548)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 46.79492)
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway2" unique_id=1762610705 node_paths=PackedStringArray("teleport_location")]
+monitorable = false
+script = ExtResource("4_yrtb3")
+teleport_location = NodePath("../../PuzzleEntryHallway2/Destination")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway2/Teleporter" unique_id=1026824461]
+shape = SubResource("BoxShape3D_jbwf4")
+debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
+
+[node name="Destination" type="Marker3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway2" unique_id=435990786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, -1.079071, -0.38267756)
+
+[node name="Extension" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway2" unique_id=1709738529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888184e-05, 0, 43.32213)
+visibility_parent = NodePath("../..")
+layers = 4
+size = Vector3(1.32, 2.265, 58.497498)
+
+[node name="Conceal" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway2" unique_id=814792236]
+priority = 1
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway2/Conceal" unique_id=1752209564]
+shape = SubResource("BoxShape3D_he3qp")
+
+[node name="PuzzleExitDoorway2" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=2042838119]
+transform = Transform3D(-0.6691307, 0, -0.7431448, 0, 1, 0, 0.7431448, 0, -0.6691307, -10.702324, -0.59147644, 2.6997225)
+visible = false
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitDoorway2" unique_id=1777380331 instance=ExtResource("20_s2x32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+eye_type = 1
+entangle_type = 5
+
+[node name="PuzzleExitSightToggle3" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=938537567 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(0.7431448, 0, -0.6691306, 0, 1, 0, 0.6691306, 0, 0.7431448, 5.449875, 2.7518463, 9.086923)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("21_fobae")
+hidden_doorframe = NodePath("../PuzzleExitDoorway3/Doorframe")
+metadata/_custom_type_script = "uid://d17j1ym27qmk2"
+
+[node name="PuzzleExitHallway3" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=864111743]
+transform = Transform3D(0.7431448, 0, -0.6691306, 0, 1, 0, 0.6691306, 0, 0.7431448, -10.258392, 2.8568115, 26.53264)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 46.79492)
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway3" unique_id=1344776780 node_paths=PackedStringArray("teleport_location")]
+monitorable = false
+script = ExtResource("4_yrtb3")
+teleport_location = NodePath("../../PuzzleEntryHallway3/Destination")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway3/Teleporter" unique_id=935159256]
+shape = SubResource("BoxShape3D_jbwf4")
+debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
+
+[node name="Destination" type="Marker3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway3" unique_id=440183575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, -1.079071, -0.38267756)
+
+[node name="Extension" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway3" unique_id=1287175712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888184e-05, 0, 43.32213)
+visibility_parent = NodePath("../..")
+layers = 4
+size = Vector3(1.32, 2.265, 58.497498)
+
+[node name="Conceal" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway3" unique_id=848849387]
+priority = 1
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway3/Conceal" unique_id=2008940056]
+shape = SubResource("BoxShape3D_he3qp")
+
+[node name="PuzzleExitDoorway3" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1655791700]
+transform = Transform3D(0.7431448, 0, -0.6691306, 0, 1, 0, 0.6691306, 0, 0.7431448, 5.4498754, 2.7518463, 9.086923)
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitDoorway3" unique_id=2034798591 instance=ExtResource("20_s2x32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+eye_type = 1
+entangle_type = 6
+
+[node name="PuzzleEntrySightToggle1" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=405602579 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
+transform = Transform3D(-0.74314475, 0, 0.6691307, 0, 1, 0, -0.6691307, 0, -0.74314475, 19.244461, 0.70290375, -19.848112)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("11_j0o8i")
+prerequisite = NodePath("../../Antechamber/Requisite")
+entangled_toggles = [NodePath("../PuzzleExitSightToggle1")]
+appear_probability = 0.0
+hide_probability = 0.0
+hidden_doorframe = NodePath("../PuzzleEntryDoorway1/Doorframe")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="PuzzleEntryHallway1" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=620441544]
+transform = Transform3D(-0.74314475, 0, 0.6691307, 0, 1, 0, -0.6691307, 0, -0.74314475, 34.95273, 0.80786896, -37.293827)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 46.79492)
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway1" unique_id=2027667597 node_paths=PackedStringArray("teleport_location")]
+monitorable = false
+script = ExtResource("4_yrtb3")
+teleport_location = NodePath("../../PuzzleExitHallway1/Destination")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway1/Teleporter" unique_id=1939191959]
+shape = SubResource("BoxShape3D_jbwf4")
+debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
+
+[node name="Destination" type="Marker3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway1" unique_id=2128459820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, -1.079071, -0.38267756)
+
+[node name="Extension" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway1" unique_id=191841734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888184e-05, 0, 43.32213)
+visibility_parent = NodePath("../..")
+layers = 4
+size = Vector3(1.32, 2.265, 58.497498)
+
+[node name="Conceal" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway1" unique_id=418260099]
+priority = 1
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway1/Conceal" unique_id=595623282]
+shape = SubResource("BoxShape3D_he3qp")
+
+[node name="PuzzleEntryDoorway1" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=2050623320]
+transform = Transform3D(-0.74314475, 0, 0.6691307, 0, 1, 0, -0.6691307, 0, -0.74314475, 19.244457, 0.70290375, -19.848112)
+visible = false
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryDoorway1" unique_id=1691250330 instance=ExtResource("20_s2x32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+eye_type = 3
+entangle_type = 4
+
+[node name="PuzzleEntrySightToggle2" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=252861383 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
+transform = Transform3D(-0.6691306, 0, -0.74314475, 0, 1, 0, 0.74314475, 0, -0.6691306, -0.45881653, -3.637001, -8.658358)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("11_j0o8i")
+prerequisite = NodePath("../../Antechamber/Requisite")
+entangled_toggles = [NodePath("../PuzzleExitSightToggle2")]
+appear_probability = 0.0
+hide_probability = 0.0
+hidden_doorframe = NodePath("../PuzzleEntryDoorway2/Doorframe")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="PuzzleEntryHallway2" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1677707310]
+transform = Transform3D(-0.6691306, 0, -0.74314475, 0, 1, 0, 0.74314475, 0, -0.6691306, -17.904526, -3.5320358, -24.366625)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 46.79492)
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2" unique_id=927436569 node_paths=PackedStringArray("teleport_location")]
+monitorable = false
+script = ExtResource("4_yrtb3")
+teleport_location = NodePath("../../PuzzleExitHallway2/Destination")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2/Teleporter" unique_id=1101765293]
+shape = SubResource("BoxShape3D_jbwf4")
+debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
+
+[node name="Destination" type="Marker3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2" unique_id=1416004554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, -1.079071, -0.38267756)
+
+[node name="Extension" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2" unique_id=1763589149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888184e-05, 0, 43.32213)
+visibility_parent = NodePath("../..")
+layers = 4
+size = Vector3(1.32, 2.265, 58.497498)
+
+[node name="Conceal" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2" unique_id=1200383976]
+priority = 1
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2/Conceal" unique_id=1973476573]
+shape = SubResource("BoxShape3D_he3qp")
+
+[node name="PuzzleEntryDoorway2" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=982960058]
+transform = Transform3D(-0.6691306, 0, -0.74314475, 0, 1, 0, 0.74314475, 0, -0.6691306, -0.45881745, -3.637, -8.658358)
+visible = false
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryDoorway2" unique_id=2079938964 instance=ExtResource("20_s2x32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+eye_type = 3
+entangle_type = 5
+
+[node name="PuzzleEntrySightToggle3" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=564400428 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
+transform = Transform3D(0.66913056, 0, 0.7431448, 0, 1, 0, -0.7431448, 0, 0.66913056, 9.767303, -3.637001, 0.5492853)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("11_j0o8i")
+prerequisite = NodePath("../../Antechamber/Requisite")
+entangled_toggles = [NodePath("../PuzzleExitSightToggle3")]
+appear_probability = 0.0
+hide_probability = 0.0
+hidden_doorframe = NodePath("../PuzzleEntryDoorway3/Doorframe")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="PuzzleEntryHallway3" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1261449728]
+transform = Transform3D(0.66913056, 0, 0.7431448, 0, 1, 0, -0.7431448, 0, 0.66913056, 27.21302, -3.5320358, 16.257553)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 46.79492)
+
+[node name="Teleporter" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway3" unique_id=1871640460 node_paths=PackedStringArray("teleport_location")]
+monitorable = false
+script = ExtResource("4_yrtb3")
+teleport_location = NodePath("../../PuzzleExitHallway3/Destination")
+metadata/_custom_type_script = "uid://ce324142fvilf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway3/Teleporter" unique_id=1474979373]
+shape = SubResource("BoxShape3D_jbwf4")
+debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
+
+[node name="Destination" type="Marker3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway3" unique_id=1327607358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, -1.079071, -0.38267756)
+
+[node name="Extension" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway3" unique_id=365913905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888184e-05, 0, 43.32213)
+visibility_parent = NodePath("../..")
+layers = 4
+size = Vector3(1.32, 2.265, 58.497498)
+
+[node name="Conceal" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway3" unique_id=11997656]
+priority = 1
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway3/Conceal" unique_id=707074559]
+shape = SubResource("BoxShape3D_he3qp")
+
+[node name="PuzzleEntryDoorway3" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1942067239]
+transform = Transform3D(0.66913056, 0, 0.7431448, 0, 1, 0, -0.7431448, 0, 0.66913056, 9.767307, -3.637, 0.5492853)
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryDoorway3" unique_id=1937639229 instance=ExtResource("20_s2x32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+eye_type = 3
+entangle_type = 6
+
+[node name="ExitSightToggle" type="VisibleOnScreenNotifier3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=112158074 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -33.119324, -3.6371307, -1.230691)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("11_j0o8i")
+prerequisite = NodePath("../../Antechamber/Requisite")
+entangled_toggles = [NodePath("../EntrySightToggle")]
+appear_probability = 0.0
+hide_probability = 0.0
+hidden_doorframe = NodePath("../ExitDoorway/Doorframe")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="TreeDecal" type="Decal" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=318761319]
+transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, -32.994843, -1.9397964, -1.230691)
+size = Vector3(1, 0.08, 1)
+texture_albedo = ExtResource("16_oxtvu")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.15
+upper_fade = 0.0
+lower_fade = 0.0
+
+[node name="ExitDoorway" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=641805221]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -33.119324, -3.6371307, -1.230691)
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway" unique_id=1861669498 instance=ExtResource("20_s2x32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+eye_type = 3
+entangle_type = 1
+
+[node name="ExitHallway" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway" unique_id=1562512391]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.10500336, 30.311996)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(3, 2.265, 60.585)
+
+[node name="Extension" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway" unique_id=600421356]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.2737366e-13, 0, 58.79871)
+visibility_parent = NodePath("../..")
+layers = 4
+size = Vector3(3, 2.265, 60.585)
+
+[node name="ExitHallwayHole" type="CSGBox3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway" unique_id=1791245542]
+transform = Transform3D(0.9999952, 0, 7.81597e-14, 0, 1, 0, -7.81597e-14, 0, 0.9999952, -7.792287e-13, -73.52754, -9.969651)
+visibility_parent = NodePath("../..")
+layers = 4
+size = Vector3(3, 149.32, 20)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway" unique_id=14079593]
+root_node = NodePath("../SlidingFloor")
+libraries/ = SubResource("AnimationLibrary_23rmv")
+
+[node name="SlidingFloor" type="AnimatableBody3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway" unique_id=1558309459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.265, -9.97)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/SlidingFloor" unique_id=675640151]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_qk8do")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/SlidingFloor" unique_id=1431990429]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_qk8do")
+
+[node name="StoneScrape" type="AudioStreamPlayer3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/SlidingFloor" unique_id=181340887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2649994, 0)
+stream = ExtResource("18_uhid3")
+max_db = -10.0
+pitch_scale = 0.9
+bus = &"LargeRooms"
+
+[node name="TriggerFloor" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway" unique_id=750760725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.97)
+monitorable = false
+script = ExtResource("3_t1cju")
+dialogue_text_queue = Array[String](["What? No!"])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/TriggerFloor" unique_id=597712203]
+shape = SubResource("BoxShape3D_uhid3")
+
+[node name="LoadLevel3" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway" unique_id=914533885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.914345, -9.97)
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/LoadLevel3" unique_id=1295165302]
+shape = SubResource("BoxShape3D_23rmv")
+debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
+
+[node name="LevelLoader" type="Node" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/LoadLevel3" unique_id=574978735]
+script = ExtResource("19_23rmv")
+new_level = "uid://dnjtcvaxr54dt"
+old_node_name = "Hallway2"
+metadata/_custom_type_script = "uid://blngdvklqxsov"
+
+[connection signal="body_entered" from="MainCSGCombiner3D/EntryHallway/RevealDownwardExit" to="MainCSGCombiner3D/EntryHallway/RevealDownwardExit" method="_on_body_entered" unbinds=1]
+[connection signal="triggered" from="MainCSGCombiner3D/KillPlane" to="MainCSGCombiner3D/KillPlane/FUCK" method="_on_triggered"]
+[connection signal="triggered" from="MainCSGCombiner3D/KillPlane" to="MainCSGCombiner3D/KillPlane/Teleporter" method="_on_trigger"]
+[connection signal="body_entered" from="MainCSGCombiner3D/DownwardExit4/Shit" to="MainCSGCombiner3D/DownwardExit4/SlidingAudio" method="play" flags=6 unbinds=1]
+[connection signal="body_entered" from="MainCSGCombiner3D/Antechamber/Ow" to="MainCSGCombiner3D/DownwardExit4/SlidingAudio" method="queue_free" flags=6 unbinds=1]
+[connection signal="body_entered" from="MainCSGCombiner3D/Antechamber/Ow" to="MainCSGCombiner3D/Antechamber/Requisite" method="trigger" flags=6 unbinds=1]
+[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" to="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" method="_on_body_entered" unbinds=1]
+[connection signal="body_exited" from="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" to="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" method="_on_body_exited" unbinds=1]
+[connection signal="triggered" from="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane" to="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane/FUCK" method="_on_triggered"]
+[connection signal="triggered" from="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane" to="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane/Teleporter" method="_on_trigger"]
+[connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom2/EntrySightToggle" to="MainCSGCombiner3D/PuzzleRoom2/EntrySightToggle" method="_on_screen_exited"]
+[connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle1" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle1" method="_on_screen_exited"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway1/Teleporter" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle1" method="toggle_door" binds= [true, false]]
+[connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle2" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle2" method="_on_screen_exited"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway2/Teleporter" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle2" method="toggle_door" binds= [true, false]]
+[connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle3" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle3" method="_on_screen_exited"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitHallway3/Teleporter" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle3" method="toggle_door" binds= [true, false]]
+[connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle1" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle1" method="_on_screen_exited"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway1/Teleporter" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle1" method="toggle_door" binds= [true, false]]
+[connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle2" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle2" method="_on_screen_exited"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2/Teleporter" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle2" method="toggle_door" binds= [true, false]]
+[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2/Conceal" to="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" method="_on_body_exited" unbinds=1]
+[connection signal="body_exited" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway2/Conceal" to="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" method="_on_body_entered" unbinds=1]
+[connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle3" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntrySightToggle3" method="_on_screen_exited"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryHallway3/Teleporter" to="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitSightToggle3" method="toggle_door" binds= [true, false]]
+[connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom2/ExitSightToggle" to="MainCSGCombiner3D/PuzzleRoom2/ExitSightToggle" method="_on_screen_exited"]
+[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/TriggerFloor" to="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/SlidingFloor/StoneScrape" method="play" flags=6 unbinds=1]
+[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/TriggerFloor" to="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/AnimationPlayer" method="play" flags=6 unbinds=1 binds= ["slide_away"]]
+[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/LoadLevel3" to="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/LoadLevel3/LevelLoader" method="trigger" flags=6 unbinds=1]

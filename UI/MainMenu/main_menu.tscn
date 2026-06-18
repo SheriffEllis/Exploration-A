@@ -2,19 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://ciqikbkt6eh1u" path="res://Materials/Textures/Ash.png" id="1_jld46"]
 [ext_resource type="Script" uid="uid://dn3d3ri3c7nti" path="res://UI/MainMenu/main_menu.gd" id="1_t17p2"]
-
-[sub_resource type="SystemFont" id="SystemFont_t17p2"]
-font_names = PackedStringArray("Courier New")
+[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="3_3jj5y"]
 
 [sub_resource type="Theme" id="Theme_3jj5y"]
 Button/font_sizes/font_size = 50
-Button/fonts/font = SubResource("SystemFont_t17p2")
-
-[sub_resource type="SystemFont" id="SystemFont_3jj5y"]
-font_names = PackedStringArray("Courier New")
+Button/fonts/font = ExtResource("3_3jj5y")
 
 [sub_resource type="LabelSettings" id="LabelSettings_h8rmy"]
-font = SubResource("SystemFont_3jj5y")
+font = ExtResource("3_3jj5y")
 font_size = 80
 font_color = Color(0.89, 0.84846663, 0.39159998, 1)
 outline_size = 8

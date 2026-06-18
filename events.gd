@@ -13,6 +13,7 @@ signal flashlight_turned_off
 signal flicker_triggered
 signal image_captured
 signal image_deleted
+signal forced_image_deletion
 
 #region
 signal interaction_prompted
