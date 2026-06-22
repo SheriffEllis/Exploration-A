@@ -203,7 +203,7 @@ reverb_bus_amount = 1.0
 reverb_bus_uniformity = 1.0
 script = ExtResource("5_h8m3o")
 extended_range = 80.0
-transition_time = 2.0
+transition_time = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RidgeCutout/ExtraReverb" unique_id=1590795051]
 shape = SubResource("BoxShape3D_iatft")

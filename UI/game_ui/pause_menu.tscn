@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bqb6yqhhahabe" path="res://UI/game_ui/pause_menu.gd" id="2_3koc6"]
 [ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="3_l0lur"]
 [ext_resource type="Script" uid="uid://c5d6s3fn88vvb" path="res://UI/game_ui/text_history.gd" id="4_7qrf1"]
+[ext_resource type="FontFile" uid="uid://b13v8j1courh2" path="res://UI/game_ui/CourierPrime-Regular.ttf" id="4_ndjrq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0rig"]
 bg_color = Color(0, 0, 0, 0.87058824)
@@ -29,6 +30,12 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="SystemFont" id="SystemFont_i3yvp"]
+fallbacks = Array[Font]([ExtResource("4_ndjrq")])
+font_names = PackedStringArray("Courier New")
+font_italic = true
+subpixel_positioning = 0
+
 [node name="PauseMenu" type="Control" unique_id=1406971771]
 layout_mode = 3
 anchors_preset = 15
@@ -36,6 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("2_3koc6")
 metadata/_custom_type_script = "uid://bqb6yqhhahabe"
 
@@ -91,10 +99,9 @@ layout_mode = 2
 theme = ExtResource("1_o1rul")
 text = "Resume"
 
-[node name="Save" type="Button" parent="Panel/VBoxContainer" unique_id=186936465]
-visible = false
+[node name="Settings" type="Button" parent="Panel/VBoxContainer" unique_id=186936465]
 layout_mode = 2
-text = "Save"
+text = "Settings"
 
 [node name="Quit" type="Button" parent="Panel/VBoxContainer" unique_id=1942428366]
 layout_mode = 2
@@ -120,7 +127,12 @@ scale = Vector2(0.95, 0.95)
 pivot_offset = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_fonts/normal_font = ExtResource("3_l0lur")
+theme_override_fonts/italics_font = SubResource("SystemFont_i3yvp")
 theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
 scroll_following = true
 horizontal_alignment = 1

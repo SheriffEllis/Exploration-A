@@ -1,19 +1,34 @@
 [gd_scene format=3 uid="uid://bku8imjjwm262"]
 
 [ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_npesk"]
+[ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="2_fqxm8"]
+[ext_resource type="Material" uid="uid://c3f82sbdndr2f" path="res://Materials/Room/PaintedWood.tres" id="2_lbayr"]
+[ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="3_uy1xx"]
+[ext_resource type="Texture2D" uid="uid://cmi2fydlbooym" path="res://Materials/Textures/Decals/Eye.png" id="5_uy1xx"]
+[ext_resource type="Texture2D" uid="uid://bc4l3un4tshf1" path="res://Materials/Textures/Decals/ArbitrarySymbol2.png" id="6_gegf5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
-size = Vector3(133, 165.009, 102)
+size = Vector3(285.9, 160.083, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqxm8"]
+transparency = 1
+albedo_color = Color(0.13, 0.40550017, 1, 0.64705884)
+roughness = 0.31
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uy1xx"]
+material = SubResource("StandardMaterial3D_fqxm8")
+top_radius = 4.5
+height = 0.1
 
 [node name="Hallway3" type="Node3D" unique_id=84698099]
 
-[node name="MainCSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=399722429]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=27485603]
 layers = 4
 material_override = ExtResource("1_npesk")
 use_collision = true
 collision_layer = 4
 
-[node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D" unique_id=267813069]
+[node name="RegularReverb" type="Area3D" parent="CSGCombiner3D" unique_id=267813069]
 collision_mask = 0
 monitoring = false
 reverb_bus_enabled = true
@@ -21,15 +36,336 @@ reverb_bus_name = &"Hallways"
 reverb_bus_amount = 1.0
 reverb_bus_uniformity = 1.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/RegularReverb" unique_id=431179048]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.816284, -57.504333, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/RegularReverb" unique_id=431179048]
 shape = SubResource("BoxShape3D_f63gx")
 
-[node name="MainShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1166061555]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.103485, -55.041626, 0)
-size = Vector3(285.9, 160.083, 200)
+[node name="MainShell" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1166061555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.769775, 0)
+size = Vector3(100, 123.53955, 100)
 
-[node name="EntryHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=2080629]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.882204, 1.252, -4.7567625e-07)
+[node name="EntryHole" type="CSGBox3D" parent="CSGCombiner3D" unique_id=159454605]
+transform = Transform3D(-4.3711257e-08, 0, 0.9999952, 0, 1, 0, -0.9999952, 0, -4.3711257e-08, 0, 28.81411, 0)
+layers = 4
 operation = 2
-size = Vector3(1.5, 2.5, 29.289688)
+size = Vector3(3, 118.00328, 20)
+
+[node name="EntryRoom" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2080629]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -35.85219, 0)
+operation = 2
+size = Vector3(30, 12, 30)
+
+[node name="Pillar" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom" unique_id=590970757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/Pillar" unique_id=1413033034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.6575327, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/Pillar" unique_id=2092902746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8112645, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar2" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom" unique_id=1943872794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/Pillar2" unique_id=220810350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.6575327, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/Pillar2" unique_id=1029817539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8112645, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar3" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom" unique_id=134630433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/Pillar3" unique_id=713888281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.6575327, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/Pillar3" unique_id=42295386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8112645, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Pillar4" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom" unique_id=1742814002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)
+operation = 2
+radius = 1.0
+height = 12.305
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/Pillar4" unique_id=1525894892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.6575327, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/Pillar4" unique_id=2096337600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8112645, 0)
+radius = 1.35
+height = 1.0
+sides = 16
+
+[node name="WellHole" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom" unique_id=1844775631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.3449974, 0)
+radius = 4.5
+height = 1.0
+sides = 16
+
+[node name="CornerPiece" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom" unique_id=1861837771]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 15, 6, 15)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 12.0
+
+[node name="CornerPiece2" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom" unique_id=350134238]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 0, 1, 1, 4.371139e-08, -4.3711385e-08, -15, 6, 15)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 12.0
+
+[node name="CornerPiece3" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom" unique_id=1801841186]
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 0, 1, -1, 4.371139e-08, -4.3711385e-08, 15, 6, -15)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 12.0
+
+[node name="CornerPiece4" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom" unique_id=294262776]
+transform = Transform3D(-1, 8.742278e-08, 0, 3.821371e-15, 4.371139e-08, 1, 8.742278e-08, 1, -4.371139e-08, -15, 6, -15)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 12.0
+
+[node name="PuzzleExitHallway1" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom" unique_id=830092994]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -4.864998, -17.829)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 5.4101563)
+
+[node name="PuzzleExitDoorway1" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1" unique_id=1460988051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0081482e-05, -0.10496521, -2.7223244)
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1" unique_id=1108006220 instance=ExtResource("2_fqxm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+open_angle = 100.0
+
+[node name="PuzzleExitSightToggle1" type="VisibleOnScreenNotifier3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1" unique_id=1674117430 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.722046e-06, 0, 5.722046e-06)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("3_uy1xx")
+hidden_doorframe = NodePath("../Doorframe")
+metadata/_custom_type_script = "uid://d17j1ym27qmk2"
+
+[node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1" unique_id=326694115]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 1.9584797e-07, 3.8628235, 9.066023)
+visibility_parent = NodePath("../..")
+size = Vector3(1.32, 2.265, 16)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1" unique_id=231193403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3051634e-07, 8.8675, 21.705004)
+size = Vector3(8, 4, 5)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/CSGBox3D" unique_id=1230765155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0927852e-07, 0, -2.5)
+radius = 4.0
+height = 4.0
+sides = 16
+
+[node name="CornerPiece" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/CSGBox3D" unique_id=1044825938]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 3.978, 2, 2.459999)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 16.0
+
+[node name="CornerPiece2" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/CSGBox3D" unique_id=1423783734]
+transform = Transform3D(-1.0927847e-08, 0.25, 1.0927847e-08, 0, -1.0927847e-08, 0.25, 0.25, 1.0927847e-08, 4.7767137e-16, -3.978, 2, 2.459999)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 16.0
+
+[node name="PuzzleExitHallway2" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom" unique_id=1431602084]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.829, -4.865, 0)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 5.4101563)
+
+[node name="PuzzleExitDoorway1" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2" unique_id=1014230251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0081482e-05, -0.10496521, -2.7223244)
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1" unique_id=1308700169 instance=ExtResource("2_fqxm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+open_angle = 100.0
+
+[node name="PuzzleExitSightToggle1" type="VisibleOnScreenNotifier3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1" unique_id=1904633491 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.722046e-06, 0, 5.722046e-06)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("3_uy1xx")
+hidden_doorframe = NodePath("../Doorframe")
+metadata/_custom_type_script = "uid://d17j1ym27qmk2"
+
+[node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2" unique_id=1578950800]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 1.9584797e-07, 3.8628235, 9.066023)
+visibility_parent = NodePath("../..")
+size = Vector3(1.32, 2.265, 16)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2" unique_id=160339289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3051634e-07, 8.8675, 21.705004)
+size = Vector3(8, 4, 5)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/CSGBox3D" unique_id=1882657766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0927852e-07, 0, -2.5)
+radius = 4.0
+height = 4.0
+sides = 16
+
+[node name="CornerPiece" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/CSGBox3D" unique_id=1186686517]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 3.978, 2, 2.459999)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 16.0
+
+[node name="CornerPiece2" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/CSGBox3D" unique_id=1990075987]
+transform = Transform3D(-1.0927847e-08, 0.25, 1.0927847e-08, 0, -1.0927847e-08, 0.25, 0.25, 1.0927847e-08, 4.7767137e-16, -3.978, 2, 2.459999)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 16.0
+
+[node name="PuzzleExitHallway3" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom" unique_id=574377037]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 17.829, -4.865, 0)
+visibility_parent = NodePath("..")
+layers = 4
+size = Vector3(1.32, 2.265, 5.4101563)
+
+[node name="PuzzleExitDoorway1" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3" unique_id=1870873318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0081482e-05, -0.10496521, -2.7223244)
+layers = 4
+size = Vector3(0.955, 2.055, 0.55856323)
+
+[node name="Doorframe" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1" unique_id=1117439416 instance=ExtResource("2_fqxm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+open_angle = 100.0
+
+[node name="PuzzleExitSightToggle1" type="VisibleOnScreenNotifier3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1" unique_id=1415307152 node_paths=PackedStringArray("hidden_doorframe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.722046e-06, 0, 5.722046e-06)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("3_uy1xx")
+hidden_doorframe = NodePath("../Doorframe")
+metadata/_custom_type_script = "uid://d17j1ym27qmk2"
+
+[node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3" unique_id=200840652]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 1.9584797e-07, 3.8628235, 9.066023)
+visibility_parent = NodePath("../..")
+size = Vector3(1.32, 2.265, 16)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3" unique_id=1756527511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3051634e-07, 8.8675, 21.705004)
+size = Vector3(8, 4, 5)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/CSGBox3D" unique_id=133742396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0927852e-07, 0, -2.5)
+radius = 4.0
+height = 4.0
+sides = 16
+
+[node name="CornerPiece" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/CSGBox3D" unique_id=1468478397]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 3.978, 2, 2.459999)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 16.0
+
+[node name="CornerPiece2" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/CSGBox3D" unique_id=2056973268]
+transform = Transform3D(-1.0927847e-08, 0.25, 1.0927847e-08, 0, -1.0927847e-08, 0.25, 0.25, 1.0927847e-08, 4.7767137e-16, -3.978, 2, 2.459999)
+polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
+depth = 16.0
+
+[node name="Well" type="CSGCombiner3D" parent="." unique_id=1581026977]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -35.85219, 0)
+layers = 4
+material_override = ExtResource("2_lbayr")
+use_collision = true
+collision_layer = 4
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Well" unique_id=23220873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.196369, 0)
+radius = 5.0
+height = 1.0
+sides = 16
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Well/CSGCylinder3D" unique_id=1780019999]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0.03924179, 3.4306264e-09)
+operation = 2
+radius = 4.5
+height = 1.0341797
+sides = 16
+cone = true
+
+[node name="Water" type="MeshInstance3D" parent="Well/CSGCylinder3D" unique_id=1295456806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42668915, 0)
+layers = 4
+mesh = SubResource("CylinderMesh_uy1xx")
+
+[node name="Pedestal" type="CSGCylinder3D" parent="Well" unique_id=1926692751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7001383e-06, 2.541565, -38.89463)
+radius = 0.316
+height = 0.80049324
+sides = 16
+
+[node name="Bottom" type="CSGCylinder3D" parent="Well/Pedestal" unique_id=273931657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4736557, 0)
+radius = 0.55371094
+height = 0.24435425
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="Well/Pedestal" unique_id=809015697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4133339, 0)
+radius = 0.453125
+height = 0.1496582
+smooth_faces = false
+
+[node name="Decal" type="Decal" parent="Well/Pedestal" unique_id=1675653439]
+transform = Transform3D(1, -4.371139e-08, 4.371139e-08, 4.371139e-08, -4.371139e-08, -1, 4.371139e-08, 1, -4.3711385e-08, 1.5688784e-08, 0, 0.2168274)
+layers = 4
+size = Vector3(0.6, 0.5, 0.6)
+texture_albedo = ExtResource("5_uy1xx")
+modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
+albedo_mix = 0.9
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
+
+[node name="Decal2" type="Decal" parent="Well/Pedestal" unique_id=1692555434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49227524, 0)
+layers = 4
+size = Vector3(1, 0.05, 1)
+texture_albedo = ExtResource("6_gegf5")
+modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
+albedo_mix = 0.9
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
+
+[connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
+[connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
+[connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]

@@ -32,6 +32,7 @@ var flashlight_enabled := false
 @export var flashlight_flicker: AudioStreamPlayer3D
 @export var coyote_timer: Timer
 @export var footsteps: AudioStreamPlayer3D
+@export var avoid_headbang: RayCast3D
 
 @export_category("Crouching")
 @export var normal_mesh: MeshInstance3D
@@ -163,7 +164,7 @@ func handle_translation() -> void:
 
 
 func handle_jump() -> void:
-	if Input.is_action_pressed(&"jump") and can_jump:
+	if Input.is_action_pressed(&"jump") and can_jump and not avoid_headbang.is_colliding():
 		velocity.y = JUMP_VELOCITY
 		can_jump = false
 

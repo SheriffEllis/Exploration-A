@@ -11,6 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://uhc7b1qulsug" path="res://Hallway/Models/Map.tres" id="10_bhuwl"]
 [ext_resource type="Script" uid="uid://bisimrq06joy2" path="res://Hallway/requisite.gd" id="10_jbwf4"]
 [ext_resource type="Script" uid="uid://bhljyfdcv7r0o" path="res://Hallway/sight_toggle_independent.gd" id="11_j0o8i"]
+[ext_resource type="Script" uid="uid://mgctuhvrl4y3" path="res://Hallway/manual_door_setter.gd" id="12_5pbpu"]
 [ext_resource type="Script" uid="uid://hbeu3mw3fmdk" path="res://Hallway/extended_view_zone.gd" id="12_h4phx"]
 [ext_resource type="Script" uid="uid://neaii8ets618" path="res://Hallway/quantum_object_manager_conserved.gd" id="14_he3qp"]
 [ext_resource type="Texture2D" uid="uid://d1rqfyq0k0tn4" path="res://Materials/Textures/Decals/Camera.png" id="14_qk8do"]
@@ -64,6 +65,9 @@ size = Vector3(93.60547, 9.329, 50)
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_jbwf4"]
 size = Vector2(24.228527, 14.160137)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjcr5"]
+size = Vector3(1, 12.335815, 17)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbwf4"]
 size = Vector3(3, 4, 0.1)
@@ -524,6 +528,39 @@ script = ExtResource("4_yrtb3")
 teleport_location = NodePath("../../../PuzzleRespawn")
 metadata/_custom_type_script = "uid://ce324142fvilf"
 
+[node name="ZoomReminder" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=205824901]
+transform = Transform3D(0.6847379, 0, 0.7287894, 0, 1, 0, -0.7287894, 0, 0.6847379, 11.078173, -3.8805923, -10.731668)
+monitorable = false
+script = ExtResource("3_t1cju")
+hint_text_queue = Array[String](["[Press X to Look Closely]"])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/ZoomReminder" unique_id=1046549938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1679077, 0)
+shape = SubResource("BoxShape3D_cjcr5")
+
+[node name="ManualDoorSetter" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=299246338 node_paths=PackedStringArray("sight_toggles")]
+transform = Transform3D(0.6847379, 0, 0.7287894, 0, 1, 0, -0.7287894, 0, 0.6847379, 8.750013, -3.8805923, -8.253731)
+monitorable = false
+script = ExtResource("12_5pbpu")
+sight_toggles = [NodePath("../EntrySightToggle")]
+states = Array[bool]([false])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/ManualDoorSetter" unique_id=1907209899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1679077, 0)
+shape = SubResource("BoxShape3D_cjcr5")
+
+[node name="ManualDoorSetter2" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=418607935 node_paths=PackedStringArray("sight_toggles")]
+transform = Transform3D(0.6847379, 0, 0.7287894, 0, 1, 0, -0.7287894, 0, 0.6847379, -7.2122746, -3.8805923, 8.735464)
+monitorable = false
+script = ExtResource("12_5pbpu")
+sight_toggles = [NodePath("../EntrySightToggle")]
+states = Array[bool]([false])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom2/ManualDoorSetter2" unique_id=85460724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1679077, 0)
+shape = SubResource("BoxShape3D_cjcr5")
+
 [node name="PuzzleRespawn" type="Marker3D" parent="MainCSGCombiner3D/PuzzleRoom2" unique_id=1048327583]
 transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, 4.526352, -4.595352, -3.8264365)
 
@@ -613,6 +650,8 @@ size = Vector3(0.955, 2.055, 0.55856323)
 
 [node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitDoorway1" unique_id=853927877 instance=ExtResource("20_s2x32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+open_angle = 100.0
+is_interactable = false
 eye_type = 1
 entangle_type = 4
 
@@ -667,6 +706,8 @@ size = Vector3(0.955, 2.055, 0.55856323)
 
 [node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitDoorway2" unique_id=1777380331 instance=ExtResource("20_s2x32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+open_angle = 100.0
+is_interactable = false
 eye_type = 1
 entangle_type = 5
 
@@ -720,6 +761,7 @@ size = Vector3(0.955, 2.055, 0.55856323)
 
 [node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleExitDoorway3" unique_id=2034798591 instance=ExtResource("20_s2x32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+open_angle = 100.0
 eye_type = 1
 entangle_type = 6
 
@@ -778,6 +820,8 @@ size = Vector3(0.955, 2.055, 0.55856323)
 
 [node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryDoorway1" unique_id=1691250330 instance=ExtResource("20_s2x32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+open_angle = 100.0
+is_interactable = false
 eye_type = 3
 entangle_type = 4
 
@@ -836,6 +880,8 @@ size = Vector3(0.955, 2.055, 0.55856323)
 
 [node name="Doorframe" parent="MainCSGCombiner3D/PuzzleRoom2/PuzzleEntryDoorway2" unique_id=2079938964 instance=ExtResource("20_s2x32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
+open_angle = 100.0
+is_interactable = false
 eye_type = 3
 entangle_type = 5
 
@@ -989,7 +1035,7 @@ debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
 
 [node name="LevelLoader" type="Node" parent="MainCSGCombiner3D/PuzzleRoom2/ExitDoorway/ExitHallway/LoadLevel3" unique_id=574978735]
 script = ExtResource("19_23rmv")
-new_level = "uid://dnjtcvaxr54dt"
+new_level = "uid://bku8imjjwm262"
 old_node_name = "Hallway2"
 metadata/_custom_type_script = "uid://blngdvklqxsov"
 

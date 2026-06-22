@@ -17,6 +17,6 @@ void fragment() {
 [resource]
 render_priority = 0
 shader = SubResource("Shader_03heq")
-shader_parameter/albedo = Color(1, 0.9166666, 0, 1)
+shader_parameter/albedo = Color(0, 0.5999999, 1, 1)
 shader_parameter/flash_frequency = 1.0
 shader_parameter/flash_intensity = 0.01

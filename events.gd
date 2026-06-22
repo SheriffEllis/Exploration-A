@@ -16,6 +16,8 @@ signal image_deleted
 signal forced_image_deletion
 
 #region
+signal intro_cutscene_started
+signal intro_cutscene_ended
 signal interaction_prompted
 signal camcorder_collected
 signal flashlight_collected
@@ -25,6 +27,7 @@ signal key_collected(key_id: int)
 #region
 signal hint_triggered(text: String)
 signal dialogue_triggered(text: String)
+signal append_text_history(text: String)
 signal hint_queue_finished()
 signal dialogue_queue_finished()
 signal all_text_queues_finished()

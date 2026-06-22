@@ -11,6 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://mf47888n4w2g" path="res://Audio/typewriter4.ogg" id="7_ib26x"]
 [ext_resource type="Script" uid="uid://c8vv1btmxxlcx" path="res://UI/game_ui/dialogue_label.gd" id="8_oibdq"]
 [ext_resource type="AudioStream" uid="uid://l4f4qltl1afh" path="res://Audio/cam_roll.ogg" id="9_3n8fu"]
+[ext_resource type="Theme" uid="uid://cu6h7qlm3sh8y" path="res://UI/pause_theme.tres" id="11_qpee6"]
+[ext_resource type="Script" uid="uid://coffr207bsqyf" path="res://UI/game_ui/intro_dialogue.gd" id="11_yj7m1"]
+[ext_resource type="AudioStream" uid="uid://8a34awh0o6af" path="res://Audio/arguing.ogg" id="12_6866g"]
+[ext_resource type="FontFile" uid="uid://b13v8j1courh2" path="res://UI/game_ui/CourierPrime-Regular.ttf" id="12_dw5fj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j42il"]
 font = ExtResource("3_ib26x")
@@ -51,6 +55,12 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="SystemFont" id="SystemFont_nviir"]
+fallbacks = Array[Font]([ExtResource("12_dw5fj")])
+font_names = PackedStringArray("Courier New")
+font_italic = true
+subpixel_positioning = 0
+
 [node name="GameUI" type="Control" unique_id=1731473341 node_paths=PackedStringArray("crosshair", "fps_counter", "pause_menu", "hint_label", "dialogue_label")]
 process_mode = 3
 layout_mode = 3
@@ -69,6 +79,7 @@ dialogue_label = NodePath("HUD/DialogueLabel")
 [node name="Debug" type="Node" parent="." unique_id=1811304471]
 
 [node name="HUD" type="Control" parent="." unique_id=861649319]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,6 +187,47 @@ offset_bottom = -170.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_j42il")
+
+[node name="Blackout" type="ColorRect" parent="." unique_id=671070588]
+process_mode = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7921569)
+
+[node name="IntroDialogue" type="RichTextLabel" parent="Blackout" unique_id=1445547651]
+process_mode = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -554.1225
+offset_top = -150.0
+offset_right = 554.12256
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_qpee6")
+theme_override_fonts/normal_font = ExtResource("3_ib26x")
+theme_override_fonts/italics_font = SubResource("SystemFont_nviir")
+theme_override_font_sizes/normal_font_size = 47
+theme_override_font_sizes/bold_font_size = 47
+theme_override_font_sizes/bold_italics_font_size = 47
+theme_override_font_sizes/italics_font_size = 47
+theme_override_font_sizes/mono_font_size = 47
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_yj7m1")
+
+[node name="DialogueAudio" type="AudioStreamPlayer" parent="Blackout/IntroDialogue" unique_id=1147036109]
+stream = ExtResource("12_6866g")
+max_polyphony = 2
+bus = &"Sounds"
 
 [node name="PauseMenu" parent="." unique_id=1693858818 instance=ExtResource("4_j42il")]
 visible = false

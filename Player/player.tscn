@@ -67,7 +67,7 @@ random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("11_apopc")
 
-[node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "prop_excluder", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "flashlight_sfx", "flashlight_flicker", "coyote_timer", "footsteps", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
+[node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "prop_excluder", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "flashlight_sfx", "flashlight_flicker", "coyote_timer", "footsteps", "avoid_headbang", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
 collision_mask = 5
 script = ExtResource("1_ubx0o")
 grabber = NodePath("YawPivot/PitchPivot/Grabber")
@@ -83,6 +83,7 @@ flashlight_sfx = NodePath("YawPivot/PitchPivot/Flashlight/FlashlightAudio")
 flashlight_flicker = NodePath("YawPivot/PitchPivot/Flashlight/FlickerAudio")
 coyote_timer = NodePath("CoyoteTimer")
 footsteps = NodePath("FootstepAudio")
+avoid_headbang = NodePath("AvoidHeadbang")
 normal_mesh = NodePath("MeshInstanceNormal")
 crouching_mesh = NodePath("MeshInstanceCrouched")
 normal_collider = NodePath("CollisionNormal")
@@ -201,6 +202,11 @@ footstep_frequency = 3.5
 stream = SubResource("AudioStreamRandomizer_apopc")
 pitch_scale = 0.9
 bus = &"Sounds"
+
+[node name="AvoidHeadbang" type="RayCast3D" parent="." unique_id=1369394891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+target_position = Vector3(0, 0.05, 0)
+collision_mask = 4
 
 [connection signal="finished" from="YawPivot/PitchPivot/Flashlight/FlickerAudio" to="YawPivot/PitchPivot/Flashlight/FlickerAudio" method="_on_finished"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

@@ -20,11 +20,11 @@ func _ready() -> void:
 	
 	if starting_level > 0:
 		match(starting_level):
-			1:
-				load_new_level("uid://bnsblodj1ihor", "Hallway0", starting_location)
-			2: 
-				load_new_level("uid://d0jdxlkx5i67m", "Hallway0", starting_location)
-				GameGlobals.player.flashlight.light_color = Color("#FFFFFF")
+			1: load_new_level("uid://bnsblodj1ihor", "Hallway0", starting_location)
+			2: load_new_level("uid://d0jdxlkx5i67m", "Hallway0", starting_location)
+			3: load_new_level("uid://bku8imjjwm262", "Hallway0", starting_location)
+		if starting_level > 1:
+			GameGlobals.player.flashlight.light_color = Color("#FFFFFF")
 		Events.hint_triggered.emit("[Loaded Level " + str(starting_level) + "]")
 	
 	if starting_location:
@@ -40,12 +40,15 @@ func _ready() -> void:
 		GameGlobals.player.rotation_degrees = starting_rotation
 	
 	if skip_intro:
+		Events.intro_cutscene_ended.emit()
 		Events.camcorder_collected.emit()
 		Events.flashlight_collected.emit()
 		GameGlobals.player.flashlight.visible = true
 		Events.key_collected.emit(1)
 		GameGlobals.GAME_UI.hint_label.text_queue = []
 		GameGlobals.GAME_UI.dialogue_label.text_queue = []
+		if not starting_location and not starting_rotation:
+			GameGlobals.player.global_transform = $Room/DefaultStartingLocation.global_transform
 		Events.hint_triggered.emit("[Intro Skipped]")
 		return
 	
@@ -53,11 +56,15 @@ func _ready() -> void:
 	Events.flashlight_collected.connect(_on_interact_pressed)
 	
 	# TODO: intro argument cutscene
+	Events.intro_cutscene_started.emit()
+	await Events.intro_cutscene_ended
+	GameGlobals.player.global_transform = $Room/DefaultStartingLocation.global_transform
 	
 	await get_tree().create_timer(2, false).timeout
+	Events.dialogue_triggered.emit("There's no chance in hell I'm getting any sleep like this.")
 	Events.dialogue_triggered.emit("Call me impetuous or just curious,")
 	Events.dialogue_triggered.emit("But a little look around that hallway isn't going to hurt.")
-	Events.hint_triggered.emit("[Press X to Look Closer]")
+	Events.hint_triggered.emit("[Press X to Look Closely]")
 	Events.hint_triggered.emit("[Press ESC to Pause and reread hints]")
 	await Events.all_text_queues_finished
 	
