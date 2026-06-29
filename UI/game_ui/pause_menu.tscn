@@ -5,6 +5,7 @@
 [ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="3_l0lur"]
 [ext_resource type="Script" uid="uid://c5d6s3fn88vvb" path="res://UI/game_ui/text_history.gd" id="4_7qrf1"]
 [ext_resource type="FontFile" uid="uid://b13v8j1courh2" path="res://UI/game_ui/CourierPrime-Regular.ttf" id="4_ndjrq"]
+[ext_resource type="Script" uid="uid://07pj5ldd0unw" path="res://UI/game_ui/settings.gd" id="6_i3yvp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0rig"]
 bg_color = Color(0, 0, 0, 0.87058824)
@@ -36,6 +37,23 @@ font_names = PackedStringArray("Courier New")
 font_italic = true
 subpixel_positioning = 0
 
+[sub_resource type="SystemFont" id="SystemFont_ndjrq"]
+fallbacks = Array[Font]([ExtResource("4_ndjrq")])
+font_names = PackedStringArray("Courier New")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3yvp"]
+font = SubResource("SystemFont_ndjrq")
+font_size = 30
+font_color = Color(1, 0.949, 0.49, 1)
+
+[sub_resource type="InputEventAction" id="InputEventAction_i3yvp"]
+action = &"ui_cancel"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_34udf"]
+events = [SubResource("InputEventAction_i3yvp")]
+
 [node name="PauseMenu" type="Control" unique_id=1406971771]
 layout_mode = 3
 anchors_preset = 15
@@ -47,7 +65,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("2_3koc6")
 metadata/_custom_type_script = "uid://bqb6yqhhahabe"
 
-[node name="Panel" type="Panel" parent="." unique_id=8362834]
+[node name="Paused" type="Panel" parent="." unique_id=8362834]
 process_mode = 2
 z_index = 1
 layout_mode = 1
@@ -67,7 +85,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("1_o1rul")
 theme_override_styles/panel = SubResource("StyleBoxFlat_h0rig")
 
-[node name="PausedLabel" type="Label" parent="Panel" unique_id=1287271343]
+[node name="PausedLabel" type="Label" parent="Paused" unique_id=1287271343]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -80,7 +98,7 @@ grow_horizontal = 2
 text = "Paused"
 label_settings = SubResource("LabelSettings_2oifk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2128406554]
+[node name="VBoxContainer" type="VBoxContainer" parent="Paused" unique_id=2128406554]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,20 +112,20 @@ offset_bottom = 123.00012
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Resume" type="Button" parent="Panel/VBoxContainer" unique_id=1597676640]
+[node name="Resume" type="Button" parent="Paused/VBoxContainer" unique_id=1597676640]
 layout_mode = 2
 theme = ExtResource("1_o1rul")
 text = "Resume"
 
-[node name="Settings" type="Button" parent="Panel/VBoxContainer" unique_id=186936465]
+[node name="Settings" type="Button" parent="Paused/VBoxContainer" unique_id=186936465]
 layout_mode = 2
 text = "Settings"
 
-[node name="Quit" type="Button" parent="Panel/VBoxContainer" unique_id=1942428366]
+[node name="Quit" type="Button" parent="Paused/VBoxContainer" unique_id=1942428366]
 layout_mode = 2
 text = "Quit"
 
-[node name="Panel" type="Panel" parent="Panel" unique_id=746008135]
+[node name="Panel" type="Panel" parent="Paused" unique_id=746008135]
 layout_mode = 0
 offset_left = 401.0
 offset_top = 137.0
@@ -115,7 +133,7 @@ offset_right = 961.0
 offset_bottom = 537.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3koc6")
 
-[node name="TextHistory" type="RichTextLabel" parent="Panel/Panel" unique_id=1037904553]
+[node name="TextHistory" type="RichTextLabel" parent="Paused/Panel" unique_id=1037904553]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 15
@@ -138,5 +156,211 @@ scroll_following = true
 horizontal_alignment = 1
 script = ExtResource("4_7qrf1")
 
-[connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="resume"]
-[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Settings" type="Panel" parent="." unique_id=703741535 node_paths=PackedStringArray("volume_slider", "sensitivity_slider", "exposure_slider", "fov_slider", "GUI_scale_slider")]
+process_mode = 2
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("1_o1rul")
+theme_override_styles/panel = SubResource("StyleBoxFlat_h0rig")
+script = ExtResource("6_i3yvp")
+volume_slider = NodePath("HBoxContainer/VBoxContainer/VolumeSlider")
+sensitivity_slider = NodePath("HBoxContainer/VBoxContainer/SensitivitySlider")
+exposure_slider = NodePath("HBoxContainer/VBoxContainer/ExposureSlider")
+fov_slider = NodePath("HBoxContainer/VBoxContainer/FOVSlider")
+GUI_scale_slider = NodePath("HBoxContainer/VBoxContainer2/GUIScaleSlider")
+
+[node name="SettingsLabel" type="Label" parent="Settings" unique_id=216663422]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.0
+offset_top = 39.0
+offset_right = 137.0
+offset_bottom = 144.0
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_2oifk")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings" unique_id=1545108341]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -153.0
+offset_right = 319.0
+offset_bottom = 200.00012
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/HBoxContainer" unique_id=1464915529]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="VolumeLabel" type="Label" parent="Settings/HBoxContainer/VBoxContainer" unique_id=979025259]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_i3yvp")
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="Settings/HBoxContainer/VBoxContainer" unique_id=1748541607]
+layout_mode = 2
+theme = ExtResource("1_o1rul")
+value = 50.0
+
+[node name="Seperator5" type="Control" parent="Settings/HBoxContainer/VBoxContainer" unique_id=580901219]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="SensitivityLabel" type="Label" parent="Settings/HBoxContainer/VBoxContainer" unique_id=1393352666]
+layout_mode = 2
+text = "Mouse Sensitivity"
+label_settings = SubResource("LabelSettings_i3yvp")
+horizontal_alignment = 1
+
+[node name="SensitivitySlider" type="HSlider" parent="Settings/HBoxContainer/VBoxContainer" unique_id=400568898]
+layout_mode = 2
+theme = ExtResource("1_o1rul")
+min_value = 1.0
+value = 50.0
+
+[node name="Seperator" type="Control" parent="Settings/HBoxContainer/VBoxContainer" unique_id=1506226469]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ExposureLabel" type="Label" parent="Settings/HBoxContainer/VBoxContainer" unique_id=1970320860]
+layout_mode = 2
+text = "Exposure"
+label_settings = SubResource("LabelSettings_i3yvp")
+horizontal_alignment = 1
+
+[node name="ExposureSlider" type="HSlider" parent="Settings/HBoxContainer/VBoxContainer" unique_id=1039533599]
+layout_mode = 2
+theme = ExtResource("1_o1rul")
+min_value = 0.1
+max_value = 4.0
+step = 0.01
+value = 1.0
+
+[node name="Seperator4" type="Control" parent="Settings/HBoxContainer/VBoxContainer" unique_id=1288952321]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="FOVLabel" type="Label" parent="Settings/HBoxContainer/VBoxContainer" unique_id=945734920]
+layout_mode = 2
+text = "Field of View"
+label_settings = SubResource("LabelSettings_i3yvp")
+horizontal_alignment = 1
+
+[node name="FOVSlider" type="HSlider" parent="Settings/HBoxContainer/VBoxContainer" unique_id=731253281]
+layout_mode = 2
+theme = ExtResource("1_o1rul")
+min_value = 45.0
+value = 75.0
+
+[node name="Seperator6" type="Control" parent="Settings/HBoxContainer/VBoxContainer" unique_id=2083645139]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/HBoxContainer" unique_id=2111437432]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Seperator6" type="Control" parent="Settings/HBoxContainer/VBoxContainer2" unique_id=363317566]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+
+[node name="GUIScaleLabel" type="Label" parent="Settings/HBoxContainer/VBoxContainer2" unique_id=272042673]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "GUI Scale"
+label_settings = SubResource("LabelSettings_i3yvp")
+horizontal_alignment = 1
+
+[node name="GUIScaleSlider" type="HSlider" parent="Settings/HBoxContainer/VBoxContainer2" unique_id=437948007]
+layout_mode = 2
+theme = ExtResource("1_o1rul")
+min_value = 0.5
+max_value = 4.0
+step = 0.25
+value = 1.0
+tick_count = 15
+ticks_on_borders = true
+ticks_position = 2
+
+[node name="Seperator2" type="Control" parent="Settings/HBoxContainer/VBoxContainer2" unique_id=306242652]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Update" type="Button" parent="Settings/HBoxContainer/VBoxContainer2" unique_id=756897235]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Update"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings" unique_id=1916727575]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -126.0
+offset_right = 236.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 22
+alignment = 1
+
+[node name="Back" type="Button" parent="Settings/HBoxContainer2" unique_id=1152424624]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+shortcut = SubResource("Shortcut_34udf")
+text = "Back"
+
+[node name="Reset" type="Button" parent="Settings/HBoxContainer2" unique_id=370063004]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Reset"
+
+[node name="Save" type="Button" parent="Settings/HBoxContainer2" unique_id=1901446750]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Save"
+
+[connection signal="pressed" from="Paused/VBoxContainer/Resume" to="." method="resume"]
+[connection signal="pressed" from="Paused/VBoxContainer/Settings" to="Paused" method="set_visible" binds= [false]]
+[connection signal="pressed" from="Paused/VBoxContainer/Settings" to="Settings" method="set_visible" binds= [true]]
+[connection signal="pressed" from="Paused/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="Settings/HBoxContainer/VBoxContainer/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings/HBoxContainer/VBoxContainer/SensitivitySlider" to="Settings" method="_on_sensitivity_slider_value_changed"]
+[connection signal="value_changed" from="Settings/HBoxContainer/VBoxContainer/ExposureSlider" to="Settings" method="_on_brightness_slider_value_changed"]
+[connection signal="value_changed" from="Settings/HBoxContainer/VBoxContainer/FOVSlider" to="Settings" method="_on_fov_slider_value_changed"]
+[connection signal="pressed" from="Settings/HBoxContainer/VBoxContainer2/Update" to="Settings" method="_on_update_pressed"]
+[connection signal="pressed" from="Settings/HBoxContainer2/Back" to="Paused" method="set_visible" binds= [true]]
+[connection signal="pressed" from="Settings/HBoxContainer2/Back" to="Settings" method="set_visible" binds= [false]]
+[connection signal="pressed" from="Settings/HBoxContainer2/Reset" to="Settings" method="_on_reset_pressed"]

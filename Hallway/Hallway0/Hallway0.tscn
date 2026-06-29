@@ -398,6 +398,9 @@ script = ExtResource("10_kewxs")
 dialogue_text_queue = Array[String](["It moved."])
 hint_text_queue = Array[String](["[Flashlight can be Toggled with F]"])
 
+[node name="Delay" type="Timer" parent="MainCSGCombiner3D/Tutorial2Room/MovementComment" unique_id=862665896]
+wait_time = 1.2
+
 [node name="RequisiteTutorial2" type="Node3D" parent="MainCSGCombiner3D/Tutorial2Room" unique_id=2137805425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.11014, -1.4519042, -2.369442)
 visible = false
@@ -732,10 +735,11 @@ new_level = "uid://bnsblodj1ihor"
 [connection signal="screen_exited" from="MainCSGCombiner3D/TutorialRoom/TutorialDooryway2SightToggleIndependent" to="MainCSGCombiner3D/TutorialRoom/TutorialDooryway2SightToggleIndependent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" method="_on_body_entered"]
 [connection signal="body_exited" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" method="_on_body_exited"]
-[connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/MovementComment" method="_on_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/RequisiteTutorial2" method="_on_flicker_trigger_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/Tutorial2QOMConserved" method="_on_flashlight_turned_off"]
+[connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/MovementComment/Delay" method="start"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Tutorial2Room/MovementComment" to="MainCSGCombiner3D/Tutorial2Room/MovementComment" method="_on_body_entered"]
+[connection signal="timeout" from="MainCSGCombiner3D/Tutorial2Room/MovementComment/Delay" to="MainCSGCombiner3D/Tutorial2Room/MovementComment" method="_on_triggered"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial2Room/Tutorial2DoorywaySightToggle" to="MainCSGCombiner3D/Tutorial2Room/Tutorial2DoorywaySightToggle" method="_on_screen_exited"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial2Room/Tutorial2Dooryway2SightToggle" to="MainCSGCombiner3D/Tutorial2Room/Tutorial2Dooryway2SightToggle" method="_on_screen_exited"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial3Room/Tutorial3DoorywaySightToggleIndependent" to="MainCSGCombiner3D/Tutorial3Room/Tutorial3DoorywaySightToggleIndependent" method="_on_screen_exited"]

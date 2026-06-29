@@ -15,6 +15,7 @@ var new_starting_location := Vector3.ZERO
 func _ready() -> void:
 	GameGlobals.LEVEL = self
 	GameGlobals.GAME_UI = $GameUI
+	GameGlobals.ENVIRONMENT = $AmbienceManager/WorldEnvironment
 	GameGlobals.player = $Player
 	Events.level_ready.emit()
 	

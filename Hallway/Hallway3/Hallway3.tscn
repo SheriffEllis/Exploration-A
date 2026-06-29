@@ -4,11 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="2_fqxm8"]
 [ext_resource type="Material" uid="uid://c3f82sbdndr2f" path="res://Materials/Room/PaintedWood.tres" id="2_lbayr"]
 [ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="3_uy1xx"]
+[ext_resource type="AudioStream" uid="uid://bj0k15hdynxxt" path="res://Audio/joke/YAY.mp3" id="4_d47j4"]
 [ext_resource type="Texture2D" uid="uid://cmi2fydlbooym" path="res://Materials/Textures/Decals/Eye.png" id="5_uy1xx"]
+[ext_resource type="Texture2D" uid="uid://u3fu7fx13qrr" path="res://Materials/Textures/Decals/Tree.png" id="5_yg8ep"]
+[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="6_7wpuy"]
 [ext_resource type="Texture2D" uid="uid://bc4l3un4tshf1" path="res://Materials/Textures/Decals/ArbitrarySymbol2.png" id="6_gegf5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
 size = Vector3(285.9, 160.083, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0psa4"]
+size = Vector3(33, 5.3027344, 32)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqxm8"]
 transparency = 1
@@ -300,6 +306,41 @@ transform = Transform3D(-1.0927847e-08, 0.25, 1.0927847e-08, 0, -1.0927847e-08, 
 polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
 depth = 16.0
 
+[node name="TempEnd" type="Area3D" parent="CSGCombiner3D" unique_id=1408206984]
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/TempEnd" unique_id=354102179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -42.071434, 0)
+shape = SubResource("BoxShape3D_0psa4")
+
+[node name="YAY" type="AudioStreamPlayer3D" parent="CSGCombiner3D/TempEnd" unique_id=1349692307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34.231388, 0)
+stream = ExtResource("4_d47j4")
+max_db = 0.0
+bus = &"LargeRooms"
+
+[node name="Decal" type="Decal" parent="CSGCombiner3D/TempEnd" unique_id=1582861486]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -14.876408, -35.877907, 0.013224602)
+size = Vector3(10, 2, 10)
+texture_albedo = ExtResource("5_yg8ep")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.15
+upper_fade = 0.0
+lower_fade = 0.0
+
+[node name="Label3D" type="Label3D" parent="CSGCombiner3D/TempEnd" unique_id=1517991224]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.715227, -39.876015, 0.013224602)
+shaded = true
+double_sided = false
+texture_filter = 4
+text = "You da weiner :)
+End of the game so far."
+font = ExtResource("6_7wpuy")
+font_size = 64
+
 [node name="Well" type="CSGCombiner3D" parent="." unique_id=1581026977]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -35.85219, 0)
 layers = 4
@@ -369,3 +410,4 @@ cull_mask = 1048567
 [connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
 [connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
 [connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
+[connection signal="body_entered" from="CSGCombiner3D/TempEnd" to="CSGCombiner3D/TempEnd/YAY" method="play" flags=6 unbinds=1]
