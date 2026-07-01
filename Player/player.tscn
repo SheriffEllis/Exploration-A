@@ -174,8 +174,7 @@ visible = false
 light_color = Color(1, 0.79607844, 0.49019608, 1)
 light_cull_mask = 4293918751
 spot_range = 30.0
-spot_angle = 42.892235
-spot_angle_attenuation = 0.07966018
+spot_angle = 50.0
 
 [node name="FlashlightAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/Flashlight" unique_id=751712184]
 stream = ExtResource("5_x3vf3")

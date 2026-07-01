@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bku8imjjwm262"]
+[gd_scene format=4 uid="uid://bku8imjjwm262"]
 
 [ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_npesk"]
 [ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="2_fqxm8"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://u3fu7fx13qrr" path="res://Materials/Textures/Decals/Tree.png" id="5_yg8ep"]
 [ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="6_7wpuy"]
 [ext_resource type="Texture2D" uid="uid://bc4l3un4tshf1" path="res://Materials/Textures/Decals/ArbitrarySymbol2.png" id="6_gegf5"]
+[ext_resource type="PackedScene" uid="uid://s6cq51cga2x5" path="res://Hallway/Models/Well/Well.glb" id="10_yg8ep"]
+[ext_resource type="Texture2D" uid="uid://cl8rl7374vw88" path="res://Materials/Textures/Decals/Spiral.png" id="11_0psa4"]
+[ext_resource type="Material" uid="uid://b1n3ks3j2fkl3" path="res://Hallway/Models/Well/Water.tres" id="11_7wpuy"]
+[ext_resource type="Script" uid="uid://r5omxxim65wm" path="res://Hallway/Hallway3/water_sfx.gd" id="13_j0nk8"]
+[ext_resource type="AudioStream" uid="uid://boem2fjdp5k8a" path="res://Audio/footsteps/water-splash.ogg" id="14_lel3a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
 size = Vector3(285.9, 160.083, 200)
@@ -16,15 +21,43 @@ size = Vector3(285.9, 160.083, 200)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0psa4"]
 size = Vector3(33, 5.3027344, 32)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqxm8"]
-transparency = 1
-albedo_color = Color(0.13, 0.40550017, 1, 0.64705884)
-roughness = 0.31
+[sub_resource type="ArrayMesh" id="ArrayMesh_83b8h"]
+_surfaces = [{
+"aabb": AABB(-4.2564363, 0.28767005, -4.252726, 8.509771, 1e-05, 8.509771),
+"format": 34896613377,
+"index_count": 192,
+"index_data": PackedByteArray("EAAZAA4AGQAQAAwAGQAaAA4ADwAOABoAGwAZAAwAGQAbABoAGwAMABwADAANABwAHQAPABoACwAPAB0AGwAYABoAHQAaABgAFgAbABwAGwAWABgADQAUABwAFgAcABQADQAeABQADQAAAB4AHwALAB0ACgALAB8ACQAKAB8AHwAdACAACQAfACAAIAAdABgACQAgACEABwAJACEAIAAYAAgAIQAgAAgAFgAIABgABwAhABcAIQAIABcAFgAVAAgAFQAXAAgAFQAWABQABwAXACIABgAHACIAFQAjABcAIwAiABcAFQAUACQAIwAVACQAHgAkABQAIwATACIAEwAGACIAIwAkABIAEwAjABIAHgARACQAEQASACQAAAARAB4AEwAlAAYAJQAFAAYABQAlAAIAJQATACYAJQAmAAIAEwASACYABAACACYAJwAmABIAJwAEACYAEQAnABIAAQAEACcAKAAnABEAKAABACcAAAAoABEAAwABACgAAAADACgA"),
+"lods": [0.0004365159, PackedByteArray("EQABABIAAQACABIAAQAEAAIAAwABABEAEwASAAIAEwARABIAAAADABEABQATAAIAEwAFAAYAAAARABQADQAAABQADQAUAAwAFQAUABEAEwAVABEAFgAMABQAFQAWABQAFgAQAAwAEAAWAA4AEwAGABcAFQATABcABwAXAAYABwAJABcAFQAXAAgACQAIABcAFgAVAAgACQAKAAgACgALAAgAFgAIABgACAALABgAFgAYAA4ACwAOABgACwAPAA4A"), 0.0008195533, PackedByteArray("AAABAAIAAwABAAAAAQAEAAIAAgAFAAYAAgAGAAcACAACAAcAAgAIAAAACQAIAAcACQAKAAgACgALAAgACAAMAAAADQAAAAwACAALAA4ADAAIAA4ACwAPAA4AEAAMAA4A")],
+"name": "Water",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 41,
+"vertex_data": PackedByteArray("A08AAL4JAAD7sAAAvgkAAED2AAADTwAA/38AAAAAAACB2gAAfSUAAP//AAD/fwAAQPYAAPuwAACB2gAAgdoAAP9/AAD7sAAA+7AAAED2AAD/fwAA//8AAANPAABA9gAAvgkAAANPAAB9JQAAfSUAAL4JAAD7sAAAfSUAAIHaAAAAAAAA/38AAP9/AAB9JQAA+7AAAANPAACB2gAA/38AAANPAAADTwAA/38AAP9/AAADTwAA/38AAPuwAAD7sAAAA08AAPuwAAC+CQAA/38AAH0lAAD7sAAAfSUAAP9/AAB9JQAAA08AAANPAACB2gAAA08AAH0lAAD/fwAAQPYAAP9/AACB2gAA+7AAAIHaAACB2gAA+7AAAPuwAAD/fwAA/38AAANPAABA9gAA/38AAIHaAAADTwAA+7AAAH0lAAD/fwAAvgkAAA==")
+}]
+blend_shape_mode = 0
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_uy1xx"]
-material = SubResource("StandardMaterial3D_fqxm8")
-top_radius = 4.5
-height = 0.1
+[sub_resource type="ArrayMesh" id="ArrayMesh_hi1an"]
+resource_name = "Well_Mesh_0_003"
+_surfaces = [{
+"aabb": AABB(-4.2564363, 0.28767005, -4.252726, 8.509771, 1e-05, 8.509771),
+"attribute_data": PackedByteArray("c+cwxXmY9flQO23nNsVt5w1o9fkSGTDFigZzmIoGB2jgZcBYEhlKO1A7DBkNaIQG+/kHaPv5c5g2xQwZeZiEBnPnSjsEsTTJKHMdwks3/rAjwleNQ4A9gMCn2mVjPiJzXY1dPpjfiUDXrv4nOsl8T53j+Xb/duMcgdjRro9A5yCCT0U3BCioUekcgYnGWKCapZq6p+0g8L+uUXvYh4mX4/a/kt8="),
+"format": 34896613399,
+"index_count": 192,
+"index_data": PackedByteArray("EAAZAA4AGQAQAAwAGQAaAA4ADwAOABoAGwAZAAwAGQAbABoAGwAMABwADAANABwAHQAPABoACwAPAB0AGwAYABoAHQAaABgAFgAbABwAGwAWABgADQAUABwAFgAcABQADQAeABQADQAAAB4AHwALAB0ACgALAB8ACQAKAB8AHwAdACAACQAfACAAIAAdABgACQAgACEABwAJACEAIAAYAAgAIQAgAAgAFgAIABgABwAhABcAIQAIABcAFgAVAAgAFQAXAAgAFQAWABQABwAXACIABgAHACIAFQAjABcAIwAiABcAFQAUACQAIwAVACQAHgAkABQAIwATACIAEwAGACIAIwAkABIAEwAjABIAHgARACQAEQASACQAAAARAB4AEwAlAAYAJQAFAAYABQAlAAIAJQATACYAJQAmAAIAEwASACYABAACACYAJwAmABIAJwAEACYAEQAnABIAAQAEACcAKAAnABEAKAABACcAAAAoABEAAwABACgAAAADACgA"),
+"lods": [0.0004365159, PackedByteArray("EQABABIAAQACABIAAQAEAAIAAwABABEAEwASAAIAEwARABIAAAADABEABQATAAIAEwAFAAYAAAARABQADQAAABQADQAUAAwAFQAUABEAEwAVABEAFgAMABQAFQAWABQAFgAQAAwAEAAWAA4AEwAGABcAFQATABcABwAXAAYABwAJABcAFQAXAAgACQAIABcAFgAVAAgACQAKAAgACgALAAgAFgAIABgACAALABgAFgAYAA4ACwAOABgACwAPAA4A"), 0.0008195533, PackedByteArray("AAABAAIAAwABAAAAAQAEAAIAAgAFAAYAAgAGAAcACAACAAcAAgAIAAAACQAIAAcACQAKAAgACgALAAgACAAMAAAADQAAAAwACAALAA4ADAAIAA4ACwAPAA4AEAAMAA4A")],
+"material": ExtResource("11_7wpuy"),
+"name": "Water",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 41,
+"vertex_data": PackedByteArray("A08AAL4JJu/7sAAAvgkm70D2AAADTybv/38AAAAAJu+B2gAAfSUm7///AAD/fybvQPYAAPuwJu+B2gAAgdom7/9/AAD7sCbv+7AAAED2Ju//fwAA//8m7wNPAABA9ibvvgkAAANPJu99JQAAfSUm774JAAD7sCbvfSUAAIHaJu8AAAAA/38m7/9/AAB9JSbv+7AAAANPJu+B2gAA/38m7wNPAAADTybv/38AAP9/Ju8DTwAA/38m7/uwAAD7sCbvA08AAPuwJu++CQAA/38m730lAAD7sCbvfSUAAP9/Ju99JQAAA08m7wNPAACB2ibvA08AAH0lJu//fwAAQPYm7/9/AACB2ibv+7AAAIHaJu+B2gAA+7Am7/uwAAD/fybv/38AAANPJu9A9gAA/38m74HaAAADTybv+7AAAH0lJu//fwAAvgkm72zI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQbMjbEGzI2xBsyNsQ")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_83b8h")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0psa4"]
+height = 1.3500977
+radius = 4.0405273
 
 [node name="Hallway3" type="Node3D" unique_id=84698099]
 
@@ -137,9 +170,9 @@ height = 1.0
 sides = 16
 
 [node name="WellHole" type="CSGCylinder3D" parent="CSGCombiner3D/EntryRoom" unique_id=1844775631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.3449974, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -31.824005, 0)
 radius = 4.5
-height = 1.0
+height = 51.958008
 sides = 16
 
 [node name="CornerPiece" type="CSGPolygon3D" parent="CSGCombiner3D/EntryRoom" unique_id=1861837771]
@@ -307,6 +340,8 @@ polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5,
 depth = 16.0
 
 [node name="TempEnd" type="Area3D" parent="CSGCombiner3D" unique_id=1408206984]
+monitoring = false
+monitorable = false
 reverb_bus_enabled = true
 reverb_bus_name = &"Hallways"
 reverb_bus_amount = 1.0
@@ -341,51 +376,32 @@ End of the game so far."
 font = ExtResource("6_7wpuy")
 font_size = 64
 
-[node name="Well" type="CSGCombiner3D" parent="." unique_id=1581026977]
+[node name="Objects" type="CSGCombiner3D" parent="." unique_id=1581026977]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -35.85219, 0)
 layers = 4
 material_override = ExtResource("2_lbayr")
 use_collision = true
 collision_layer = 4
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Well" unique_id=23220873]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.196369, 0)
-radius = 5.0
-height = 1.0
-sides = 16
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Well/CSGCylinder3D" unique_id=1780019999]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0.03924179, 3.4306264e-09)
-operation = 2
-radius = 4.5
-height = 1.0341797
-sides = 16
-cone = true
-
-[node name="Water" type="MeshInstance3D" parent="Well/CSGCylinder3D" unique_id=1295456806]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42668915, 0)
-layers = 4
-mesh = SubResource("CylinderMesh_uy1xx")
-
-[node name="Pedestal" type="CSGCylinder3D" parent="Well" unique_id=1926692751]
+[node name="Pedestal" type="CSGCylinder3D" parent="Objects" unique_id=1926692751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7001383e-06, 2.541565, -38.89463)
 radius = 0.316
 height = 0.80049324
 sides = 16
 
-[node name="Bottom" type="CSGCylinder3D" parent="Well/Pedestal" unique_id=273931657]
+[node name="Bottom" type="CSGCylinder3D" parent="Objects/Pedestal" unique_id=273931657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4736557, 0)
 radius = 0.55371094
 height = 0.24435425
 sides = 16
 
-[node name="Top" type="CSGCylinder3D" parent="Well/Pedestal" unique_id=809015697]
+[node name="Top" type="CSGCylinder3D" parent="Objects/Pedestal" unique_id=809015697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4133339, 0)
 radius = 0.453125
 height = 0.1496582
 smooth_faces = false
 
-[node name="Decal" type="Decal" parent="Well/Pedestal" unique_id=1675653439]
+[node name="Decal" type="Decal" parent="Objects/Pedestal" unique_id=1675653439]
 transform = Transform3D(1, -4.371139e-08, 4.371139e-08, 4.371139e-08, -4.371139e-08, -1, 4.371139e-08, 1, -4.3711385e-08, 1.5688784e-08, 0, 0.2168274)
 layers = 4
 size = Vector3(0.6, 0.5, 0.6)
@@ -396,7 +412,7 @@ upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 1048567
 
-[node name="Decal2" type="Decal" parent="Well/Pedestal" unique_id=1692555434]
+[node name="Decal2" type="Decal" parent="Objects/Pedestal" unique_id=1692555434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49227524, 0)
 layers = 4
 size = Vector3(1, 0.05, 1)
@@ -407,7 +423,66 @@ upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 1048567
 
+[node name="Well" parent="." unique_id=1777362937 instance=ExtResource("10_yg8ep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.69085, 0)
+
+[node name="Well" parent="Well" index="0" unique_id=313216553]
+layers = 4
+
+[node name="Flat" parent="Well/Well" index="0" unique_id=780728743]
+layers = 4
+
+[node name="StaticBody3D" parent="Well/Well/Flat" index="0" unique_id=1612532628]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Decal2" type="Decal" parent="Well/Well/Flat" index="1" unique_id=824415844]
+transform = Transform3D(0.9999985, 0, -1.7053026e-13, 0, 1, 0, 1.7053026e-13, 0, 0.9999985, 0, -0.18801498, 0)
+layers = 4
+size = Vector3(2, 0.2, 2)
+texture_albedo = ExtResource("11_0psa4")
+modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
+albedo_mix = 0.9
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
+
+[node name="Water" parent="Well/Well" index="1" unique_id=2135419202]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -0.070646934, 0)
+layers = 4
+
+[node name="Water2" type="MeshInstance3D" parent="Well/Well" index="2" unique_id=287831180]
+transform = Transform3D(0.99999964, 0, -3.5527137e-14, 0, 1, 0, 3.5527137e-14, 0, 0.99999964, 0, -21.41843, 0)
+layers = 4
+mesh = SubResource("ArrayMesh_hi1an")
+
+[node name="StaticBody3D" parent="Well/Well" index="3" unique_id=1388038583]
+collision_layer = 4
+collision_mask = 0
+
+[node name="WaterSfx" type="Area3D" parent="Well" unique_id=1933270380]
+monitorable = false
+script = ExtResource("13_j0nk8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/WaterSfx" unique_id=1163092177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32495117, 0)
+shape = SubResource("CylinderShape3D_0psa4")
+debug_color = Color(0.36448205, 0.488814, 0.9751441, 0.41960785)
+
+[node name="SplashAudio" type="AudioStreamPlayer3D" parent="Well/WaterSfx" unique_id=2142097114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19807816, 0)
+stream = ExtResource("14_lel3a")
+attenuation_model = 3
+volume_db = 10.0
+max_db = 6.0
+bus = &"Sounds"
+
 [connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
 [connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
 [connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
 [connection signal="body_entered" from="CSGCombiner3D/TempEnd" to="CSGCombiner3D/TempEnd/YAY" method="play" flags=6 unbinds=1]
+[connection signal="body_entered" from="Well/WaterSfx" to="Well/WaterSfx" method="_on_body_entered" unbinds=1]
+[connection signal="body_entered" from="Well/WaterSfx" to="Well/WaterSfx/SplashAudio" method="play" flags=6 unbinds=1]
+[connection signal="body_exited" from="Well/WaterSfx" to="Well/WaterSfx" method="_on_body_exited" unbinds=1]
+
+[editable path="Well"]

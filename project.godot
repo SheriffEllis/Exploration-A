@@ -25,12 +25,6 @@ buses/default_bus_layout="uid://jhi2lq5mpiaf"
 GameGlobals="*uid://cpodncikqmxag"
 Events="*uid://iixwlyyfrqi"
 
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=2
-
 [editor]
 
 movie_writer/movie_file="C:/Users/sheri/Documents/Godot/exploration-a/test.avi"
