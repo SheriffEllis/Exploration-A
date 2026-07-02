@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hrtvcan7fnmt"
-path.s3tc="res://.godot/imported/Well_OnyxDimmed512x512.png-4e291ab5bda94564f935e7fb5545f87c.s3tc.ctex"
-path.etc2="res://.godot/imported/Well_OnyxDimmed512x512.png-4e291ab5bda94564f935e7fb5545f87c.etc2.ctex"
+path.s3tc="res://.godot/imported/Well_OnyxDimmed512x512.png-d51a5c0f610fc11880f27a80f786bca5.s3tc.ctex"
+path.etc2="res://.godot/imported/Well_OnyxDimmed512x512.png-d51a5c0f610fc11880f27a80f786bca5.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Hallway/Models/Well/Well_OnyxDimmed512x512.png"
-dest_files=["res://.godot/imported/Well_OnyxDimmed512x512.png-4e291ab5bda94564f935e7fb5545f87c.s3tc.ctex", "res://.godot/imported/Well_OnyxDimmed512x512.png-4e291ab5bda94564f935e7fb5545f87c.etc2.ctex"]
+source_file="res://Materials/Textures/Well_OnyxDimmed512x512.png"
+dest_files=["res://.godot/imported/Well_OnyxDimmed512x512.png-d51a5c0f610fc11880f27a80f786bca5.s3tc.ctex", "res://.godot/imported/Well_OnyxDimmed512x512.png-d51a5c0f610fc11880f27a80f786bca5.etc2.ctex"]
 
 [params]
 

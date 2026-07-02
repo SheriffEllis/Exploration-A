@@ -1,0 +1,21 @@
+[gd_resource type="Environment" format=3 uid="uid://c8w5ysd6hqk1m"]
+
+[ext_resource type="Texture2D" uid="uid://d220tauv8d1rs" path="res://Outside/NightSkyHDRI001_2K_TONEMAPPED.jpg" id="1_ka6hv"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f2txt"]
+panorama = ExtResource("1_ka6hv")
+
+[sub_resource type="Sky" id="Sky_1ainy"]
+sky_material = SubResource("PanoramaSkyMaterial_f2txt")
+
+[resource]
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_1ainy")
+ambient_light_source = 1
+ambient_light_energy = 0.0
+reflected_light_source = 1
+fog_enabled = true
+fog_light_color = Color(0.041300002, 0.058519997, 0.07, 1)
+fog_light_energy = 0.5
+fog_density = 0.1
+fog_sky_affect = 0.707

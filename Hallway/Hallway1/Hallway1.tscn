@@ -753,6 +753,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7952662, -1.8077087)
 monitorable = false
 script = ExtResource("8_wy5o2")
 desired_color = Color(1, 0.872, 0.68, 1)
+transition_time = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom1Part2/EnablePuzzle" unique_id=1565520963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5493054, 0)
@@ -1028,6 +1029,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7952659, -1.8077087)
 monitorable = false
 script = ExtResource("8_wy5o2")
 desired_color = Color(1, 1, 1, 1)
+transition_time = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom1Part3/EnablePuzzle" unique_id=520994866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5493054, 0)
@@ -1328,14 +1330,18 @@ metadata/_custom_type_script = "uid://blngdvklqxsov"
 [connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1Part2/EnablePuzzle" to="MainCSGCombiner3D/PuzzleRoom1Part2/Requisite" method="trigger" flags=6 unbinds=1]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1Part2/Exit1/D1SightToggle" to="MainCSGCombiner3D/PuzzleRoom1Part2/Exit1/D1SightToggle" method="_on_screen_exited"]
 [connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part2/Exit1/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part1/EnablePuzzle" method="trigger"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part2/Exit1/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part2/EnablePuzzle" method="stop"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1Part2/Exit2/D2SightToggle" to="MainCSGCombiner3D/PuzzleRoom1Part2/Exit2/D2SightToggle" method="_on_screen_exited"]
 [connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part2/Exit2/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part1/EnablePuzzle" method="trigger"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part2/Exit2/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part2/EnablePuzzle" method="stop"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1Part2/Exit3/D3SightToggle" to="MainCSGCombiner3D/PuzzleRoom1Part2/Exit3/D3SightToggle" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1Part3/EnablePuzzle" to="MainCSGCombiner3D/PuzzleRoom1Part3/EnablePuzzle" method="trigger" unbinds=1]
 [connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1Part3/EnablePuzzle" to="MainCSGCombiner3D/PuzzleRoom1Part3/Requisite" method="trigger" flags=6 unbinds=1]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit1/D1SightToggle" to="MainCSGCombiner3D/PuzzleRoom1Part3/Exit1/D1SightToggle" method="_on_screen_exited"]
 [connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit1/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part1/EnablePuzzle" method="trigger"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit1/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part3/EnablePuzzle" method="stop"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit2/D2SightToggle" to="MainCSGCombiner3D/PuzzleRoom1Part3/Exit2/D2SightToggle" method="_on_screen_exited"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit3/D3SightToggle" to="MainCSGCombiner3D/PuzzleRoom1Part3/Exit3/D3SightToggle" method="_on_screen_exited"]
 [connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit3/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part1/EnablePuzzle" method="trigger"]
+[connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit3/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part3/EnablePuzzle" method="stop"]
 [connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel3" to="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel3/LevelLoader" method="trigger" flags=6 unbinds=1]

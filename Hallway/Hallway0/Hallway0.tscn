@@ -74,6 +74,9 @@ size = Vector3(2.39, 3.435, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vm0im"]
 size = Vector3(3, 3.64, 3)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_4eyrf"]
+size = Vector3(3.485, 4.24, 30)
+
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ustya"]
 size = Vector3(11.616423, 8, 46.432903)
 
@@ -258,6 +261,18 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/EnableL" unique_id=756463095]
 shape = SubResource("BoxShape3D_vm0im")
+
+[node name="TextTrigger" type="Area3D" parent="MainCSGCombiner3D" unique_id=868269068]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99.535034, 1.252, 25.61)
+collision_layer = 0
+monitorable = false
+script = ExtResource("10_kewxs")
+dialogue_text_queue = Array[String](["That's it? Nothing else?", "Over only this we've been fighting.", "Guess I'd best head back."])
+metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/TextTrigger" unique_id=995448509]
+shape = SubResource("BoxShape3D_4eyrf")
+debug_color = Color(0.7532013, 0.4564469, 0.087912, 0.41960785)
 
 [node name="RHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=991847419]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.460619, 1.252, 25.60984)
@@ -735,9 +750,9 @@ new_level = "uid://bnsblodj1ihor"
 [connection signal="screen_exited" from="MainCSGCombiner3D/TutorialRoom/TutorialDooryway2SightToggleIndependent" to="MainCSGCombiner3D/TutorialRoom/TutorialDooryway2SightToggleIndependent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" method="_on_body_entered"]
 [connection signal="body_exited" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" method="_on_body_exited"]
+[connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/MovementComment/Delay" method="start"]
 [connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/RequisiteTutorial2" method="_on_flicker_trigger_triggered"]
 [connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/Tutorial2QOMConserved" method="_on_flashlight_turned_off"]
-[connection signal="triggered" from="MainCSGCombiner3D/Tutorial2Room/FlickerEnableTutorial2" to="MainCSGCombiner3D/Tutorial2Room/MovementComment/Delay" method="start"]
 [connection signal="body_entered" from="MainCSGCombiner3D/Tutorial2Room/MovementComment" to="MainCSGCombiner3D/Tutorial2Room/MovementComment" method="_on_body_entered"]
 [connection signal="timeout" from="MainCSGCombiner3D/Tutorial2Room/MovementComment/Delay" to="MainCSGCombiner3D/Tutorial2Room/MovementComment" method="_on_triggered"]
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial2Room/Tutorial2DoorywaySightToggle" to="MainCSGCombiner3D/Tutorial2Room/Tutorial2DoorywaySightToggle" method="_on_screen_exited"]

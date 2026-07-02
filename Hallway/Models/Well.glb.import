@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://s6cq51cga2x5"
-path="res://.godot/imported/Well.glb-cd064e18b614942344289b1ada775c8f.scn"
+path="res://.godot/imported/Well.glb-8cd4ef7aef9a36c7b21fd459515e89f8.scn"
 
 [deps]
 
-source_file="res://Hallway/Models/Well/Well.glb"
-dest_files=["res://.godot/imported/Well.glb-cd064e18b614942344289b1ada775c8f.scn"]
+source_file="res://Hallway/Models/Well.glb"
+dest_files=["res://.godot/imported/Well.glb-8cd4ef7aef9a36c7b21fd459515e89f8.scn"]
 
 [params]
 
@@ -36,17 +36,17 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=1
 materials/extract_format=0
-materials/extract_path="res://Hallway/Models/Well"
+materials/extract_path="res://Materials/Hallway"
 _subresources={
 "materials": {
 "Water": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Hallway/Models/Well/Water.tres",
+"use_external/fallback_path": "res://Materials/Hallway/Water.tres",
 "use_external/path": "uid://b1n3ks3j2fkl3"
 },
 "Well": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Hallway/Models/Well/Well.tres",
+"use_external/fallback_path": "res://Materials/Hallway/Well.tres",
 "use_external/path": "uid://csvk88id0rkdv"
 }
 }

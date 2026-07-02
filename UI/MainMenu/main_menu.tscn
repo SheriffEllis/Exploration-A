@@ -61,10 +61,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="Begin" type="Button" parent="ColorRect/VBoxContainer" unique_id=643733004]
+[node name="New" type="Button" parent="ColorRect/VBoxContainer" unique_id=643733004]
 layout_mode = 2
 theme = SubResource("Theme_3jj5y")
-text = "Begin"
+text = "New"
+
+[node name="Load" type="Button" parent="ColorRect/VBoxContainer" unique_id=902052355]
+layout_mode = 2
+theme = SubResource("Theme_3jj5y")
+text = "Load"
 
 [node name="Exit" type="Button" parent="ColorRect/VBoxContainer" unique_id=1744459622]
 layout_mode = 2
@@ -89,5 +94,5 @@ label_settings = SubResource("LabelSettings_h8rmy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/Begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/New" to="." method="_on_begin_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

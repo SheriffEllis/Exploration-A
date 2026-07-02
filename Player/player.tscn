@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://6x28o1hy20wi" path="res://Player/player.gd" id="1_ubx0o"]
 [ext_resource type="Script" uid="uid://bxgbqlkmffktx" path="res://Player/grabber.gd" id="2_86ift"]
 [ext_resource type="Script" uid="uid://e2wdle7kyakt" path="res://Player/player_POV.gd" id="3_u7612"]
+[ext_resource type="Script" uid="uid://82d3s52qjop6" path="res://Player/submerged_check.gd" id="4_5htga"]
 [ext_resource type="Script" uid="uid://cytxc03k8qk4y" path="res://Player/interact_ray.gd" id="4_bpp7x"]
 [ext_resource type="Script" uid="uid://bka7p1bviskva" path="res://Player/footstep_audio.gd" id="5_k53q1"]
+[ext_resource type="AudioStream" uid="uid://c7bej08jdiean" path="res://Audio/underwater.ogg" id="5_p5o4e"]
 [ext_resource type="AudioStream" uid="uid://8encg06urbqp" path="res://Audio/flashlight-click.ogg" id="5_x3vf3"]
 [ext_resource type="AudioStream" uid="uid://dy5c4jjtcviyf" path="res://Audio/lamp-buzz.ogg" id="6_00tjw"]
+[ext_resource type="AudioStream" uid="uid://boem2fjdp5k8a" path="res://Audio/footsteps/water-splash.ogg" id="6_gu6f8"]
 [ext_resource type="AudioStream" uid="uid://wmcs6hng7q6l" path="res://Audio/footsteps/randomised-footstep-carpet.tres" id="6_vtle1"]
 [ext_resource type="Script" uid="uid://busnqbr1bx08w" path="res://Player/flicker_audio.gd" id="7_x3vf3"]
 [ext_resource type="PackedScene" uid="uid://bc0ywkwcyvhfe" path="res://Props/camcorder.tscn" id="10_x3vf3"]
@@ -39,6 +42,9 @@ height = 0.4
 radius = 0.2
 height = 1.6
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_apopc"]
+radius = 0.03129666
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n42av"]
 transparency = 1
 blend_mode = 3
@@ -67,12 +73,12 @@ random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("11_apopc")
 
-[node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "prop_excluder", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "flashlight_sfx", "flashlight_flicker", "coyote_timer", "footsteps", "avoid_headbang", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
+[node name="Player" type="CharacterBody3D" unique_id=11157363 node_paths=PackedStringArray("grabber", "interact_ray", "water_detector", "interact_orb", "debug_orb", "yaw_pivot", "pitch_pivot", "camera", "flashlight", "flashlight_sfx", "flashlight_flicker", "coyote_timer", "footsteps", "avoid_headbang", "normal_mesh", "crouching_mesh", "normal_collider", "crouching_collider")]
 collision_mask = 5
 script = ExtResource("1_ubx0o")
 grabber = NodePath("YawPivot/PitchPivot/Grabber")
 interact_ray = NodePath("YawPivot/PitchPivot/InteractRay")
-prop_excluder = NodePath("PropExclusionArea")
+water_detector = NodePath("WaterDetectionArea")
 interact_orb = NodePath("YawPivot/PitchPivot/InteractRay/InteractRayDebugOrb")
 debug_orb = NodePath("YawPivot/PitchPivot/Grabber/GrabberDebugOrb")
 yaw_pivot = NodePath(".")
@@ -114,12 +120,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("CapsuleShape3D_3apam")
 disabled = true
 
-[node name="PropExclusionArea" type="Area3D" parent="." unique_id=1211398590]
+[node name="WaterDetectionArea" type="Area3D" parent="." unique_id=1211398590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 collision_layer = 0
 collision_mask = 8
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PropExclusionArea" unique_id=461947796]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterDetectionArea" unique_id=461947796]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_t3kc1")
 
@@ -147,6 +154,28 @@ cam_down = NodePath("../CamDownLocation")
 cull_mask = 59
 current = true
 script = ExtResource("3_u7612")
+
+[node name="SubmergedCheck" type="Area3D" parent="YawPivot/PitchPivot/PlayerPOV" unique_id=91978043]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("4_5htga")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="YawPivot/PitchPivot/PlayerPOV/SubmergedCheck" unique_id=876484676]
+shape = SubResource("SphereShape3D_apopc")
+debug_color = Color(0.09195549, 0.06166341, 0.5122902, 0.41960785)
+
+[node name="UnderwaterAudio" type="AudioStreamPlayer" parent="YawPivot/PitchPivot/PlayerPOV/SubmergedCheck" unique_id=1790513313]
+stream = ExtResource("5_p5o4e")
+volume_db = 10.0
+bus = &"Underwater"
+playback_type = 1
+
+[node name="SplashAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/PlayerPOV/SubmergedCheck" unique_id=1039305642]
+stream = ExtResource("6_gu6f8")
+volume_db = 10.0
+bus = &"Sounds"
+area_mask = 9
 
 [node name="InteractRay" type="RayCast3D" parent="YawPivot/PitchPivot" unique_id=407385695 node_paths=PackedStringArray("interact_orb")]
 target_position = Vector3(0, 0, -1)
@@ -179,9 +208,12 @@ spot_angle = 50.0
 [node name="FlashlightAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/Flashlight" unique_id=751712184]
 stream = ExtResource("5_x3vf3")
 bus = &"Sounds"
+area_mask = 9
 
 [node name="FlickerAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/Flashlight" unique_id=1646677309]
 stream = ExtResource("6_00tjw")
+bus = &"Sounds"
+area_mask = 9
 script = ExtResource("7_x3vf3")
 volume_curve = SubResource("Curve_00tjw")
 
@@ -194,6 +226,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537967, 0)
 stream = ExtResource("6_vtle1")
 max_polyphony = 2
 bus = &"Sounds"
+area_mask = 9
 script = ExtResource("5_k53q1")
 footstep_frequency = 3.5
 
@@ -201,11 +234,14 @@ footstep_frequency = 3.5
 stream = SubResource("AudioStreamRandomizer_apopc")
 pitch_scale = 0.9
 bus = &"Sounds"
+area_mask = 9
 
 [node name="AvoidHeadbang" type="RayCast3D" parent="." unique_id=1369394891]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 target_position = Vector3(0, 0.05, 0)
 collision_mask = 4
 
+[connection signal="area_entered" from="YawPivot/PitchPivot/PlayerPOV/SubmergedCheck" to="YawPivot/PitchPivot/PlayerPOV/SubmergedCheck" method="_on_area_entered" unbinds=1]
+[connection signal="area_exited" from="YawPivot/PitchPivot/PlayerPOV/SubmergedCheck" to="YawPivot/PitchPivot/PlayerPOV/SubmergedCheck" method="_on_area_exited" unbinds=1]
 [connection signal="finished" from="YawPivot/PitchPivot/Flashlight/FlickerAudio" to="YawPivot/PitchPivot/Flashlight/FlickerAudio" method="_on_finished"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

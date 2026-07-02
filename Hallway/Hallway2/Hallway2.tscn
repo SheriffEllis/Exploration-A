@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b4y7xjthpmsm5" path="res://Hallway/text_trigger.gd" id="3_t1cju"]
 [ext_resource type="Script" uid="uid://ce324142fvilf" path="res://Hallway/teleporter.gd" id="4_yrtb3"]
 [ext_resource type="AudioStream" uid="uid://cn1l53xxievwn" path="res://Audio/footsteps/sliding.ogg" id="6_23jmj"]
+[ext_resource type="AudioStream" uid="uid://cacx3od36sts2" path="res://Audio/footsteps/stumble.ogg" id="7_cjcr5"]
 [ext_resource type="Texture2D" uid="uid://carh3tg8vyamq" path="res://Room/Room_TableTextureSharp.png" id="8_bhuwl"]
 [ext_resource type="ArrayMesh" uid="uid://df2ly5aun456a" path="res://Hallway/Models/Table.tres" id="9_23jmj"]
 [ext_resource type="ArrayMesh" uid="uid://uhc7b1qulsug" path="res://Hallway/Models/Map.tres" id="10_bhuwl"]
@@ -277,6 +278,14 @@ metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/Antechamber/Ow" unique_id=619743099]
 shape = SubResource("BoxShape3D_23jmj")
+
+[node name="ThudAudio" type="AudioStreamPlayer3D" parent="MainCSGCombiner3D/Antechamber" unique_id=1968005513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0058059692, -1.1495972, 5.776542e-07)
+stream = ExtResource("7_cjcr5")
+attenuation_model = 3
+volume_db = 10.0
+max_db = 6.0
+bus = &"LargeRooms"
 
 [node name="Table" type="MeshInstance3D" parent="MainCSGCombiner3D/Antechamber" unique_id=1739403878]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0, -2, 0)
@@ -1045,6 +1054,7 @@ metadata/_custom_type_script = "uid://blngdvklqxsov"
 [connection signal="body_entered" from="MainCSGCombiner3D/DownwardExit4/Shit" to="MainCSGCombiner3D/DownwardExit4/SlidingAudio" method="play" flags=6 unbinds=1]
 [connection signal="body_entered" from="MainCSGCombiner3D/Antechamber/Ow" to="MainCSGCombiner3D/DownwardExit4/SlidingAudio" method="queue_free" flags=6 unbinds=1]
 [connection signal="body_entered" from="MainCSGCombiner3D/Antechamber/Ow" to="MainCSGCombiner3D/Antechamber/Requisite" method="trigger" flags=6 unbinds=1]
+[connection signal="body_entered" from="MainCSGCombiner3D/Antechamber/Ow" to="MainCSGCombiner3D/Antechamber/ThudAudio" method="play" flags=6 unbinds=1]
 [connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" to="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" method="_on_body_entered" unbinds=1]
 [connection signal="body_exited" from="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" to="MainCSGCombiner3D/PuzzleRoom2/ExtraReverb" method="_on_body_exited" unbinds=1]
 [connection signal="triggered" from="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane" to="MainCSGCombiner3D/PuzzleRoom2/CSGBox3D5/KillPlane/FUCK" method="_on_triggered"]

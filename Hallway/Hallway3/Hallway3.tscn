@@ -2,24 +2,51 @@
 
 [ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_npesk"]
 [ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="2_fqxm8"]
-[ext_resource type="Material" uid="uid://c3f82sbdndr2f" path="res://Materials/Room/PaintedWood.tres" id="2_lbayr"]
-[ext_resource type="Script" uid="uid://d17j1ym27qmk2" path="res://Hallway/sight_toggle.gd" id="3_uy1xx"]
-[ext_resource type="AudioStream" uid="uid://bj0k15hdynxxt" path="res://Audio/joke/YAY.mp3" id="4_d47j4"]
 [ext_resource type="Texture2D" uid="uid://cmi2fydlbooym" path="res://Materials/Textures/Decals/Eye.png" id="5_uy1xx"]
-[ext_resource type="Texture2D" uid="uid://u3fu7fx13qrr" path="res://Materials/Textures/Decals/Tree.png" id="5_yg8ep"]
-[ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="6_7wpuy"]
 [ext_resource type="Texture2D" uid="uid://bc4l3un4tshf1" path="res://Materials/Textures/Decals/ArbitrarySymbol2.png" id="6_gegf5"]
-[ext_resource type="PackedScene" uid="uid://s6cq51cga2x5" path="res://Hallway/Models/Well/Well.glb" id="10_yg8ep"]
+[ext_resource type="Texture2D" uid="uid://hrtvcan7fnmt" path="res://Materials/Textures/Well_OnyxDimmed512x512.png" id="7_lel3a"]
+[ext_resource type="Script" uid="uid://1llujaochajt" path="res://Hallway/quantum_object.gd" id="9_ejruh"]
+[ext_resource type="Texture2D" uid="uid://b7pp2lxk7pqpt" path="res://Materials/Textures/Decals/ArbitrarySymbol3.png" id="9_lel3a"]
+[ext_resource type="PackedScene" uid="uid://s6cq51cga2x5" path="res://Hallway/Models/Well.glb" id="10_yg8ep"]
+[ext_resource type="Script" uid="uid://bhljyfdcv7r0o" path="res://Hallway/sight_toggle_independent.gd" id="10_yv4ix"]
 [ext_resource type="Texture2D" uid="uid://cl8rl7374vw88" path="res://Materials/Textures/Decals/Spiral.png" id="11_0psa4"]
-[ext_resource type="Material" uid="uid://b1n3ks3j2fkl3" path="res://Hallway/Models/Well/Water.tres" id="11_7wpuy"]
+[ext_resource type="Material" uid="uid://b1n3ks3j2fkl3" path="res://Materials/Hallway/Water.tres" id="11_7wpuy"]
+[ext_resource type="Script" uid="uid://mgctuhvrl4y3" path="res://Hallway/manual_door_setter.gd" id="12_17ght"]
+[ext_resource type="Script" uid="uid://didt63hsocnx3" path="res://Hallway/Hallway3/well.gd" id="12_yv4ix"]
 [ext_resource type="Script" uid="uid://r5omxxim65wm" path="res://Hallway/Hallway3/water_sfx.gd" id="13_j0nk8"]
 [ext_resource type="AudioStream" uid="uid://boem2fjdp5k8a" path="res://Audio/footsteps/water-splash.ogg" id="14_lel3a"]
+[ext_resource type="AudioStream" uid="uid://b37k8hncv6pm7" path="res://Audio/stone-scrape.ogg" id="15_ejruh"]
+[ext_resource type="Material" uid="uid://csvk88id0rkdv" path="res://Materials/Hallway/Well.tres" id="16_4lgt1"]
+[ext_resource type="Script" uid="uid://bisimrq06joy2" path="res://Hallway/requisite.gd" id="17_17ght"]
+[ext_resource type="Script" uid="uid://blngdvklqxsov" path="res://Hallway/load_new_level.gd" id="19_7sqxx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
 size = Vector3(285.9, 160.083, 200)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0psa4"]
-size = Vector3(33, 5.3027344, 32)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yv4ix"]
+resource_name = "Well"
+albedo_texture = ExtResource("7_lel3a")
+metallic_specular = 0.2
+roughness = 0.3
+uv1_scale = Vector3(0.148, 0.148, 0.148)
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_17ght"]
+size = Vector3(104.94828, 32.98637, 5.6405845)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ejruh"]
+height = 1.2
+radius = 0.5546875
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ejruh"]
+size = Vector3(2, 4, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_4lgt1"]
+size = Vector3(104.94828, 32.98637, 5.6405845)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ejruh"]
+size = Vector3(104.94828, 32.98637, 5.6405845)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_83b8h"]
 _surfaces = [{
@@ -55,9 +82,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_83b8h")
 
+[sub_resource type="QuadMesh" id="QuadMesh_7sqxx"]
+material = ExtResource("16_4lgt1")
+size = Vector2(12, 12)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0psa4"]
-height = 1.3500977
+height = 1.6230927
 radius = 4.0405273
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lel3a"]
+height = 272.0528
+radius = 4.0405273
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17ght"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4lgt1"]
+radius = 5.4208984
 
 [node name="Hallway3" type="Node3D" unique_id=84698099]
 
@@ -210,14 +251,6 @@ size = Vector3(0.955, 2.055, 0.55856323)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 open_angle = 100.0
 
-[node name="PuzzleExitSightToggle1" type="VisibleOnScreenNotifier3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1" unique_id=1674117430 node_paths=PackedStringArray("hidden_doorframe")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.722046e-06, 0, 5.722046e-06)
-layers = 32
-aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
-script = ExtResource("3_uy1xx")
-hidden_doorframe = NodePath("../Doorframe")
-metadata/_custom_type_script = "uid://d17j1ym27qmk2"
-
 [node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway1" unique_id=326694115]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 1.9584797e-07, 3.8628235, 9.066023)
 visibility_parent = NodePath("../..")
@@ -249,22 +282,30 @@ visibility_parent = NodePath("..")
 layers = 4
 size = Vector3(1.32, 2.265, 5.4101563)
 
+[node name="PuzzleExitSightToggle2" type="VisibleOnScreenNotifier3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2" unique_id=620323169 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.4359436e-05, -0.10496521, -2.7223186)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("10_yv4ix")
+prerequisite = NodePath("../../../../Well/Requisite")
+entangled_toggles = [NodePath("../../../../Objects/SightToggleIndependent")]
+appear_probability = 0.0
+hide_probability = 0.0
+hidden_doorframe = NodePath("../PuzzleExitDoorway1/Doorframe")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
 [node name="PuzzleExitDoorway1" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2" unique_id=1014230251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0081482e-05, -0.10496521, -2.7223244)
+visible = false
 layers = 4
 size = Vector3(0.955, 2.055, 0.55856323)
 
 [node name="Doorframe" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1" unique_id=1308700169 instance=ExtResource("2_fqxm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 open_angle = 100.0
-
-[node name="PuzzleExitSightToggle1" type="VisibleOnScreenNotifier3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1" unique_id=1904633491 node_paths=PackedStringArray("hidden_doorframe")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.722046e-06, 0, 5.722046e-06)
-layers = 32
-aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
-script = ExtResource("3_uy1xx")
-hidden_doorframe = NodePath("../Doorframe")
-metadata/_custom_type_script = "uid://d17j1ym27qmk2"
+is_interactable = false
+eye_type = 3
+entangle_type = 5
 
 [node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway2" unique_id=1578950800]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 1.9584797e-07, 3.8628235, 9.066023)
@@ -297,22 +338,30 @@ visibility_parent = NodePath("..")
 layers = 4
 size = Vector3(1.32, 2.265, 5.4101563)
 
+[node name="PuzzleExitSightToggle3" type="VisibleOnScreenNotifier3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3" unique_id=285359275 node_paths=PackedStringArray("prerequisite", "entangled_toggles", "hidden_doorframe")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.4359436e-05, -0.10496521, -2.7223186)
+layers = 32
+aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
+script = ExtResource("10_yv4ix")
+prerequisite = NodePath("../../../../Well/Requisite")
+entangled_toggles = [NodePath("../../../../Objects/SightToggleIndependent2")]
+appear_probability = 0.0
+hide_probability = 0.0
+hidden_doorframe = NodePath("../PuzzleExitDoorway1/Doorframe")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
 [node name="PuzzleExitDoorway1" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3" unique_id=1870873318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0081482e-05, -0.10496521, -2.7223244)
+visible = false
 layers = 4
 size = Vector3(0.955, 2.055, 0.55856323)
 
 [node name="Doorframe" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1" unique_id=1117439416 instance=ExtResource("2_fqxm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.011, -0.122)
 open_angle = 100.0
-
-[node name="PuzzleExitSightToggle1" type="VisibleOnScreenNotifier3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1" unique_id=1415307152 node_paths=PackedStringArray("hidden_doorframe")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.722046e-06, 0, 5.722046e-06)
-layers = 32
-aabb = AABB(-0.54849166, -1.0710948, -0.24920124, 1.0969833, 2.158791, 0.89684)
-script = ExtResource("3_uy1xx")
-hidden_doorframe = NodePath("../Doorframe")
-metadata/_custom_type_script = "uid://d17j1ym27qmk2"
+is_interactable = false
+eye_type = 3
+entangle_type = 6
 
 [node name="Stairs" type="CSGBox3D" parent="CSGCombiner3D/EntryRoom/PuzzleExitHallway3" unique_id=200840652]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 1.9584797e-07, 3.8628235, 9.066023)
@@ -339,55 +388,35 @@ transform = Transform3D(-1.0927847e-08, 0.25, 1.0927847e-08, 0, -1.0927847e-08, 
 polygon = PackedVector2Array(0, 9, 1, 5, 2, 2, 3.7, -1.3000001, 6, -5, 9, -9, 5, -6, 1.3000001, -3.7, -2, -2, -5, -1, -9, 0)
 depth = 16.0
 
-[node name="TempEnd" type="Area3D" parent="CSGCombiner3D" unique_id=1408206984]
-monitoring = false
-monitorable = false
-reverb_bus_enabled = true
-reverb_bus_name = &"Hallways"
-reverb_bus_amount = 1.0
-reverb_bus_uniformity = 1.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/TempEnd" unique_id=354102179]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -42.071434, 0)
-shape = SubResource("BoxShape3D_0psa4")
-
-[node name="YAY" type="AudioStreamPlayer3D" parent="CSGCombiner3D/TempEnd" unique_id=1349692307]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34.231388, 0)
-stream = ExtResource("4_d47j4")
-max_db = 0.0
-bus = &"LargeRooms"
-
-[node name="Decal" type="Decal" parent="CSGCombiner3D/TempEnd" unique_id=1582861486]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -14.876408, -35.877907, 0.013224602)
-size = Vector3(10, 2, 10)
-texture_albedo = ExtResource("5_yg8ep")
-modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
-albedo_mix = 0.15
-upper_fade = 0.0
-lower_fade = 0.0
-
-[node name="Label3D" type="Label3D" parent="CSGCombiner3D/TempEnd" unique_id=1517991224]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.715227, -39.876015, 0.013224602)
-shaded = true
-double_sided = false
-texture_filter = 4
-text = "You da weiner :)
-End of the game so far."
-font = ExtResource("6_7wpuy")
-font_size = 64
-
 [node name="Objects" type="CSGCombiner3D" parent="." unique_id=1581026977]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -35.85219, 0)
 layers = 4
-material_override = ExtResource("2_lbayr")
+material_override = SubResource("StandardMaterial3D_yv4ix")
 use_collision = true
 collision_layer = 4
 
+[node name="SightToggleIndependent" type="VisibleOnScreenNotifier3D" parent="Objects" unique_id=1180318142 node_paths=PackedStringArray("prerequisite", "hidden_doorframe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7001383e-06, 2.4582863, -38.89463)
+layers = 32
+aabb = AABB(-0.55645454, -0.5235108, -0.5536112, 1.1129091, 1.0470216, 1.1072224)
+script = ExtResource("10_yv4ix")
+prerequisite = NodePath("../../Well/Requisite")
+hidden_doorframe = NodePath("../Pedestal/Pedestal")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Objects" unique_id=644266411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9624067e-06, 2.4582863, -26.49163)
+layers = 32
+occluder = SubResource("BoxOccluder3D_17ght")
+
 [node name="Pedestal" type="CSGCylinder3D" parent="Objects" unique_id=1926692751]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7001383e-06, 2.541565, -38.89463)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7001383e-06, 2.4582863, -38.89463)
 radius = 0.316
 height = 0.80049324
 sides = 16
+
+[node name="Pedestal" type="MeshInstance3D" parent="Objects/Pedestal" unique_id=601300903]
+script = ExtResource("9_ejruh")
 
 [node name="Bottom" type="CSGCylinder3D" parent="Objects/Pedestal" unique_id=273931657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4736557, 0)
@@ -423,23 +452,171 @@ upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 1048567
 
-[node name="Well" parent="." unique_id=1777362937 instance=ExtResource("10_yg8ep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.69085, 0)
+[node name="ExclusionArea" type="Area3D" parent="Objects/Pedestal" unique_id=1542357742]
 
-[node name="Well" parent="Well" index="0" unique_id=313216553]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Pedestal/ExclusionArea" unique_id=1757825406]
+shape = SubResource("CylinderShape3D_ejruh")
+debug_color = Color(0.9744386, 0.11106799, 0.30087712, 0.41960785)
+
+[node name="ManualToggle" type="Area3D" parent="Objects/Pedestal" unique_id=407402774 node_paths=PackedStringArray("sight_toggles")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.001779e-07, -7.3072166, 20.593668)
+collision_layer = 0
+monitorable = false
+script = ExtResource("12_17ght")
+sight_toggles = [NodePath("../../SightToggleIndependent"), NodePath("../../SightToggleIndependent2"), NodePath("../../SightToggleIndependent3")]
+states = Array[bool]([false, false, false])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Pedestal/ManualToggle" unique_id=1471847243]
+shape = SubResource("BoxShape3D_ejruh")
+debug_color = Color(0.9181702, 0.25985575, 0.311418, 0.41960785)
+
+[node name="DecalEye1" type="Decal" parent="Objects" unique_id=1670139101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7001383e-06, 2.0046577, -38.89463)
 layers = 4
+size = Vector3(1.5, 0.05, 1.5)
+texture_albedo = ExtResource("5_uy1xx")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.3
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
 
-[node name="Flat" parent="Well/Well" index="0" unique_id=780728743]
+[node name="SightToggleIndependent2" type="VisibleOnScreenNotifier3D" parent="Objects" unique_id=2043911299 node_paths=PackedStringArray("prerequisite", "hidden_doorframe")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -38.895, 2.4580002, 0)
+layers = 32
+aabb = AABB(-0.55645454, -0.5235108, -0.5536112, 1.1129091, 1.0470216, 1.1072224)
+script = ExtResource("10_yv4ix")
+prerequisite = NodePath("../../Well/Requisite")
+hidden_doorframe = NodePath("../Pedestal2/Pedestal")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="Objects" unique_id=1635423203]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.49243, 2.4580002, -2.6226803e-07)
+layers = 32
+occluder = SubResource("BoxOccluder3D_4lgt1")
+
+[node name="Pedestal2" type="CSGCylinder3D" parent="Objects" unique_id=942411674]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -38.895, 2.4580002, 0)
+radius = 0.316
+height = 0.80049324
+sides = 16
+
+[node name="Pedestal" type="MeshInstance3D" parent="Objects/Pedestal2" unique_id=25502683]
+script = ExtResource("9_ejruh")
+
+[node name="Bottom" type="CSGCylinder3D" parent="Objects/Pedestal2" unique_id=1025438478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4736557, 0)
+radius = 0.55371094
+height = 0.24435425
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="Objects/Pedestal2" unique_id=1187646078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4133339, 0)
+radius = 0.453125
+height = 0.1496582
+smooth_faces = false
+
+[node name="Decal" type="Decal" parent="Objects/Pedestal2" unique_id=452367646]
+transform = Transform3D(1, -4.371139e-08, 4.371139e-08, 4.371139e-08, -4.371139e-08, -1, 4.371139e-08, 1, -4.3711385e-08, 1.5688784e-08, 0, 0.2168274)
 layers = 4
+size = Vector3(0.6, 0.5, 0.6)
+texture_albedo = ExtResource("5_uy1xx")
+modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
+albedo_mix = 0.9
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
 
-[node name="StaticBody3D" parent="Well/Well/Flat" index="0" unique_id=1612532628]
-collision_layer = 4
-collision_mask = 0
-
-[node name="Decal2" type="Decal" parent="Well/Well/Flat" index="1" unique_id=824415844]
-transform = Transform3D(0.9999985, 0, -1.7053026e-13, 0, 1, 0, 1.7053026e-13, 0, 0.9999985, 0, -0.18801498, 0)
+[node name="Decal2" type="Decal" parent="Objects/Pedestal2" unique_id=1927237147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49227524, 0)
 layers = 4
-size = Vector3(2, 0.2, 2)
+size = Vector3(1, 0.05, 1)
+texture_albedo = ExtResource("9_lel3a")
+modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
+albedo_mix = 0.9
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
+
+[node name="ExclusionArea" type="Area3D" parent="Objects/Pedestal2" unique_id=464981801]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Pedestal2/ExclusionArea" unique_id=733665995]
+shape = SubResource("CylinderShape3D_ejruh")
+debug_color = Color(0.9744386, 0.11106799, 0.30087712, 0.41960785)
+
+[node name="ManualToggle" type="Area3D" parent="Objects/Pedestal2" unique_id=584586725 node_paths=PackedStringArray("sight_toggles")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.001779e-07, -7.3072166, 20.593668)
+collision_layer = 0
+monitorable = false
+script = ExtResource("12_17ght")
+sight_toggles = [NodePath("../../SightToggleIndependent"), NodePath("../../SightToggleIndependent2"), NodePath("../../SightToggleIndependent3")]
+states = Array[bool]([true, false, false])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Pedestal2/ManualToggle" unique_id=309958289]
+shape = SubResource("BoxShape3D_ejruh")
+debug_color = Color(0.9181702, 0.25985575, 0.311418, 0.41960785)
+
+[node name="DecalEye2" type="Decal" parent="Objects" unique_id=707371458]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -38.895, 2.0043716, 0)
+layers = 4
+size = Vector3(1.5, 0.05, 1.5)
+texture_albedo = ExtResource("5_uy1xx")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.3
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
+
+[node name="SightToggleIndependent3" type="VisibleOnScreenNotifier3D" parent="Objects" unique_id=945953714 node_paths=PackedStringArray("prerequisite", "hidden_doorframe")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.895, 2.4580002, 0)
+layers = 32
+aabb = AABB(-0.55645454, -0.5235108, -0.5536112, 1.1129091, 1.0470216, 1.1072224)
+script = ExtResource("10_yv4ix")
+prerequisite = NodePath("../../Well/Requisite")
+hidden_doorframe = NodePath("../Pedestal3/Pedestal")
+metadata/_custom_type_script = "uid://bhljyfdcv7r0o"
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="Objects" unique_id=103770059]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 26.49243, 2.4580002, -1.3465357e-06)
+layers = 32
+occluder = SubResource("BoxOccluder3D_ejruh")
+
+[node name="Pedestal3" type="CSGCylinder3D" parent="Objects" unique_id=829572400]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.895, 2.4580002, 0)
+radius = 0.316
+height = 0.80049324
+sides = 16
+
+[node name="Pedestal" type="MeshInstance3D" parent="Objects/Pedestal3" unique_id=749087679]
+script = ExtResource("9_ejruh")
+
+[node name="Bottom" type="CSGCylinder3D" parent="Objects/Pedestal3" unique_id=590882665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4736557, 0)
+radius = 0.55371094
+height = 0.24435425
+sides = 16
+
+[node name="Top" type="CSGCylinder3D" parent="Objects/Pedestal3" unique_id=1400997353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4133339, 0)
+radius = 0.453125
+height = 0.1496582
+smooth_faces = false
+
+[node name="Decal" type="Decal" parent="Objects/Pedestal3" unique_id=1332968826]
+transform = Transform3D(1, -4.371139e-08, 4.371139e-08, 4.371139e-08, -4.371139e-08, -1, 4.371139e-08, 1, -4.3711385e-08, 1.5688784e-08, 0, 0.2168274)
+layers = 4
+size = Vector3(0.6, 0.5, 0.6)
+texture_albedo = ExtResource("5_uy1xx")
+modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
+albedo_mix = 0.9
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
+
+[node name="Decal2" type="Decal" parent="Objects/Pedestal3" unique_id=205336035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49227524, 0)
+layers = 4
+size = Vector3(1, 0.05, 1)
 texture_albedo = ExtResource("11_0psa4")
 modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
 albedo_mix = 0.9
@@ -447,7 +624,60 @@ upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 1048567
 
-[node name="Water" parent="Well/Well" index="1" unique_id=2135419202]
+[node name="ExclusionArea" type="Area3D" parent="Objects/Pedestal3" unique_id=265888629]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Pedestal3/ExclusionArea" unique_id=1314834800]
+shape = SubResource("CylinderShape3D_ejruh")
+debug_color = Color(0.9744386, 0.11106799, 0.30087712, 0.41960785)
+
+[node name="ManualToggle" type="Area3D" parent="Objects/Pedestal3" unique_id=1855273134 node_paths=PackedStringArray("sight_toggles")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.001779e-07, -7.3072166, 20.593668)
+collision_layer = 0
+monitorable = false
+script = ExtResource("12_17ght")
+sight_toggles = [NodePath("../../SightToggleIndependent"), NodePath("../../SightToggleIndependent2"), NodePath("../../SightToggleIndependent3")]
+states = Array[bool]([false, true, false])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Pedestal3/ManualToggle" unique_id=55707657]
+shape = SubResource("BoxShape3D_ejruh")
+debug_color = Color(0.9181702, 0.25985575, 0.311418, 0.41960785)
+
+[node name="DecalEye3" type="Decal" parent="Objects" unique_id=1468524866]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.895, 2.0043716, 0)
+layers = 4
+size = Vector3(1.5, 0.05, 1.5)
+texture_albedo = ExtResource("5_uy1xx")
+modulate = Color(0.9019608, 0.9019608, 0.84313726, 1)
+albedo_mix = 0.3
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
+
+[node name="Well" parent="." unique_id=775455221 instance=ExtResource("10_yg8ep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.69085, 0)
+
+[node name="Well" parent="Well" index="0" unique_id=1154324505]
+layers = 4
+
+[node name="Flat" parent="Well/Well" index="0" unique_id=1728553449]
+layers = 4
+
+[node name="StaticBody3D" parent="Well/Well/Flat" index="0" unique_id=1600486896]
+collision_layer = 4
+collision_mask = 0
+
+[node name="SpiralDecal" type="Decal" parent="Well/Well/Flat" index="1" unique_id=824415844]
+transform = Transform3D(0.9999985, 0, -1.7053026e-13, 0, 1, 0, 1.7053026e-13, 0, 0.9999985, 0, -0.18801498, 0)
+layers = 4
+size = Vector3(5, 0.2, 5)
+texture_albedo = ExtResource("11_0psa4")
+modulate = Color(0.09803922, 0.09803922, 0.15686275, 1)
+albedo_mix = 0.36
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1048567
+
+[node name="Water" parent="Well/Well" index="1" unique_id=1167749388]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -0.070646934, 0)
 layers = 4
 
@@ -456,16 +686,39 @@ transform = Transform3D(0.99999964, 0, -3.5527137e-14, 0, 1, 0, 3.5527137e-14, 0
 layers = 4
 mesh = SubResource("ArrayMesh_hi1an")
 
-[node name="StaticBody3D" parent="Well/Well" index="3" unique_id=1388038583]
+[node name="StaticBody3D" parent="Well/Well" index="3" unique_id=2020986908]
 collision_layer = 4
 collision_mask = 0
+
+[node name="WaterAudio" type="AudioStreamPlayer3D" parent="Well/Well" index="4" unique_id=792105126]
+stream = ExtResource("14_lel3a")
+volume_db = 10.0
+pitch_scale = 0.2
+bus = &"LargeRooms"
+
+[node name="ScrapeAudio" type="AudioStreamPlayer3D" parent="Well/Well" index="5" unique_id=849923263]
+stream = ExtResource("15_ejruh")
+pitch_scale = 0.5
+bus = &"Stone"
+
+[node name="WellTrigger" type="Node" parent="Well/Well" index="6" unique_id=1000521228 node_paths=PackedStringArray("well_floor", "well_floor_water", "well_floor_body", "stone_audio", "water_audio")]
+script = ExtResource("12_yv4ix")
+well_floor = NodePath("../Flat")
+well_floor_water = NodePath("../Water")
+well_floor_body = NodePath("../Flat/StaticBody3D")
+stone_audio = NodePath("../ScrapeAudio")
+water_audio = NodePath("../WaterAudio")
+
+[node name="End" type="MeshInstance3D" parent="Well/Well" index="7" unique_id=1482221884]
+transform = Transform3D(0.99999976, 1.1920929e-07, 1.19209275e-07, -1.1920929e-07, -4.371139e-08, 0.99999994, 1.1920929e-07, -0.9999998, -4.3711363e-08, 0, -293.81863, 0)
+mesh = SubResource("QuadMesh_7sqxx")
 
 [node name="WaterSfx" type="Area3D" parent="Well" unique_id=1933270380]
 monitorable = false
 script = ExtResource("13_j0nk8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Well/WaterSfx" unique_id=1163092177]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32495117, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46144867, 0)
 shape = SubResource("CylinderShape3D_0psa4")
 debug_color = Color(0.36448205, 0.488814, 0.9751441, 0.41960785)
 
@@ -477,12 +730,63 @@ volume_db = 10.0
 max_db = 6.0
 bus = &"Sounds"
 
-[connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway1/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
-[connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
-[connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1/PuzzleExitSightToggle1" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitDoorway1/PuzzleExitSightToggle1" method="_on_screen_exited"]
-[connection signal="body_entered" from="CSGCombiner3D/TempEnd" to="CSGCombiner3D/TempEnd/YAY" method="play" flags=6 unbinds=1]
+[node name="WaterThreshold" type="Area3D" parent="Well" unique_id=505943181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.718605, 0)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+audio_bus_override = true
+audio_bus_name = &"Underwater"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/WaterThreshold" unique_id=27463253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -134.38843, 0)
+shape = SubResource("CylinderShape3D_lel3a")
+debug_color = Color(0.36448205, 0.488814, 0.9751441, 0.41960785)
+
+[node name="EnablePuzzle" type="Area3D" parent="Well" unique_id=1726460272]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/EnablePuzzle" unique_id=1950772641]
+shape = SubResource("BoxShape3D_17ght")
+
+[node name="Requisite" type="Node3D" parent="Well" unique_id=905802936]
+visible = false
+script = ExtResource("17_17ght")
+metadata/_custom_type_script = "uid://bisimrq06joy2"
+
+[node name="LoadLevel4" type="Area3D" parent="Well" unique_id=129811162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -46.38343, 0)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/LoadLevel4" unique_id=452334702]
+shape = SubResource("CylinderShape3D_4lgt1")
+debug_color = Color(0.99255735, 0.050505728, 0.17436999, 0.41960785)
+
+[node name="LevelLoader" type="Node" parent="Well/LoadLevel4" unique_id=1705092594]
+script = ExtResource("19_7sqxx")
+new_level = "uid://dnjtcvaxr54dt"
+old_node_name = "Hallway3"
+metadata/_custom_type_script = "uid://blngdvklqxsov"
+
+[connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitSightToggle2" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitSightToggle2" method="_on_screen_exited"]
+[connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitSightToggle3" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway3/PuzzleExitSightToggle3" method="_on_screen_exited"]
+[connection signal="body_entered" from="Objects/Pedestal/ExclusionArea" to="Objects/Pedestal/Pedestal" method="_on_exclusion_area_body_entered"]
+[connection signal="body_exited" from="Objects/Pedestal/ExclusionArea" to="Objects/Pedestal/Pedestal" method="_on_exclusion_area_body_exited"]
+[connection signal="body_entered" from="Objects/Pedestal/ManualToggle" to="Objects/Pedestal/ManualToggle" method="_on_body_entered"]
+[connection signal="body_entered" from="Objects/Pedestal2/ExclusionArea" to="Objects/Pedestal2/Pedestal" method="_on_exclusion_area_body_entered"]
+[connection signal="body_exited" from="Objects/Pedestal2/ExclusionArea" to="Objects/Pedestal2/Pedestal" method="_on_exclusion_area_body_exited"]
+[connection signal="body_entered" from="Objects/Pedestal2/ManualToggle" to="Objects/Pedestal2/ManualToggle" method="_on_body_entered"]
+[connection signal="toggled_door" from="Objects/SightToggleIndependent3" to="Well/Well/WellTrigger" method="_on_sight_toggle_independent_3_toggled_door"]
+[connection signal="body_entered" from="Objects/Pedestal3/ExclusionArea" to="Objects/Pedestal3/Pedestal" method="_on_exclusion_area_body_entered"]
+[connection signal="body_exited" from="Objects/Pedestal3/ExclusionArea" to="Objects/Pedestal3/Pedestal" method="_on_exclusion_area_body_exited"]
+[connection signal="body_entered" from="Objects/Pedestal3/ManualToggle" to="Objects/Pedestal3/ManualToggle" method="_on_body_entered"]
 [connection signal="body_entered" from="Well/WaterSfx" to="Well/WaterSfx" method="_on_body_entered" unbinds=1]
 [connection signal="body_entered" from="Well/WaterSfx" to="Well/WaterSfx/SplashAudio" method="play" flags=6 unbinds=1]
 [connection signal="body_exited" from="Well/WaterSfx" to="Well/WaterSfx" method="_on_body_exited" unbinds=1]
+[connection signal="body_entered" from="Well/WaterThreshold" to="Well/WaterSfx/SplashAudio" method="play" flags=6 unbinds=1]
+[connection signal="body_entered" from="Well/EnablePuzzle" to="Well/Requisite" method="trigger" flags=6 unbinds=1]
+[connection signal="body_entered" from="Well/LoadLevel4" to="Well/LoadLevel4/LevelLoader" method="trigger" flags=6 unbinds=1]
 
 [editable path="Well"]

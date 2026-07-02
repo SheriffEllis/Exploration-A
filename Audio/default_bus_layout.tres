@@ -25,6 +25,11 @@ resource_name = "LowPassFilter"
 cutoff_hz = 100.0
 db = 3
 
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_ddrg4"]
+resource_name = "LowPassFilter"
+cutoff_hz = 500.0
+db = 1
+
 [resource]
 bus/0/bypass_fx = true
 bus/0/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
@@ -67,3 +72,11 @@ bus/5/effect/0/effect = SubResource("AudioEffectReverb_girky")
 bus/5/effect/0/enabled = true
 bus/5/effect/1/effect = SubResource("AudioEffectLowPassFilter_ai37j")
 bus/5/effect/1/enabled = true
+bus/6/name = &"Underwater"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = -0.030508041
+bus/6/send = &"Master"
+bus/6/effect/0/effect = SubResource("AudioEffectLowPassFilter_ddrg4")
+bus/6/effect/0/enabled = true

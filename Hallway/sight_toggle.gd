@@ -1,6 +1,6 @@
 class_name SightToggle extends VisibleOnScreenNotifier3D
 
-@export var hidden_doorframe : Door
+@export var hidden_doorframe : QuantumObject
 @export var is_inverted := false
 var is_on_camera := false
 

@@ -58,4 +58,6 @@ func pause() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	#get_tree().quit()
+	set_paused(false)
+	get_tree().change_scene_to_packed(load("uid://h264xme84kii"))

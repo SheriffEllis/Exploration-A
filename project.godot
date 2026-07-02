@@ -33,6 +33,7 @@ movie_writer/movie_file="C:/Users/sheri/Documents/Godot/exploration-a/test.avi"
 
 folder_colors={
 "res://Audio/": "yellow",
+"res://Effects/": "blue",
 "res://Hallway/": "green",
 "res://Materials/": "red",
 "res://Materials/Textures/": "orange",
@@ -127,6 +128,7 @@ capture_image={
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Interactables"
 3d_physics/layer_3="Walls"
+3d_physics/layer_4="Water"
 
 [physics]
 

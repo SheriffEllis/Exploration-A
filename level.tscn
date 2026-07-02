@@ -1,39 +1,21 @@
 [gd_scene format=3 uid="uid://botkc1uivwekw"]
 
 [ext_resource type="Script" uid="uid://btuxhlfcqbm5a" path="res://level.gd" id="1_0b4ue"]
-[ext_resource type="Texture2D" uid="uid://d220tauv8d1rs" path="res://Outside/NightSkyHDRI001_2K_TONEMAPPED.jpg" id="2_1ainy"]
 [ext_resource type="Script" uid="uid://dhaeiov164njk" path="res://debug.gd" id="2_2orkt"]
 [ext_resource type="Script" uid="uid://6rodbddn250y" path="res://Audio/ambience_manager.gd" id="2_km5ld"]
 [ext_resource type="PackedScene" uid="uid://6w8l8imv3uwx" path="res://Player/player.tscn" id="2_vonw3"]
 [ext_resource type="AudioStream" uid="uid://b5v3bdnq0ohdh" path="res://Audio/wind.ogg" id="4_8cye3"]
 [ext_resource type="PackedScene" uid="uid://70xt2qqamxtv" path="res://UI/game_ui/game_ui.tscn" id="4_f2txt"]
+[ext_resource type="Environment" uid="uid://blgomx5vch5p4" path="res://Effects/RoomEnvironment.tres" id="5_8cye3"]
 [ext_resource type="PackedScene" uid="uid://c2kbweneknqnu" path="res://Outside/outside.tscn" id="5_f2txt"]
 [ext_resource type="PackedScene" uid="uid://c28hmcs10hs0h" path="res://Room/room.scn" id="5_n6hdu"]
 [ext_resource type="PackedScene" uid="uid://c2lj6pldaxfqg" path="res://Hallway/Hallway0/Hallway0.tscn" id="7_n6hdu"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f2txt"]
-panorama = ExtResource("2_1ainy")
-filter = false
-
-[sub_resource type="Sky" id="Sky_1ainy"]
-sky_material = SubResource("PanoramaSkyMaterial_f2txt")
-
-[sub_resource type="Environment" id="Environment_vonw3"]
-background_mode = 2
-background_energy_multiplier = 0.1
-sky = SubResource("Sky_1ainy")
-ambient_light_source = 2
-ambient_light_color = Color(0.75, 0.75, 0.75, 1)
-ambient_light_energy = 0.0
-reflected_light_source = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6hdu"]
 size = Vector3(9.814652, 5.6108384, 10.553602)
 
 [node name="Level" type="Node3D" unique_id=851319929]
 script = ExtResource("1_0b4ue")
-skip_intro = true
-starting_level = 3
 
 [node name="Debug" type="Node" parent="." unique_id=233403933]
 script = ExtResource("2_2orkt")
@@ -49,7 +31,7 @@ bus = &"Ambience"
 playback_type = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="AmbienceManager" unique_id=534093435]
-environment = SubResource("Environment_vonw3")
+environment = ExtResource("5_8cye3")
 
 [node name="GameUI" parent="." unique_id=1624677183 instance=ExtResource("4_f2txt")]
 

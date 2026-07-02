@@ -16,7 +16,7 @@ const MAX_LOOK_ANGLE: float = deg_to_rad(85.0)
 @export_group("Interaction")
 @export var grabber: Grabber
 @export var interact_ray: RayCast3D
-@export var prop_excluder: Area3D
+@export var water_detector: Area3D
 @export var interact_orb: MeshInstance3D
 @export var debug_orb: MeshInstance3D
 
@@ -47,9 +47,9 @@ var pitch_input: float = 0.0
 
 # Movement variables
 ## flag for preventing player movement when controlling something else
-var is_view_locked: float = false: set = set_view_locked
-var is_movement_locked: float = false: set = set_movement_locked
-var is_flying: float = false: set = set_is_flying
+var is_view_locked: bool = false: set = set_view_locked
+var is_movement_locked: bool = false: set = set_movement_locked
+var is_flying: bool = false: set = set_is_flying
 var move_speed: float = BASE_MOVE_SPEED
 ## memory bool for allowing coyote jump time
 var can_jump: bool = true
@@ -121,7 +121,8 @@ func _physics_process(delta: float):
 	# Apply translational forces to grabbed object and receive reaction forces
 	# Don't apply forces if colliding with unliftable prop
 	if grabber.held_object:
-		velocity += grabber.drag(delta, global_position, prop_excluder.has_overlapping_bodies())
+		#velocity += grabber.drag(delta, global_position, prop_excluder.has_overlapping_bodies())
+		velocity += grabber.drag(delta, global_position, false)
 		grabber.handle_rotation(yaw_pivot.basis * pitch_pivot.basis)
 
 	move_and_slide()
@@ -132,6 +133,8 @@ func _physics_process(delta: float):
 func handle_coyote_timing(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta # Apply gravity.
+		if water_detector.has_overlapping_areas():
+			velocity -= velocity/10 # linear damping
 
 		if can_jump and coyote_timer.is_stopped():
 			coyote_timer.start()

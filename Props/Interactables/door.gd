@@ -1,4 +1,4 @@
-class_name Door extends MeshInstance3D
+class_name Door extends QuantumObject
 
 @export_range(-180, 180, 0.001, "degrees") var open_angle = -100.0
 @export var is_interactable := true :
@@ -41,7 +41,7 @@ enum EntangleType {
 @onready var sound_close : AudioStreamPlayer3D = $DoorCloseAudio
 @onready var sound_locked : AudioStreamPlayer3D = $DoorLockedAudio
 var is_open := false
-var is_occupied := false ## Prevents walls reappearing while player is standing inside an open door
+#var is_occupied := false ## Prevents walls reappearing while player is standing inside an open door
 var tween : Tween
 
 func _ready() -> void:
@@ -96,11 +96,4 @@ func toggle_door(is_on: bool) -> void:
 	is_interactable = is_on
 
 func is_door_visible() -> bool:
-	return visible and is_interactable
-
-
-func _on_exclusion_area_body_entered(_body: Node3D) -> void:
-	is_occupied = true
-
-func _on_exclusion_area_body_exited(_body: Node3D) -> void:
-	is_occupied = false
+	return get_parent().visible and is_interactable

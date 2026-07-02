@@ -1,8 +1,10 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://csvk88id0rkdv"]
 
-[ext_resource type="Texture2D" uid="uid://hrtvcan7fnmt" path="res://Hallway/Models/Well/Well_OnyxDimmed512x512.png" id="1_no2oo"]
+[ext_resource type="Texture2D" uid="uid://hrtvcan7fnmt" path="res://Materials/Textures/Well_OnyxDimmed512x512.png" id="1_no2oo"]
 
 [resource]
 resource_name = "Well"
 albedo_texture = ExtResource("1_no2oo")
+metallic_specular = 0.19
+roughness = 0.4
 texture_filter = 2

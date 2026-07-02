@@ -4,12 +4,10 @@
 code = "// NOTE: Shader automatically converted from Godot Engine 4.6.2.stable's StandardMaterial3D.
 
 shader_type spatial;
-render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_always, diffuse_burley, specular_schlick_ggx, cull_disabled;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
-uniform ivec2 albedo_texture_size;
-uniform float point_size : hint_range(0.1, 128.0, 0.1);
 
 uniform float roughness : hint_range(0.0, 1.0);
 uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
@@ -30,8 +28,6 @@ uniform float normal_scale : hint_range(-16.0, 16.0) = 1.0;
 
 uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
 
 uniform float time_scale = 1.0;
 uniform float amplitude = 0.3;
@@ -96,21 +92,17 @@ seamless = true
 resource_name = "Water"
 render_priority = 0
 shader = SubResource("Shader_ngewl")
-shader_parameter/albedo = Color(0.53690004, 0.84159833, 0.91, 0.0627451)
-shader_parameter/albedo_texture_size = Vector2i(0, 0)
-shader_parameter/point_size = 1.0
+shader_parameter/albedo = Color(0.38940004, 0.5472501, 0.66, 0.047058824)
 shader_parameter/roughness = 0.0710000033725
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.499999988824
 shader_parameter/metallic = 0.0
 shader_parameter/texture_refraction = SubResource("NoiseTexture2D_ngewl")
-shader_parameter/refraction = 0.10000005224999996
-shader_parameter/refraction_texture_channel = Vector4(0.1, 0.1, 0.1, 0)
+shader_parameter/refraction = 0.02000004845000003
+shader_parameter/refraction_texture_channel = Vector4(1, 1, 1, 0)
 shader_parameter/texture_normal = SubResource("NoiseTexture2D_ngewl")
 shader_parameter/normal_scale = 0.10000076474999986
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/time_scale = 5.0
 shader_parameter/amplitude = 0.5
