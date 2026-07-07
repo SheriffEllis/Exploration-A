@@ -207,11 +207,13 @@ spot_angle = 50.0
 
 [node name="FlashlightAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/Flashlight" unique_id=751712184]
 stream = ExtResource("5_x3vf3")
+attenuation_model = 3
 bus = &"Sounds"
 area_mask = 9
 
 [node name="FlickerAudio" type="AudioStreamPlayer3D" parent="YawPivot/PitchPivot/Flashlight" unique_id=1646677309]
 stream = ExtResource("6_00tjw")
+attenuation_model = 3
 bus = &"Sounds"
 area_mask = 9
 script = ExtResource("7_x3vf3")

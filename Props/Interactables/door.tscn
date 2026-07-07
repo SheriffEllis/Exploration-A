@@ -3,11 +3,13 @@
 [ext_resource type="Material" uid="uid://c34qfq87orp02" path="res://Materials/Hallway/DoorDesat.tres" id="1_kk4io"]
 [ext_resource type="Script" uid="uid://clm1c0afi1h6o" path="res://Props/Interactables/door.gd" id="2_6pewh"]
 [ext_resource type="Script" uid="uid://bwn7vidwf8ohl" path="res://Props/Interactables/static_interactable.gd" id="3_6pewh"]
+[ext_resource type="ArrayOccluder3D" uid="uid://xm1mgiqb03yy" path="res://Props/Interactables/doorframe.occ" id="3_hck2s"]
 [ext_resource type="AudioStream" uid="uid://c2c2cvlv6purr" path="res://Audio/door-open.ogg" id="3_kk4io"]
 [ext_resource type="AudioStream" uid="uid://dvff4ghdyrper" path="res://Audio/door-close.ogg" id="4_6pewh"]
 [ext_resource type="Texture2D" uid="uid://cmi2fydlbooym" path="res://Materials/Textures/Decals/Eye.png" id="4_bj7tk"]
 [ext_resource type="Texture2D" uid="uid://cxu7w48n3uypx" path="res://Materials/Textures/Decals/ArbitrarySymbol1.png" id="5_bj7tk"]
 [ext_resource type="AudioStream" uid="uid://cbb0efmtd52ou" path="res://Audio/door-locked1.ogg" id="6_dp7k7"]
+[ext_resource type="ArrayOccluder3D" uid="uid://wfp01m8xgtxu" path="res://Props/Interactables/door.occ" id="7_bpapd"]
 [ext_resource type="AudioStream" uid="uid://pkrpowts12y7" path="res://Audio/door-locked2.ogg" id="7_n80wk"]
 [ext_resource type="AudioStream" uid="uid://diudixbegb2sr" path="res://Audio/door-locked3.ogg" id="8_bj7tk"]
 [ext_resource type="AudioStream" uid="uid://bpmluq8uvcm3g" path="res://Audio/door-locked4.ogg" id="9_hck2s"]
@@ -75,6 +77,11 @@ ignore_occlusion_culling = true
 mesh = SubResource("ArrayMesh_ne6fa")
 script = ExtResource("2_6pewh")
 
+[node name="FrameOccluderInstance3D" type="OccluderInstance3D" parent="." unique_id=461720101]
+layers = 32
+occluder = ExtResource("3_hck2s")
+bake_mask = 4294967291
+
 [node name="ExclusionArea" type="Area3D" parent="." unique_id=305392140]
 collision_layer = 0
 monitorable = false
@@ -120,6 +127,11 @@ albedo_mix = 0.8
 upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 1048567
+
+[node name="DoorOccluderInstance3D" type="OccluderInstance3D" parent="Door" unique_id=2115856261]
+layers = 32
+occluder = ExtResource("7_bpapd")
+bake_mask = 4294967291
 
 [node name="DoorOpenAudio" type="AudioStreamPlayer3D" parent="." unique_id=1398851298]
 stream = SubResource("AudioStreamRandomizer_6pewh")

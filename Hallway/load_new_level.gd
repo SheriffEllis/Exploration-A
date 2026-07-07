@@ -12,3 +12,4 @@ func trigger() -> void:
 	GameGlobals.LEVEL.load_new_level(new_level, old_node_name, new_location)
 	await Events.level_loaded
 	GameGlobals.player.flashlight.visible = true
+	Events.hint_triggered.emit("[Progress Saved.]")

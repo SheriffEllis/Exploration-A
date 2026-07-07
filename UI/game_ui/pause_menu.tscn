@@ -364,3 +364,4 @@ text = "Save"
 [connection signal="pressed" from="Settings/HBoxContainer2/Back" to="Paused" method="set_visible" binds= [true]]
 [connection signal="pressed" from="Settings/HBoxContainer2/Back" to="Settings" method="set_visible" binds= [false]]
 [connection signal="pressed" from="Settings/HBoxContainer2/Reset" to="Settings" method="_on_reset_pressed"]
+[connection signal="pressed" from="Settings/HBoxContainer2/Save" to="Settings" method="_on_save_pressed"]

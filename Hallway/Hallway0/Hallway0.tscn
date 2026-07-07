@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://mgctuhvrl4y3" path="res://Hallway/manual_door_setter.gd" id="18_3iu3o"]
 [ext_resource type="Texture2D" uid="uid://bc4l3un4tshf1" path="res://Materials/Textures/Decals/ArbitrarySymbol2.png" id="18_vm0im"]
 [ext_resource type="Script" uid="uid://b5nc7oadm448w" path="res://Hallway/seamless_teleport.gd" id="21_ustya"]
-[ext_resource type="AudioStream" uid="uid://b37k8hncv6pm7" path="res://Audio/stone-scrape.ogg" id="23_vm0im"]
+[ext_resource type="AudioStream" uid="uid://7tv2hx5h683m" path="res://Audio/rising-tension.ogg" id="23_vm0im"]
 [ext_resource type="Script" uid="uid://blngdvklqxsov" path="res://Hallway/load_new_level.gd" id="23_x7opp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rxwxc"]
@@ -93,10 +93,10 @@ size = Vector3(2.3, 9.29, 1.76)
 size = Vector3(7.90181, 3.855, 3.82)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_2n3w6"]
-size = Vector3(1.6283569, 10.805393, 9.615234)
+size = Vector3(1.628, 17, 9.615)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_h8nyl"]
-size = Vector3(1.6283569, 10.87302, 9.615234)
+size = Vector3(1.628, 17, 9.615)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7opp"]
 size = Vector3(1, 3.395, 2.72)
@@ -111,10 +111,10 @@ size = Vector3(7.2265015, 3.455, 4.25)
 size = Vector3(3.685, 10.66, 10.88)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhgwi"]
-size = Vector3(115.7, 27.67, 160)
+size = Vector3(195.55586, 27.67, 160)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j1cvd"]
-size = Vector3(119.199, 33, 1)
+size = Vector3(195, 33, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h8nyl"]
 size = Vector3(2.972, 10.616, 90)
@@ -267,7 +267,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99.
 collision_layer = 0
 monitorable = false
 script = ExtResource("10_kewxs")
-dialogue_text_queue = Array[String](["That's it? Nothing else?", "Over only this we've been fighting.", "Guess I'd best head back."])
+dialogue_text_queue = Array[String](["That's it? Nothing else?", "Over only this we've been fighting.", "I'd best head back."])
 metadata/_custom_type_script = "uid://b4y7xjthpmsm5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/TextTrigger" unique_id=995448509]
@@ -627,8 +627,8 @@ eye_type = 3
 entangle_type = 5
 
 [node name="MegaRoomShell" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=520585615]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 110.99739, 16.084, 42.752357)
-size = Vector3(139.318, 35.402, 165)
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 148.11028, 16.084, 42.75236)
+size = Vector3(213.54376, 35.402, 165)
 
 [node name="MegaRoomHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1051534667]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.235474, 1.252, 42.734)
@@ -636,10 +636,10 @@ operation = 2
 size = Vector3(27.316862, 2.5, 1.5)
 
 [node name="MegaRoom" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=974546983]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 99.945496, 13.837, 42.752357)
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 137.27684, 13.837, 42.75236)
 operation = 2
 calculate_tangents = false
-size = Vector3(115.7, 27.67, 160)
+size = Vector3(190.3627, 27.67, 160)
 
 [node name="ExtraReverb" type="Area3D" parent="MainCSGCombiner3D/MegaRoom" unique_id=32025010]
 collision_mask = 0
@@ -647,10 +647,10 @@ monitoring = false
 reverb_bus_enabled = true
 reverb_bus_name = &"LargeRooms"
 reverb_bus_amount = 1.0
-reverb_bus_uniformity = 1.0
+reverb_bus_uniformity = 0.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/MegaRoom/ExtraReverb" unique_id=2054478882]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56666565, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0299225, 0, 0)
 shape = SubResource("BoxShape3D_yhgwi")
 debug_color = Color(0.38525268, 0.20530301, 0.4974879, 0.41960785)
 
@@ -681,7 +681,7 @@ shape = SubResource("BoxShape3D_j1cvd")
 debug_color = Color(1, 0.012514982, 0.048038244, 0.41960785)
 
 [node name="RunReminder" type="Area3D" parent="MainCSGCombiner3D/MegaRoom" unique_id=621584391]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 53.70951, -12.319, 0.00046539307)
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 91.00777, -12.319, 0.00046157837)
 collision_layer = 0
 monitorable = false
 script = ExtResource("10_kewxs")
@@ -692,19 +692,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1804514, 0)
 shape = SubResource("BoxShape3D_h8nyl")
 
 [node name="StoneScrapeAudio" type="AudioStreamPlayer3D" parent="MainCSGCombiner3D/MegaRoom" unique_id=1725861827]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 25.720398, -12.319, 0.00047302246)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -84.27397, -7.1061172, 7.6293945e-06)
 stream = ExtResource("23_vm0im")
-max_db = -10.0
-pitch_scale = 0.5
-bus = &"Stone"
+volume_db = 30.0
+unit_size = 1.0
+max_db = 6.0
+bus = &"Sounds"
+emission_angle_enabled = true
+emission_angle_degrees = 60.0
+emission_angle_filter_attenuation_db = -60.0
 
 [node name="MegaRoomCeiling" type="CSGBox3D" parent="MainCSGCombiner3D/MegaRoom" unique_id=1611845336]
-transform = Transform3D(0.9659258, 0.25881904, 2.978858e-09, -0.25881904, 0.9659258, 2.2626677e-08, 2.978858e-09, -2.2626677e-08, 1, 14.865997, 16.932, 0)
+transform = Transform3D(0.9659258, 0.25881904, 2.978858e-09, -0.25881904, 0.9659258, 2.2626677e-08, 2.978858e-09, -2.2626677e-08, 1, 52.16426, 16.932, -3.8146973e-06)
 operation = 2
 size = Vector3(97.581, 29.862, 165)
 
 [node name="MegaRoomExitHallway" type="CSGBox3D" parent="MainCSGCombiner3D" unique_id=1653830332]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 167.4373, 1.252, 42.713593)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 241.94344, 1.252, 42.713593)
 operation = 2
 size = Vector3(1.5, 2.5, 21.751986)
 

@@ -4,9 +4,20 @@
 [ext_resource type="AudioStream" uid="uid://bj0k15hdynxxt" path="res://Audio/joke/YAY.mp3" id="2_lqij4"]
 [ext_resource type="Texture2D" uid="uid://u3fu7fx13qrr" path="res://Materials/Textures/Decals/Tree.png" id="3_0ntow"]
 [ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="4_4t5lm"]
+[ext_resource type="Script" uid="uid://8veeivhxodjy" path="res://Props/prop.gd" id="5_mneau"]
+[ext_resource type="Material" uid="uid://cs8rxkxmyay11" path="res://Materials/Room/Cushion.tres" id="6_ccog5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
 size = Vector3(133, 165.009, 102)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mneau"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_41yps"]
+material = ExtResource("6_ccog5")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_em8vw"]
 
 [node name="Hallway3" type="Node3D" unique_id=84698099]
 
@@ -17,6 +28,8 @@ use_collision = true
 collision_layer = 4
 
 [node name="RegularReverb" type="Area3D" parent="MainCSGCombiner3D" unique_id=267813069]
+gravity_space_override = 3
+gravity = 0.2
 reverb_bus_enabled = true
 reverb_bus_name = &"Hallways"
 reverb_bus_amount = 1.0
@@ -57,5 +70,245 @@ text = "You da weiner :)
 End of the game so far."
 font = ExtResource("4_4t5lm")
 font_size = 64
+
+[node name="Prop" type="RigidBody3D" parent="." unique_id=1226371590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop" unique_id=96166760]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop" unique_id=1887542110]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop2" type="RigidBody3D" parent="." unique_id=1286310467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop2" unique_id=405406106]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop2" unique_id=1630570463]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop3" type="RigidBody3D" parent="." unique_id=2101626052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop3" unique_id=106554276]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop3" unique_id=805504100]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop4" type="RigidBody3D" parent="." unique_id=1124523610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop4" unique_id=357652250]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop4" unique_id=1096961697]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop5" type="RigidBody3D" parent="." unique_id=1406171455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop5" unique_id=1468292467]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop5" unique_id=941205734]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop6" type="RigidBody3D" parent="." unique_id=1387325829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop6" unique_id=420789742]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop6" unique_id=2042947508]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop7" type="RigidBody3D" parent="." unique_id=99999750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop7" unique_id=245729215]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop7" unique_id=219711411]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop8" type="RigidBody3D" parent="." unique_id=738961147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop8" unique_id=30083156]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop8" unique_id=335047924]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop9" type="RigidBody3D" parent="." unique_id=787923975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop9" unique_id=1842824799]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop9" unique_id=2092186809]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop10" type="RigidBody3D" parent="." unique_id=1349638565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop10" unique_id=462657143]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop10" unique_id=181975992]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop11" type="RigidBody3D" parent="." unique_id=1735930966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop11" unique_id=992088647]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop11" unique_id=723137294]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop12" type="RigidBody3D" parent="." unique_id=913548654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop12" unique_id=411106233]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop12" unique_id=1473684299]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop13" type="RigidBody3D" parent="." unique_id=734137201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop13" unique_id=445218293]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop13" unique_id=1440576776]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop14" type="RigidBody3D" parent="." unique_id=1735129171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop14" unique_id=1811411534]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop14" unique_id=1355575286]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop15" type="RigidBody3D" parent="." unique_id=448538625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop15" unique_id=16644187]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop15" unique_id=34949569]
+shape = SubResource("SphereShape3D_em8vw")
+
+[node name="Prop16" type="RigidBody3D" parent="." unique_id=1754502582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3200407, 5.540976, 0)
+collision_layer = 6
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_mneau")
+script = ExtResource("5_mneau")
+metadata/_custom_type_script = "uid://8veeivhxodjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prop16" unique_id=1877308611]
+mesh = SubResource("SphereMesh_41yps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prop16" unique_id=681860250]
+shape = SubResource("SphereShape3D_em8vw")
 
 [connection signal="body_entered" from="MainCSGCombiner3D/RegularReverb" to="MainCSGCombiner3D/RegularReverb/YAY" method="play" flags=6 unbinds=1]
