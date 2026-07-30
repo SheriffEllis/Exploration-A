@@ -102,7 +102,7 @@ func _physics_process(delta: float):
 	# NOTE DEBUG: resets player position to origin
 	if (position.y < -1000.0 and not is_flying) or Input.is_action_just_pressed(&"reset"):
 		velocity = Vector3.ZERO
-		global_position = GameGlobals.LEVEL.last_safe_location
+		global_position = GameGlobals.LEVEL.last_safe_position
 
 	# If controlling a console/seat/touchscreen, can't pause
 	GameGlobals.GAME_UI.pause_menu.can_pause = not (is_movement_locked or is_view_locked)
@@ -132,7 +132,8 @@ func _physics_process(delta: float):
 
 func handle_coyote_timing(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y -= gravity * delta # Apply gravity.
+		#velocity.y -= gravity * delta # Apply gravity.
+		velocity -= up_direction * gravity * delta # Apply gravity in player's down direction
 		if water_detector.has_overlapping_areas():
 			velocity -= velocity/10 # linear damping
 
@@ -151,7 +152,8 @@ func handle_translation() -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir: Vector2 = Input.get_vector(&"move_left", &"move_right", &"move_forward", &"move_backward")
-	var direction: Vector3 = (yaw_pivot.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction: Vector3 = Vector3(input_dir.x, 0, input_dir.y).normalized()
+	#DebugDraw3D.draw_arrow_ray(GameGlobals.player.global_position, direction, 1.0, Color.LIGHT_BLUE, 0.1, false)
 
 	if direction and can_jump:
 		tgt_velocity.x = direction.x * move_speed
@@ -161,14 +163,28 @@ func handle_translation() -> void:
 		tgt_velocity *= 1.0 - (float(can_jump) * FLOOR_FRICTION) - (float(not can_jump) * AIR_FRICTION)
 		tgt_velocity += direction * MIDAIR_ADJUST_SPEED
 		tgt_velocity = tgt_velocity.limit_length(move_speed)
-
-	velocity.x = tgt_velocity.x
-	velocity.z = tgt_velocity.z
+	
+	var reference_basis := global_basis * yaw_pivot.basis
+	var rotated_tgt_velocity_x := reference_basis.x * tgt_velocity.x
+	var rotated_tgt_velocity_z := reference_basis.z * tgt_velocity.z
+	var rotated_velocity_y := velocity.project(reference_basis.y)
+	
+	#DebugDraw3D.draw_arrow_ray(GameGlobals.player.global_position, reference_basis.x, 1.0, Color.RED, 0.1, false)
+	#DebugDraw3D.draw_arrow_ray(GameGlobals.player.global_position, reference_basis.z, 1.0, Color.BLUE, 0.1, false)
+	#DebugDraw3D.draw_arrow_ray(GameGlobals.player.global_position, reference_basis.y, 1.0, Color.GREEN, 0.1, false)
+	
+	#DebugDraw3D.draw_arrow_ray(GameGlobals.player.global_position, rotated_tgt_velocity_x, 1.0, Color.BLUE, 0.1, false)
+	#DebugDraw3D.draw_arrow_ray(GameGlobals.player.global_position, rotated_tgt_velocity_z, 1.0, Color.RED, 0.1, false)
+	#DebugDraw3D.draw_arrow_ray(GameGlobals.player.global_position, rotated_velocity_y, 1.0, Color.GREEN, 0.1, false)
+	
+	velocity = rotated_tgt_velocity_x + rotated_tgt_velocity_z + rotated_velocity_y
+	#DebugDraw3D.draw_arrow_ray(GameGlobals.player.global_position, velocity, 1.0, Color.WHITE, 0.1, false)
 
 
 func handle_jump() -> void:
 	if Input.is_action_pressed(&"jump") and can_jump and not avoid_headbang.is_colliding():
-		velocity.y = JUMP_VELOCITY
+		#DebugDraw3D.draw_arrow_ray(global_position, temp.normalized(), JUMP_VELOCITY, Color.GREEN, 0.1, false, 1.0)
+		velocity = up_direction * JUMP_VELOCITY
 		can_jump = false
 
 
@@ -197,7 +213,7 @@ func handle_flying() -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir: Vector2 = Input.get_vector(&"move_left", &"move_right", &"move_forward", &"move_backward")
 	var input_vert := int(Input.is_action_pressed(&"jump")) - int(Input.is_action_pressed(&"crouch"))
-	var direction: Vector3 = (yaw_pivot.basis * pitch_pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction: Vector3 = (global_basis * yaw_pivot.basis * pitch_pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	direction.y += input_vert
 
 	var fly_speed: float = move_speed + float(Input.is_action_pressed(&"sprint")) * 20.0

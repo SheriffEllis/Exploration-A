@@ -25,6 +25,10 @@ buses/default_bus_layout="uid://jhi2lq5mpiaf"
 GameGlobals="*uid://cpodncikqmxag"
 Events="*uid://iixwlyyfrqi"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/sheri/Documents/Godot/exploration-a/test.avi"

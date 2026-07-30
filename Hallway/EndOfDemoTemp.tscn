@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnjtcvaxr54dt"]
 
 [ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_8i0ue"]
+[ext_resource type="Script" uid="uid://cid1fd0tllob3" path="res://Hallway/hallway_level.gd" id="1_ccog5"]
 [ext_resource type="AudioStream" uid="uid://bj0k15hdynxxt" path="res://Audio/joke/YAY.mp3" id="2_lqij4"]
 [ext_resource type="Texture2D" uid="uid://u3fu7fx13qrr" path="res://Materials/Textures/Decals/Tree.png" id="3_0ntow"]
 [ext_resource type="SystemFont" uid="uid://bop7pre4dda1a" path="res://UI/game_ui/courier_new.tres" id="4_4t5lm"]
@@ -19,7 +20,13 @@ material = ExtResource("6_ccog5")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_em8vw"]
 
-[node name="Hallway3" type="Node3D" unique_id=84698099]
+[node name="EndOfDemo" type="Node3D" unique_id=752284553 node_paths=PackedStringArray("starting_location")]
+script = ExtResource("1_ccog5")
+starting_location = NodePath("StartingPosition")
+metadata/_custom_type_script = "uid://cid1fd0tllob3"
+
+[node name="StartingPosition" type="Marker3D" parent="." unique_id=1074287984]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.8806516, 0)
 
 [node name="MainCSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=399722429]
 layers = 4

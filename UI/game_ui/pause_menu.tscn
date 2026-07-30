@@ -55,6 +55,7 @@ pressed = true
 events = [SubResource("InputEventAction_i3yvp")]
 
 [node name="PauseMenu" type="Control" unique_id=1406971771]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

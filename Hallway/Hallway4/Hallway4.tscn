@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dl8jmk517sqeb"]
+
+[ext_resource type="Script" uid="uid://cid1fd0tllob3" path="res://Hallway/hallway_level.gd" id="1_50v2d"]
+[ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="2_3xaow"]
+[ext_resource type="Script" uid="uid://iopmclmxy8w1" path="res://Hallway/Hallway4/wall_walking_zone.gd" id="3_gw1sw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
+size = Vector3(100, 123.53955, 100)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u3o2j"]
+height = 8.0
+radius = 20.0
+
+[node name="Hallway4" type="Node3D" unique_id=205270658 node_paths=PackedStringArray("starting_location")]
+script = ExtResource("1_50v2d")
+starting_location = NodePath("StartingPosition")
+level_index = 4
+metadata/_custom_type_script = "uid://cid1fd0tllob3"
+
+[node name="StartingPosition" type="Marker3D" parent="." unique_id=1793424195]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=27485603]
+layers = 4
+material_override = ExtResource("2_3xaow")
+use_collision = true
+collision_layer = 4
+
+[node name="MainShell" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1166061555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.769775, 0)
+size = Vector3(100, 123.53955, 100)
+
+[node name="RegularReverb" type="Area3D" parent="CSGCombiner3D/MainShell" unique_id=267813069]
+collision_mask = 0
+monitoring = false
+reverb_bus_enabled = true
+reverb_bus_name = &"Hallways"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/MainShell/RegularReverb" unique_id=431179048]
+shape = SubResource("BoxShape3D_f63gx")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/MainShell" unique_id=498978252]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 30, 0)
+operation = 2
+radius = 20.0
+height = 8.0
+sides = 33
+
+[node name="WallWalkingZone" type="Area3D" parent="CSGCombiner3D/MainShell/CSGCylinder3D" unique_id=328681460]
+collision_layer = 0
+monitorable = false
+script = ExtResource("3_gw1sw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/MainShell/CSGCylinder3D/WallWalkingZone" unique_id=1868939801]
+transform = Transform3D(1, 0, 0, 0, 1, -8.351872e-23, 0, -8.351872e-23, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_u3o2j")
+debug_color = Color(0.859397, 0.13830379, 0.8152754, 0.41960785)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D/MainShell/CSGCylinder3D" unique_id=1715328074]
+omni_range = 45.432365
+omni_attenuation = 0.1
+
+[connection signal="body_entered" from="CSGCombiner3D/MainShell/CSGCylinder3D/WallWalkingZone" to="CSGCombiner3D/MainShell/CSGCylinder3D/WallWalkingZone" method="_on_body_entered"]
+[connection signal="body_exited" from="CSGCombiner3D/MainShell/CSGCylinder3D/WallWalkingZone" to="CSGCombiner3D/MainShell/CSGCylinder3D/WallWalkingZone" method="_on_body_exited"]

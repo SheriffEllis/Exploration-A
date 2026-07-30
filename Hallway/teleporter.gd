@@ -25,6 +25,5 @@ func wait_for_flicker() -> void:
 func wait_for_teleport() -> void:
 	await Events.flashlight_turned_off
 	GameGlobals.player.global_position = teleport_location.global_position
-	#GameGlobals.player.yaw_pivot
-	GameGlobals.player.global_basis = teleport_location.global_basis #.rotated(Vector3.UP,-90)
+	GameGlobals.player.global_basis = teleport_location.global_basis
 	teleported.emit()

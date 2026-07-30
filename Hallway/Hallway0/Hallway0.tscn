@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://c2lj6pldaxfqg"]
 
+[ext_resource type="Script" uid="uid://cid1fd0tllob3" path="res://Hallway/hallway_level.gd" id="1_4eyrf"]
 [ext_resource type="Material" uid="uid://c34qfq87orp02" path="res://Materials/Hallway/DoorDesat.tres" id="1_cgplc"]
 [ext_resource type="Material" uid="uid://b5b2nnubf36tj" path="res://Materials/Hallway/AshStencil.tres" id="2_yo710"]
 [ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="3_mmbvc"]
@@ -126,6 +127,8 @@ size = Vector3(84.32007, 5, 23.574913)
 size = Vector3(1.858, 3.5507474, 45.238)
 
 [node name="Hallway0" type="Node3D" unique_id=84698099]
+script = ExtResource("1_4eyrf")
+level_index = 0
 
 [node name="DoorframeHallway" type="MeshInstance3D" parent="." unique_id=1792749144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0410608, 2.745715)
@@ -728,18 +731,19 @@ reverb_bus_uniformity = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.660034, 0, 2.0977173)
 shape = SubResource("BoxShape3D_3tqic")
 
-[node name="LoadLevel2" type="Area3D" parent="MainCSGCombiner3D/MegaRoomExitHallway" unique_id=102256860]
+[node name="LoadLevel1" type="Area3D" parent="MainCSGCombiner3D/MegaRoomExitHallway" unique_id=102256860]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.58799, 0.08350134, 10.087967)
 collision_layer = 0
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2" unique_id=1794035389]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel1" unique_id=1794035389]
 shape = SubResource("BoxShape3D_vio6c")
 debug_color = Color(0.9750543, 0.15987626, 0, 0.41960785)
 
-[node name="LevelLoader" type="Node" parent="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2" unique_id=222151600]
+[node name="LevelLoader" type="Node" parent="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel1" unique_id=222151600 node_paths=PackedStringArray("old_level_root")]
 script = ExtResource("23_x7opp")
-new_level = "uid://bnsblodj1ihor"
+next_level_index = 1
+old_level_root = NodePath("../../../..")
 
 [connection signal="body_entered" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" method="_on_body_entered"]
 [connection signal="body_exited" from="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" to="MainCSGCombiner3D/EntryHallway/EntryFlickerTrigger" method="_on_body_exited"]
@@ -773,4 +777,4 @@ new_level = "uid://bnsblodj1ihor"
 [connection signal="screen_exited" from="MainCSGCombiner3D/Tutorial3Room/Tutorial3Dooryway2SightToggleIndependent" to="MainCSGCombiner3D/Tutorial3Room/Tutorial3Dooryway2SightToggleIndependent" method="_on_screen_exited"]
 [connection signal="body_entered" from="MainCSGCombiner3D/MegaRoom/RunReminder" to="MainCSGCombiner3D/MegaRoom/RunReminder" method="_on_body_entered"]
 [connection signal="body_entered" from="MainCSGCombiner3D/MegaRoom/RunReminder" to="MainCSGCombiner3D/MegaRoom/StoneScrapeAudio" method="play" unbinds=1]
-[connection signal="body_entered" from="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2" to="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel2/LevelLoader" method="trigger" flags=6 unbinds=1]
+[connection signal="body_entered" from="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel1" to="MainCSGCombiner3D/MegaRoomExitHallway/LoadLevel1/LevelLoader" method="trigger" flags=6 unbinds=1]

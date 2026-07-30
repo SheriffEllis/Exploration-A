@@ -14,6 +14,6 @@ func trigger() -> void:
 	if sound_stone:
 		sound_stone.play()
 	if new_safe_location:
-		GameGlobals.LEVEL.last_safe_location = new_safe_location.global_position
+		GameGlobals.LEVEL.last_safe_position = new_safe_location.global_position
 	visible = true
 	

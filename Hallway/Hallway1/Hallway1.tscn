@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnsblodj1ihor"]
 
 [ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_7vr8j"]
+[ext_resource type="Script" uid="uid://cid1fd0tllob3" path="res://Hallway/hallway_level.gd" id="1_lh5oo"]
 [ext_resource type="Script" uid="uid://7w2y4qnnvvao" path="res://Hallway/cancel_text.gd" id="2_1pc41"]
 [ext_resource type="Script" uid="uid://b4y7xjthpmsm5" path="res://Hallway/text_trigger.gd" id="3_hm1vu"]
 [ext_resource type="Script" uid="uid://ce324142fvilf" path="res://Hallway/teleporter.gd" id="4_3sjrw"]
@@ -129,7 +130,14 @@ data = PackedVector3Array(0.35569397, -0.2092089, 0.5031393, 1.0646733, 0.069251
 [sub_resource type="BoxShape3D" id="BoxShape3D_wy5o2"]
 size = Vector3(4.405, 4.54, 11.275)
 
-[node name="Hallway1" type="Node3D" unique_id=84698099]
+[node name="Hallway1" type="Node3D" unique_id=853922944 node_paths=PackedStringArray("starting_location")]
+script = ExtResource("1_lh5oo")
+starting_location = NodePath("StartingPosition")
+level_index = 1
+metadata/_custom_type_script = "uid://cid1fd0tllob3"
+
+[node name="StartingPosition" type="Marker3D" parent="." unique_id=953595795]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="MainCSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=399722429]
 layers = 4
@@ -1297,18 +1305,18 @@ size = Vector3(1.5, 2.5, 8)
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.209503, 0, -4)
 size = Vector3(1.5, 2.5, 55.919006)
 
-[node name="LoadLevel3" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom1ExitHallway" unique_id=431970047]
+[node name="LoadLevel2" type="Area3D" parent="MainCSGCombiner3D/PuzzleRoom1ExitHallway" unique_id=431970047]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.3538, 0, -4)
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel3" unique_id=1793332022]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel2" unique_id=1793332022]
 shape = SubResource("BoxShape3D_wy5o2")
 debug_color = Color(0.9619556, 0.19785002, 0, 0.41960785)
 
-[node name="LevelLoader" type="Node" parent="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel3" unique_id=591970235]
+[node name="LevelLoader" type="Node" parent="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel2" unique_id=591970235 node_paths=PackedStringArray("old_level_root")]
 script = ExtResource("26_lh5oo")
-new_level = "res://Hallway/Hallway2/Hallway2.tscn"
-old_node_name = "Hallway1"
+next_level_index = 2
+old_level_root = NodePath("../../../..")
 metadata/_custom_type_script = "uid://blngdvklqxsov"
 
 [connection signal="triggered" from="MainCSGCombiner3D/KillPlane" to="MainCSGCombiner3D/KillPlane/FUCK" method="_on_triggered"]
@@ -1344,4 +1352,4 @@ metadata/_custom_type_script = "uid://blngdvklqxsov"
 [connection signal="screen_exited" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit3/D3SightToggle" to="MainCSGCombiner3D/PuzzleRoom1Part3/Exit3/D3SightToggle" method="_on_screen_exited"]
 [connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit3/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part1/EnablePuzzle" method="trigger"]
 [connection signal="teleported" from="MainCSGCombiner3D/PuzzleRoom1Part3/Exit3/Teleporter" to="MainCSGCombiner3D/PuzzleRoom1Part3/EnablePuzzle" method="stop"]
-[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel3" to="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel3/LevelLoader" method="trigger" flags=6 unbinds=1]
+[connection signal="body_entered" from="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel2" to="MainCSGCombiner3D/PuzzleRoom1ExitHallway/LoadLevel2/LevelLoader" method="trigger" flags=6 unbinds=1]

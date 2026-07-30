@@ -12,5 +12,5 @@ func _on_body_entered() -> void:
 		if node is CollisionShape3D:
 			node.disabled = false
 	
-	GameGlobals.LEVEL.last_safe_location = new_safe_location.global_position
+	GameGlobals.LEVEL.last_safe_position = new_safe_location.global_position
 	queue_free()

@@ -15,7 +15,7 @@ font_color = Color(0.89, 0.84846663, 0.39159998, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[node name="MainMenu" type="Control" unique_id=1346871569]
+[node name="MainMenu" type="Control" unique_id=1346871569 node_paths=PackedStringArray("load_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t17p2")
+load_button = NodePath("ColorRect/VBoxContainer/Load")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1751823053]
 texture_filter = 3
@@ -95,4 +96,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/New" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

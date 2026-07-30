@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bku8imjjwm262"]
 
+[ext_resource type="Script" uid="uid://cid1fd0tllob3" path="res://Hallway/hallway_level.gd" id="1_81nml"]
 [ext_resource type="Material" uid="uid://b6akvpo2j3p0o" path="res://Materials/Hallway/Ash.tres" id="1_npesk"]
 [ext_resource type="PackedScene" uid="uid://bds6av1fgprh6" path="res://Props/Interactables/door.tscn" id="2_fqxm8"]
 [ext_resource type="Texture2D" uid="uid://cmi2fydlbooym" path="res://Materials/Textures/Decals/Eye.png" id="5_uy1xx"]
@@ -19,6 +20,7 @@
 [ext_resource type="Material" uid="uid://csvk88id0rkdv" path="res://Materials/Hallway/Well.tres" id="16_4lgt1"]
 [ext_resource type="Script" uid="uid://bisimrq06joy2" path="res://Hallway/requisite.gd" id="17_17ght"]
 [ext_resource type="Script" uid="uid://blngdvklqxsov" path="res://Hallway/load_new_level.gd" id="19_7sqxx"]
+[ext_resource type="Script" uid="uid://6nom1b3ip8jx" path="res://Hallway/Hallway3/darken_water.gd" id="20_v6g7b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f63gx"]
 size = Vector3(285.9, 160.083, 200)
@@ -100,7 +102,14 @@ size = Vector3(40, 1, 40)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4lgt1"]
 radius = 5.4208984
 
-[node name="Hallway3" type="Node3D" unique_id=84698099]
+[node name="Hallway3" type="Node3D" unique_id=205270658 node_paths=PackedStringArray("starting_location")]
+script = ExtResource("1_81nml")
+starting_location = NodePath("StartingPosition")
+level_index = 3
+metadata/_custom_type_script = "uid://cid1fd0tllob3"
+
+[node name="StartingPosition" type="Marker3D" parent="." unique_id=1793424195]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=27485603]
 layers = 4
@@ -755,8 +764,18 @@ visible = false
 script = ExtResource("17_17ght")
 metadata/_custom_type_script = "uid://bisimrq06joy2"
 
+[node name="DarkenWater" type="Area3D" parent="Well" unique_id=1614580513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -46.01686, 0)
+collision_layer = 0
+monitorable = false
+script = ExtResource("20_v6g7b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/DarkenWater" unique_id=189248771]
+shape = SubResource("CylinderShape3D_4lgt1")
+debug_color = Color(0.99255735, 0.050505728, 0.17436999, 0.41960785)
+
 [node name="LoadLevel4" type="Area3D" parent="Well" unique_id=129811162]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -46.38343, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -58.145874, 0)
 collision_layer = 0
 monitorable = false
 
@@ -764,10 +783,11 @@ monitorable = false
 shape = SubResource("CylinderShape3D_4lgt1")
 debug_color = Color(0.99255735, 0.050505728, 0.17436999, 0.41960785)
 
-[node name="LevelLoader" type="Node" parent="Well/LoadLevel4" unique_id=1705092594]
+[node name="LevelLoader" type="Node" parent="Well/LoadLevel4" unique_id=1705092594 node_paths=PackedStringArray("old_level_root")]
 script = ExtResource("19_7sqxx")
-new_level = "uid://dnjtcvaxr54dt"
-old_node_name = "Hallway3"
+next_level_index = 4
+old_level_root = NodePath("../../..")
+transition_type = 1
 metadata/_custom_type_script = "uid://blngdvklqxsov"
 
 [connection signal="screen_exited" from="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitSightToggle2" to="CSGCombiner3D/EntryRoom/PuzzleExitHallway2/PuzzleExitSightToggle2" method="_on_screen_exited"]
@@ -787,6 +807,7 @@ metadata/_custom_type_script = "uid://blngdvklqxsov"
 [connection signal="body_exited" from="Well/WaterSfx" to="Well/WaterSfx" method="_on_body_exited" unbinds=1]
 [connection signal="body_entered" from="Well/WaterThreshold" to="Well/WaterSfx/SplashAudio" method="play" flags=6 unbinds=1]
 [connection signal="body_entered" from="Well/EnablePuzzle" to="Well/Requisite" method="trigger" flags=6 unbinds=1]
-[connection signal="body_entered" from="Well/LoadLevel4" to="Well/LoadLevel4/LevelLoader" method="trigger" flags=6 unbinds=1]
+[connection signal="body_entered" from="Well/DarkenWater" to="Well/DarkenWater" method="_on_body_entered" flags=6 unbinds=1]
+[connection signal="body_entered" from="Well/LoadLevel4" to="Well/LoadLevel4/LevelLoader" method="trigger" flags=7 unbinds=1]
 
 [editable path="Well"]
