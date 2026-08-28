@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dibptxxefd8ii"]
+
+[ext_resource type="Texture2D" uid="uid://38bl824v65hj" path="res://Hallway/Hallway4/SnailLevel_TreeWood.png" id="1_d5cek"]
+
+[resource]
+resource_name = "TreeWood"
+albedo_texture = ExtResource("1_d5cek")
+texture_filter = 2

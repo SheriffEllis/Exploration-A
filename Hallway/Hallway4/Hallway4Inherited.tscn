@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://2lommuafayk7"]
+
+[ext_resource type="PackedScene" uid="uid://bxkax41rvtegi" path="res://Hallway/Hallway4/SnailLevel.glb" id="1_8vfqt"]
+
+[node name="SnailLevel" unique_id=1644459743 instance=ExtResource("1_8vfqt")]
+
+[node name="StaticBody3D" parent="Ground" parent_id_path=PackedInt32Array(575608299) index="2000" unique_id=1500782637]
+collision_layer = 4
+collision_mask = 0
+
+[node name="StaticBody3D" parent="house1" parent_id_path=PackedInt32Array(890160150) index="0" unique_id=1312895739]
+collision_layer = 4
+collision_mask = 0
+
+[node name="StaticBody3D" parent="house2" parent_id_path=PackedInt32Array(422309403) index="0" unique_id=1266028285]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Shell" parent="." index="12" unique_id=296657495]
+gi_lightmap_texel_scale = 10.0
+
+[node name="StaticBody3D" parent="Shell" index="0" unique_id=1939080365]
+collision_layer = 4
+collision_mask = 0

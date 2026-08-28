@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bldrmbf83shrd"]
+
+[ext_resource type="Texture2D" uid="uid://bklysy0jfan3g" path="res://Hallway/Hallway4/SnailLevel_Ground103_1K-PNG_Color.png" id="1_kt1k3"]
+
+[resource]
+resource_name = "Cliff"
+albedo_texture = ExtResource("1_kt1k3")
+metallic_specular = 0.0
+texture_filter = 2

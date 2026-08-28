@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cmm8mwr1dlcv6"]
+
+[ext_resource type="Texture2D" uid="uid://droety3o1x0y4" path="res://Hallway/Hallway4/SnailLevel_house5_tex2.png" id="1_t2tyt"]
+
+[resource]
+resource_name = "house5"
+cull_mode = 2
+albedo_texture = ExtResource("1_t2tyt")
+metallic = 1.0
+texture_filter = 2

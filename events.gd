@@ -21,6 +21,8 @@ signal intro_cutscene_ended
 signal interaction_prompted
 signal camcorder_collected
 signal flashlight_collected
+signal camcorder_disabled
+signal flashlight_disabled
 signal key_collected(key_id: int)
 #endregion
 

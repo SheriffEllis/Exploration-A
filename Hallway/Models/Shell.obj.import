@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dvwsfpdm4jlp8"
+path="res://.godot/imported/Shell.obj-b138146fbef0ff9772fb7f27d6fd92ad.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Shell.obj-b138146fbef0ff9772fb7f27d6fd92ad.mesh"]
+
+source_file="res://Hallway/Models/Shell.obj"
+dest_files=["res://.godot/imported/Shell.obj-b138146fbef0ff9772fb7f27d6fd92ad.mesh", "res://.godot/imported/Shell.obj-b138146fbef0ff9772fb7f27d6fd92ad.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=true
+generate_lightmap_uv2_texel_size=0.1
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

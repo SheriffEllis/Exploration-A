@@ -1,0 +1,84 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bxkax41rvtegi"
+path="res://.godot/imported/SnailLevel.glb-16e9a6477121c4a5b9185e802ea9fb4e.scn"
+
+[deps]
+
+source_file="res://Hallway/Hallway4/SnailLevel.glb"
+dest_files=["res://.godot/imported/SnailLevel.glb-16e9a6477121c4a5b9185e802ea9fb4e.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=1
+materials/extract_format=0
+materials/extract_path="res://Materials/Hallway/Hallway4"
+_subresources={
+"materials": {
+"Cliff": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/Cliff.tres",
+"use_external/path": "uid://bldrmbf83shrd"
+},
+"Grass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/Grass.tres",
+"use_external/path": "uid://dy2vkbbiptn0l"
+},
+"Onyx": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/Onyx.tres",
+"use_external/path": "uid://1w4fp81ul2iq"
+},
+"house1.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/house1.001.tres",
+"use_external/path": "uid://btx2tkyn40qit"
+},
+"house2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/house2.tres",
+"use_external/path": "uid://bup3fk0i82m2o"
+}
+},
+"nodes": {
+"PATH:Ground": {
+"mesh_instance/layers": 6
+},
+"PATH:Shell": {
+"mesh_instance/layers": 4
+},
+"PATH:house1": {
+"mesh_instance/layers": 4
+},
+"PATH:house2": {
+"mesh_instance/layers": 4
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

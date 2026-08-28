@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dy2vkbbiptn0l"]
+
+[ext_resource type="Texture2D" uid="uid://cmtfiu8ayhki3" path="res://Hallway/Hallway4/SnailLevel_Grass.png" id="1_q6xp5"]
+
+[resource]
+resource_name = "Grass"
+albedo_texture = ExtResource("1_q6xp5")
+metallic_specular = 0.0
+texture_filter = 2

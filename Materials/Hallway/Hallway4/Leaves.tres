@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dauo123fyj8pa"]
+
+[ext_resource type="Texture2D" uid="uid://cnwnsa1x3olh7" path="res://Hallway/Hallway4/SnailLevel_Leaves.png" id="1_jc2pm"]
+
+[resource]
+resource_name = "Leaves"
+albedo_texture = ExtResource("1_jc2pm")
+texture_filter = 2

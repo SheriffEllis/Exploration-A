@@ -14,7 +14,7 @@ const LEVELS := {
 	1 : "uid://bnsblodj1ihor",
 	2 : "uid://d0jdxlkx5i67m",
 	3 : "uid://bku8imjjwm262",
-	4 : "uid://dl8jmk517sqeb",
+	4 : "uid://bw02wtgamiue6",
 }
 
 func change_environment(environment : Environment = HALLWAY_ENVIRONMENT) -> void:

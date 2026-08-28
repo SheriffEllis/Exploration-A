@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://1w4fp81ul2iq"]
+
+[ext_resource type="Texture2D" uid="uid://cgsdmhl20wb2o" path="res://Hallway/Hallway4/SnailLevel_Onyx015_1K-JPG_Color.jpg" id="1_ckmp0"]
+
+[resource]
+resource_name = "Onyx"
+cull_mode = 2
+albedo_texture = ExtResource("1_ckmp0")
+roughness = 0.1
+texture_filter = 2

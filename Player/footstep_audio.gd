@@ -28,12 +28,14 @@ func handle_footstep(player: PlayerCharacter, delta: float, headbob_amplitude: f
 		footstep_can_play = false
 		play()
 	
+	if not $LandingCooldown.is_stopped(): return
 	if not footstep_landed and player.is_on_floor():
 		if abs(prev_velocity.y) > 5.0:
 			$StumbleAudio.volume_db = abs(prev_velocity.y)
 			$StumbleAudio.play()
 		else:
 			play()
+		$LandingCooldown.start()
 	elif footstep_landed and not player.is_on_floor():
 		play()
 	footstep_landed = player.is_on_floor()

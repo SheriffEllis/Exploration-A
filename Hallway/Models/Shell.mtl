@@ -1,0 +1,13 @@
+# Blender 5.2.0 LTS MTL File: 'Shell11.blend'
+# www.blender.org
+
+newmtl Onyx
+Ns 513.611084
+Ka 0.150000 0.150000 0.150000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 3
+map_Kd C:/Users/sheri/Documents/Blender/House/Misc/Onyx015_1K-JPG_Color.jpg
+map_Bump -bm 1.000000 C:/Users/sheri/Documents/Blender/House/Misc/Onyx015_1K-JPG_NormalDX.jpg
