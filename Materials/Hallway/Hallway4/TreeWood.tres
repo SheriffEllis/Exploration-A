@@ -5,4 +5,5 @@
 [resource]
 resource_name = "TreeWood"
 albedo_texture = ExtResource("1_d5cek")
+metallic_specular = 0.0
 texture_filter = 2

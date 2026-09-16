@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8u6dsaw823qd"]
+
+[ext_resource type="Texture2D" uid="uid://cyqyvjes4sk03" path="res://Hallway/Hallway4/SnailLevel_Rope256x256.png" id="1_snaj1"]
+
+[resource]
+resource_name = "Rope"
+albedo_texture = ExtResource("1_snaj1")
+texture_filter = 2

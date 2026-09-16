@@ -5,4 +5,5 @@
 [resource]
 resource_name = "Leaves"
 albedo_texture = ExtResource("1_jc2pm")
+metallic_specular = 0.0
 texture_filter = 2

@@ -4,7 +4,6 @@
 
 [resource]
 resource_name = "Onyx"
-cull_mode = 2
 albedo_texture = ExtResource("1_ckmp0")
 roughness = 0.1
 texture_filter = 2

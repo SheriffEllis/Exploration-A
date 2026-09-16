@@ -4,7 +4,6 @@
 
 [resource]
 resource_name = "house1.001"
-cull_mode = 2
 albedo_texture = ExtResource("1_0dy2h")
 metallic = 1.0
 metallic_specular = 0.0

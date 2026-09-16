@@ -49,10 +49,20 @@ _subresources={
 "use_external/fallback_path": "res://Materials/Hallway/Hallway4/Grass.tres",
 "use_external/path": "uid://dy2vkbbiptn0l"
 },
-"Onyx": {
+"Leaves": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Materials/Hallway/Hallway4/Onyx.tres",
-"use_external/path": "uid://1w4fp81ul2iq"
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/Leaves.tres",
+"use_external/path": "uid://dauo123fyj8pa"
+},
+"Rope": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/Rope.tres",
+"use_external/path": "uid://b8u6dsaw823qd"
+},
+"TreeWood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/TreeWood.tres",
+"use_external/path": "uid://dibptxxefd8ii"
 },
 "house1.001": {
 "use_external/enabled": true,
@@ -63,6 +73,21 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Materials/Hallway/Hallway4/house2.tres",
 "use_external/path": "uid://bup3fk0i82m2o"
+},
+"house3": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/house3.tres",
+"use_external/path": "uid://dnpakk2yrqh2r"
+},
+"house4": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/house4.tres",
+"use_external/path": "uid://kq5gpn2mu2sv"
+},
+"house5": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/house5.tres",
+"use_external/path": "uid://cmm8mwr1dlcv6"
 }
 },
 "nodes": {
@@ -73,10 +98,37 @@ _subresources={
 "mesh_instance/layers": 4
 },
 "PATH:house1": {
-"mesh_instance/layers": 4
+"mesh_instance/layers": 6
+},
+"PATH:house1_001": {
+"mesh_instance/layers": 6
+},
+"PATH:house1_002": {
+"mesh_instance/layers": 6
 },
 "PATH:house2": {
-"mesh_instance/layers": 4
+"mesh_instance/layers": 6
+},
+"PATH:house2_001": {
+"mesh_instance/layers": 6
+},
+"PATH:house2_002": {
+"mesh_instance/layers": 6
+},
+"PATH:house3": {
+"mesh_instance/layers": 6
+},
+"PATH:house3_001": {
+"mesh_instance/layers": 6
+},
+"PATH:house3_002": {
+"mesh_instance/layers": 6
+},
+"PATH:house4": {
+"mesh_instance/layers": 6
+},
+"PATH:house5": {
+"mesh_instance/layers": 6
 }
 }
 }

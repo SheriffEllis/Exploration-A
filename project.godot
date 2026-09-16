@@ -33,6 +33,10 @@ settings/addon_root_folder="res://addons/debug_draw_3d"
 
 movie_writer/movie_file="C:/Users/sheri/Documents/Godot/exploration-a/test.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/MetaMultimeshInstance3D/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
