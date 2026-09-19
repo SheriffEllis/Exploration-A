@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ckqj2oqf7r4cn"]
+
+[ext_resource type="Texture2D" uid="uid://d1vhac6eof0ol" path="res://Hallway/Hallway4/SnailLevel_Shell_1K-JPG_Color.jpg" id="1_ve24w"]
+
+[resource]
+resource_name = "Shell"
+albedo_texture = ExtResource("1_ve24w")
+roughness = 0.06666671
+texture_filter = 2

@@ -67,12 +67,17 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Events.level_ready.connect(_on_level_ready)
 	Events.flashlight_collected.connect(_on_flashlight_collected)
+	Events.flashlight_disabled.connect(_on_flashlight_disabled)
 
 func _on_level_ready() -> void:
 	interaction_cursor_toggled.connect(GameGlobals.GAME_UI._on_interaction_cursor_toggled)
 
 func _on_flashlight_collected() -> void:
 	flashlight_enabled = true
+
+func _on_flashlight_disabled() -> void:
+	flashlight_enabled = false
+	flashlight.visible = false
 
 func _unhandled_input(event) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED or event is not InputEventMouseMotion: return	

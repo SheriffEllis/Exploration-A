@@ -5,5 +5,5 @@
 [resource]
 resource_name = "Onyx"
 albedo_texture = ExtResource("1_ckmp0")
-roughness = 0.1
+roughness = 0.06666671
 texture_filter = 2

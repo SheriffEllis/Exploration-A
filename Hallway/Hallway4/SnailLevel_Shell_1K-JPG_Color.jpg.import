@@ -2,18 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8v7qrdadkv58"
-path.s3tc="res://.godot/imported/Onyx015_1K-JPG_Color.jpg-cf2a5ee3ae9a93f0bb7bda3cf9a111be.s3tc.ctex"
-path.etc2="res://.godot/imported/Onyx015_1K-JPG_Color.jpg-cf2a5ee3ae9a93f0bb7bda3cf9a111be.etc2.ctex"
+uid="uid://d1vhac6eof0ol"
+path.s3tc="res://.godot/imported/SnailLevel_Shell_1K-JPG_Color.jpg-8f84a47638b66e3ce5438d1e4d34f409.s3tc.ctex"
+path.etc2="res://.godot/imported/SnailLevel_Shell_1K-JPG_Color.jpg-8f84a47638b66e3ce5438d1e4d34f409.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "9f5d9aee6e806f7d9467f514a4791039"
+}
 
 [deps]
 
-source_file="res://Hallway/Models/Onyx015_1K-JPG_Color.jpg"
-dest_files=["res://.godot/imported/Onyx015_1K-JPG_Color.jpg-cf2a5ee3ae9a93f0bb7bda3cf9a111be.s3tc.ctex", "res://.godot/imported/Onyx015_1K-JPG_Color.jpg-cf2a5ee3ae9a93f0bb7bda3cf9a111be.etc2.ctex"]
+source_file="res://Hallway/Hallway4/SnailLevel_Shell_1K-JPG_Color.jpg"
+dest_files=["res://.godot/imported/SnailLevel_Shell_1K-JPG_Color.jpg-8f84a47638b66e3ce5438d1e4d34f409.s3tc.ctex", "res://.godot/imported/SnailLevel_Shell_1K-JPG_Color.jpg-8f84a47638b66e3ce5438d1e4d34f409.etc2.ctex"]
 
 [params]
 

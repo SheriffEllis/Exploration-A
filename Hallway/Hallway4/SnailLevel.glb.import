@@ -54,10 +54,20 @@ _subresources={
 "use_external/fallback_path": "res://Materials/Hallway/Hallway4/Leaves.tres",
 "use_external/path": "uid://dauo123fyj8pa"
 },
+"Onyx": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/Onyx.tres",
+"use_external/path": "uid://1w4fp81ul2iq"
+},
 "Rope": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Materials/Hallway/Hallway4/Rope.tres",
 "use_external/path": "uid://b8u6dsaw823qd"
+},
+"Shell": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/Hallway/Hallway4/Shell.tres",
+"use_external/path": "uid://ckqj2oqf7r4cn"
 },
 "TreeWood": {
 "use_external/enabled": true,
@@ -93,9 +103,6 @@ _subresources={
 "nodes": {
 "PATH:Ground": {
 "mesh_instance/layers": 6
-},
-"PATH:Shell": {
-"mesh_instance/layers": 4
 },
 "PATH:house1": {
 "mesh_instance/layers": 6

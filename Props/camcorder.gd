@@ -17,6 +17,7 @@ var is_up := true
 func _ready() -> void:
 	screen.get_active_material(1).emission_texture = viewport.get_texture()
 	Events.camcorder_collected.connect(_on_camcorder_collected)
+	Events.camcorder_disabled.connect(_on_camcorder_disabled)
 	Events.cam_cull_mask_changed.connect(_on_cull_mask_changed)
 	Events.forced_image_deletion.connect(_on_forced_image_deletion)
 
@@ -26,6 +27,9 @@ func _on_camcorder_collected() -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "position", cam_down.position, 1.0)
 	is_up = false
+
+func _on_camcorder_disabled() -> void:
+	visible = false
 
 func _on_cull_mask_changed(layer_num: int, new_value: bool) -> void:
 	cam.set_cull_mask_value(layer_num, new_value)

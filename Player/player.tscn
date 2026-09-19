@@ -151,6 +151,10 @@ visible = false
 cam_up = NodePath("../CamUpLocation")
 cam_down = NodePath("../CamDownLocation")
 
+[node name="CandleLocation" type="Marker3D" parent="YawPivot/PitchPivot" unique_id=1875326791]
+transform = Transform3D(1, 0, 0, 0, 0.99999905, 0, 0, 0, 0.99999905, 0.20374101, -0.32372916, -0.23194605)
+gizmo_extents = 0.1
+
 [node name="PlayerPOV" type="Camera3D" parent="YawPivot/PitchPivot" unique_id=902998266]
 cull_mask = 59
 current = true

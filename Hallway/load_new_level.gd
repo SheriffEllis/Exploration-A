@@ -17,7 +17,8 @@ func trigger() -> void:
 	GameGlobals.player.flashlight.visible = false
 	GameGlobals.LEVEL.load_new_level(GameGlobals.LEVELS[next_level_index], old_level_root.name)
 	await Events.level_loaded
-	GameGlobals.player.flashlight.visible = true
+	if GameGlobals.player.flashlight_enabled:
+		GameGlobals.player.flashlight.visible = true
 	if transition_type == TransitionType.FADE_IN:
 		var tween := get_tree().create_tween().bind_node(GameGlobals.player) # can't be bound to self as this will be deleted after scene change
 		tween.tween_property(GameGlobals.player.flashlight, "light_energy", 1, 1)

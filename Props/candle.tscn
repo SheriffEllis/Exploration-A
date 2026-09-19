@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://cp06nqc5sus67"]
+
+[ext_resource type="PackedScene" uid="uid://bagnnoar1vdh7" path="res://Props/candle.glb" id="1_r023s"]
+[ext_resource type="Script" uid="uid://dljtf0a2g086r" path="res://Props/candle_flicker.gd" id="2_cuiqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuiqv"]
+resource_name = "Candle"
+albedo_color = Color(0.7641746, 0.69920945, 0.55619085, 1)
+roughness = 0.34166667
+use_z_clip_scale = true
+z_clip_scale = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfdwd"]
+resource_name = "Wick"
+cull_mode = 2
+albedo_color = Color(0.31110138, 0.2752208, 0.235705, 1)
+roughness = 0.5
+use_z_clip_scale = true
+z_clip_scale = 0.5
+
+[sub_resource type="Shader" id="Shader_r023s"]
+code = "shader_type spatial;
+
+render_mode unshaded, cull_back;
+
+uniform float z_clip_scale : hint_range(0.01, 1.0, 0.01);
+
+// fire uniforms
+uniform float detail_strength = 3.0;
+uniform float scroll_speed = 1.2;
+uniform float fire_height = 1.0;
+uniform float fire_shape = 1.5;
+uniform float fire_thickness = 0.55;
+uniform float fire_sharpness = 1.0;
+uniform float intensity = 1.0;
+
+// noise uniforms
+uniform int noise_octaves = 6;
+uniform float noise_lacunarity = 3.0;
+uniform float noise_gain = 0.5;
+uniform float noise_amplitude = 1.0;
+uniform float noise_frequency = 1.5;
+
+// 2D Value noise function
+float hash(vec2 p) {
+    p = fract(p * 0.3183099 + vec2(0.1, 0.1));
+    p *= 17.0;
+    return fract(p.x * p.y * (p.x + p.y));
+}
+
+// 2D Value noise function (smooth)
+float noise(vec2 x) {
+    vec2 p = floor(x);
+    vec2 f = fract(x);
+
+    float n = 
+        hash(p)       * (1.0 - f.x) * (1.0 - f.y) +
+        hash(p + vec2(1.0, 0.0)) * f.x * (1.0 - f.y) +
+        hash(p + vec2(0.0, 1.0)) * (1.0 - f.x) * f.y +
+        hash(p + vec2(1.0, 1.0)) * f.x * f.y;
+
+    return n;
+}
+
+// Fractional Brownian Motion function (2D)
+float fbm(vec2 p) {
+	int octaves = noise_octaves;
+ 	float lacunarity = noise_lacunarity;
+ 	float gain = noise_gain;
+ 	float amplitude = noise_amplitude;
+ 	float frequency = noise_frequency;
+	float total = 0.0;
+	
+    for (int i = 0; i < octaves; i++) {
+        total += noise(p * frequency) * amplitude;
+        frequency *= lacunarity;
+        amplitude *= gain;
+    }
+
+    return total * 0.5;
+}
+
+void vertex() {
+	Z_CLIP_SCALE = z_clip_scale;
+}
+
+void fragment() {
+    vec2 uv = UV;
+
+	// modified_uv for offset and animating UVs for fire    
+    vec2 modified_uv = -uv;
+	modified_uv.x = mod(modified_uv.x, 1.0) - 0.5;
+    modified_uv.y += 0.84; // size vertical
+    
+	// fire noise scroll effect
+	float scroll = scroll_speed * detail_strength * TIME;
+	
+	// sample noise for fire
+	float noise = fbm(detail_strength * modified_uv - vec2(0.0, scroll));
+    
+	// controls the intensity of noise
+	// at different points in uvs. it thus
+	// controls the shape of fire
+	float fire_intensity = intensity - 16.0 * fire_sharpness * pow(
+		max(
+			0.0,
+			length(
+				modified_uv * vec2((1.0 / fire_thickness) + modified_uv.y * fire_shape, 1.0 / fire_height)
+			) - noise * max(0.0, modified_uv.y + 0.25)
+		),
+		1.2
+	);
+    float fire_intensity1 = noise * fire_intensity * (1.5 - pow(1.0 * uv.y, 14.0));
+    fire_intensity1 = clamp(fire_intensity1, 0.0, 1.0);
+
+	// compute fire color
+	// red channel is most intense, green less than it
+	// blue least intense because [pow of x while(x < 1) is less than x] 
+    vec3 fire_color = vec3(
+		1.0 * fire_intensity1,
+		1.5 * pow(fire_intensity1, 3.0),
+		pow(fire_intensity1, 6.0)
+	);
+
+	// add alpha to color
+    float alpha = fire_intensity * (1.0f - pow(uv.y, 3.0));
+    vec4 final_color = vec4(
+		mix(vec3(0.0), fire_color, alpha),
+		alpha
+	);
+    
+	// apply to fragment
+	ALBEDO = final_color.rgb;
+	if(final_color.a > 0.1){
+    	ALPHA = final_color.a;
+	}else{
+		ALPHA = 0.0;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cuiqv"]
+render_priority = 0
+shader = SubResource("Shader_r023s")
+shader_parameter/z_clip_scale = 0.0
+shader_parameter/detail_strength = 2.0
+shader_parameter/scroll_speed = 1.2
+shader_parameter/fire_height = 0.8
+shader_parameter/fire_shape = 1.5
+shader_parameter/fire_thickness = 0.55
+shader_parameter/fire_sharpness = 1.18
+shader_parameter/intensity = 1.0
+shader_parameter/noise_octaves = 2
+shader_parameter/noise_lacunarity = 2.95
+shader_parameter/noise_gain = 0.5
+shader_parameter/noise_amplitude = 1.2650000000000001
+shader_parameter/noise_frequency = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r023s"]
+material = SubResource("ShaderMaterial_cuiqv")
+size = Vector2(0.1, 0.1)
+
+[node name="candle" unique_id=1248241946 instance=ExtResource("1_r023s")]
+
+[node name="Candle" parent="." index="0" unique_id=926709967 node_paths=PackedStringArray("true_light", "fake_light")]
+layers = 8
+surface_material_override/0 = SubResource("StandardMaterial3D_cuiqv")
+surface_material_override/1 = SubResource("StandardMaterial3D_tfdwd")
+script = ExtResource("2_cuiqv")
+true_light = NodePath("TrueLight")
+fake_light = NodePath("FakeLight")
+
+[node name="TrueLight" type="OmniLight3D" parent="Candle" index="0" unique_id=1737406006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014742799, 0.1531656, -0.0018305331)
+layers = 7
+light_color = Color(1, 0.79607844, 0.49019608, 1)
+light_size = 0.1
+light_specular = 0.0
+light_cull_mask = 4294967287
+omni_range = 40.0
+omni_attenuation = 2.0
+
+[node name="FakeLight" type="SpotLight3D" parent="Candle" index="1" unique_id=1319560377]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.6289494, 0)
+layers = 8
+light_color = Color(1, 0.79607844, 0.49019608, 1)
+light_size = 0.5
+light_specular = 0.0
+light_cull_mask = 4293918728
+spot_range = 1.0
+spot_angle = 4.5048757
+
+[node name="Flame" type="MeshInstance3D" parent="Candle" index="2" unique_id=1972543137]
+transform = Transform3D(1, 0, 0, 0, -2.8771856e-08, -0.65822333, 0, 1, -4.371139e-08, -0.002753377, 0.175684, 0.0017133765)
+mesh = SubResource("PlaneMesh_r023s")
